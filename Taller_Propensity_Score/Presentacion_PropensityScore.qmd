@@ -1,0 +1,78 @@
+---
+title: "Propensity Score"
+format: revealjs
+---
+
+## Introducción al tipo de estudios {auto-animate="true"}
+
+
+::: columns
+::: {.column width="30%"}
+![](Imagenes/GeorgeEPBox.jpg){width="300" fig-align="center"}
+::: 
+
+::: {.column width="70%"}
+“All models are wrong, but some are useful”
+George E. P. Box
+:::
+
+:::
+
+## Introducción al tipo de estudios {auto-animate="true"}
+
+
+::: columns
+::: {.column width="30%"}
+![](Imagenes/GeorgeEPBox.jpg){width="300" fig-align="center"}
+::: 
+
+::: {.column width="70%"}
+Parsimonia
+
+Dado que todos los modelos son erróneos, un científico no puede obtener uno que sea "correcto" por muy elaborado que lo haya hecho.
+:::
+
+:::
+
+## Introducción al tipo de estudios {auto-animate="true"}
+
+
+::: columns
+::: {.column width="30%"}
+![](Imagenes/GeorgeEPBox.jpg){width="300" fig-align="center"}
+::: 
+
+::: {.column width="70%"}
+Parsimonia
+
+Dado que todos los modelos son erróneos, un científico no puede obtener uno que sea "correcto" por muy elaborado que lo haya hecho.
+
+Preocupación selectiva
+
+Puesto que todos los modelos son erróneos, el científico debe estar alerta para detectar en qué punto está el error.
+::: 
+
+::: 
+
+## ¿Qué es el Machine Learning? {auto-animate="true"}
+
+::: incremental
+"Estadística clásica pero en lugar de usar aproximaciones clásicas, usamos muestras inventadas."
+
+El Machine Learning es sentido común.
+:::
+
+## Bullets
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+## Code
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
