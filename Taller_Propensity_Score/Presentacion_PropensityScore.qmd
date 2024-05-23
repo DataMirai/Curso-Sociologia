@@ -82,7 +82,7 @@ La clave del Machine Learning es el **sentido común**.
 
 ## 3. Tipos de diseño experimental {auto-animate="true"}
 
-**Foto pirámide arreglada**
+![](Imagenes/Piramide_tipos_diseñoExperimental.png){width="300" fig-align="center"}
 
 ## 3. Tipos de diseño experimental {auto-animate="true"}
 
@@ -194,14 +194,14 @@ En el mundo de la medicina está aceptado que dos grupos son diferentes si prese
 
 Las SMD se calculan entorno a la exposición. 
 
-(Img diferencias grupos)
+![](Imagenes/tipos_muestras.png){width="300" fig-align="center"}
 
 ## 5.1. La paradoja de Simpson {auto-animate="true"}
 (Img paradoja Simpson)
 
 ## 5.2. Las variables externas {auto-animate="true"}
 
-(Img columnas efectos externos)
+![](Imagenes/efectos_externos.png){width="300" fig-align="center"}
 
 La gripe se elimina con paracetamol en 7 días pero si no, se cura solo en una semana. 
 
