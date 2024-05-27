@@ -33,8 +33,21 @@ modelos y en diseño experimental.
 
 ## Modelizar es un arte {auto-animate="true"}
 
-Antes de lanzarte a hacer cualquier tipo de modelización, Ten un buen
-diseño y minimiza confusión.
+No hay un modelo mejor que otro: cada situación requerirá de diferentes
+herramientas.
+
+La regresión logística, por ejemplo, es deseable cuando funciona porque
+los parámetros son muy interpretables. Los Random Forest son geniales
+porque pueden lidiar con patrones muy difíciles, pero olvídate de
+
+Cada modelo tiene sus propiedades. Cubriremos los principales a lo largo
+de este curso.
+
+## Modelizar es un arte {auto-animate="true"}
+
+Antes de lanzarte a hacer cualquier tipo de modelización, es necesario
+fijar un contexto de los datos y estar seguros de que todo será
+comaprable entre si. Ten un buen diseño y minimiza confusión.
 
 Sin esto, \*Los modelos fallarán a la hora de inferenciar\*
 
@@ -45,7 +58,6 @@ Sin esto, \*Los modelos fallarán a la hora de inferenciar\*
 ## Todos los modelos están equivocados {auto-animate="true"}
 
 ::: columns
-
 ::: {.column width="30%"}
 ![](Imagenes/GeorgeEPBox.jpg){width="300" fig-align="center"}
 :::
@@ -53,7 +65,6 @@ Sin esto, \*Los modelos fallarán a la hora de inferenciar\*
 ::: {.column width="70%"}
 “All models are wrong, but some are useful” George E. P. Box
 :::
-
 :::
 
 ## Todos los modelos están equivocados {auto-animate="true"}
@@ -86,7 +97,6 @@ Sin esto, \*Los modelos fallarán a la hora de inferenciar\*
 :::
 
 ## Todos los modelos están equivocados {auto-animate="true"}
-
 
 ## Todos los modelos están equivocados {auto-animate="true"}
 
@@ -125,7 +135,8 @@ uno que sea "correcto" por muy elaborado que lo haya hecho.
 ::: {.column width="70%"}
 **Parsimonia**
 
-No se puede obtener un modelo que sea "verdadero", por muy elaborado que lo haya hecho.
+No se puede obtener un modelo que sea "verdadero", por muy elaborado que
+lo haya hecho.
 
 **Preocupación selectiva**
 
@@ -135,21 +146,22 @@ Hay que conocer el contexto para detectar en qué punto está el error.
 
 ## Todos los modelos están equivocados {auto-animate="true"}
 
-![](Imagenes/hznah1jzh8fa1111111.png)
-# Diseño experimental {auto-animate="true"}
+![](Imagenes/hznah1jzh8fa1111111.png) \# Diseño experimental
+{auto-animate="true"}
 
 ## Diseño experimental {auto-animate="true"}
 
-Permite identificar y cuantificar las causas de un efecto dentro de un estudio experimental.
+Permite identificar y cuantificar las causas de un efecto dentro de un
+estudio experimental.
 
 ## Diseño experimental {auto-animate="true"}
 
 ![](Imagenes/u9uxysfx4l1c1.png)
 
-
 ## 3. Tipos de diseño experimental {auto-animate="true"}
 
-Para poder hacer un cualquier estudio, es necesario tener algo un objetivo, normalmente algo con lo que comparar.
+Para poder hacer un cualquier estudio, es necesario tener algo un
+objetivo, normalmente algo con lo que comparar.
 
 ## 3. Tipos de diseño experimental {auto-animate="true"}
 
@@ -181,7 +193,6 @@ Todo estudio necesita un "tratamiento vs control"
 Todo estudio necesita un "exposición vs no exposición"
 
 Todo estudio necesita un "hace algo vs no hace algo"
-
 
 ## 3. Tipos de diseño experimental {auto-animate="true"}
 
@@ -220,21 +231,19 @@ fig-align="center"}
     en el rendimiento académico de los estudiantes.
 :::
 
-
-
 ## 3.1. Estudios observacionales {auto-animate="true"}
 
 ::: incremental
 -   **Caso de estudio:** Se centran en un individuo, grupo o evento
-    específico para una observación profunda y detallada. 
+    específico para una observación profunda y detallada.
 
--   **Estudios transversales:** Recopilan datos a través de cuestionarios
-    estructurados. Permiten estudiar la relación entre variables en una
-    gran muestra de población.
+-   **Estudios transversales:** Recopilan datos a través de
+    cuestionarios estructurados. Permiten estudiar la relación entre
+    variables en una gran muestra de población.
 
--   **Estudios de cohorte:** Observan a los mismos sujetos a lo
-    largo de un período de tiempo extendido para ver cómo cambian las
-    variables estudiadas.
+-   **Estudios de cohorte:** Observan a los mismos sujetos a lo largo de
+    un período de tiempo extendido para ver cómo cambian las variables
+    estudiadas.
 
 -   **Estudios ecológicos:** Involucran la observación participante y
     entrevistas para comprender las culturas y prácticas de grupos
@@ -250,9 +259,8 @@ fig-align="center"}
     diferentes tipos de comunicación afectan la cooperación en un grupo.
 
 -   **Experimentos de Campo:** Los participantes no saben que están
-    siendo observados. Por ejemplo, un
-    experimento que mide la reacción de las personas a diferentes
-    estímulos en un entorno laboral real.
+    siendo observados. Por ejemplo, un experimento que mide la reacción
+    de las personas a diferentes estímulos en un entorno laboral real.
 
 -   **Ensayos Aleatorizados Controlados** *(RCT, por sus siglas en
     inglés):* Involucran la asignación aleatoria de participantes a
@@ -261,24 +269,35 @@ fig-align="center"}
     social.
 :::
 
-
 # 4. ¿Qué es diferente?
 
 ## 4. El *P valor* {auto-animate="true"}
 
 ::: incremental
 -   *P valor* es la probabilidad de que lo que hayas observado sea no
-    aleatorio, asumiendo cierta la hipótesis nula de la cual partías.
+    aleatorio, asumiendo que la hipótesis nula de la cual se parte es
+    cierta.
 
 -   Tener un *P valor* de 0.05 viene a significar que la probabilidad de
-    que lo que se está observando NO es aleatorio es solo del 5%.
+    que lo que se está observando NO es aleatorio es de un 5%.
+:::
+
+## 4. El *P valor* {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+![](Imagenes/Imagen1.png){width="439" height="459"}
+:::
+
+::: {.column width="50%"}
+![](Imagenes/Imagen5.jpg){width="464" height="459"}
+:::
 :::
 
 ## 4.1. Puntos débiles de los *P valores* {auto-animate="true"}
 
 ::: incremental
--   No nos dicen NADA sobre la importancia clínica o científica. Sólo si
-    los resultados se debieron o no al azar.
+-   Un *P valor* NO dice nada sobre la importancia clínica o científica.
 -   Un *P valor* NO tiene en cuenta el sesgo, sólo el error aleatorio.
 -   Un *P valor* «muy bajo» NO implica que la variable o magnitud del
     efecto del tratamiento tenga relevancia.
