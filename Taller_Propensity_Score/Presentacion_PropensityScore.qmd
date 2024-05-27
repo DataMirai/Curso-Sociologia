@@ -1,210 +1,333 @@
 ---
-title: "Propensity Score"
+title: "Antes de modelizar, diseña"
 format:
   revealjs:
     #incremental: true  
     scrollable: true
     transition: slide
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
-## 1. Introducción al tipo de estudios {auto-animate="true"}
+# Modelizar es un arte
 
+## Modelizar es un arte {auto-animate="true"}
+
+Cualquier puede hacer arte.
+
+Pero una buena carrera en el mundo del arte requiere de conocimientos en
+técnicas, expresividad herramientas y referencias/inspiración.
+
+## Modelizar es un arte {auto-animate="true"}
+
+Cualquier puede hacer modelos.
+
+Pero una buena carrera en el mundo de al modelización de datos requiere
+de conocimientos en modelos, contexto de datos y diseño experimental.
+
+## Modelizar es un arte {auto-animate="true"}
+
+Yo apenas puedo explicar contexto de datos, pero si puedo ayudar en
+modelos y en diseño experimental.
+
+## Modelizar es un arte {auto-animate="true"}
+
+Antes de lanzarte a hacer cualquier tipo de modelización, Ten un buen
+diseño y minimiza confusión.
+
+Sin esto, \*Los modelos fallarán a la hora de inferenciar\*
+
+# Todos los modelos están equivocados {auto-animate="true"}
+
+## Todos los modelos están equivocados {auto-animate="true"}
+
+## Todos los modelos están equivocados {auto-animate="true"}
 
 ::: columns
+
 ::: {.column width="30%"}
 ![](Imagenes/GeorgeEPBox.jpg){width="300" fig-align="center"}
-::: 
+:::
 
 ::: {.column width="70%"}
-“All models are wrong, but some are useful”
-George E. P. Box
+“All models are wrong, but some are useful” George E. P. Box
 :::
 
 :::
 
-## 1. Introducción al tipo de estudios {auto-animate="true"}
-
+## Todos los modelos están equivocados {auto-animate="true"}
 
 ::: columns
 ::: {.column width="30%"}
 ![](Imagenes/GeorgeEPBox.jpg){width="300" fig-align="center"}
-::: 
+:::
+
+::: {.column width="70%"}
+-   Bo-Jenkins
+-   BoxCox transformations
+-   Definición de "robustez" estadística
+:::
+:::
+
+## Todos los modelos están equivocados {auto-animate="true"}
+
+::: columns
+::: {.column width="30%"}
+![](Imagenes/GeorgeEPBox.jpg){width="300" fig-align="center"}
+:::
+
+::: {.column width="70%"}
+-   Bo-Jenkins
+-   BoxCox transformations
+-   Definición de "robustez" estadística
+-   **"Sesión de cerveza del lunes por la noche"**
+:::
+:::
+
+## Todos los modelos están equivocados {auto-animate="true"}
+
+
+## Todos los modelos están equivocados {auto-animate="true"}
+
+::: columns
+::: {.column width="30%"}
+![](Imagenes/GeorgeEPBox.jpg){width="300" fig-align="center"}
+:::
+
+::: {.column width="70%"}
+Criterios para la elección de modelos
+:::
+:::
+
+## Todos los modelos están equivocados {auto-animate="true"}
+
+::: columns
+::: {.column width="30%"}
+![](Imagenes/GeorgeEPBox.jpg){width="300" fig-align="center"}
+:::
 
 ::: {.column width="70%"}
 **Parsimonia**
 
-Dado que todos los modelos son erróneos, un científico no puede obtener uno que sea "correcto" por muy elaborado que lo haya hecho.
+Dado que todos los modelos son erróneos, un científico no puede obtener
+uno que sea "correcto" por muy elaborado que lo haya hecho.
+:::
 :::
 
-:::
-
-## 1. Introducción al tipo de estudios {auto-animate="true"}
-
+## Todos los modelos están equivocados {auto-animate="true"}
 
 ::: columns
 ::: {.column width="30%"}
 ![](Imagenes/GeorgeEPBox.jpg){width="300" fig-align="center"}
-::: 
+:::
 
 ::: {.column width="70%"}
 **Parsimonia**
 
-Dado que todos los modelos son erróneos, un científico no puede obtener uno que sea "correcto" por muy elaborado que lo haya hecho.
+No se puede obtener un modelo que sea "verdadero", por muy elaborado que lo haya hecho.
 
 **Preocupación selectiva**
 
-Puesto que todos los modelos son erróneos, el científico debe estar alerta para detectar en qué punto está el error.
-::: 
-
-::: 
-
-## 2. ¿Qué es el Machine Learning? {auto-animate="true"}
-
-"Estadística clásica pero en lugar de usar aproximaciones clásicas, usamos muestras inventadas."
-
-
-
-
-## 2. ¿Qué es el Machine Learning? {auto-animate="true"}
-
-
-"Estadística clásica pero en lugar de usar aproximaciones clásicas, usamos muestras inventadas."
-
-La clave del Machine Learning es el **sentido común**.
-
-
-## {auto-animate="true"}
-
-![](Imagenes/better_data_models.jpeg){width="300" fig-align="center"}
-
-# Los modelos de Machine Learning resuelven problemas de clasificación o problemas de regresión. 
-
-
-## 3. Tipos de diseño experimental {auto-animate="true"}
-
-![](Imagenes/Piramide_tipos_diseñoExperimental.png){width="300" fig-align="center"}
-
-## 3. Tipos de diseño experimental {auto-animate="true"}
-
-Para poder hacer un estudio, sea el que sea, es necesario tener algo que comparar.
-
-
-## 3. Tipos de diseño experimental {auto-animate="true"}
-
-Para poder hacer un estudio sea el que sea, es necesario tener algo que comparar.
-
-¿Pero qué son cosas comparables?
-
-
-## 3. Tipos de diseño experimental {auto-animate="true"}
-
-- Estudios observacionales 
-
-- Estudios experimentales aleatorizados
-
-
-## 3.1. Estudios observacionales {auto-animate="true"}
-
-::: incremental
-- **Estudios de Encuestas:** Recopilan datos a través de cuestionarios estructurados. Permiten estudiar la relación entre variables en una gran muestra de población.
-
-- **Estudios de Caso:** Se centran en un individuo, grupo o evento específico para una observación profunda y detallada.
-
-- **Estudios Longitudinales:** Observan a los mismos sujetos a lo largo de un período de tiempo extendido para ver cómo cambian las variables estudiadas.
-
-- **Etnografías:** Involucran la observación participante y entrevistas para comprender las culturas y prácticas de grupos específicos.
-
+Hay que conocer el contexto para detectar en qué punto está el error.
+:::
 :::
 
+## Todos los modelos están equivocados {auto-animate="true"}
 
-## 3.2. Estudios experimentales aleatorizados {auto-animate="true"}
+![](Imagenes/hznah1jzh8fa1111111.png)
+# Diseño experimental {auto-animate="true"}
 
-::: incremental
-- **Experimentos de Campo:** Los participantes no saben que están siendo observados para minimizar el sesgo. Por ejemplo, un experimento que mide la reacción de las personas a diferentes estímulos en un entorno laboral real.
+## Diseño experimental {auto-animate="true"}
 
-- **Experimentos de Laboratorio:** Se realizan en entornos controlados donde los sociólogos manipulan una o más variables para observar los efectos en un grupo de sujetos. Por ejemplo, estudiar cómo diferentes tipos de comunicación afectan la cooperación en un grupo.
+Permite identificar y cuantificar las causas de un efecto dentro de un estudio experimental.
 
-- **Ensayos Aleatorizados Controlados** *(RCT, por sus siglas en inglés):* Involucran la asignación aleatoria de participantes a grupos experimentales y de control. En sociología se utilizan para estudiar el efecto de intervenciones específicas en la conducta social.
-:::
+## Diseño experimental {auto-animate="true"}
+
+![](Imagenes/u9uxysfx4l1c1.png)
+
+
+## 3. Tipos de diseño experimental {auto-animate="true"}
+
+Para poder hacer un cualquier estudio, es necesario tener algo un objetivo, normalmente algo con lo que comparar.
+
+## 3. Tipos de diseño experimental {auto-animate="true"}
+
+Para poder hacer un estudio sea el que sea, es necesario tener algo que
+comparar.
+
+**¿Pero qué son cosas comparables?**
+
+## 3. Tipos de diseño experimental {auto-animate="true"}
+
+Todo estudio necesita un "tratamiento vs control"
+
+## 3. Tipos de diseño experimental {auto-animate="true"}
+
+Todo estudio necesita un "tratamiento vs control"
+
+Todo estudio necesita un "exposición vs no exposición"
+
+## 3. Tipos de diseño experimental {auto-animate="true"}
+
+Todo estudio necesita un "tratamiento vs control"
+
+Todo estudio necesita un "exposición vs no exposición"
+
+## 3. Tipos de diseño experimental {auto-animate="true"}
+
+Todo estudio necesita un "tratamiento vs control"
+
+Todo estudio necesita un "exposición vs no exposición"
+
+Todo estudio necesita un "hace algo vs no hace algo"
+
+
+## 3. Tipos de diseño experimental {auto-animate="true"}
+
+![](Imagenes/Piramide_tipos_diseñoExperimental.png){width="300"
+fig-align="center"}
+
+## 3. Tipos de diseño experimental {auto-animate="true"}
+
+-   Estudios observacionales
+
+-   Estudios experimentales aleatorizados
 
 ## 3.3. Relevancia y Aplicación {auto-animate="true"}
 
 ::: incremental
+-   **Estudios Observacionales:** Son muy comunes en sociología debido a
+    la facilidad de recopilación de datos y la capacidad de estudiar
+    fenómenos en su contexto natural. Sin embargo, pueden estar sujetos
+    a sesgos y limitaciones en la causalidad.
 
-- **Estudios Observacionales:** Son muy comunes en sociología debido a la facilidad de recopilación de datos y la capacidad de estudiar fenómenos en su contexto natural. Sin embargo, pueden estar sujetos a sesgos y limitaciones en la causalidad.
-
-- **Estudios Aleatorizados:** Aunque menos comunes debido a las dificultades éticas y logísticas, tienen una gran relevancia en sociología cuando es posible implementarlos. Estos estudios proporcionan evidencia más sólida sobre las relaciones causales.
+-   **Estudios Aleatorizados:** Aunque menos comunes debido a las
+    dificultades éticas y logísticas, tienen una gran relevancia en
+    sociología cuando es posible implementarlos. Estos estudios
+    proporcionan evidencia más sólida sobre las relaciones causales.
 :::
 
 ## 3.4. Ejemplos de Aplicación en Sociología {auto-animate="true"}
 
 ::: incremental
+-   **Estudios Observacionales:** Un estudio longitudinal que investiga
+    el impacto de la educación en la movilidad social a lo largo de
+    varias décadas.
 
-- **Estudios Observacionales:** Un estudio longitudinal que investiga el impacto de la educación en la movilidad social a lo largo de varias décadas.
-
-- **Experimentos Aleatorizados:** Un experimento de campo que mide el impacto de un programa de intervención social (como tutoría escolar) en el rendimiento académico de los estudiantes.
+-   **Experimentos Aleatorizados:** Un experimento de campo que mide el
+    impacto de un programa de intervención social (como tutoría escolar)
+    en el rendimiento académico de los estudiantes.
 :::
 
-# 4. El *P valor*
+
+
+## 3.1. Estudios observacionales {auto-animate="true"}
+
+::: incremental
+-   **Caso de estudio:** Se centran en un individuo, grupo o evento
+    específico para una observación profunda y detallada. 
+
+-   **Estudios transversales:** Recopilan datos a través de cuestionarios
+    estructurados. Permiten estudiar la relación entre variables en una
+    gran muestra de población.
+
+-   **Estudios de cohorte:** Observan a los mismos sujetos a lo
+    largo de un período de tiempo extendido para ver cómo cambian las
+    variables estudiadas.
+
+-   **Estudios ecológicos:** Involucran la observación participante y
+    entrevistas para comprender las culturas y prácticas de grupos
+    específicos.
+:::
+
+## 3.2. Estudios experimentales aleatorizados {auto-animate="true"}
+
+::: incremental
+-   **Experimentos de Laboratorio:** Se realizan en entornos controlados
+    donde los sociólogos manipulan una o más variables para observar los
+    efectos en un grupo de sujetos. Por ejemplo, estudiar cómo
+    diferentes tipos de comunicación afectan la cooperación en un grupo.
+
+-   **Experimentos de Campo:** Los participantes no saben que están
+    siendo observados. Por ejemplo, un
+    experimento que mide la reacción de las personas a diferentes
+    estímulos en un entorno laboral real.
+
+-   **Ensayos Aleatorizados Controlados** *(RCT, por sus siglas en
+    inglés):* Involucran la asignación aleatoria de participantes a
+    grupos experimentales y de control. En sociología se utilizan para
+    estudiar el efecto de intervenciones específicas en la conducta
+    social.
+:::
+
+
+# 4. ¿Qué es diferente?
 
 ## 4. El *P valor* {auto-animate="true"}
 
 ::: incremental
-- *P valor* es la probabilidad de que lo que hayas observado sea no aleatorio, asumiendo cierta la hipótesis nula de la cual partías.
+-   *P valor* es la probabilidad de que lo que hayas observado sea no
+    aleatorio, asumiendo cierta la hipótesis nula de la cual partías.
 
-- Tener un *P valor* de 0.05 viene a significar que la probabilidad de que lo que se está observando NO es aleatorio es solo del 5%.
+-   Tener un *P valor* de 0.05 viene a significar que la probabilidad de
+    que lo que se está observando NO es aleatorio es solo del 5%.
 :::
-
 
 ## 4.1. Puntos débiles de los *P valores* {auto-animate="true"}
 
 ::: incremental
-- No nos dicen NADA sobre la importancia clínica o científica. Sólo si los resultados se debieron o no al azar.
-- Un *P valor* NO tiene en cuenta el sesgo, sólo el error aleatorio.
-- Un *P valor* «muy bajo» NO implica que la variable o magnitud del efecto del tratamiento tenga relevancia.
-- NUNCA se deben comparar *P valores*.
+-   No nos dicen NADA sobre la importancia clínica o científica. Sólo si
+    los resultados se debieron o no al azar.
+-   Un *P valor* NO tiene en cuenta el sesgo, sólo el error aleatorio.
+-   Un *P valor* «muy bajo» NO implica que la variable o magnitud del
+    efecto del tratamiento tenga relevancia.
+-   NUNCA se deben comparar *P valores*.
 :::
 
 ## 4.1.1. ¿Porqué no deben compararse los *P valores*? {auto-animate="true"}
-Diferencias de medias
-![](Imagenes/diferencias_medias.png){width="300" fig-align="center"}
 
+Diferencias de medias ![](Imagenes/diferencias_medias.png){width="300"
+fig-align="center"}
 
 ## 4.1.2. ¿Porqué no deben compararse los *P valores*? {auto-animate="true"}
-Dispersión
-![](Imagenes/Dispersión.png){width="300" fig-align="center"}
+
+Dispersión ![](Imagenes/Dispersión.png){width="300" fig-align="center"}
 
 ## 4.1.3. ¿Porqué no deben compararse los *P valores*? {auto-animate="true"}
-Tamaño de muestra
-![](Imagenes/Tamaño de muestra.png){width="300" fig-align="center"}
 
+Tamaño de muestra ![](Imagenes/Tamaño%20de%20muestra.png){width="300"
+fig-align="center"}
 
 # Entonces, ¿Qué se debe usar en estos casos?
 
 # 5. Standarized mean deviation *(SMD)*
+
 *Desviación de media estandarizada*
 
-
 ## 5. Standarized mean deviation *(SMD)* {auto-animate="true"}
+
 Captura con la fórmula
 
-En el mundo de la medicina está aceptado que dos grupos son diferentes si presentan una SMD >0.1 (o del 10%).
+En el mundo de la medicina está aceptado que dos grupos son diferentes
+si presentan una SMD \>0.1 (o del 10%).
 
 ## 5. Standarized mean deviation *(SMD)* {auto-animate="true"}
 
-Las SMD se calculan entorno a la exposición. 
+Las SMD se calculan entorno a la exposición.
 
 ![](Imagenes/tipos_muestras.png){width="300" fig-align="center"}
 
 ## 5.1. La paradoja de Simpson {auto-animate="true"}
+
 (Img paradoja Simpson)
 
 ## 5.2. Las variables externas {auto-animate="true"}
 
 ![](Imagenes/efectos_externos.png){width="300" fig-align="center"}
 
-La gripe se elimina con paracetamol en 7 días pero si no, se cura solo en una semana. 
-
+La gripe se elimina con paracetamol en 7 días pero si no, se cura solo
+en una semana.
 
 # ¿Cómo lidiamos con los factores externos?
 
@@ -212,64 +335,67 @@ La gripe se elimina con paracetamol en 7 días pero si no, se cura solo en una s
 
 ## 6. Propensity score {auto-animate="true"}
 
-Para cada sujeto, calcular la probabilidad (puntuación de propensión) de recibir la exposición en función de unas covariables observadas, mediante un modelo de clasificación. 
-
-
-## 6.1. Criterios para seleccionar las covariables {auto-animate="true"}
-
-Se pueden seleccionar covariables que...
-
-... pueden influir en el proceso de selección del tratamiento 
+Para cada sujeto, calcular la probabilidad (puntuación de propensión) de
+recibir la exposición en función de unas covariables observadas,
+mediante un modelo de clasificación.
 
 ## 6.1. Criterios para seleccionar las covariables {auto-animate="true"}
 
 Se pueden seleccionar covariables que...
 
-... pueden influir en el proceso de selección del tratamiento 
-... pueden inducir equilibrio, independientemente de su significación estadística o colinealidad con otras variables del modelo 
-
+... pueden influir en el proceso de selección del tratamiento
 
 ## 6.1. Criterios para seleccionar las covariables {auto-animate="true"}
 
 Se pueden seleccionar covariables que...
 
-... pueden influir en el proceso de selección del tratamiento 
-... pueden inducir equilibrio, independientemente de su significación estadística o colinealidad con otras variables del modelo 
-... incluyan los factores de riesgo y los términos de interacción importantes entre los factores de confusión 
+... pueden influir en el proceso de selección del tratamiento ... pueden
+inducir equilibrio, independientemente de su significación estadística o
+colinealidad con otras variables del modelo
 
+## 6.1. Criterios para seleccionar las covariables {auto-animate="true"}
+
+Se pueden seleccionar covariables que...
+
+... pueden influir en el proceso de selección del tratamiento ... pueden
+inducir equilibrio, independientemente de su significación estadística o
+colinealidad con otras variables del modelo ... incluyan los factores de
+riesgo y los términos de interacción importantes entre los factores de
+confusión
 
 ## 6.1. Criterios para seleccionar las covariables {auto-animate="true"}
 
 Además se debe considerar que:
 
 ::: incremental
-- No todas las covariables tienen la misma importancia se seleccionarán únicamente aquellas que probablemente afecten al resultado.
-- No se deben utilizar los datos de resultados en el proceso de Propensity Score.
+-   No todas las covariables tienen la misma importancia se
+    seleccionarán únicamente aquellas que probablemente afecten al
+    resultado.
+-   No se deben utilizar los datos de resultados en el proceso de
+    Propensity Score.
 :::
 
-
-
 ## 6.2. Análisis de *PS* paso a paso {auto-animate="true"}
+
 (Img análisis paso a paso)
 
 ## 7. Emparejamiento por puntuación de propensión {auto-animate="true"}
 
 ## 8. IPWRA {auto-animate="true"}
 
-
-
 # Ejercicio práctico: programar un propensity score
 
 ## Ejercicio práctico: programar un propensity score {auto-animate="true"}
 
-1. Elegir qué variables deben estar equilibradas por población a nivel de azar.
-2. Crear una tabla con *TableOne* para ver las *SMD* y su nivel basal.
-3. Aplicar un algoritmo de clasificación para ver las propensiones (usaremos un **glm** para no complicarnos).
-4. Crear la probabilidad de clasificación.
-5. Crear una variable IPTW / matching según las necesidades.
-6. Rehacer *TableOne* pero esta vez con los pesos o las variables de matching, y volver a las *SMD*.
-7. Asegurar que los *SMD* de las variables del punto primero están por debajo de 0.1.
-8. Visualizar los IPWT e individuos extrañamente alejados.
-
-
-
+1.  Elegir qué variables deben estar equilibradas por población a nivel
+    de azar.
+2.  Crear una tabla con *TableOne* para ver las *SMD* y su nivel basal.
+3.  Aplicar un algoritmo de clasificación para ver las propensiones
+    (usaremos un **glm** para no complicarnos).
+4.  Crear la probabilidad de clasificación.
+5.  Crear una variable IPTW / matching según las necesidades.
+6.  Rehacer *TableOne* pero esta vez con los pesos o las variables de
+    matching, y volver a las *SMD*.
+7.  Asegurar que los *SMD* de las variables del punto primero están por
+    debajo de 0.1.
+8.  Visualizar los IPWT e individuos extrañamente alejados.
