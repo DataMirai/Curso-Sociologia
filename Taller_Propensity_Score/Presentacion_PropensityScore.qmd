@@ -89,7 +89,7 @@ Sin esto, \*Los modelos fallarán a la hora de inferenciar\*
 :::
 
 ::: {.column width="70%"}
--   Bo-Jenkins
+-   Box-Jenkins (procedimientos de *time series*)
 -   BoxCox transformations
 -   Definición de "robustez" estadística
 -   **"Sesión de cerveza del lunes por la noche"**
@@ -269,6 +269,7 @@ fig-align="center"}
     social.
 :::
 
+
 # 4. ¿Qué es diferente?
 
 ## 4. El *P valor* {auto-animate="true"}
@@ -304,21 +305,22 @@ fig-align="center"}
 -   NUNCA se deben comparar *P valores*.
 :::
 
-## 4.1.1. ¿Porqué no deben compararse los *P valores*? {auto-animate="true"}
+## 4.1.1. Dependencias de los *P valores*? {auto-animate="true"}
 
 Diferencias de medias ![](Imagenes/diferencias_medias.png){width="300"
 fig-align="center"}
 
-## 4.1.2. ¿Porqué no deben compararse los *P valores*? {auto-animate="true"}
+## 4.1.2. Dependencias de los *P valores*? {auto-animate="true"}
 
 Dispersión ![](Imagenes/Dispersión.png){width="300" fig-align="center"}
 
-## 4.1.3. ¿Porqué no deben compararse los *P valores*? {auto-animate="true"}
+## 4.1.3. Dependencias de los *P valores*? {auto-animate="true"}
 
 Tamaño de muestra ![](Imagenes/Tamaño%20de%20muestra.png){width="300"
 fig-align="center"}
 
-# Entonces, ¿Qué se debe usar en estos casos?
+
+# Si los p valores no son buenos indicativos \\n Entonces, ¿Qué se debe usar en estos casos?
 
 # 5. Standarized mean deviation *(SMD)*
 
@@ -326,16 +328,37 @@ fig-align="center"}
 
 ## 5. Standarized mean deviation *(SMD)* {auto-animate="true"}
 
-Captura con la fórmula
 
-En el mundo de la medicina está aceptado que dos grupos son diferentes
-si presentan una SMD \>0.1 (o del 10%).
+La standarized mean deviation (SMD) o diferencias de medias estandarizadas son básicamente la diferencia de entre las medias o proporciones de una variable, estratificando por otra. 
+
 
 ## 5. Standarized mean deviation *(SMD)* {auto-animate="true"}
+
+$$
+SMD = \frac{M_1 - M_2}{\sqrt{\frac{SD_1 + SD_2}{2}}} 
+$$
+
+Donde :
+
+- $M_1$ es la media o proporción del grupo 1
+- $M_2$ es la media o proporción del grupo 2
+- $S_1$ es desviación estándard de grupo 1
+- $S_2$ es desviación estándard de grupo 2
+
+## 5. Standarized mean deviation *(SMD)* {auto-animate="true"}
+
+En el mundo de la medicina está aceptado que dos grupos son diferentes si presentan una SMD \>0.1 (o del 10%).
 
 Las SMD se calculan entorno a la exposición.
 
 ![](Imagenes/tipos_muestras.png){width="300" fig-align="center"}
+
+
+# ¿y por que son mejores que el pvalor?
+
+# Bienvenidos a las bases de inferencia causal.
+
+# Confusión
 
 ## 5.1. La paradoja de Simpson {auto-animate="true"}
 

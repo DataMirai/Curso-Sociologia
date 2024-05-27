@@ -413,7 +413,7 @@
 </div>
 </div><div class="column" style="width:70%;">
 <ul>
-<li>Bo-Jenkins</li>
+<li>Box-Jenkins (procedimientos de <em>time series</em>)</li>
 <li>BoxCox transformations</li>
 <li>Definición de “robustez” estadística</li>
 <li><strong>“Sesión de cerveza del lunes por la noche”</strong></li>
@@ -589,27 +589,27 @@
 <h2 data-id="quarto-animate-title">4.1. Puntos débiles de los <em>P valores</em></h2>
 <div>
 <ul>
-<li class="fragment">No nos dicen NADA sobre la importancia clínica o científica. Sólo si los resultados se debieron o no al azar.</li>
+<li class="fragment">Un <em>P valor</em> NO dice nada sobre la importancia clínica o científica.</li>
 <li class="fragment">Un <em>P valor</em> NO tiene en cuenta el sesgo, sólo el error aleatorio.</li>
 <li class="fragment">Un <em>P valor</em> «muy bajo» NO implica que la variable o magnitud del efecto del tratamiento tenga relevancia.</li>
 <li class="fragment">NUNCA se deben comparar <em>P valores</em>.</li>
 </ul>
 </div>
 </section>
-<section id="porqué-no-deben-compararse-los-p-valores" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">4.1.1. ¿Porqué no deben compararse los <em>P valores</em>?</h2>
+<section id="dependencias-de-los-p-valores" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.1.1. Dependencias de los <em>P valores</em>?</h2>
 <p>Diferencias de medias <img data-src="Imagenes/diferencias_medias.png" class="quarto-figure quarto-figure-center" width="300"></p>
 </section>
-<section id="porqué-no-deben-compararse-los-p-valores-1" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">4.1.2. ¿Porqué no deben compararse los <em>P valores</em>?</h2>
+<section id="dependencias-de-los-p-valores-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.1.2. Dependencias de los <em>P valores</em>?</h2>
 <p>Dispersión <img data-src="Imagenes/Dispersión.png" class="quarto-figure quarto-figure-center" width="300"></p>
 </section>
-<section id="porqué-no-deben-compararse-los-p-valores-2" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">4.1.3. ¿Porqué no deben compararse los <em>P valores</em>?</h2>
+<section id="dependencias-de-los-p-valores-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.1.3. Dependencias de los <em>P valores</em>?</h2>
 <p>Tamaño de muestra <img data-src="Imagenes/Tamaño%20de%20muestra.png" class="quarto-figure quarto-figure-center" width="300"></p>
 </section></section>
-<section id="entonces-qué-se-debe-usar-en-estos-casos" class="title-slide slide level1 center">
-<h1>Entonces, ¿Qué se debe usar en estos casos?</h1>
+<section id="si-los-p-valores-no-son-buenos-indicativos-n-entonces-qué-se-debe-usar-en-estos-casos" class="title-slide slide level1 center">
+<h1>Si los p valores no son buenos indicativos \n Entonces, ¿Qué se debe usar en estos casos?</h1>
 
 </section>
 
@@ -620,11 +620,24 @@
 </section>
 <section id="standarized-mean-deviation-smd-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">5. Standarized mean deviation <em>(SMD)</em></h2>
-<p>Captura con la fórmula</p>
-<p>En el mundo de la medicina está aceptado que dos grupos son diferentes si presentan una SMD &gt;0.1 (o del 10%).</p>
+<p>La standarized mean deviation (SMD) o diferencias de medias estandarizadas son básicamente la diferencia de entre las medias o proporciones de una variable, estratificando por otra.</p>
 </section>
 <section id="standarized-mean-deviation-smd-2" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">5. Standarized mean deviation <em>(SMD)</em></h2>
+<p><span class="math display">\[
+SMD = \frac{M_1 - M_2}{\sqrt{\frac{SD_1 + SD_2}{2}}}
+\]</span></p>
+<p>Donde :</p>
+<ul>
+<li><span class="math inline">\(M_1\)</span> es la media o proporción del grupo 1</li>
+<li><span class="math inline">\(M_2\)</span> es la media o proporción del grupo 2</li>
+<li><span class="math inline">\(S_1\)</span> es desviación estándard de grupo 1</li>
+<li><span class="math inline">\(S_2\)</span> es desviación estándard de grupo 2</li>
+</ul>
+</section>
+<section id="standarized-mean-deviation-smd-3" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">5. Standarized mean deviation <em>(SMD)</em></h2>
+<p>En el mundo de la medicina está aceptado que dos grupos son diferentes si presentan una SMD &gt;0.1 (o del 10%).</p>
 <p>Las SMD se calculan entorno a la exposición.</p>
 
 <img data-src="Imagenes/tipos_muestras.png" class="quarto-figure quarto-figure-center r-stretch" width="300"></section>
