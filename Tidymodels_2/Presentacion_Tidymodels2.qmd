@@ -1,0 +1,107 @@
+---
+title: "Ejemplos prácticos Tidymodels"
+format: 
+  revealjs:
+    #incremental: true  
+    scrollable: true
+    transition: slide
+---
+# 1. Puesta a punto
+## 1.1. Carga de librerías
+
+```{r librerias, echo=TRUE}
+library(tidyverse)
+library(tidymodels)
+library(future)
+```
+
+## 1.2. Descarga y exploración del dataset
+
+```{r dataset, echo=TRUE}
+education <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-23/english_education.csv')
+
+head(education, 10)
+```
+
+## 1.2. Descarga y exploración del dataset
+
+```{r dataset-visualizacion, echo=FALSE}
+education %>% 
+  filter(!is.na(income_flag)) %>% 
+  mutate(income_flag = factor(income_flag, levels = c("Lower deprivation towns",
+                                                      "Mid deprivation towns",
+                                                      "Higher deprivation towns",
+                                                      "Cities"))) %>% 
+  ggplot(aes(education_score, income_flag, fill = size_flag)) +
+  geom_boxplot(alpha = 0.2) +
+  theme_minimal() +
+  labs(y = NULL, fill = NULL, x= "Education score")
+```
+
+# 2. Preparación del modelo
+
+## 2.1. Training y testing
+
+```{r train-test, echo=TRUE}
+set.seed(1235678)
+
+edu_split <-  education %>% 
+  # Aislamos aquellos lugares donde hay deprivacion en la ciudades
+  filter(str_detect(income_flag, "deprivation towns")) %>% 
+  # Guardamos algunas variables para modelar 
+  select(education_score, income_flag, size_flag, coastal, university_flag, rgn11nm) %>% 
+  initial_split(strata = education_score)
+
+edu_train <- training(edu_split)
+edu_test <- testing(edu_split)
+```
+
+## 2.2. Bootstraps
+
+```{r bootstraps, echo=TRUE}
+set.seed(1235678)
+
+edu_folds <- bootstraps(edu_train, strata = education_score)
+edu_folds
+```
+
+## 2.3. Workflow
+
+```{r workflow, echo=TRUE}
+
+# Preparamos para paralelizar
+plan(multisession, workers = 4)
+
+edu_wf <- workflow(
+  education_score ~ ., 
+  rand_forest(mode = "regression", trees = 500)
+)
+```
+
+## 2.4. fit_resamples y last_fit
+
+```{r fit, echo=TRUE}
+set.seed(1235678)
+
+edu_res <- fit_resamples(edu_wf, edu_folds)
+collect_metrics(edu_res)
+
+edu_fit <- last_fit(edu_wf, edu_split)
+collect_metrics(edu_fit)
+```
+
+## 2.5. Resultados del modelo
+
+```{r resultados, echo=TRUE}
+resultados <- collect_predictions(edu_fit) |>
+  ggplot(aes(education_score, .pred)) +
+  geom_abline(slope = 1, lty = 2, linewidth = 1.5, alpha = 0.7, color='red') +
+  geom_point() +
+  coord_fixed() 
+```
+
+```{r resultados2, echo=FALSE}
+resultados +
+  theme_minimal()+
+  labs(x = "Education score", y = "Predicción")
+```
