@@ -304,14 +304,7 @@ library('tidyverse')
 
 PIB_datos <- read.csv(
   file = 'data/evolucion_del_pib_per_capita_en_españa_desde_1975_2.csv', 
-  sep=';', dec = ",",
-  col.names= c('AÑO','nada','PIBxC') ) %>%  
-  select(-nada) %>% 
-  mutate(PIBxC = str_remove(PIBxC, '\\.') ) %>% 
-  mutate(PIBxC = str_replace(PIBxC, '\\,','\\.') ) %>% 
-  mutate(PIBxC = as.double(PIBxC))
-
-
+  sep=';', header=T)
 
 # Lo que punga hizo:
 PIB_datos |> 
@@ -401,10 +394,9 @@ PIB_periodos_subperiodos <- PIB_2 |>
   arrange(Periodo_Numero,Sub_periodo_numero) |> 
   ungroup() |> 
   select(-c(Periodo_Numero,Sub_periodo_numero)) 
+
+PIB_periodos_subperiodos
 ```
-
-
-
 
 
 
