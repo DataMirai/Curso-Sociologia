@@ -270,7 +270,147 @@ fig-align="center"}
 :::
 
 
-# 4. ¿Qué es diferente?
+# Para hacer un experimento/modelo hay que tener 2 grupos
+
+
+# 4. ¿Cómo se que existe una diferencia entre ambos grupos ?
+
+## 4. Conocimiento previo/experto {auto-animate="true"}
+
+**Nada supera el conocimiento del experto.**
+
+
+
+**CASO PUNGA**
+
+## 4. Conocimiento previo/experto {auto-animate="true"}
+
+
+```{r}
+library('tidyverse')
+
+# Métrica:"PIB per capita "
+# Fuente:"Cámara de Comercio de España / CGE"
+# Clasificación:""
+# Unidad:"Euros"
+# Escala:"Unidades"
+# EscalaFactorPotencia10:"0"
+# SonDatosNumericos:"True"
+# 
+# 
+# Url:"https://www.epdata.es/evolucion-pib-per-capita-espana/c2054483-8903-4def-b887-922a328852d3"
+# Titulo:"Evolución del PIB per cápita en España desde 1975"
+# Subtitulo:""
+
+PIB_datos <- read.csv(
+  file = 'data/evolucion_del_pib_per_capita_en_españa_desde_1975_2.csv', 
+  sep=';', dec = ",",
+  col.names= c('AÑO','nada','PIBxC') ) %>%  
+  select(-nada) %>% 
+  mutate(PIBxC = str_remove(PIBxC, '\\.') ) %>% 
+  mutate(PIBxC = str_replace(PIBxC, '\\,','\\.') ) %>% 
+  mutate(PIBxC = as.double(PIBxC))
+
+
+
+# Lo que punga hizo:
+PIB_datos |> 
+  mutate(Desviacion_Punga = sqrt((PIBxC - mean(PIBxC))^2)/n() )
+
+```
+```{r}
+
+# Lo que hemos creado:
+
+
+PIB_2 <- PIB_datos |> 
+  mutate(Periodo = case_when(
+    between(AÑO, 1856, 1867) ~ 'Liberalismo autoritario'  ,
+    between(AÑO, 1868, 1874) ~ 'Sexenio democratico',
+    between(AÑO, 1875, 1922) ~ 'Restauracion Borbónica ',
+    between(AÑO, 1923, 1930) ~ 'Dictadura Primo de Rivera',
+    between(AÑO, 1931,1939)  ~ 'Segunda República',
+    between(AÑO, 1940,1975)  ~ 'Dictadura de Francisco Franco',
+    between(AÑO, 1976, 2018) ~ 'Transición y Democracia',
+    TRUE ~ 'Sin clasificar'
+)) |>  
+  mutate(Sub_periodo = case_when(
+    between(AÑO, 1856, 1863) ~ 'Gobiernos de la unión liberal',  
+    between(AÑO, 1864, 1867) ~ 'Crisis de gobernabilidad', 
+    between(AÑO, 1931, 1935) ~ 'Primer y segundo Bienios', 
+    between(AÑO, 1936, 1939) ~ 'Guerra Civil', 
+    between(AÑO, 1940, 1959) ~ 'Primer franquismo / franquismo temprano',
+    between(AÑO, 1960, 1975) ~ 'Segundo franquismo / Tardo franquismo',
+    between(AÑO, 1976, 1999) ~ 'Antes - Globalización',
+    between(AÑO, 2000, 2018) ~ 'Despues - Globalización',
+    TRUE ~ 'Sin SubPeriodo'
+)) |> 
+  mutate('Periodo_Numero' = case_when(
+    between(AÑO, 1856, 1867) ~ 1,
+    between(AÑO, 1868, 1874) ~ 2,
+    between(AÑO, 1875, 1922) ~ 3,
+    between(AÑO, 1923, 1930) ~ 4,
+    between(AÑO, 1931,1939)  ~ 5,
+    between(AÑO, 1940,1975)  ~ 6,
+    between(AÑO, 1976, 2018) ~ 7,
+    TRUE ~ 0
+  )) |> 
+mutate(
+  'Sub_periodo_numero' = case_when(
+    between(AÑO, 1856, 1863) ~ 1,  
+    between(AÑO, 1864, 1867) ~ 2, 
+    between(AÑO, 1931, 1935) ~ 1, 
+    between(AÑO, 1936, 1939) ~ 2, 
+    between(AÑO, 1940, 1959) ~ 1,
+    between(AÑO, 1960, 1975) ~ 2,
+    between(AÑO, 1976, 1999) ~ 1,
+    between(AÑO, 2000, 2018) ~ 2,
+    TRUE ~ 0
+)) 
+
+
+PIB_2
+
+```
+
+```{r}
+
+
+PIB_periodos <-  PIB_2 |> 
+  group_by(Periodo,Periodo_Numero) |> 
+  summarize(
+    PIB_medio_periodo = mean(PIBxC),
+    Variacion_PIB   = sum(sqrt( (PIBxC - mean(PIBxC))^2 / n() ))) |>  
+  mutate(Desviacion_relativa = Variacion_PIB/PIB_medio_periodo * 100) |> 
+  arrange(Periodo_Numero) |> 
+  select(Periodo, everything(), - Periodo_Numero) |>  
+  ungroup()
+
+PIB_periodos
+
+```
+
+```{r}
+
+PIB_periodos_subperiodos <- PIB_2 |> 
+  group_by(Periodo,Periodo_Numero,Sub_periodo, Sub_periodo_numero) |> 
+  summarize(
+    PIB_medio_periodo = mean(PIBxC),
+    Variacion_PIB   = sum(sqrt( (PIBxC - mean(PIBxC))^2 / n() ))) |>  
+  mutate(Desviacion_relativa = Variacion_PIB/PIB_medio_periodo * 100) |> 
+  arrange(Periodo_Numero,Sub_periodo_numero) |> 
+  ungroup() |> 
+  select(-c(Periodo_Numero,Sub_periodo_numero)) 
+```
+
+
+
+
+
+
+
+El conocimiento del experto tiene que ser reforzado, pero en muchas ocasiones es mejor reforzarlo usando un modelo bien fundamentado. 
+
 
 ## 4. El *P valor* {auto-animate="true"}
 
