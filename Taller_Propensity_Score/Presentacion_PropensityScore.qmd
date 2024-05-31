@@ -307,8 +307,13 @@ PIB_datos <- read.csv(
   sep=';', header=T)
 
 # Lo que punga hizo:
-PIB_datos |> 
+PIB_datos %>% 
   mutate(Desviacion_Punga = sqrt((PIBxC - mean(PIBxC))^2)/n() )
+
+
+PIB_datos %>% 
+  ggplot(aes(AÑO, PIBxC) ) +
+  geom_line()
 
 ```
 ```{r}
@@ -367,16 +372,22 @@ PIB_2
 ```
 
 ```{r}
+PIB_2 %>% 
+  ggplot(aes(AÑO, PIBxC, fill = Periodo) ) +
+  geom_boxplot()
+```
 
+```{r}
 
-PIB_periodos <-  PIB_2 |> 
-  group_by(Periodo,Periodo_Numero) |> 
+PIB_periodos <-  PIB_2 %>%  
+  group_by(Periodo,Periodo_Numero) %>% 
   summarize(
     PIB_medio_periodo = mean(PIBxC),
-    Variacion_PIB   = sum(sqrt( (PIBxC - mean(PIBxC))^2 / n() ))) |>  
-  mutate(Desviacion_relativa = Variacion_PIB/PIB_medio_periodo * 100) |> 
-  arrange(Periodo_Numero) |> 
-  select(Periodo, everything(), - Periodo_Numero) |>  
+    Variacion_PIB   = sum(sqrt( (PIBxC - mean(PIBxC))^2 / n() ))) %>% 
+  mutate(Desviacion_relativa = Variacion_PIB/PIB_medio_periodo )  %>%  
+  mutate(Desviacion_relativa_100 = Variacion_PIB/PIB_medio_periodo * 100)  %>%  
+  arrange(Periodo_Numero) %>% 
+  select(Periodo, everything(), - Periodo_Numero) %>% 
   ungroup()
 
 PIB_periodos
@@ -397,11 +408,18 @@ PIB_periodos_subperiodos <- PIB_2 |>
 
 PIB_periodos_subperiodos
 ```
-
-
-
+_____________________
 
 El conocimiento del experto tiene que ser reforzado, pero en muchas ocasiones es mejor reforzarlo usando un modelo bien fundamentado. 
+
+_______________
+
+1. No se tuvo en cuenta el factor de inflación, Demasiada poca desviación.
+2. Desviacion no es necesariamente tiene que ser negativo, puede deberse a crecimiento económico.
+3. Incluso dentro de un periodo, los subperiodos contienen información. 
+
+**NUNCA JAMÄS ignorar la descriptiva, jugar con ella es demasiado valioso**
+
 
 
 ## 4. El *P valor* {auto-animate="true"}
@@ -542,8 +560,8 @@ confusión
 Además se debe considerar que:
 
 ::: incremental
--   No todas las covariables tienen la misma importancia se
-    seleccionarán únicamente aquellas que probablemente afecten al
+-   No todas las covariables tienen la misma importancia. 
+-   Se seleccionarán únicamente aquellas que probablemente afecten al
     resultado.
 -   No se deben utilizar los datos de resultados en el proceso de
     Propensity Score.
@@ -554,6 +572,7 @@ Además se debe considerar que:
 (Img análisis paso a paso)
 
 ## 7. Emparejamiento por puntuación de propensión {auto-animate="true"}
+
 
 ## 8. IPWRA {auto-animate="true"}
 
