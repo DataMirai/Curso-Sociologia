@@ -1,0 +1,62 @@
+---
+title: "Modelizando"
+format:
+  revealjs:
+    #incremental: true  
+    scrollable: true
+    transition: slide
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# bases de modelización
+
+1.  Tener clara la pregunta
+2.  Tener más o menos claras las variables que interfieren en el proceso
+3.  Tener Una idea de la complejidad de la pregunta
+
+# Tipos de modelos
+
+1.  Aprendizaje supervisado
+2.  Aprendizaje No supervisado
+3.  Aprendizaje por refuerzo
+
+# Aprendizaje supervisado
+
+"El aprendizaje supervisado es la tarea de crear una función que a %>% signa
+una entrada a una salida basándose en pares de entrada-salida de
+ejemplo."
+
+Kevin P. Murphy, *Machine Learning: A Probabilistic Perspective*
+
+------------------------------------------------------------------------
+
+![](Imagenes/monos_empresas.jpg)
+
+------------------------------------------------------------------------
+
+Si copias demasiado a los demás te olvidas de ti mismo
+
+# Aprendizaje no supervisado
+
+## Aprendizaje no supervisado
+
+![](Imagenes/target.png)
+
+## Aprendizaje no supervisado
+
+![](Imagenes/tickets compra embarazo.png)
+
+## Aprendizaje no supervisado
+
+![](Imagenes/tickets compra dinero.png)
+_______
+
+
+
+
+
+# Aprendizaje por refuerzo
+
+![](Imagenes/mario_models.jpg){width="778"}
