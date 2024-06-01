@@ -269,9 +269,7 @@ fig-align="center"}
     social.
 :::
 
-
 # Para hacer un experimento/modelo hay que tener 2 grupos
-
 
 # 4. ¿Cómo se que existe una diferencia entre ambos grupos ?
 
@@ -279,12 +277,9 @@ fig-align="center"}
 
 **Nada supera el conocimiento del experto.**
 
-
-
 **CASO PUNGA**
 
 ## 4. Conocimiento previo/experto {auto-animate="true"}
-
 
 ```{r}
 library('tidyverse')
@@ -316,6 +311,7 @@ PIB_datos %>%
   geom_line()
 
 ```
+
 ```{r}
 
 # Lo que hemos creado:
@@ -408,19 +404,22 @@ PIB_periodos_subperiodos <- PIB_2 |>
 
 PIB_periodos_subperiodos
 ```
-_____________________
 
-El conocimiento del experto tiene que ser reforzado, pero en muchas ocasiones es mejor reforzarlo usando un modelo bien fundamentado. 
+------------------------------------------------------------------------
 
-_______________
+El conocimiento del experto tiene que ser reforzado, pero en muchas
+ocasiones es mejor reforzarlo usando un modelo bien fundamentado.
 
-1. No se tuvo en cuenta el factor de inflación, Demasiada poca desviación.
-2. Desviacion no es necesariamente tiene que ser negativo, puede deberse a crecimiento económico.
-3. Incluso dentro de un periodo, los subperiodos contienen información. 
+------------------------------------------------------------------------
 
-**NUNCA JAMÄS ignorar la descriptiva, jugar con ella es demasiado valioso**
+1.  No se tuvo en cuenta el factor de inflación, Demasiada poca
+    desviación.
+2.  Desviacion no es necesariamente tiene que ser negativo, puede
+    deberse a crecimiento económico.
+3.  Incluso dentro de un periodo, los subperiodos contienen información.
 
-
+**NUNCA JAMÄS ignorar la descriptiva, jugar con ella es demasiado
+valioso**
 
 ## 4. El *P valor* {auto-animate="true"}
 
@@ -457,8 +456,9 @@ _______________
 
 ## 4.1.1. Dependencias de los *P valores*? {auto-animate="true"}
 
-Diferencias de medias ![](Imagenes/diferencias_medias.png){width="300"
-fig-align="center"}
+Diferencias de medias
+
+![](Imagenes/diferencias_medias.png){width="300" fig-align="center"}
 
 ## 4.1.2. Dependencias de los *P valores*? {auto-animate="true"}
 
@@ -469,23 +469,71 @@ Dispersión ![](Imagenes/Dispersión.png){width="300" fig-align="center"}
 Tamaño de muestra ![](Imagenes/Tamaño%20de%20muestra.png){width="300"
 fig-align="center"}
 
+## 4.1.3. Dependencias de los *P valores*? {auto-animate="true"}
+
+En la era de la memoria barata, los grandes volúmenes de datos y los procesadores rápidos, las pruebas de normalidad deberían rechazar siempre la nulidad de la distribución normal para muestras grandes (aunque no increíblemente grandes). 
+
+## 4.1.3. Dependencias de los *P valores*? {auto-animate="true"}
+
 
 ```{r}
-x <- replicate(100, { # generates 100 different tests on each distribution
-                     c(shapiro.test(rnorm(10)+c(1,0,2,0,1))$p.value,   #$
-                       shapiro.test(rnorm(100)+c(1,0,2,0,1))$p.value,  #$
-                       shapiro.test(rnorm(1000)+c(1,0,2,0,1))$p.value, #$
-                       shapiro.test(rnorm(5000)+c(1,0,2,0,1))$p.value) #$
-                    } # rnorm gives a random draw from the normal distribution
-               )
+
+x <- replicate(100, 
+  { # generates 100 different tests on each distribution
+    c(
+      shapiro.test(rnorm(10))$p.value,   #$
+      shapiro.test(rnorm(100))$p.value,  #$
+      shapiro.test(rnorm(1000))$p.value, #$
+      shapiro.test(rnorm(5000))$p.value) #$
+  } # rnorm gives a random draw from the normal distribution
+)
+
+
+rownames(x) <- c("n10","n100","n1000","n5000")
 ```
 
 ## 4.1.3. Dependencias de los *P valores*? {auto-animate="true"}
+
 ```{r}
-rownames(x) <- c("n10","n100","n1000","n5000")
+x
+
+x<0.05
 
 rowMeans(x<0.05) # the proportion of significant deviations
+# Proporcion de desviaciones significativas
+# Proporción de veces que  que se rechaza la hipotesis nula
+
 ```
+
+```{r}
+x <- replicate(100, 
+  { # generates 100 different tests on each distribution
+    c(
+      shapiro.test(rnorm(10)+c(1,0,2,0,1))$p.value,   #$
+      shapiro.test(rnorm(100)+c(1,0,2,0,1))$p.value,  #$
+      shapiro.test(rnorm(1000)+c(1,0,2,0,1))$p.value, #$
+      shapiro.test(rnorm(5000)+c(1,0,2,0,1))$p.value) #$
+  } # rnorm gives a random draw from the normal distribution
+)
+
+rownames(x) <- c("n10","n100","n1000","n5000")
+```
+
+## 4.1.3. Dependencias de los *P valores*? {auto-animate="true"}
+
+```{r}
+x
+
+x<0.05
+
+rowMeans(x<0.05) # the proportion of significant deviations
+
+```
+## 4.1.3. Dependencias de los *P valores*? {auto-animate="true"}
+
+¿Existen pruebas convincentes de alguna desviación del ideal gaussiano?
+
+El test apunt a tener datos perfectos sobre una normal. Eso no pasa. 
 
 
 # Si los p valores no son buenos indicativos \\n Entonces, ¿Qué se debe usar en estos casos?
@@ -496,9 +544,9 @@ rowMeans(x<0.05) # the proportion of significant deviations
 
 ## 5. Standarized mean deviation *(SMD)* {auto-animate="true"}
 
-
-La standarized mean deviation (SMD) o diferencias de medias estandarizadas son básicamente la diferencia de entre las medias o proporciones de una variable, estratificando por otra. 
-
+La standarized mean deviation (SMD) o diferencias de medias
+estandarizadas son básicamente la diferencia de entre las medias o
+proporciones de una variable, estratificando por otra.
 
 ## 5. Standarized mean deviation *(SMD)* {auto-animate="true"}
 
@@ -508,19 +556,19 @@ $$
 
 Donde :
 
-- $M_1$ es la media o proporción del grupo 1
-- $M_2$ es la media o proporción del grupo 2
-- $S_1$ es desviación estándard de grupo 1
-- $S_2$ es desviación estándard de grupo 2
+-   $M_1$ es la media o proporción del grupo 1
+-   $M_2$ es la media o proporción del grupo 2
+-   $S_1$ es desviación estándard de grupo 1
+-   $S_2$ es desviación estándard de grupo 2
 
 ## 5. Standarized mean deviation *(SMD)* {auto-animate="true"}
 
-En el mundo de la medicina está aceptado que dos grupos son diferentes si presentan una SMD \>0.1 (o del 10%).
+En el mundo de la medicina está aceptado que dos grupos son diferentes
+si presentan una SMD \>0.1 (o del 10%).
 
 Las SMD se calculan entorno a la exposición.
 
 ![](Imagenes/tipos_muestras.png){width="300" fig-align="center"}
-
 
 # ¿y por que son mejores que el pvalor?
 
@@ -578,7 +626,7 @@ confusión
 Además se debe considerar que:
 
 ::: incremental
--   No todas las covariables tienen la misma importancia. 
+-   No todas las covariables tienen la misma importancia.
 -   Se seleccionarán únicamente aquellas que probablemente afecten al
     resultado.
 -   No se deben utilizar los datos de resultados en el proceso de
@@ -590,7 +638,6 @@ Además se debe considerar que:
 (Img análisis paso a paso)
 
 ## 7. Emparejamiento por puntuación de propensión {auto-animate="true"}
-
 
 ## 8. IPWRA {auto-animate="true"}
 
