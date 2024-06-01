@@ -2,6 +2,20 @@
 title: "Modelizando"
 format:
   revealjs:
+    incremental: true  
+    scrollable: true
+    transition: slide
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## 
+
+---
+title: "Modelizando"
+format:
+  revealjs:
     #incremental: true  
     scrollable: true
     transition: slide
@@ -24,9 +38,7 @@ editor:
 
 # Aprendizaje supervisado
 
-"El aprendizaje supervisado es la tarea de crear una función que a %\>%
-signa una entrada a una salida basándose en pares de entrada-salida de
-ejemplo."
+"El aprendizaje supervisado es la tarea de crear una función que a %\>% signa una entrada a una salida basándose en pares de entrada-salida de ejemplo."
 
 Kevin P. Murphy, *Machine Learning: A Probabilistic Perspective*
 
@@ -46,12 +58,16 @@ Si copias demasiado a los demás te olvidas de ti mismo
 
 ## Aprendizaje no supervisado
 
-![](Imagenes/tickets%20compra%20embarazo.png)
+![](Imagenes/tickets_compra_embarazo.png)
 
 ## Aprendizaje no supervisado
 
-![](Imagenes/tickets%20compra%20dinero.png) \_\_\_\_\_\_\_
+![](Imagenes/tickets_compra_dinero.png)
 
 # Aprendizaje por refuerzo
 
 ![](Imagenes/mario_models.jpg){width="778"}
+
+```{r}
+1 + 1
+```
