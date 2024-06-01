@@ -24,15 +24,15 @@ editor:
 
 # Aprendizaje supervisado
 
-"El aprendizaje supervisado es la tarea de crear una función que a %>% signa
-una entrada a una salida basándose en pares de entrada-salida de
+"El aprendizaje supervisado es la tarea de crear una función que a %\>%
+signa una entrada a una salida basándose en pares de entrada-salida de
 ejemplo."
 
 Kevin P. Murphy, *Machine Learning: A Probabilistic Perspective*
 
 ------------------------------------------------------------------------
 
-![](Imagenes/monos_empresas.jpg)
+![](Imagenes/monos_empresas.jpg){width="697" height="395"}
 
 ------------------------------------------------------------------------
 
@@ -46,16 +46,11 @@ Si copias demasiado a los demás te olvidas de ti mismo
 
 ## Aprendizaje no supervisado
 
-![](Imagenes/tickets compra embarazo.png)
+![](Imagenes/tickets%20compra%20embarazo.png)
 
 ## Aprendizaje no supervisado
 
-![](Imagenes/tickets compra dinero.png)
-_______
-
-
-
-
+![](Imagenes/tickets%20compra%20dinero.png) \_\_\_\_\_\_\_
 
 # Aprendizaje por refuerzo
 
