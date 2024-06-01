@@ -55,6 +55,7 @@ Si copias demasiado a los demás te olvidas de ti mismo
 
 ![](Imagenes/mario_models.jpg){width="778"}
 
-```{r}
-1 + 1
-```
+
+# Aprendizaje por refuerzo part 2
+
+intento 1
