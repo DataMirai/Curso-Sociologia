@@ -346,25 +346,37 @@
 <section id="tipos-de-modelos" class="title-slide slide level1 center scrollable">
 <h1>Tipos de modelos</h1>
 <ol type="1">
-<li class="fragment">Aprendizaje supervisado</li>
-<li class="fragment">Aprendizaje No supervisado</li>
-<li class="fragment">Aprendizaje por refuerzo</li>
+<li class="fragment">Aprendizaje <strong>supervisado</strong></li>
+<li class="fragment">Aprendizaje <strong>no supervisado</strong></li>
+<li class="fragment">Aprendizaje <strong>por refuerzo</strong></li>
 </ol>
 </section>
 
 <section>
 <section id="aprendizaje-supervisado" class="title-slide slide level1 center">
 <h1>Aprendizaje supervisado</h1>
-<p>“El aprendizaje supervisado es la tarea de crear una función que a %&gt;% signa una entrada a una salida basándose en pares de entrada-salida de ejemplo.”</p>
+
+</section>
+<section id="aprendizaje-supervisado-1" class="slide level2">
+<h2>Aprendizaje supervisado</h2>
+<p>“El aprendizaje supervisado es la tarea de crear una función que assigna una entrada a una salida basándose en pares de entrada-salida de ejemplo.”</p>
 <p>Kevin P. Murphy, <em>Machine Learning: A Probabilistic Perspective</em></p>
 </section>
-<section class="slide level2">
-
-<p><img data-src="Imagenes/monos_empresas.jpg" width="697" height="395"></p>
-</section>
-<section class="slide level2">
-
-<p>Si copias demasiado a los demás te olvidas de ti mismo</p>
+<section id="aprendizaje-supervisado-2" class="slide level2">
+<h2>Aprendizaje supervisado</h2>
+<ul>
+<li class="fragment"><div style="color:#8ABF74;">
+Relativamente, el tipo de modelo más fiable y conocido
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+Requiere de completa supervisión humana
+</div></li>
+<li class="fragment"><p>Tipos de modelos:</p>
+<ul>
+<li class="fragment"><strong>clasificación</strong>: Variables factor.</li>
+<li class="fragment"><strong>regresion</strong>: Variables numericas.</li>
+</ul></li>
+</ul>
 </section></section>
 <section>
 <section id="aprendizaje-no-supervisado" class="title-slide slide level1 center">
@@ -373,16 +385,57 @@
 </section>
 <section id="aprendizaje-no-supervisado-1" class="slide level2">
 <h2>Aprendizaje no supervisado</h2>
-
-<img data-src="Imagenes/target.png" class="r-stretch"></section>
+<ul>
+<li class="fragment"><p>Analiza y agrupa conjuntos de datos sin etiquetar.</p></li>
+<li class="fragment"><p>Se basan en distancias. (Euclídeas o mahalanobis)</p></li>
+<li class="fragment"><p>Solución ideal para el análisis de datos exploratorios.</p></li>
+</ul>
+</section>
 <section id="aprendizaje-no-supervisado-2" class="slide level2">
+<h2>Aprendizaje no supervisado</h2>
+<h3 id="agrupación-en-clústeres">Agrupación en clústeres</h3>
+<ul>
+<li class="fragment">La agrupación en clústeres de k-medias</li>
+<li class="fragment">Agrupación en clústeres jerárquica (HCA)</li>
+<li class="fragment">Agrupación en clústeres probabilística (GMM)</li>
+</ul>
+<h3 id="reglas-de-asociación">Reglas de asociación</h3>
+<p><em>Identifican la probabilidad de consumir un producto dado el consumo de otro producto</em></p>
+<h3 id="reducción-de-dimensionalidad">Reducción de dimensionalidad</h3>
+<ul>
+<li class="fragment">Análisis de componentes principales (PCA)</li>
+</ul>
+<p>Este método utiliza una transformación lineal para crear una nueva representación de datos</p>
+<ul>
+<li class="fragment">Descomposición en valores singulares</li>
+</ul>
+<p>factoriza una matriz, A, en tres matrices de rango inferior.</p>
+</section>
+<section id="aprendizaje-no-supervisado-3" class="slide level2 scrollable">
+<h2>Aprendizaje no supervisado</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="Imagenes/target.png" width="359"></p>
+</div><div class="column" style="width:50%;">
+<ol type="1">
+<li class="fragment">Fundada en 1962</li>
+<li class="fragment">Es la sexta empresa de venta al por menor más grande de Estados Unidos.</li>
+<li class="fragment">351.000 empleados</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="aprendizaje-no-supervisado-4" class="slide level2">
 <h2>Aprendizaje no supervisado</h2>
 
 <img data-src="Imagenes/tickets_compra_embarazo.png" class="r-stretch"></section>
-<section id="aprendizaje-no-supervisado-3" class="slide level2">
+<section id="aprendizaje-no-supervisado-5" class="slide level2">
 <h2>Aprendizaje no supervisado</h2>
 
-<img data-src="Imagenes/tickets_compra_dinero.png" class="r-stretch"></section></section>
+<img data-src="Imagenes/tickets_compra_dinero.png" class="r-stretch"></section>
+<section id="aprendizaje-no-supervisado-6" class="slide level2">
+<h2>Aprendizaje no supervisado</h2>
+</section></section>
 <section>
 <section id="aprendizaje-por-refuerzo" class="title-slide slide level1 center">
 <h1>Aprendizaje por refuerzo</h1>
@@ -390,21 +443,36 @@
 </section>
 <section id="aprendizaje-por-refuerzo-1" class="slide level2">
 <h2>Aprendizaje por refuerzo</h2>
-<video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Mario_IA_1.mp4"></video>
+<ul>
+<li class="fragment"><p>Entrena al software para que tome decisiones a fin de lograr los mejores resultados.</p></li>
+<li class="fragment"><p>Ensayo y error (Supervisado y no supervisado al mismo tiempo)</p></li>
+</ul>
 </section>
-<section id="aprendizaje-por-refuerzo-2" class="slide level2">
+<section id="aprendizaje-por-refuerzo-2" class="slide level2 scrollable">
 <h2>Aprendizaje por refuerzo</h2>
-<video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Mario_IA_2.mp4"></video>
+<ol type="1">
+<li class="fragment"><p>Sobresale en entornos complejos</p></li>
+<li class="fragment"><p>Optimiza de acuerdo con objetivos a largo plazo</p></li>
+<li class="fragment"><p>Requiere menos interacción humana</p></li>
+</ol>
 </section>
 <section id="aprendizaje-por-refuerzo-3" class="slide level2">
 <h2>Aprendizaje por refuerzo</h2>
-<video id="video_shortcode_videojs_video3" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Pokemon_IA_1.mp4"></video>
+<video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Mario_IA_1.mp4"></video>
 </section>
 <section id="aprendizaje-por-refuerzo-4" class="slide level2">
 <h2>Aprendizaje por refuerzo</h2>
-<video id="video_shortcode_videojs_video4" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Pokemon_IA_2.mp4"></video>
+<video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Mario_IA_2.mp4"></video>
 </section>
 <section id="aprendizaje-por-refuerzo-5" class="slide level2">
+<h2>Aprendizaje por refuerzo</h2>
+<video id="video_shortcode_videojs_video3" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Pokemon_IA_1.mp4"></video>
+</section>
+<section id="aprendizaje-por-refuerzo-6" class="slide level2">
+<h2>Aprendizaje por refuerzo</h2>
+<video id="video_shortcode_videojs_video4" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Pokemon_IA_2.mp4"></video>
+</section>
+<section id="aprendizaje-por-refuerzo-7" class="slide level2">
 <h2>Aprendizaje por refuerzo</h2>
 <video id="video_shortcode_videojs_video5" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Pokemon_IA_3.mp4"></video>
 <div class="quarto-auto-generated-content">
@@ -623,6 +691,82 @@
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

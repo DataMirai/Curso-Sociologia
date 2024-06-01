@@ -10,6 +10,9 @@ editor:
     wrap: 72
 ---
 
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+```
 
 # bases de modelización
 
@@ -19,29 +22,79 @@ editor:
 
 # Tipos de modelos
 
-1.  Aprendizaje supervisado
-2.  Aprendizaje No supervisado
-3.  Aprendizaje por refuerzo
+1.  Aprendizaje **supervisado**
+2.  Aprendizaje **no supervisado**
+3.  Aprendizaje **por refuerzo**
 
 # Aprendizaje supervisado
 
-"El aprendizaje supervisado es la tarea de crear una función que a %\>% signa una entrada a una salida basándose en pares de entrada-salida de ejemplo."
+## Aprendizaje supervisado
+
+"El aprendizaje supervisado es la tarea de crear una función que assigna
+una entrada a una salida basándose en pares de entrada-salida de
+ejemplo."
 
 Kevin P. Murphy, *Machine Learning: A Probabilistic Perspective*
 
-------------------------------------------------------------------------
+## Aprendizaje supervisado
 
-![](Imagenes/monos_empresas.jpg){width="697" height="395"}
+-   <div style="color:#8ABF74;"> Relativamente, el tipo de modelo más fiable y conocido </div>
 
-------------------------------------------------------------------------
+-   <div style="color:#BF1E1A;"> Requiere de completa supervisión humana </div>
 
-Si copias demasiado a los demás te olvidas de ti mismo
+-   Tipos de modelos:
+
+    -   **clasificación**: Variables factor. 
+    -   **regresion**: Variables numericas. 
 
 # Aprendizaje no supervisado
 
 ## Aprendizaje no supervisado
 
-![](Imagenes/target.png)
+-   Analiza y agrupa conjuntos de datos sin etiquetar.
+
+-   Se basan en distancias. (Euclídeas o mahalanobis)
+
+-   Solución ideal para el análisis de datos exploratorios.
+
+## Aprendizaje no supervisado
+
+### Agrupación en clústeres
+
+-   La agrupación en clústeres de k-medias
+-   Agrupación en clústeres jerárquica (HCA)
+-   Agrupación en clústeres probabilística (GMM)
+
+### Reglas de asociación
+
+*Identifican la probabilidad de consumir un producto dado el consumo de
+otro producto*
+
+### Reducción de dimensionalidad
+
+-   Análisis de componentes principales (PCA)
+
+Este método utiliza una transformación lineal para crear una nueva
+representación de datos
+
+-   Descomposición en valores singulares
+
+factoriza una matriz, A, en tres matrices de rango inferior.
+
+## Aprendizaje no supervisado
+
+::: columns
+::: {.column width="50%"}
+![](Imagenes/target.png){width="359"}
+:::
+
+::: {.column width="50%"}
+1.  Fundada en 1962
+2.  Es la sexta empresa de venta al por menor más grande de Estados
+    Unidos.
+3.  351.000 empleados
+:::
+:::
 
 ## Aprendizaje no supervisado
 
@@ -51,8 +104,36 @@ Si copias demasiado a los demás te olvidas de ti mismo
 
 ![](Imagenes/tickets_compra_dinero.png)
 
+## Aprendizaje no supervisado
+
+```{r}
+data <- tibble(
+  ClienteID = 1:6,
+  VitaminasPrenatales = c(1, 0, 0, 0, 1, 0),
+  LocionSinFragancia = c(1, 0, 0, 0, 1, 0),
+  JabonSinFragancia = c(0, 1, 0, 0, 1, 0),
+  Calcio = c(0, 1, 0, 0, 1, 1),
+  Panales = c(0, 0, 1, 0, 0, 1),
+  Toallitas = c(0, 0, 1, 0, 0, 0)
+)
+```
 
 # Aprendizaje por refuerzo
+
+## Aprendizaje por refuerzo
+
+-   Entrena al software para que tome decisiones a fin de lograr los
+    mejores resultados.
+
+-   Ensayo y error (Supervisado y no supervisado al mismo tiempo)
+
+## Aprendizaje por refuerzo
+
+1.  Sobresale en entornos complejos
+
+2.  Optimiza de acuerdo con objetivos a largo plazo
+
+3.  Requiere menos interacción humana
 
 ## Aprendizaje por refuerzo
 
@@ -73,4 +154,3 @@ Si copias demasiado a los demás te olvidas de ti mismo
 ## Aprendizaje por refuerzo
 
 {{< video /Imagenes/Pokemon_IA_3.mp4 >}}
-
