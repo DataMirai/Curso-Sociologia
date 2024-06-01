@@ -10,19 +10,6 @@ editor:
     wrap: 72
 ---
 
-## 
-
----
-title: "Modelizando"
-format:
-  revealjs:
-    #incremental: true  
-    scrollable: true
-    transition: slide
-editor: 
-  markdown: 
-    wrap: 72
----
 
 # bases de modelización
 
