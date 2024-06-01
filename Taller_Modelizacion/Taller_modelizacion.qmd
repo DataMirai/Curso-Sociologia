@@ -51,11 +51,26 @@ Si copias demasiado a los demás te olvidas de ti mismo
 
 ![](Imagenes/tickets_compra_dinero.png)
 
+
 # Aprendizaje por refuerzo
 
-![](Imagenes/mario_models.jpg){width="778"}
+## Aprendizaje por refuerzo
 
+{{< video /Imagenes/Mario_IA_1.mp4 >}}
 
-# Aprendizaje por refuerzo part 2
+## Aprendizaje por refuerzo
 
-intento 1
+{{< video /Imagenes/Mario_IA_2.mp4 >}}
+
+## Aprendizaje por refuerzo
+
+{{< video /Imagenes/Pokemon_IA_1.mp4 >}}
+
+## Aprendizaje por refuerzo
+
+{{< video /Imagenes/Pokemon_IA_2.mp4 >}}
+
+## Aprendizaje por refuerzo
+
+{{< video /Imagenes/Pokemon_IA_3.mp4 >}}
+
