@@ -11,22 +11,26 @@ editor:
 ---
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
-library(tidyverse)
+pacman::p_load(tidyverse)
 ```
 
-# bases de modelización
+# 1. Bases de modelización
+
+## Bases de modelización
 
 1.  Tener clara la pregunta
 2.  Tener más o menos claras las variables que interfieren en el proceso
 3.  Tener Una idea de la complejidad de la pregunta
 
-# Tipos de modelos
+# 2. Tipos de modelos
+
+## Tipos de modelos
 
 1.  Aprendizaje **supervisado**
 2.  Aprendizaje **no supervisado**
 3.  Aprendizaje **por refuerzo**
 
-# Aprendizaje supervisado
+# 3. Aprendizaje supervisado
 
 ## Aprendizaje supervisado
 
@@ -38,16 +42,49 @@ Kevin P. Murphy, *Machine Learning: A Probabilistic Perspective*
 
 ## Aprendizaje supervisado
 
--   <div style="color:#8ABF74;"> Relativamente, el tipo de modelo más fiable y conocido </div>
+-   ::: {style="color:#8ABF74;"}
+    Relativamente, el tipo de modelo más fiable y conocido
+    :::
 
--   <div style="color:#BF1E1A;"> Requiere de completa supervisión humana </div>
+-   ::: {style="color:#BF1E1A;"}
+    Requiere de completa supervisión humana
+    :::
+
+-   ::: {style="color:#BF1E1A;"}
+    Los datos pueden contener error humano, ergo los algoritmos aprendan
+    incorrectamente
+    :::
 
 -   Tipos de modelos:
 
-    -   **clasificación**: Variables factor. 
-    -   **regresion**: Variables numericas. 
+    -   **clasificación**: Variables factor.
+    -   **regresion**: Variables numericas.
 
-# Aprendizaje no supervisado
+## Aprendizaje supervisado
+
+::: columns
+::: {.column width="50%"}
+![](Imagenes/armas%20de%20destruccion%20matematica.jpg){width="328"}
+:::
+
+::: {.column width="50%"}
+*"Los privilegiados son analizados por personas, las masas por
+máquinas."*
+
+**Cathy O'Neil**
+:::
+:::
+
+## Aprendizaje supervisado
+
+-   Educación: Despido de profesores en Washington DC y Chicago por dar
+    demasiado peso en la fórmula las bajas calificaciones de los
+    alumnos.
+-   Justicia:
+-   Política: microtargeting
+-   Economía: sesgos en el crédito
+
+# 4. Aprendizaje no supervisado
 
 ## Aprendizaje no supervisado
 
@@ -55,22 +92,32 @@ Kevin P. Murphy, *Machine Learning: A Probabilistic Perspective*
 
 -   Se basan en distancias. (Euclídeas o mahalanobis)
 
--   Solución ideal para el análisis de datos exploratorios.
+-   ::: {style="color:#8ABF74;"}
+    Solución ideal para el análisis de datos exploratorios.
+    :::
+
+-   ::: {style="color:#BF1E1A;"}
+    Computacionalmente duros
+    :::
+
+-   ::: {style="color:#BF1E1A;"}
+    La interpretación puede ser un infierno
+    :::
 
 ## Aprendizaje no supervisado
 
-### Agrupación en clústeres
+## Aprendizaje no supervisado: Agrupación en clústeres
 
 -   La agrupación en clústeres de k-medias
 -   Agrupación en clústeres jerárquica (HCA)
 -   Agrupación en clústeres probabilística (GMM)
 
-### Reglas de asociación
+## Aprendizaje no supervisado: Reglas de asociación
 
 *Identifican la probabilidad de consumir un producto dado el consumo de
 otro producto*
 
-### Reducción de dimensionalidad
+## Aprendizaje no supervisado: Reducción de dimensionalidad
 
 -   Análisis de componentes principales (PCA)
 
@@ -81,7 +128,7 @@ representación de datos
 
 factoriza una matriz, A, en tres matrices de rango inferior.
 
-## Aprendizaje no supervisado
+## Aprendizaje no supervisado, caso Target
 
 ::: columns
 ::: {.column width="50%"}
@@ -96,18 +143,18 @@ factoriza una matriz, A, en tres matrices de rango inferior.
 :::
 :::
 
-## Aprendizaje no supervisado
+## Aprendizaje no supervisado, caso Target
 
 ![](Imagenes/tickets_compra_embarazo.png)
 
-## Aprendizaje no supervisado
+## Aprendizaje no supervisado, caso Target
 
 ![](Imagenes/tickets_compra_dinero.png)
 
-## Aprendizaje no supervisado
+## Aprendizaje no supervisado, caso Target
 
-```{r}
-data <- tibble(
+```{r }
+Target_ejemplo <- tibble(
   ClienteID = 1:6,
   VitaminasPrenatales = c(1, 0, 0, 0, 1, 0),
   LocionSinFragancia = c(1, 0, 0, 0, 1, 0),
@@ -116,11 +163,46 @@ data <- tibble(
   Panales = c(0, 0, 1, 0, 0, 1),
   Toallitas = c(0, 0, 1, 0, 0, 0)
 )
+
+knitr::kable(Target_ejemplo)
+
 ```
 
-# Aprendizaje por refuerzo
+## Aprendizaje no supervisado, caso Target
 
-## Aprendizaje por refuerzo
+```{r echo=TRUE}
+# Aplicar K-means
+set.seed(123) # Para reproducibilidad
+kmeans_result <- stats::kmeans(Target_ejemplo[,-1], centers = 3)
+
+# Añadir los resultados del cluster al dataframe
+Target_ejemplo <- Target_ejemplo %>%  
+  mutate(Cluster = as_factor(kmeans_result$cluster) ) %>% 
+  select(ClienteID, Cluster, everything())
+```
+
+## Aprendizaje no supervisado, caso Target
+
+```{r}
+knitr::kable(Target_ejemplo)
+```
+
+## Aprendizaje no supervisado, caso Target
+
+```{r}
+Target_ejemplo %>%  
+  pivot_longer(
+    cols= -c(Cluster,ClienteID),
+    names_to =  'Producto',
+    values_to = 'Compra_NoCompra') %>% 
+  mutate(Compra_NoCompra = as_factor(Compra_NoCompra) ) %>% 
+  ggplot(aes(x= Cluster, y= Producto, fill= Compra_NoCompra ) ) +
+  geom_tile()
+```
+
+# 5. Aprendizaje por refuerzo
+
+## 5 Aprendizaje por refuerzo
 
 -   Entrena al software para que tome decisiones a fin de lograr los
     mejores resultados.
@@ -154,3 +236,16 @@ data <- tibble(
 ## Aprendizaje por refuerzo
 
 {{< video /Imagenes/Pokemon_IA_3.mp4 >}}
+
+# Machine learning supervisado
+
+# Tipos de modelos 2
+
+| Col1                   | Explanatory Models                                                                                                                       | Predictive Models                                                                                                                     |
+|------------------------|------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| Objetivos              | Establecer relaciones causales                                                                                                           | Predecir diagnósticos actuales o resultados futuros                                                                                   |
+| Precaución             | Las posibilidades de hallazgos (Error tipo I)                                                                                            | No ajuste: falta de generalizabilidad a nuevas poblaciones                                                                            |
+| Variables candidatas   | Un conjunto limitado de factores de riesgo y factores de confusión                                                                       | Un conjunto más amplio de predictores potenciales; es posible que algunos predictores no tengan una relación causal con el resultado. |
+| Selección de variables | Basada en hipótesis; no debe utilizar procedimientos de selección automatizados.                                                         | Exploratorio;puede utilizar procedimientos de selección automatizados, siempre con la correspondiente validación.                     |
+| Formas de              | Tamaño de los coeficientes {J para los factores de riesgo individuales; nivel de significación para los factores de riesgo individuales. |                                                                                                                                       |
+| Validación             | Se necesitan nuevos estudios para confirmar las relaciones causales individuales                                                         |                                                                                                                                       |

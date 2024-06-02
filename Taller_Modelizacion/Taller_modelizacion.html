@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="Taller_modelizacion_files/libs/revealjs/dist/theme/quarto.css">
   <link href="Taller_modelizacion_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -334,27 +399,35 @@
 </div>
 
 </section>
-<section id="bases-de-modelización" class="title-slide slide level1 center scrollable">
-<h1>bases de modelización</h1>
+<section>
+<section id="bases-de-modelización" class="title-slide slide level1 center">
+<h1>1. Bases de modelización</h1>
+
+</section>
+<section id="bases-de-modelización-1" class="slide level2 scrollable">
+<h2>Bases de modelización</h2>
 <ol type="1">
 <li class="fragment">Tener clara la pregunta</li>
 <li class="fragment">Tener más o menos claras las variables que interfieren en el proceso</li>
 <li class="fragment">Tener Una idea de la complejidad de la pregunta</li>
 </ol>
-</section>
+</section></section>
+<section>
+<section id="tipos-de-modelos" class="title-slide slide level1 center">
+<h1>2. Tipos de modelos</h1>
 
-<section id="tipos-de-modelos" class="title-slide slide level1 center scrollable">
-<h1>Tipos de modelos</h1>
+</section>
+<section id="tipos-de-modelos-1" class="slide level2 scrollable">
+<h2>Tipos de modelos</h2>
 <ol type="1">
 <li class="fragment">Aprendizaje <strong>supervisado</strong></li>
 <li class="fragment">Aprendizaje <strong>no supervisado</strong></li>
 <li class="fragment">Aprendizaje <strong>por refuerzo</strong></li>
 </ol>
-</section>
-
+</section></section>
 <section>
 <section id="aprendizaje-supervisado" class="title-slide slide level1 center">
-<h1>Aprendizaje supervisado</h1>
+<h1>3. Aprendizaje supervisado</h1>
 
 </section>
 <section id="aprendizaje-supervisado-1" class="slide level2">
@@ -366,10 +439,13 @@
 <h2>Aprendizaje supervisado</h2>
 <ul>
 <li class="fragment"><div style="color:#8ABF74;">
-Relativamente, el tipo de modelo más fiable y conocido
+<p>Relativamente, el tipo de modelo más fiable y conocido</p>
 </div></li>
 <li class="fragment"><div style="color:#BF1E1A;">
-Requiere de completa supervisión humana
+<p>Requiere de completa supervisión humana</p>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<p>Los datos pueden contener error humano, ergo los algoritmos aprendan incorrectamente</p>
 </div></li>
 <li class="fragment"><p>Tipos de modelos:</p>
 <ul>
@@ -377,10 +453,30 @@ Requiere de completa supervisión humana
 <li class="fragment"><strong>regresion</strong>: Variables numericas.</li>
 </ul></li>
 </ul>
+</section>
+<section id="aprendizaje-supervisado-3" class="slide level2">
+<h2>Aprendizaje supervisado</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="Imagenes/armas%20de%20destruccion%20matematica.jpg" width="328"></p>
+</div><div class="column" style="width:50%;">
+<p><em>“Los privilegiados son analizados por personas, las masas por máquinas.”</em></p>
+<p>Cathy O’Neil</p>
+</div>
+</div>
+</section>
+<section id="aprendizaje-supervisado-4" class="slide level2">
+<h2>Aprendizaje supervisado</h2>
+<ul>
+<li class="fragment">Educación: Despido de profesores en Washington DC y Chicago por dar demasiado peso en la fórmula las bajas calificaciones de los alumnos.</li>
+<li class="fragment">Justicia:</li>
+<li class="fragment">Política: microtargeting</li>
+<li class="fragment">Economía: sesgos en el crédito</li>
+</ul>
 </section></section>
 <section>
 <section id="aprendizaje-no-supervisado" class="title-slide slide level1 center">
-<h1>Aprendizaje no supervisado</h1>
+<h1>4. Aprendizaje no supervisado</h1>
 
 </section>
 <section id="aprendizaje-no-supervisado-1" class="slide level2">
@@ -388,20 +484,34 @@ Requiere de completa supervisión humana
 <ul>
 <li class="fragment"><p>Analiza y agrupa conjuntos de datos sin etiquetar.</p></li>
 <li class="fragment"><p>Se basan en distancias. (Euclídeas o mahalanobis)</p></li>
-<li class="fragment"><p>Solución ideal para el análisis de datos exploratorios.</p></li>
+<li class="fragment"><div style="color:#8ABF74;">
+<p>Solución ideal para el análisis de datos exploratorios.</p>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<p>Computacionalmente duros</p>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<p>La interpretación puede ser un infierno</p>
+</div></li>
 </ul>
 </section>
 <section id="aprendizaje-no-supervisado-2" class="slide level2">
 <h2>Aprendizaje no supervisado</h2>
-<h3 id="agrupación-en-clústeres">Agrupación en clústeres</h3>
+</section>
+<section id="aprendizaje-no-supervisado-agrupación-en-clústeres" class="slide level2">
+<h2>Aprendizaje no supervisado: Agrupación en clústeres</h2>
 <ul>
 <li class="fragment">La agrupación en clústeres de k-medias</li>
 <li class="fragment">Agrupación en clústeres jerárquica (HCA)</li>
 <li class="fragment">Agrupación en clústeres probabilística (GMM)</li>
 </ul>
-<h3 id="reglas-de-asociación">Reglas de asociación</h3>
+</section>
+<section id="aprendizaje-no-supervisado-reglas-de-asociación" class="slide level2">
+<h2>Aprendizaje no supervisado: Reglas de asociación</h2>
 <p><em>Identifican la probabilidad de consumir un producto dado el consumo de otro producto</em></p>
-<h3 id="reducción-de-dimensionalidad">Reducción de dimensionalidad</h3>
+</section>
+<section id="aprendizaje-no-supervisado-reducción-de-dimensionalidad" class="slide level2">
+<h2>Aprendizaje no supervisado: Reducción de dimensionalidad</h2>
 <ul>
 <li class="fragment">Análisis de componentes principales (PCA)</li>
 </ul>
@@ -411,8 +521,8 @@ Requiere de completa supervisión humana
 </ul>
 <p>factoriza una matriz, A, en tres matrices de rango inferior.</p>
 </section>
-<section id="aprendizaje-no-supervisado-3" class="slide level2 scrollable">
-<h2>Aprendizaje no supervisado</h2>
+<section id="aprendizaje-no-supervisado-caso-target" class="slide level2 scrollable">
+<h2>Aprendizaje no supervisado, caso Target</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><img data-src="Imagenes/target.png" width="359"></p>
@@ -425,24 +535,216 @@ Requiere de completa supervisión humana
 </div>
 </div>
 </section>
-<section id="aprendizaje-no-supervisado-4" class="slide level2">
-<h2>Aprendizaje no supervisado</h2>
+<section id="aprendizaje-no-supervisado-caso-target-1" class="slide level2">
+<h2>Aprendizaje no supervisado, caso Target</h2>
 
 <img data-src="Imagenes/tickets_compra_embarazo.png" class="r-stretch"></section>
-<section id="aprendizaje-no-supervisado-5" class="slide level2">
-<h2>Aprendizaje no supervisado</h2>
+<section id="aprendizaje-no-supervisado-caso-target-2" class="slide level2">
+<h2>Aprendizaje no supervisado, caso Target</h2>
 
 <img data-src="Imagenes/tickets_compra_dinero.png" class="r-stretch"></section>
-<section id="aprendizaje-no-supervisado-6" class="slide level2">
-<h2>Aprendizaje no supervisado</h2>
-</section></section>
+<section id="aprendizaje-no-supervisado-caso-target-3" class="slide level2">
+<h2>Aprendizaje no supervisado, caso Target</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table>
+<colgroup>
+<col style="width: 10%">
+<col style="width: 21%">
+<col style="width: 20%">
+<col style="width: 19%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">ClienteID</th>
+<th style="text-align: right;">VitaminasPrenatales</th>
+<th style="text-align: right;">LocionSinFragancia</th>
+<th style="text-align: right;">JabonSinFragancia</th>
+<th style="text-align: right;">Calcio</th>
+<th style="text-align: right;">Panales</th>
+<th style="text-align: right;">Toallitas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="aprendizaje-no-supervisado-caso-target-4" class="slide level2">
+<h2>Aprendizaje no supervisado, caso Target</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Aplicar K-means</span></span>
+<span id="cb1-2"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reproducibilidad</span></span>
+<span id="cb1-3"><a href=""></a>kmeans_result <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">kmeans</span>(Target_ejemplo[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">centers =</span> <span class="dv">3</span>)</span>
+<span id="cb1-4"><a href=""></a></span>
+<span id="cb1-5"><a href=""></a><span class="co"># Añadir los resultados del cluster al dataframe</span></span>
+<span id="cb1-6"><a href=""></a>Target_ejemplo <span class="ot">&lt;-</span> Target_ejemplo <span class="sc">%&gt;%</span>  </span>
+<span id="cb1-7"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">Cluster =</span> <span class="fu">as_factor</span>(kmeans_result<span class="sc">$</span>cluster) ) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-8"><a href=""></a>  <span class="fu">select</span>(ClienteID, Cluster, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="aprendizaje-no-supervisado-caso-target-5" class="slide level2">
+<h2>Aprendizaje no supervisado, caso Target</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table>
+<colgroup>
+<col style="width: 10%">
+<col style="width: 8%">
+<col style="width: 20%">
+<col style="width: 19%">
+<col style="width: 18%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">ClienteID</th>
+<th style="text-align: left;">Cluster</th>
+<th style="text-align: right;">VitaminasPrenatales</th>
+<th style="text-align: right;">LocionSinFragancia</th>
+<th style="text-align: right;">JabonSinFragancia</th>
+<th style="text-align: right;">Calcio</th>
+<th style="text-align: right;">Panales</th>
+<th style="text-align: right;">Toallitas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="aprendizaje-no-supervisado-caso-target-6" class="slide level2">
+<h2>Aprendizaje no supervisado, caso Target</h2>
+
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section></section>
 <section>
 <section id="aprendizaje-por-refuerzo" class="title-slide slide level1 center">
-<h1>Aprendizaje por refuerzo</h1>
+<h1>5. Aprendizaje por refuerzo</h1>
 
 </section>
 <section id="aprendizaje-por-refuerzo-1" class="slide level2">
-<h2>Aprendizaje por refuerzo</h2>
+<h2>5 Aprendizaje por refuerzo</h2>
 <ul>
 <li class="fragment"><p>Entrena al software para que tome decisiones a fin de lograr los mejores resultados.</p></li>
 <li class="fragment"><p>Ensayo y error (Supervisado y no supervisado al mismo tiempo)</p></li>
@@ -475,12 +777,15 @@ Requiere de completa supervisión humana
 <section id="aprendizaje-por-refuerzo-7" class="slide level2">
 <h2>Aprendizaje por refuerzo</h2>
 <video id="video_shortcode_videojs_video5" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Pokemon_IA_3.mp4"></video>
+</section></section>
+<section id="machine-learning-supervisado" class="title-slide slide level1 center">
+<h1>Machine learning supervisado</h1>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
