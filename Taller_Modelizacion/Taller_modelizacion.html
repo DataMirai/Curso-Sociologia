@@ -12,7 +12,7 @@
 <link href="Taller_modelizacion_files/libs/quarto-contrib/videojs/video-js.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.553">
 
-  <title>Modelizando</title>
+  <title>Que comience el periplo de la Modelización</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -393,7 +393,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Modelizando</h1>
+  <h1 class="title">Que comience el periplo de la Modelización</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -417,7 +417,106 @@
 <h1>2. Tipos de modelos</h1>
 
 </section>
-<section id="tipos-de-modelos-1" class="slide level2 scrollable">
+<section id="tipos-de-modelos-1" class="slide level2">
+<h2>Tipos de modelos</h2>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;"><strong>Modelos explicativos</strong></th>
+<th style="text-align: left;"><strong>Modelos predictivos</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Relación x e y</td>
+<td style="text-align: left;">Causalidad</td>
+<td style="text-align: left;">Asociación</td>
+</tr>
+<tr class="even">
+<td>Protagonista</td>
+<td style="text-align: left;">Teoria</td>
+<td style="text-align: left;">Datos</td>
+</tr>
+<tr class="odd">
+<td>Visión</td>
+<td style="text-align: left;">Retrospectiva</td>
+<td style="text-align: left;">Futura</td>
+</tr>
+<tr class="even">
+<td>Varianza</td>
+<td style="text-align: left;">Minimizar sesgo</td>
+<td style="text-align: left;">Maximizar predicción</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tipos-de-modelos-2" class="slide level2">
+<h2>Tipos de modelos</h2>
+<table>
+<colgroup>
+<col style="width: 26%">
+<col style="width: 37%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Modelos explicativos</th>
+<th>Modelos predictivos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Objetivos</td>
+<td>Establecer relaciones causales</td>
+<td>Predecir diagnósticos actuales o resultados futuros</td>
+</tr>
+<tr class="even">
+<td>Precaución</td>
+<td>Las posibilidades de hallazgos (Error tipo I)</td>
+<td>No ajuste: falta de generalizabilidad a nuevas poblaciones</td>
+</tr>
+<tr class="odd">
+<td>Variables candidatas</td>
+<td>Un conjunto limitado de factores de riesgo y factores de confusión</td>
+<td>Muchos predictores potenciales; algunos pueden no tener relación causal con el resultado.</td>
+</tr>
+<tr class="even">
+<td>Selección de variables</td>
+<td>Basada en hipótesis; No debe utilizar procedimientos de selección automatizados.</td>
+<td>Exploratorio; Puede utilizar procedimientos de selección automatizados, siempre con la correspondiente validación.</td>
+</tr>
+<tr class="odd">
+<td>Formas de ver el rendimiento</td>
+<td>Tamaño de los coeficientes y nivel de significación de las variables</td>
+<td>Discriminación (análisis ROC); calibración (Hosmer-Lemeshow); de ajuste (R2, AIC); reclasificación (índice de reclasificación neta);</td>
+</tr>
+<tr class="even">
+<td>Validación</td>
+<td>Se necesitan nuevos estudios para confirmar las relaciones causales individuales</td>
+<td>Validación interna; muestreo dividido; validación cruzada; bootstrap; validación externa.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tipos-de-modelos-3" class="slide level2">
+<h2>Tipos de modelos</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Los investigadores con objetivos <strong>explicativos</strong> se desvían.</p>
+<p>Intentan optimizar métricas del modelo; <span class="math inline">\(R^2\)</span>,curvas ROC …, y descuidan cuestiones como la confusión.</p>
+</div><div class="column" style="width:50%;">
+<p>Los investigadores con objetivos <strong>predictivos</strong> se desvían.</p>
+<p>preocupándose por los coeficientes <span class="math inline">\(\beta\)</span> y valores p, y omiten omiten pasos críticos como la calibración o la validación.</p>
+</div>
+</div>
+</section>
+<section id="tipos-de-modelos-4" class="slide level2">
+<h2>Tipos de modelos</h2>
+
+<img data-src="Imagenes/Dilema.jpg" class="r-stretch"></section>
+<section id="tipos-de-modelos-5" class="slide level2 scrollable">
 <h2>Tipos de modelos</h2>
 <ol type="1">
 <li class="fragment">Aprendizaje <strong>supervisado</strong></li>
@@ -770,140 +869,46 @@
 <li class="fragment"><p>Requiere menos interacción humana</p></li>
 </ol>
 </section>
-<section id="aprendizaje-por-refuerzo-3" class="slide level2">
-<h2>Aprendizaje por refuerzo</h2>
+<section id="aprendizaje-por-refuerzo-mario" class="slide level2">
+<h2>Aprendizaje por refuerzo (Mario)</h2>
 <video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Mario_IA_1.mp4"></video>
 </section>
-<section id="aprendizaje-por-refuerzo-4" class="slide level2">
-<h2>Aprendizaje por refuerzo</h2>
+<section id="aprendizaje-por-refuerzo-mario-1" class="slide level2">
+<h2>Aprendizaje por refuerzo (Mario)</h2>
 <video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Mario_IA_2.mp4"></video>
 </section>
-<section id="aprendizaje-por-refuerzo-5" class="slide level2">
-<h2>Aprendizaje por refuerzo</h2>
+<section id="aprendizaje-por-refuerzo-pokemon" class="slide level2">
+<h2>Aprendizaje por refuerzo (Pokemon)</h2>
 <video id="video_shortcode_videojs_video3" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Pokemon_IA_1.mp4"></video>
 </section>
-<section id="aprendizaje-por-refuerzo-6" class="slide level2">
-<h2>Aprendizaje por refuerzo</h2>
+<section id="aprendizaje-por-refuerzo-pokemon-1" class="slide level2">
+<h2>Aprendizaje por refuerzo (Pokemon)</h2>
 <video id="video_shortcode_videojs_video4" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Pokemon_IA_2.mp4"></video>
 </section>
-<section id="aprendizaje-por-refuerzo-7" class="slide level2">
-<h2>Aprendizaje por refuerzo</h2>
+<section id="aprendizaje-por-refuerzo-pokemon-2" class="slide level2">
+<h2>Aprendizaje por refuerzo (Pokemon)</h2>
 <video id="video_shortcode_videojs_video5" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Pokemon_IA_3.mp4"></video>
+</section>
+<section id="aprendizaje-por-refuerzo-casos-famosos" class="slide level2">
+<h2>Aprendizaje por refuerzo (Casos famosos)</h2>
+<p><strong>AlphaGo y AlphaZero</strong>: Desarrollados por DeepMind, estos sistemas lograron hitos significativos en juegos complejos como el Go, el ajedrez y el shogi.</p>
+<ul>
+<li class="fragment"><em>AlphaGo</em> derrotó al campeón mundial de Go, Lee Sedol, en 2016</li>
+<li class="fragment"><em>AlphaZero</em> superó a los mejores programas de ajedrez y shogi tras solo unas pocas horas de autoentrenamiento, aprendiendo desde cero sin datos previos.</li>
+</ul>
+</section>
+<section id="aprendizaje-por-refuerzo-casos-famosos-1" class="slide level2">
+<h2>Aprendizaje por refuerzo (Casos famosos)</h2>
+<p><strong>StarCraft II</strong>: AlphaStar, también de DeepMind, logró un desempeño notable en StarCraft II, otro juego de estrategia en tiempo real muy complejo.</p>
+<p>En 2019, <strong>AlphaStar compitió y venció a jugadores profesionales</strong>, demostrando habilidades avanzadas de planificación, microgestión y toma de decisiones y <strong>sin superar el número de comandos por minuto que un jugador profesional promedio hacía</strong>.</p>
 </section></section>
 <section>
-<section id="tipos-de-modelos-2" class="title-slide slide level1 center">
-<h1>Tipos de modelos 2</h1>
+<section id="métricas" class="title-slide slide level1 center">
+<h1>6 Métricas</h1>
 
 </section>
-<section id="tipos-de-modelos-2-1" class="slide level2">
-<h2>Tipos de modelos 2</h2>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: left;"><strong>Modelos explicativos</strong></th>
-<th style="text-align: left;"><strong>Modelos predictivos</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Relación x e y</td>
-<td style="text-align: left;">Causalidad</td>
-<td style="text-align: left;">Asociación</td>
-</tr>
-<tr class="even">
-<td>Protagonista</td>
-<td style="text-align: left;">Teoria</td>
-<td style="text-align: left;">Datos</td>
-</tr>
-<tr class="odd">
-<td>Visión</td>
-<td style="text-align: left;">Retrospectiva</td>
-<td style="text-align: left;">Futura</td>
-</tr>
-<tr class="even">
-<td>Varianza</td>
-<td style="text-align: left;">Minimizar sesgo</td>
-<td style="text-align: left;">Maximizar predicción</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="tipos-de-modelos-2-2" class="slide level2">
-<h2>Tipos de modelos 2</h2>
-<table>
-<colgroup>
-<col style="width: 26%">
-<col style="width: 37%">
-<col style="width: 36%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th>Modelos explicativos</th>
-<th>Modelos predictivos</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Objetivos</td>
-<td>Establecer relaciones causales</td>
-<td>Predecir diagnósticos actuales o resultados futuros</td>
-</tr>
-<tr class="even">
-<td>Precaución</td>
-<td>Las posibilidades de hallazgos (Error tipo I)</td>
-<td>No ajuste: falta de generalizabilidad a nuevas poblaciones</td>
-</tr>
-<tr class="odd">
-<td>Variables candidatas</td>
-<td>Un conjunto limitado de factores de riesgo y factores de confusión</td>
-<td>Muchos predictores potenciales; algunos pueden no tener relación causal con el resultado.</td>
-</tr>
-<tr class="even">
-<td>Selección de variables</td>
-<td>Basada en hipótesis; No debe utilizar procedimientos de selección automatizados.</td>
-<td>Exploratorio; Puede utilizar procedimientos de selección automatizados, siempre con la correspondiente validación.</td>
-</tr>
-<tr class="odd">
-<td>Formas de ver el rendimiento</td>
-<td>Tamaño de los coeficientes y nivel de significación de las variables</td>
-<td>Discriminación (análisis ROC); calibración (Hosmer-Lemeshow); de ajuste (R2, AIC); reclasificación (índice de reclasificación neta);</td>
-</tr>
-<tr class="even">
-<td>Validación</td>
-<td>Se necesitan nuevos estudios para confirmar las relaciones causales individuales</td>
-<td>Validación interna; muestreo dividido; validación cruzada; bootstrap; validación externa.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="tipos-de-modelos-2-3" class="slide level2">
-<h2>Tipos de modelos 2</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Los investigadores con objetivos <strong>explicativos</strong> se desvían.</p>
-<p>Intentan optimizar métricas del modelo; <span class="math inline">\(R^2\)</span>,curvas ROC …, y descuidan cuestiones como la confusión.</p>
-</div><div class="column" style="width:50%;">
-<p>Los investigadores con objetivos <strong>predictivos</strong> se desvían.</p>
-<p>preocupándose por los coeficientes <span class="math inline">\(\beta\)</span> y valores p, y omiten omiten pasos críticos como la calibración o la validación.</p>
-</div>
-</div>
-</section>
-<section id="tipos-de-modelos-2-4" class="slide level2">
-<h2>Tipos de modelos 2</h2>
-
-<img data-src="Imagenes/Dilema.jpg" class="r-stretch"></section>
-<section id="tipos-de-modelos-2-5" class="slide level2">
-<h2>Tipos de modelos 2</h2>
-</section></section>
-<section>
-<section id="metricas" class="title-slide slide level1 center">
-<h1>Metricas</h1>
-
-</section>
-<section id="métricas-para-modelos-de-respuesta-numérica" class="slide level2">
-<h2>Métricas para modelos de respuesta Numérica</h2>
+<section id="métricas-para-modelos-de-regresión" class="slide level2">
+<h2>6.1 Métricas para modelos de regresión</h2>
 <p>Toda métrica de evaluación para un modelo de machine learning supervisado se basa en el siguiente concepto:</p>
 <p><span class="math display">\[
 e_{i} = original_{i} - prediccion_{i}
@@ -1220,8 +1225,8 @@ AIC = 2{k} - \ln(\mathcal{L})
 <h2>Métricas: AIC</h2>
 <p><img data-src="Imagenes/AIC%20vs%20R2.png" width="711" height="469"></p>
 </section>
-<section id="métricas-para-modelos-de-respuesta-numérica-1" class="slide level2">
-<h2>Métricas para modelos de respuesta Numérica</h2>
+<section id="métricas-para-modelos-clasifiación" class="slide level2">
+<h2>6.2 Métricas para modelos clasifiación</h2>
 <p>Toda métrica de evaluación para un modelo de machine learning supervisado se basa en el siguiente concepto:</p>
 <table>
 <thead>
@@ -1244,6 +1249,164 @@ AIC = 2{k} - \ln(\mathcal{L})
 </tr>
 </tbody>
 </table>
+</section>
+<section id="métricas-accuracy" class="slide level2">
+<h2>Métricas: Accuracy</h2>
+<ul>
+<li class="fragment"><p>La <strong>Precisión</strong> (Accuracy).</p></li>
+<li class="fragment"><p>Medida que evalúa la proporción de predicciones correctas sobre el total de predicciones realizadas. <span class="math display">\[
+  Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
+  \]</span> Donde:</p>
+<ul>
+<li class="fragment"><em>TP</em> es el número de verdaderos positivos.</li>
+<li class="fragment"><em>TN</em> es el número de verdaderos negativos.</li>
+<li class="fragment"><em>FP</em> es el número de falsos positivos.</li>
+<li class="fragment"><em>FN</em> es el número de falsos negativos.</li>
+</ul></li>
+</ul>
+</section>
+<section id="métricas-accuracy-1" class="slide level2">
+<h2>Métricas: Accuracy</h2>
+<ul>
+<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>predicciones correctas</strong>.</p></li>
+<li class="fragment"><div style="color:#8ABF74;">
+<p>Fácil de interpretar y calcular.</p>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<ul>
+<li class="fragment">Puede ser engañosa en conjuntos de datos desbalanceados.</li>
+</ul>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<p><strong>No distingue entre tipos de errores</strong>.</p>
+</div>
+<p>Trata todos los errores por igual, independientemente de si son falsos positivos o falsos negativos.</p></li>
+</ul>
+</section>
+<section id="métricas-accuracy-2" class="slide level2">
+<h2>Métricas: Accuracy</h2>
+<ul>
+<li class="fragment">Una Accuracy de 1 indica que el modelo predice todas las clases correctamente.</li>
+<li class="fragment">Accuracy cercana a 0 indica un bajo rendimiento del modelo.</li>
+<li class="fragment">En contextos con clases desbalanceadas, otras métricas suelen ser más informativas.</li>
+</ul>
+</section>
+<section id="métricas-sensibilidad" class="slide level2">
+<h2>Métricas: Sensibilidad</h2>
+<ul>
+<li class="fragment"><p>La <strong>Sensibilidad</strong> (también conocida como <strong>Recall</strong> o <strong>Tasa de Verdaderos Positivos</strong>).</p></li>
+<li class="fragment"><p>Medida que evalúa la proporción de verdaderos positivos sobre el total de positivos. <span class="math display">\[
+  Sensibilidad = \frac{TP}{TP + FN}
+  \]</span> Donde:</p>
+<ul>
+<li class="fragment"><em>TP</em> es el número de verdaderos positivos.</li>
+<li class="fragment"><em>FN</em> es el número de falsos negativos.</li>
+</ul></li>
+</ul>
+</section>
+<section id="métricas-sensibilidad-1" class="slide level2">
+<h2>Métricas: Sensibilidad</h2>
+<ul>
+<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>capacidad para identificar correctamente los positivos</strong>.</p></li>
+<li class="fragment"><div style="color:#8ABF74;">
+<p>Importante en contextos donde es crucial identificar correctamente todos los casos positivos. (enfermedad)</p>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<ul>
+<li class="fragment">Puede ser alta a costa de aumentar los falsos positivos.</li>
+</ul>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<p><strong>No considera la tasa de falsos positivos</strong>.</p>
+</div>
+<p>Puede no ser suficiente por sí sola para evaluar el rendimiento global del modelo.</p></li>
+</ul>
+</section>
+<section id="métricas-sensibilidad-2" class="slide level2">
+<h2>Métricas: Sensibilidad</h2>
+<ul>
+<li class="fragment">Una Sensibilidad de 1 indica que el modelo identifica correctamente todos los positivos reales.</li>
+<li class="fragment">Sensibilidad cercana a 0 indica que el modelo identifica incorrectamente la mayoría de los positivos reales.</li>
+<li class="fragment">Es útil en contextos donde los falsos negativos son más costosos que los falsos positivos.</li>
+</ul>
+</section>
+<section id="métricas-especificidad" class="slide level2">
+<h2>Métricas: Especificidad</h2>
+<ul>
+<li class="fragment"><p>La <strong>Especificidad</strong> (también conocida como <strong>Tasa de Verdaderos Negativos</strong>).</p></li>
+<li class="fragment"><p>Medida que evalúa la proporción de verdaderos negativos correctamente identificados por el modelo sobre el total de negativos reales. <span class="math display">\[
+  Especificidad = \frac{TN}{TN + FP}
+  \]</span> Donde:</p>
+<ul>
+<li class="fragment"><em>TN</em> es el número de verdaderos negativos.</li>
+<li class="fragment"><em>FP</em> es el número de falsos positivos.</li>
+</ul></li>
+</ul>
+</section>
+<section id="métricas-especificidad-1" class="slide level2">
+<h2>Métricas: Especificidad</h2>
+<ul>
+<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>capacidad para identificar correctamente los negativos</strong>.</p></li>
+<li class="fragment"><div style="color:#8ABF74;">
+<p>Importante en contextos donde es crucial identificar correctamente todos los casos negativos.</p>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<ul>
+<li class="fragment">Puede ser alta a costa de aumentar los falsos negativos.</li>
+</ul>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<p><strong>No considera la tasa de falsos negativos</strong>.</p>
+</div>
+<p>Puede no ser suficiente por sí sola para evaluar el rendimiento global del modelo.</p></li>
+</ul>
+</section>
+<section id="métricas-especificidad-2" class="slide level2">
+<h2>Métricas: Especificidad</h2>
+<ul>
+<li class="fragment">Una Especificidad de 1 indica que el modelo identifica correctamente todos los negativos reales.</li>
+<li class="fragment">Especificidad cercana a 0 indica que el modelo identifica incorrectamente la mayoría de los negativos reales.</li>
+<li class="fragment">Es útil en contextos donde los falsos positivos son más costosos que los falsos negativos.</li>
+</ul>
+</section>
+<section id="métricas-j-index" class="slide level2">
+<h2>Métricas: J-Index</h2>
+<ul>
+<li class="fragment"><p>El <strong>Índice de Youden</strong> (J-Index por sus siglas en inglés).</p></li>
+<li class="fragment"><p>Medida que combina la sensibilidad y la especificidad para evaluar el rendimiento general del modelo. <span class="math display">\[
+  J = Sensibilidad + Especificidad - 1
+  \]</span> Donde:</p>
+<ul>
+<li class="fragment"><em>Sensibilidad</em> es la tasa de verdaderos positivos.</li>
+<li class="fragment"><em>Especificidad</em> es la tasa de verdaderos negativos.</li>
+</ul></li>
+</ul>
+</section>
+<section id="métricas-j-index-1" class="slide level2">
+<h2>Métricas: J-Index</h2>
+<ul>
+<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>balance entre sensibilidad y especificidad</strong>.</p></li>
+<li class="fragment"><div style="color:#8ABF74;">
+<p>Proporciona una medida equilibrada del rendimiento del modelo considerando tanto los verdaderos positivos como los verdaderos negativos.</p>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<ul>
+<li class="fragment">No distingue entre tipos de errores ni pondera la importancia relativa de sensibilidad y especificidad.</li>
+</ul>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<p><strong>Puede no ser suficiente por sí solo</strong>.</p>
+</div>
+<p>Es útil en combinación con otras métricas para una evaluación más completa.</p></li>
+</ul>
+</section>
+<section id="métricas-j-index-2" class="slide level2">
+<h2>Métricas: J-Index</h2>
+<ul>
+<li class="fragment">Un J-Index de 1 indica que el modelo predice perfectamente tanto los positivos como los negativos reales.</li>
+<li class="fragment">J-Index cercano a 0 indica un bajo rendimiento del modelo.</li>
+<li class="fragment">Es útil para comparar modelos en términos de su capacidad global para diferenciar entre clases.</li>
+</ul>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 

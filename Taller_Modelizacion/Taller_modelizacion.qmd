@@ -1,5 +1,5 @@
 ---
-title: "Modelizando"
+title: "Que comience el periplo de la Modelización"
 format:
   revealjs:
     incremental: true  
@@ -131,13 +131,33 @@ máquinas."*
 
 ## Aprendizaje supervisado
 
-1)  Árboles de decisión
-2)  Naïve Bayes
-3)  Regresión
+1)  Regresión
+2)  Árboles de decisión
+3)  Naïve Bayes
 4)  Técnicas de Supervivencia
 5)  Support Vector Machines (SVM)
 6)  SARIMA models
 7)  Redes neuronales
+
+## Aprendizaje supervisado (Regresión)
+
+
+## Aprendizaje supervisado (Árboles de decisión)
+
+## Aprendizaje supervisado (Naïve Bayes)
+
+## Aprendizaje supervisado (Técnicas de Supervivencia)
+
+## Aprendizaje supervisado (Técnicas de Supervivencia)
+
+## Aprendizaje supervisado (Support Vector Machines)
+
+## Aprendizaje supervisado (SARIMA models)
+
+## Aprendizaje supervisado (Redes neuronales)
+
+
+
 
 # 4. Aprendizaje no supervisado
 
@@ -294,16 +314,16 @@ Target_ejemplo %>%
 
 ## Aprendizaje por refuerzo (Casos famosos)
 
-**AlphaGo y AlphaZero**: Desarrollados por DeepMind, estos sistemas lograron hitos significativos en juegos complejos como el Go, el
-ajedrez y el shogi. 
+**AlphaGo y AlphaZero**: Desarrollados por DeepMind, estos sistemas lograron hitos significativos en juegos complejos como el Go, el ajedrez y el shogi. 
 
-**AlphaGo derrotó al campeón mundial de Go, Lee Sedol**, en 2016, mientras que AlphaZero superó a los mejores
-    programas de ajedrez y shogi tras solo unas pocas horas de
-    autoentrenamiento, aprendiendo desde cero sin datos previos.
+- *AlphaGo* derrotó al campeón mundial de Go, Lee Sedol, en 2016 
+- *AlphaZero* superó a los mejores programas de ajedrez y shogi tras solo unas pocas horas de autoentrenamiento, aprendiendo desde cero sin datos previos.
 
 ## Aprendizaje por refuerzo (Casos famosos)
 
-**StarCraft II**: AlphaStar, también de DeepMind, logró un desempeño notable en StarCraft II, otro juego de estrategia en tiempo real muy complejo. En 2019, AlphaStar compitió y venció a jugadores profesionales, demostrando habilidades avanzadas de planificación, microgestión y toma de decisiones y sin superar el número de comandos por minuto que un jugador profesional promedio hacía.
+**StarCraft II**: AlphaStar, también de DeepMind, logró un desempeño notable en StarCraft II, otro juego de estrategia en tiempo real muy complejo. 
+
+En 2019, **AlphaStar compitió y venció a jugadores profesionales**, demostrando habilidades avanzadas de planificación, microgestión y toma de decisiones y **sin superar el número de comandos por minuto que un jugador profesional promedio hacía**.
 
 
 
@@ -312,9 +332,9 @@ ajedrez y el shogi.
 
 
 
-# Metricas
+# 6 Métricas
 
-## Métricas para modelos de respuesta Numérica
+## 6.1 Métricas para modelos de regresión
 
 Toda métrica de evaluación para un modelo de machine learning
 supervisado se basa en el siguiente concepto:
@@ -328,6 +348,7 @@ $$
 $$
 e_{i} = f(y_{i} - \hat{y_{i}})
 $$
+
 
 ## Métricas: MAE
 
@@ -678,7 +699,11 @@ $$
 
 ![](Imagenes/AIC%20vs%20R2.png){width="711" height="469"}
 
-## Métricas para modelos de respuesta Numérica
+
+
+
+
+## 6.2 Métricas para modelos clasifiación
 
 Toda métrica de evaluación para un modelo de machine learning
 supervisado se basa en el siguiente concepto:
@@ -687,3 +712,276 @@ supervisado se basa en el siguiente concepto:
 |-------------------------|---------------------|---------------------|
 | **Dato original TRUE**  | TRUE Positivo (TP)  | FALSE Positive (FP) |
 | **Dato original FALSE** | Falso Negativo (FN) | True Negativo (TN)  |
+
+
+
+
+
+## Métricas: Accuracy
+
+- La **Precisión** (Accuracy).
+
+- Medida que evalúa la proporción de predicciones correctas sobre el total de predicciones realizadas.
+    $$
+    Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
+    $$
+    Donde:
+    -   *TP* es el número de verdaderos positivos.
+    -   *TN* es el número de verdaderos negativos.
+    -   *FP* es el número de falsos positivos.
+    -   *FN* es el número de falsos negativos.
+    
+## Métricas: Accuracy
+
+- Métrica que evalúa el rendimiento del modelo en términos de **predicciones correctas**.
+
+-   ::: {style="color:#8ABF74;"}
+    Fácil de interpretar y calcular.
+    :::
+
+-   ::: {style="color:#BF1E1A;"}
+    - Puede ser engañosa en conjuntos de datos desbalanceados.
+    :::
+
+-   ::: {style="color:#BF1E1A;"}
+    **No distingue entre tipos de errores**.
+    :::
+    Trata todos los errores por igual, independientemente de si son falsos positivos o falsos negativos.
+
+## Métricas: Accuracy
+
+- Una Accuracy de 1 indica que el modelo predice todas las clases correctamente.
+- Accuracy cercana a 0 indica un bajo rendimiento del modelo.
+- En contextos con clases desbalanceadas, otras métricas suelen ser más informativas.
+
+
+
+
+## Métricas: Precision
+
+- La **Precisión** (Precision), también conocida como **Valor Predictivo Positivo**.
+
+- Medida que evalúa la proporción de verdaderos positivos sobre el total de predicciones positivas realizadas por el modelo.
+    $$
+    Precision = \frac{TP}{TP + FP}
+    $$
+    Donde:
+    -   *TP* es el número de verdaderos positivos.
+    -   *FP* es el número de falsos positivos.
+    
+## Métricas: Precision
+
+- Métrica que evalúa el rendimiento del modelo en términos de **exactitud de las predicciones positivas**.
+
+-   ::: {style="color:#8ABF74;"}
+    Importante en contextos donde es crucial minimizar los falsos positivos.
+    :::
+
+-   ::: {style="color:#BF1E1A;"}
+    - Puede ser alta a costa de reducir la sensibilidad.
+    :::
+
+-   ::: {style="color:#BF1E1A;"}
+    **No considera los falsos negativos**.
+    :::
+    Puede no ser suficiente por sí sola para evaluar el rendimiento global del modelo.
+
+## Métricas: Precision
+
+- Una Precisión de 1 indica que todas las predicciones positivas del modelo son correctas.
+- Precisión cercana a 0 indica un alto número de falsos positivos.
+- Es útil en contextos donde los falsos positivos son más costosos que los falsos negativos.
+
+
+
+
+
+## Métricas: Sensibilidad
+
+- La **Sensibilidad** (también conocida como **Recall** o **Tasa de Verdaderos Positivos**).
+
+- Medida que evalúa la proporción de verdaderos positivos sobre el total de positivos.
+    $$
+    Sensibilidad = \frac{TP}{TP + FN}
+    $$
+    Donde:
+    -   *TP* es el número de verdaderos positivos.
+    -   *FN* es el número de falsos negativos.
+    
+
+
+
+    
+## Métricas: Sensibilidad
+
+- Métrica que evalúa el rendimiento del modelo en términos de **capacidad para identificar correctamente los positivos**.
+
+-   ::: {style="color:#8ABF74;"}
+    Importante en contextos donde es crucial identificar correctamente todos los casos positivos. (enfermedad)
+    :::
+
+-   ::: {style="color:#BF1E1A;"}
+    - Puede ser alta a costa de aumentar los falsos positivos.
+    :::
+
+-   ::: {style="color:#BF1E1A;"}
+    **No considera la tasa de falsos positivos**.
+    :::
+    Puede no ser suficiente por sí sola para evaluar el rendimiento global del modelo.
+
+## Métricas: Sensibilidad
+
+- Una Sensibilidad de 1 indica que el modelo identifica correctamente todos los positivos reales.
+- Sensibilidad cercana a 0 indica que el modelo identifica incorrectamente la mayoría de los positivos reales.
+- Es útil en contextos donde los falsos negativos son más costosos que los falsos positivos.
+
+
+
+## Métricas: Especificidad
+
+- La **Especificidad** (también conocida como **Tasa de Verdaderos Negativos**).
+
+- Medida que evalúa la proporción de verdaderos negativos sobre el total de negativos.
+    $$
+    Especificidad = \frac{TN}{TN + FP}
+    $$
+    Donde:
+    -   *TN* es el número de verdaderos negativos.
+    -   *FP* es el número de falsos positivos.
+    
+## Métricas: Especificidad
+
+- Métrica que evalúa el rendimiento del modelo en términos de **capacidad para identificar correctamente los negativos**.
+
+-   ::: {style="color:#8ABF74;"}
+    Importante en contextos donde es crucial identificar correctamente todos los casos negativos. (Inclusión)
+    :::
+
+-   ::: {style="color:#BF1E1A;"}
+    - Puede ser alta a costa de aumentar los falsos negativos.
+    :::
+
+-   ::: {style="color:#BF1E1A;"}
+    **No considera la tasa de falsos negativos**.
+    :::
+    Insuficiente por sí sola para evaluar el rendimiento global del modelo.
+
+## Métricas: Especificidad
+
+- Una Especificidad de 1 indica que el modelo identifica correctamente todos los negativos reales.
+- Especificidad cercana a 0 indica que el modelo identifica incorrectamente la mayoría de los negativos reales.
+- Es útil en contextos donde los falsos positivos son más costosos que los falsos negativos.
+
+
+
+## Métricas: J-Index
+
+- El **Índice de Youden** (J-Index por sus siglas en inglés).
+
+- Medida que combina la sensibilidad y la especificidad para evaluar el rendimiento general del modelo.
+    $$
+    J = Sensibilidad + Especificidad - 1
+    $$
+    Donde:
+    -   *Sensibilidad* es la tasa de verdaderos positivos.
+    -   *Especificidad* es la tasa de verdaderos negativos.
+    
+## Métricas: J-Index
+
+- Métrica que evalúa el rendimiento del modelo en términos de **balance entre sensibilidad y especificidad**.
+
+-   ::: {style="color:#8ABF74;"}
+    Proporciona una medida equilibrada del rendimiento del modelo considerando tanto los verdaderos positivos como los verdaderos negativos.
+    :::
+
+-   ::: {style="color:#BF1E1A;"}
+    - No pondera la importancia relativa de sensibilidad y especificidad, no distingue entre tipos de errores.
+    :::
+
+-   ::: {style="color:#BF1E1A;"}
+    **Puede no ser suficiente por sí solo**.
+    :::
+    Es útil en combinación con otras métricas para una evaluación más completa.
+
+## Métricas: J-Index
+
+- Un J-Index de 1 indica que el modelo predice perfectamente tanto los positivos como los negativos reales.
+- J-Index cercano a 0 indica un bajo rendimiento del modelo.
+- Es útil para comparar modelos en términos de su capacidad global para diferenciar entre clases.
+
+## Métricas: F1 Score
+
+- El **F1 Score**.
+
+- Medida que combina la precisión y la sensibilidad en una única métrica armonizada.
+    $$
+    F1\ Score = 2 \times \frac{Precision \times Sensibilidad}{Precision + Sensibilidad}
+    $$
+    Donde:
+    -   *Precision* es la precisión.
+    -   *Sensibilidad* es la sensibilidad (también conocida como recall).
+    
+## Métricas: F1 Score
+
+- Métrica que evalúa el rendimiento del modelo en términos de **balance entre precisión y sensibilidad**.
+
+-   ::: {style="color:#8ABF74;"}
+    Proporciona una medida equilibrada del rendimiento del modelo cuando hay una distribución desigual de clases.
+    :::
+
+-   ::: {style="color:#BF1E1A;"}
+    - Puede no ser suficiente por sí sola en todos los contextos.
+    :::
+
+-   ::: {style="color:#BF1E1A;"}
+    **Puede ser influenciada por clases desbalanceadas**.
+    :::
+    Es útil en combinación con otras métricas para una evaluación más completa.
+
+## Métricas: F1 Score
+
+- Un F1 Score de 1 indica que el modelo tiene perfecta precisión y sensibilidad.
+- F1 Score cercano a 0 indica un bajo rendimiento del modelo.
+- Es útil cuando se busca un equilibrio entre precisión y sensibilidad, especialmente en conjuntos de datos desbalanceados.
+
+
+
+
+## Métricas: False Discovery Rate
+
+- La **Tasa de Falsos Descubrimientos** (False Discovery Rate, FDR).
+
+- Medida que evalúa la proporción de falsos positivos sobre el total de predicciones positivas realizadas por el modelo.
+    $$
+    FDR = \frac{FP}{TP + FP}
+    $$
+    Donde:
+    -   *FP* es el número de falsos positivos.
+    -   *TP* es el número de verdaderos positivos.
+    
+## Métricas: False Discovery Rate
+
+- Métrica que evalúa el rendimiento del modelo en términos de **proporción de falsos positivos** en las predicciones positivas.
+
+-   ::: {style="color:#8ABF74;"}
+    Útil en contextos donde es crucial controlar el número de falsos positivos.
+    :::
+
+-   ::: {style="color:#BF1E1A;"}
+    - Puede ser alta si el modelo tiene baja precisión.
+    :::
+
+-   ::: {style="color:#BF1E1A;"}
+    **No considera los verdaderos negativos ni los falsos negativos**.
+    :::
+    Se enfoca solo en las predicciones positivas.
+
+## Métricas: False Discovery Rate
+
+- Una FDR de 0 indica que no hay falsos positivos en las predicciones positivas del modelo.
+- FDR cercana a 1 indica que la mayoría de las predicciones positivas son incorrectas.
+- Es útil en contextos donde los falsos positivos son más costosos y deben ser minimizados.
+
+
+
+
