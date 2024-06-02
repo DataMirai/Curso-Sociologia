@@ -469,10 +469,21 @@
 <h2>Aprendizaje supervisado</h2>
 <ul>
 <li class="fragment">Educación: Despido de profesores en Washington DC y Chicago por dar demasiado peso en la fórmula las bajas calificaciones de los alumnos.</li>
-<li class="fragment">Justicia:</li>
-<li class="fragment">Política: microtargeting</li>
-<li class="fragment">Economía: sesgos en el crédito</li>
+<li class="fragment">Justicia: Janet Collins y su esposo Malcolm a la cárcel por una probabilidad de 1 entre 12 millones.</li>
+<li class="fragment">Política: microtargeting político en redes para dirigir campañas.</li>
+<li class="fragment">Economía: sesgos en el crédito y trabajo de tipo espiral retroalimentativa.</li>
 </ul>
+</section>
+<section id="aprendizaje-supervisado-5" class="slide level2 scrollable">
+<h2>Aprendizaje supervisado</h2>
+<ol type="1">
+<li class="fragment">Árboles de decisión</li>
+<li class="fragment">Naïve Bayes</li>
+<li class="fragment">Regresión</li>
+<li class="fragment">Support Vector Machines (SVM)</li>
+<li class="fragment">SARIMA models</li>
+<li class="fragment">Redes neuronales</li>
+</ol>
 </section></section>
 <section>
 <section id="aprendizaje-no-supervisado" class="title-slide slide level1 center">
@@ -786,6 +797,40 @@
 <section id="tipos-de-modelos-2-1" class="slide level2">
 <h2>Tipos de modelos 2</h2>
 <table>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;"><strong>Modelos explicativos</strong></th>
+<th style="text-align: left;"><strong>Modelos predictivos</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Relación x e y</td>
+<td style="text-align: left;">Causalidad</td>
+<td style="text-align: left;">Asociación</td>
+</tr>
+<tr class="even">
+<td>Protagonista</td>
+<td style="text-align: left;">Teoria</td>
+<td style="text-align: left;">Datos</td>
+</tr>
+<tr class="odd">
+<td>Visión</td>
+<td style="text-align: left;">Retrospectiva</td>
+<td style="text-align: left;">Futura</td>
+</tr>
+<tr class="even">
+<td>Varianza</td>
+<td style="text-align: left;">Minimizar sesgo</td>
+<td style="text-align: left;">Maximizar predicción</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tipos-de-modelos-2-2" class="slide level2">
+<h2>Tipos de modelos 2</h2>
+<table>
 <colgroup>
 <col style="width: 26%">
 <col style="width: 37%">
@@ -812,44 +857,373 @@
 <tr class="odd">
 <td>Variables candidatas</td>
 <td>Un conjunto limitado de factores de riesgo y factores de confusión</td>
-<td>Un conjunto más amplio de predictores potenciales; es posible que algunos predictores no tengan una relación causal con el resultado.</td>
+<td>Muchos predictores potenciales; algunos pueden no tener relación causal con el resultado.</td>
 </tr>
 <tr class="even">
 <td>Selección de variables</td>
-<td>Basada en hipótesis; no debe utilizar procedimientos de selección automatizados.</td>
-<td>Exploratorio;puede utilizar procedimientos de selección automatizados, siempre con la correspondiente validación.</td>
+<td>Basada en hipótesis; No debe utilizar procedimientos de selección automatizados.</td>
+<td>Exploratorio; Puede utilizar procedimientos de selección automatizados, siempre con la correspondiente validación.</td>
 </tr>
 <tr class="odd">
 <td>Formas de ver el rendimiento</td>
-<td>Tamaño de los coeficientes {J para los factores de riesgo individuales; nivel de significación para los factores de riesgo individuales.</td>
-<td>Discriminación (p.&nbsp;ej., análisis ROC); calibración (p.&nbsp;ej., prueba de Hosmer-Lemeshow);bondad de ajuste (p.&nbsp;ej., R2, AIC); reclasificación (p.&nbsp;ej., índice de reclasificación neta); utilidad clínica</td>
+<td>Tamaño de los coeficientes y nivel de significación de las variables</td>
+<td>Discriminación (análisis ROC); calibración (Hosmer-Lemeshow); de ajuste (R2, AIC); reclasificación (índice de reclasificación neta);</td>
 </tr>
 <tr class="even">
 <td>Validación</td>
 <td>Se necesitan nuevos estudios para confirmar las relaciones causales individuales</td>
-<td>Validación interna: validación por muestreo dividido; validación cruzada; validación bootstrap; validación externa.</td>
+<td>Validación interna; muestreo dividido; validación cruzada; bootstrap; validación externa.</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="tipos-de-modelos-2-2" class="slide level2">
+<section id="tipos-de-modelos-2-3" class="slide level2">
 <h2>Tipos de modelos 2</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>Los investigadores con objetivos objetivos explicativos se desvían intentan optimizar métricas del modelo (como los valores R2 o áreas bajo la curva ROC curva ROC) y descuidan cuestiones como la confusión.</p>
+<p>Los investigadores con objetivos <strong>explicativos</strong> se desvían.</p>
+<p>Intentan optimizar métricas del modelo; <span class="math inline">\(R^2\)</span>,curvas ROC …, y descuidan cuestiones como la confusión.</p>
 </div><div class="column" style="width:50%;">
-<p>Los investigadores con objetivos predictivos se desvían preocupándose por los coeficientes b coeficientes y valores p, y omiten omiten pasos críticos como la calibración o la validación.</p>
+<p>Los investigadores con objetivos <strong>predictivos</strong> se desvían.</p>
+<p>preocupándose por los coeficientes <span class="math inline">\(\beta\)</span> y valores p, y omiten omiten pasos críticos como la calibración o la validación.</p>
 </div>
 </div>
+</section>
+<section id="tipos-de-modelos-2-4" class="slide level2">
+<h2>Tipos de modelos 2</h2>
+
+<img data-src="Imagenes/Dilema.jpg" class="r-stretch"></section>
+<section id="tipos-de-modelos-2-5" class="slide level2">
+<h2>Tipos de modelos 2</h2>
 </section></section>
-<section id="machine-learning-supervisado" class="title-slide slide level1 center">
-<h1>Machine learning supervisado</h1>
+<section>
+<section id="metricas" class="title-slide slide level1 center">
+<h1>Metricas</h1>
+
+</section>
+<section id="métricas-para-modelos-de-respuesta-numérica" class="slide level2">
+<h2>Métricas para modelos de respuesta Numérica</h2>
+<p>Toda métrica de evaluación para un modelo de machine learning supervisado se basa</p>
+<p><span class="math display">\[
+e_{i} = original_{i} - prediccion_{i}
+\]</span> <span class="math display">\[
+e_{i} = y_{i} - \hat{y_{i}}
+\]</span></p>
+<p><span class="math display">\[
+e_{i} = f(y_{i} - \hat{y_{i}})
+\]</span></p>
+</section>
+<section id="métricas-mae" class="slide level2">
+<h2>Métricas: MAE</h2>
+<ul>
+<li class="fragment"><p>El <strong>Error Absoluto Medio</strong> (MAE por sus siglas en inglés <em>Mean Absolute Error</em>)</p></li>
+<li class="fragment"><p>Medida de la magnitud promedio de los errores en un conjunto de predicciones, sin considerar su dirección. <span class="math display">\[
+  MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
+  \]</span> Donde:</p>
+<ul>
+<li class="fragment"><em>n</em> es el número de observaciones.</li>
+<li class="fragment"><em>y<sub>i</sub></em> es el valor observado.</li>
+<li class="fragment">*_{i}* es el valor predicho por el modelo.</li>
+</ul></li>
+</ul>
+</section>
+<section id="métricas-mae-1" class="slide level2">
+<h2>Métricas: MAE</h2>
+<ul>
+<li class="fragment"><p>Métrica que evalua el rendimiento del modelo en términos de la magnitud del error. Basada en la <strong>diferencia absoluta promedio</strong>.</p></li>
+<li class="fragment"><div style="color:#8ABF74;">
+<p>Fácil de interpretar ya que se encuentra en la misma escala que los datos originales.</p>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<ul>
+<li class="fragment">No penaliza en exceso los valores atípicos (outliers) o errores extremos.</li>
+</ul>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<p><strong>No considera la dirección de los errores</strong>.</p>
+</div>
+<p>Trata todos los errores por igual, independientemente de si son positivos o negativos.</p></li>
+</ul>
+</section>
+<section id="métricas-mae-2" class="slide level2">
+<h2>Métricas: MAE</h2>
+<ul>
+<li class="fragment">Un MAE de 0 indica que el modelo predice exactamente los valores reales.</li>
+<li class="fragment"><span class="math inline">\(MAE  &gt; 0\)</span> indica que el modelo tiene un mayor error promedio.</li>
+<li class="fragment">No penaliza ni discrimina entre errores grande o pequeños, es un promedio directo.</li>
+</ul>
+</section>
+<section id="métricas-mape" class="slide level2">
+<h2>Métricas: MAPE</h2>
+<ul>
+<li class="fragment"><p>El <strong>Error Absoluto Medio Porcentual</strong> (MAPE por sus siglas en inglés <em>Mean Absolute Percentage Error</em>).</p></li>
+<li class="fragment"><p>Medida de la magnitud promedio de los errores en un conjunto de predicciones, expresada como un porcentaje. <span class="math display">\[
+  MAPE = \frac{100}{n} \sum_{i=1}^{n} \left| \frac{y_i - \hat{y}_i}{y_i} \right|
+  \]</span> Donde:</p>
+<ul>
+<li class="fragment"><em>n</em> es el número de observaciones.</li>
+<li class="fragment"><em>y<sub>i</sub></em> es el valor observado.</li>
+<li class="fragment">*(_i)* es el valor predicho por el modelo.</li>
+</ul></li>
+</ul>
+</section>
+<section id="métricas-mape-1" class="slide level2">
+<h2>Métricas: MAPE</h2>
+<ul>
+<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de la magnitud del error relativo. Basada en la <strong>diferencia porcentual promedio absoluta</strong>.</p></li>
+<li class="fragment"><div style="color:#8ABF74;">
+<p>Expresa el error como un porcentaje, lo cual facilita la interpretación y comparación entre diferentes modelos y escalas.</p>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<ul>
+<li class="fragment">Puede ser muy grande o indefinida si los valores observados son cercanos a cero.</li>
+</ul>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<p><strong>No considera la dirección de los errores</strong>.</p>
+</div>
+<p>Trata todos los errores por igual, independientemente de si son positivos o negativos.</p></li>
+</ul>
+</section>
+<section id="métricas-mape-2" class="slide level2">
+<h2>Métricas: MAPE</h2>
+<ul>
+<li class="fragment">Un MAPE de 0% indica que el modelo predice exactamente los valores reales.</li>
+<li class="fragment">MAPE &gt; 0% indica que el modelo tiene un mayor error porcentual promedio.</li>
+<li class="fragment">Es útil para comparar la precisión de modelos en diferentes escalas y unidades, pero puede ser problemático con valores observados cercanos a cero.</li>
+</ul>
+</section>
+<section id="métricas-mse" class="slide level2">
+<h2>Métricas: MSE</h2>
+<ul>
+<li class="fragment"><p>El <strong>Error Cuadrático Medio</strong> (MSE por sus siglas en inglés <em>Mean Squared Error</em>).</p></li>
+<li class="fragment"><p>Medida de la magnitud promedio de los errores en un conjunto de predicciones, considerando la dirección y penalizando los errores grandes más que los pequeños. <span class="math display">\[
+  MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+  \]</span> Donde:</p>
+<ul>
+<li class="fragment"><em>n</em> es el número de observaciones.</li>
+<li class="fragment"><em>y<sub>i</sub></em> es el valor observado.</li>
+<li class="fragment">*(_i)* es el valor predicho por el modelo.</li>
+</ul></li>
+</ul>
+</section>
+<section id="métricas-mse-1" class="slide level2">
+<h2>Métricas: MSE</h2>
+<ul>
+<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de la magnitud del error. Basada en la <strong>diferencia cuadrática promedio</strong>.</p></li>
+<li class="fragment"><div style="color:#8ABF74;">
+<ul>
+<li class="fragment">Penaliza los errores grandes más que los pequeños debido a la elevación al cuadrado de las diferencias.</li>
+</ul>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<p>Se utiliza principalmente en análisis teóricos y en optimización de modelos de alta complejidad.</p>
+</div>
+<ul>
+<li class="fragment">las unidades del error son al cuadrado, puede ser difícil de interpretar directamente en términos de la escala original de los datos.</li>
+</ul></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<p><strong>Es sensible a los valores atípicos</strong>.</p>
+</div>
+<p>Unos pocos valores atípicos pueden incrementar significativamente el MSE.</p></li>
+</ul>
+</section>
+<section id="métricas-mse-2" class="slide level2">
+<h2>Métricas: MSE</h2>
+<ul>
+<li class="fragment">Un MSE de 0 indica que el modelo predice exactamente los valores reales.</li>
+<li class="fragment">MSE &gt; 0 indica que el modelo tiene un mayor error promedio.</li>
+<li class="fragment">Penaliza más los errores grandes que los pequeños. Útil en contextos donde los errores grandes son especialmente perjudiciales.</li>
+</ul>
+</section>
+<section id="métricas-rmse" class="slide level2">
+<h2>Métricas: RMSE</h2>
+<ul>
+<li class="fragment"><p>El <strong>Error Cuadrático Medio Raiz</strong> (RMSE por sus siglas en inglés <em>Root Mean Squared Error</em>).</p></li>
+<li class="fragment"><p>Medida de la magnitud promedio de los errores en un conjunto de predicciones, considerando su dirección. <span class="math display">\[
+  RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}
+  \]</span> Donde:</p>
+<ul>
+<li class="fragment"><em>n</em> es el número de observaciones.</li>
+<li class="fragment"><em>y<sub>i</sub></em> es el valor observado.</li>
+<li class="fragment">*(_i)* es el valor predicho por el modelo.</li>
+</ul></li>
+</ul>
+</section>
+<section id="métricas-rmse-1" class="slide level2">
+<h2>Métricas: RMSE</h2>
+<ul>
+<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de la magnitud del error. Basada en la <strong>diferencia cuadrática promedio</strong>.</p></li>
+<li class="fragment"><div style="color:#8ABF74;">
+<p>Fácil de interpretar ya que se encuentra en la misma escala que los datos originales.</p>
+</div></li>
+<li class="fragment"><p>Penaliza altamente los valores atípicos (outliers) o errores extremos debido a la elevación al cuadrado de las diferencias y luego devolverlos a la escala original.</p></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<p>Es <strong>muy</strong> sensible a los valores atípicos.</p>
+</div></li>
+</ul>
+</section>
+<section id="métricas-rmse-2" class="slide level2">
+<h2>Métricas: RMSE</h2>
+<ul>
+<li class="fragment">Un RMSE de 0 indica que el modelo predice exactamente los valores reales.</li>
+<li class="fragment">RMSE &gt; 0 indica que el modelo tiene un mayor error promedio.</li>
+<li class="fragment">Penaliza los errores grandes más que los pequeños, por lo tanto, es útil en contextos donde los errores grandes son especialmente perjudiciales.</li>
+</ul>
+</section>
+<section id="métricas-r2" class="slide level2">
+<h2>Métricas: <span class="math inline">\(R^2\)</span></h2>
+<ul>
+<li class="fragment"><p>El <strong>Coeficiente de Determinación</strong> <span class="math inline">\(R^2\)</span>.</p></li>
+<li class="fragment"><p>Medida que indica la proporción de la variabilidad de la variable dependiente que es explicada por el modelo. <span class="math display">\[
+  R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
+  \]</span> Donde:</p>
+<ul>
+<li class="fragment"><em>n</em> es el número de observaciones.</li>
+<li class="fragment"><em>y<sub>i</sub></em> es el valor observado.</li>
+<li class="fragment"><em><span class="math inline">\(\hat{y}_{i}\)</span></em> es el valor predicho por el modelo.</li>
+<li class="fragment"><em><span class="math inline">\(\bar{y}\)</span></em> es la media de los valores observados.</li>
+</ul></li>
+</ul>
+</section>
+<section id="métricas-r2-1" class="slide level2">
+<h2>Métricas: <span class="math inline">\(R^2\)</span></h2>
+<ul>
+<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de la proporción de variabilidad explicada. Basada en la <strong>relación entre la suma de los errores residuales y la suma total de los cuadrados</strong>.</p></li>
+<li class="fragment"><div style="color:#8ABF74;">
+<p>Facilita la interpretación de la efectividad del modelo, ya que varía entre 0 y 1.</p>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<ul>
+<li class="fragment">Puede ser engañoso en modelos no lineales o con muchos parámetros(atención modelos predictivos)</li>
+</ul>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<p><strong>No informa sobre el sesgo o la varianza del modelo</strong>.</p>
+</div>
+<p>Solo indica la proporción de la varianza explicada.</p></li>
+</ul>
+</section>
+<section id="métricas-r2-2" class="slide level2">
+<h2>Métricas: <span class="math inline">\(R^2\)</span></h2>
+<ul>
+<li class="fragment">Un <span class="math inline">\(R^2\)</span> de 1 indica que el modelo explica toda la variabilidad de los datos.</li>
+<li class="fragment"><span class="math inline">\(R^2 = 0\)</span> indica que el modelo no explica ninguna variabilidad de los datos.</li>
+<li class="fragment">Valores negativos de <span class="math inline">\(R^2\)</span> pueden ocurrir y indican que el modelo es peor que uno que simplemente predice la media de los datos.</li>
+</ul>
+</section>
+<section id="métricas-huber-loss" class="slide level2">
+<h2>Métricas: Huber Loss</h2>
+<ul>
+<li class="fragment"><p>también conocida como <strong>error cuadrático medio suavizado</strong></p></li>
+<li class="fragment"><p>Ccombina el MAE con MSE, siendo menos sensible a los valores atípicos que el MSE y más robusta que el MAE. <span class="math display">\[
+  L_\delta(y, \hat{y}) =
+  \begin{cases}
+  \frac{1}{2}(y - \hat{y})^2 &amp; \text{si } |y - \hat{y}| \le \delta \\
+  \delta \cdot (|y - \hat{y}| - \frac{1}{2}\delta) &amp; \text{si } |y - \hat{y}| &gt; \delta
+  \end{cases}
+  \]</span> Donde:</p>
+<ul>
+<li class="fragment"><em>y</em> es el valor observado.</li>
+<li class="fragment"><em><span class="math inline">\(\hat{y}\)</span></em> es el valor predicho por el modelo.</li>
+<li class="fragment"><em><span class="math inline">\(\delta\)</span></em> es un umbral positivo que determina la transición entre el MAE y el MSE.</li>
+</ul></li>
+</ul>
+</section>
+<section id="métricas-huber-loss-1" class="slide level2">
+<h2>Métricas: Huber Loss</h2>
+<ul>
+<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de la magnitud del error, combinando <strong>propiedades del MAE y el MSE</strong>.</p></li>
+<li class="fragment"><p>La elección de <span class="math inline">\(\delta\)</span> es crucial y puede influir en la sensibilidad del modelo a los valores atípicos.</p></li>
+<li class="fragment"><p>Muy utlizado en técnicas de optimización basadas en gradientes. (XGBoost)</p></li>
+</ul>
+</section>
+<section id="métricas-huber-loss-2" class="slide level2">
+<h2>Métricas: Huber Loss</h2>
+<ul>
+<li class="fragment">Un valor de Huber Loss cercano a 0 indica que el modelo predice con alta precisión.</li>
+<li class="fragment">La Huber Loss se ajusta dependiendo de la elección de <span class="math inline">\(\delta\)</span>, lo que permite controlar el equilibrio entre penalización de errores grandes y pequeños.</li>
+<li class="fragment">Resumen información del MAE i el MSE, de modo que vale la pena computar ambos para tener un contexto amplio de la situación.</li>
+</ul>
+</section>
+<section id="métricas-icc" class="slide level2">
+<h2>Métricas: ICC</h2>
+<ul>
+<li class="fragment"><p>El <strong>Índice de Ideabilidad de Correlación</strong> (ICC por sus siglas en inglés <em>Index of Ideality of Correlation</em>).</p></li>
+<li class="fragment"><p>Medida que evalúa la precisión predictiva de un modelo al comparar los valores predichos con los valores observados. <span class="math display">\[
+  ICC = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \overline{y})^2 + \sum_{i=1}^{n} (\hat{y}_i - \overline{\hat{y}})^2}
+  \]</span> Donde:</p>
+<ul>
+<li class="fragment"><em>n</em> es el número de observaciones.</li>
+<li class="fragment"><em>y<sub>i</sub></em> es el valor observado.</li>
+<li class="fragment">*(_i)* es el valor predicho por el modelo.</li>
+<li class="fragment"><em>()</em> es la media de los valores observados.</li>
+<li class="fragment"><em>()</em> es la media de los valores predichos.</li>
+</ul></li>
+</ul>
+</section>
+<section id="métricas-icc-1" class="slide level2">
+<h2>Métricas: ICC</h2>
+<ul>
+<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de precisión predictiva. Basada en la <strong>relación entre la suma de los errores residuales y las sumas de las desviaciones totales y predichas</strong>.</p></li>
+<li class="fragment"><div style="color:#8ABF74;">
+<p>Proporciona una medida comprensible de la precisión predictiva del modelo.</p>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<ul>
+<li class="fragment">Puede ser sensible a la distribución de los valores observados y predichos.</li>
+</ul>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<p><strong>Puede ser influenciado por la escala de los datos</strong>.</p>
+</div>
+<p>Los resultados pueden variar dependiendo de la escala de los valores observados y predichos.</p></li>
+</ul>
+</section>
+<section id="métricas-icc-2" class="slide level2">
+<h2>Métricas: ICC</h2>
+<ul>
+<li class="fragment">Un ICC de 1 indica que el modelo predice exactamente los valores reales.</li>
+<li class="fragment">ICC cercano a 0 indica que el modelo no tiene una buena precisión predictiva.</li>
+<li class="fragment">ICC puede ser negativo si el modelo tiene un rendimiento peor que el promedio.</li>
+</ul>
+</section>
+<section id="métricas-aic" class="slide level2">
+<h2>Métricas: AIC</h2>
+<ul>
+<li class="fragment"><p>El Criterio de Información de Akaike (Akaike 1974), AIC por sus siglas en inglés <em>Akaike Information Criterion</em>.</p>
+<p><span class="math display">\[
+AIC = 2{k} - \ln(\mathcal{L})
+\]</span></p>
+<p>Donde:</p>
+<ul>
+<li class="fragment"><em>k</em> es el numero de parametros</li>
+<li class="fragment"><span class="math inline">\(\mathcal{L}\)</span> es la verosimilitud del modelo.</li>
+</ul></li>
+</ul>
+</section>
+<section id="métricas-aic-1" class="slide level2">
+<h2>Métricas: AIC</h2>
+<ul>
+<li class="fragment"><p>Métrica basada en <strong>teoría de información</strong>, la cual balancea los poderes explicativos y predictivos del modelo</p></li>
+<li class="fragment"><div style="color:#8ABF74;">
+<p>Castiga el uso de muchas variables.</p>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<p><strong>Un AIC por si solo no tiene ningún valor</strong>.</p>
+</div>
+<p>Se necesitan de otras métricas o compararse con el AIC de otro modelo2 para darle contexto.</p></li>
+</ul>
+</section>
+<section id="métricas-aic-2" class="slide level2">
+<h2>Métricas: AIC</h2>
+<p><img data-src="Imagenes/AIC%20vs%20R2.png" width="711" height="469"></p>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
