@@ -237,15 +237,33 @@ Target_ejemplo %>%
 
 {{< video /Imagenes/Pokemon_IA_3.mp4 >}}
 
-# Machine learning supervisado
-
 # Tipos de modelos 2
 
-| Col1                   | Explanatory Models                                                                                                                       | Predictive Models                                                                                                                     |
-|------------------------|------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| Objetivos              | Establecer relaciones causales                                                                                                           | Predecir diagnósticos actuales o resultados futuros                                                                                   |
-| Precaución             | Las posibilidades de hallazgos (Error tipo I)                                                                                            | No ajuste: falta de generalizabilidad a nuevas poblaciones                                                                            |
-| Variables candidatas   | Un conjunto limitado de factores de riesgo y factores de confusión                                                                       | Un conjunto más amplio de predictores potenciales; es posible que algunos predictores no tengan una relación causal con el resultado. |
-| Selección de variables | Basada en hipótesis; no debe utilizar procedimientos de selección automatizados.                                                         | Exploratorio;puede utilizar procedimientos de selección automatizados, siempre con la correspondiente validación.                     |
-| Formas de              | Tamaño de los coeficientes {J para los factores de riesgo individuales; nivel de significación para los factores de riesgo individuales. |                                                                                                                                       |
-| Validación             | Se necesitan nuevos estudios para confirmar las relaciones causales individuales                                                         |                                                                                                                                       |
+## Tipos de modelos 2
+
+|                              | Modelos explicativos                                                                                                                     | Modelos predictivos                                                                                                                                                                   |
+|-------------------|---------------------------|--------------------------|
+| Objetivos                    | Establecer relaciones causales                                                                                                           | Predecir diagnósticos actuales o resultados futuros                                                                                                                                   |
+| Precaución                   | Las posibilidades de hallazgos (Error tipo I)                                                                                            | No ajuste: falta de generalizabilidad a nuevas poblaciones                                                                                                                            |
+| Variables candidatas         | Un conjunto limitado de factores de riesgo y factores de confusión                                                                       | Un conjunto más amplio de predictores potenciales; es posible que algunos predictores no tengan una relación causal con el resultado.                                                 |
+| Selección de variables       | Basada en hipótesis; no debe utilizar procedimientos de selección automatizados.                                                         | Exploratorio;puede utilizar procedimientos de selección automatizados, siempre con la correspondiente validación.                                                                     |
+| Formas de ver el rendimiento | Tamaño de los coeficientes {J para los factores de riesgo individuales; nivel de significación para los factores de riesgo individuales. | Discriminación (p. ej., análisis ROC); calibración (p. ej., prueba de Hosmer-Lemeshow);bondad de ajuste (p. ej., R2, AIC); reclasificación (p. ej., índice de reclasificación neta);  |
+| Validación                   | Se necesitan nuevos estudios para confirmar las relaciones causales individuales                                                         | Validación interna; muestreo dividido; validación cruzada; bootstrap; validación externa.                                                                                             |
+
+## Tipos de modelos 2
+
+::: columns
+::: {.column width="50%"}
+Los investigadores con objetivos objetivos explicativos se desvían
+intentan optimizar métricas del modelo (como los valores R2 o áreas bajo
+la curva ROC curva ROC) y descuidan cuestiones como la confusión.
+:::
+
+::: {.column width="50%"}
+Los investigadores con objetivos predictivos se desvían preocupándose
+por los coeficientes b coeficientes y valores p, y omiten omiten pasos
+críticos como la calibración o la validación.
+:::
+:::
+
+# Machine learning supervisado

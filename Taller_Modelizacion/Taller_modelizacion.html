@@ -461,7 +461,7 @@
 <p><img data-src="Imagenes/armas%20de%20destruccion%20matematica.jpg" width="328"></p>
 </div><div class="column" style="width:50%;">
 <p><em>“Los privilegiados son analizados por personas, las masas por máquinas.”</em></p>
-<p>Cathy O’Neil</p>
+<p><strong>Cathy O’Neil</strong></p>
 </div>
 </div>
 </section>
@@ -777,6 +777,70 @@
 <section id="aprendizaje-por-refuerzo-7" class="slide level2">
 <h2>Aprendizaje por refuerzo</h2>
 <video id="video_shortcode_videojs_video5" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Pokemon_IA_3.mp4"></video>
+</section></section>
+<section>
+<section id="tipos-de-modelos-2" class="title-slide slide level1 center">
+<h1>Tipos de modelos 2</h1>
+
+</section>
+<section id="tipos-de-modelos-2-1" class="slide level2">
+<h2>Tipos de modelos 2</h2>
+<table>
+<colgroup>
+<col style="width: 26%">
+<col style="width: 37%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Modelos explicativos</th>
+<th>Modelos predictivos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Objetivos</td>
+<td>Establecer relaciones causales</td>
+<td>Predecir diagnósticos actuales o resultados futuros</td>
+</tr>
+<tr class="even">
+<td>Precaución</td>
+<td>Las posibilidades de hallazgos (Error tipo I)</td>
+<td>No ajuste: falta de generalizabilidad a nuevas poblaciones</td>
+</tr>
+<tr class="odd">
+<td>Variables candidatas</td>
+<td>Un conjunto limitado de factores de riesgo y factores de confusión</td>
+<td>Un conjunto más amplio de predictores potenciales; es posible que algunos predictores no tengan una relación causal con el resultado.</td>
+</tr>
+<tr class="even">
+<td>Selección de variables</td>
+<td>Basada en hipótesis; no debe utilizar procedimientos de selección automatizados.</td>
+<td>Exploratorio;puede utilizar procedimientos de selección automatizados, siempre con la correspondiente validación.</td>
+</tr>
+<tr class="odd">
+<td>Formas de ver el rendimiento</td>
+<td>Tamaño de los coeficientes {J para los factores de riesgo individuales; nivel de significación para los factores de riesgo individuales.</td>
+<td>Discriminación (p.&nbsp;ej., análisis ROC); calibración (p.&nbsp;ej., prueba de Hosmer-Lemeshow);bondad de ajuste (p.&nbsp;ej., R2, AIC); reclasificación (p.&nbsp;ej., índice de reclasificación neta); utilidad clínica</td>
+</tr>
+<tr class="even">
+<td>Validación</td>
+<td>Se necesitan nuevos estudios para confirmar las relaciones causales individuales</td>
+<td>Validación interna: validación por muestreo dividido; validación cruzada; validación bootstrap; validación externa.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tipos-de-modelos-2-2" class="slide level2">
+<h2>Tipos de modelos 2</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Los investigadores con objetivos objetivos explicativos se desvían intentan optimizar métricas del modelo (como los valores R2 o áreas bajo la curva ROC curva ROC) y descuidan cuestiones como la confusión.</p>
+</div><div class="column" style="width:50%;">
+<p>Los investigadores con objetivos predictivos se desvían preocupándose por los coeficientes b coeficientes y valores p, y omiten omiten pasos críticos como la calibración o la validación.</p>
+</div>
+</div>
 </section></section>
 <section id="machine-learning-supervisado" class="title-slide slide level1 center">
 <h1>Machine learning supervisado</h1>
