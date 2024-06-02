@@ -38,7 +38,7 @@ library(knitr)
 ```
 
 ```{r dataset, echo=TRUE}
-education <- read.csv('/Users/mireiacamacho/Desktop/Curso-sociologia/Tidymodels_2/dataset-educacion.csv', sep=";") %>% 
+education <- read.csv('https://raw.githubusercontent.com/DataMirai/Curso-Sociologia/main/Tidymodels_2/dataset-educacion.csv?token=GHSAT0AAAAAACJ4X5QZ7AUBG5W7JTJWZTTEZS3ZDWA', sep=";") %>% 
   as.tibble()
 
 glimpse(education)
