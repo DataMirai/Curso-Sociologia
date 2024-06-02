@@ -6,27 +6,55 @@ format:
     scrollable: true
     transition: slide
 ---
-# 1. Puesta a punto
-## 1.1. Carga de librerías
+# 1. Caso práctico 1
 
-```{r librerias, echo=TRUE}
+## 1.1. Contexto {auto-animate="true"}
+
+::: incremental
+- Formamos parte de un grupo de investigación de una universidad inglesa que quiere determinar **qué puede influir en el fracaso escolar de los estudiantes ingleses** *(Modelo explicativo).*
+
+- Para ello, queremos entrenar un modelo para predecir el nivel educativo de los estudiantes de cada municipio a lo largo de los años.
+:::
+
+## 1.1. Contexto {auto-animate="true"}
+
+- Por suerte, encontramos que la Oficina Nacional de Estadística de Reino Unido *(ONS)* ha recopilado una base de datos de la evolución de los estudiantes nacidos en 1994 hasta cumplir los 22 años en 2016 y algunas características de las ciudades en las que residen. 
+
+
+## 1.2. Los datos {auto-animate="true"}
+
+::: incremental
+- El dataset contiene información sobre:
+1. **Los municipios** (tamaño, si están cerca de la costa, si tienen universidad...)
+2. **Características socioeconómicas** (grado de nivel de pobreza, proporción de adultos con carrera universitaria...)
+3. **Información sobre los estudiantes** (qué notas sacaron, en qué punto dejaron de estudiar, cuántos se han graduado de la universidad...)
+:::
+
+## 1.2. Los datos {auto-animate="true"}
+
+```{r librerias, echo=FALSE}
 library(tidyverse)
-library(tidymodels)
-library(future)
+library(knitr)
 ```
-
-## 1.2. Descarga y exploración del dataset
 
 ```{r dataset, echo=TRUE}
-education <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-23/english_education.csv')
+education <- read.csv('https://raw.githubusercontent.com/DataMirai/Curso-Sociologia/main/Tidymodels_2/dataset-educacion.csv?token=GHSAT0AAAAAACJ4X5QZ7AUBG5W7JTJWZTTEZS3ZDWA', sep=";") %>% 
+  as.tibble()
 
-head(education, 10)
+glimpse(education)
 ```
 
-## 1.2. Descarga y exploración del dataset
+## 1.3. Exploración de los datos {auto-animate="true"}
+
+::: incremental
+- En nuestro caso, vamos a ver si los **niveles de pobreza** *(income_flag)* y el **tamaño de los municipios** *(size_flag)* afectan o no a los niveles educativos de los estudiantes.
+:::
+
+
+## 1.3. Exploración de los datos {auto-animate="true"}
 
 ```{r dataset-visualizacion, echo=FALSE}
-education %>% 
+plot <- education %>% 
   filter(!is.na(income_flag)) %>% 
   mutate(income_flag = factor(income_flag, levels = c("Lower deprivation towns",
                                                       "Mid deprivation towns",
@@ -36,18 +64,85 @@ education %>%
   geom_boxplot(alpha = 0.2) +
   theme_minimal() +
   labs(y = NULL, fill = NULL, x= "Education score")
+
+plot
 ```
 
-# 2. Preparación del modelo
 
-## 2.1. Training y testing
+
+## 1.3. Exploración de los datos {auto-animate="true"}
+::: columns
+::: {.column width="60%"}
+<div style="margin-top:100px">
+```{r dataset-visualizacion2, echo=FALSE}
+plot
+```
+</div>
+:::
+
+::: {.column width="40%"}
+<div style="font-size:32px; margin-top:40px;">
+- Los niveles de pobreza **sí influirían** en el rendimiento de los estudiantes.
+</div>
+:::
+:::
+
+
+## 1.3. Exploración de los datos {auto-animate="true"}
+::: columns
+::: {.column width="60%"}
+<div style="margin-top:100px">
+```{r dataset-visualizacion3, echo=FALSE}
+plot
+```
+</div>
+:::
+
+::: {.column width="40%"}
+<div style="font-size:32px; margin-top:40px;">
+
+- Los niveles de pobreza **sí influirían** en el rendimiento de los estudiantes.
+
+- El tipo de municipio **aparentemente no afecta directamente** al rendimiento, aunque las grandes ciudades muestran niveles más parecidos a los municipios con niveles altos y medios de pobreza.
+
+</div>
+:::
+:::
+
+## 1.3. Exploración de los datos {auto-animate="true"}
+
+::: incremental
+<div style="font-size:32px; margin-top:40px;">
+
+- El tipo de municipio aparentemente no afecta al rendimiento, pero como hay una varianza bastante amplia, haremos dos modelos para asegurarnos: uno con esta variable y otro sin ella.
+
+- Si la variable **afecta** al modelo, los resultados finales deberían verse **distintos**.
+- Si la variable **no afecta** al modelo, **no debería haber diferencias** entre ellos.
+
+</div>
+:::
+
+## 1.4. Preparación del modelo
+
+1. Cargamos las librerías que usaremos en este caso práctico.
+
+```{r librerias2, echo=TRUE}
+library(tidymodels)
+library(future)
+```
+
+## 1.4. Preparación del modelo
+
+2. Seleccionamos las variables que usaremos y separamos el dataset en dos partes: el conjunto de entrenamiento y el conjunto de evaluación.
+<br>
+<span style="font-size:28px;"> * Este modelo será el que sí tiene la variable size_flag *(tamaño de las ciudades)*.</span> 
 
 ```{r train-test, echo=TRUE}
 set.seed(1235678)
 
 edu_split <-  education %>% 
-  # Aislamos aquellos lugares donde hay deprivacion en la ciudades
-  filter(str_detect(income_flag, "deprivation towns")) %>% 
+  # Eliminamos los NA de la variable income_flag
+  filter(str_detect(income_flag, "deprivation towns") | income_flag == "Cities") %>% 
   # Guardamos algunas variables para modelar 
   select(education_score, income_flag, size_flag, coastal, university_flag, rgn11nm) %>% 
   initial_split(strata = education_score)
@@ -56,7 +151,9 @@ edu_train <- training(edu_split)
 edu_test <- testing(edu_split)
 ```
 
-## 2.2. Bootstraps
+## 1.4. Preparación del modelo
+
+3. `bootstraps`: Crea un tibble con n cantidad de objetos “split” y su correspondiente identificador. En las muestras tipo bootstrap, los individuos pueden aparecer más de una vez en el conjunto de datos.
 
 ```{r bootstraps, echo=TRUE}
 set.seed(1235678)
@@ -65,7 +162,9 @@ edu_folds <- bootstraps(edu_train, strata = education_score)
 edu_folds
 ```
 
-## 2.3. Workflow
+## 1.5. Creación del modelo
+
+1. Con `workflow()` podemos agrupar el preprocesamiento, modelado y postprocesamiento.
 
 ```{r workflow, echo=TRUE}
 
@@ -73,35 +172,175 @@ edu_folds
 plan(multisession, workers = 4)
 
 edu_wf <- workflow(
-  education_score ~ ., 
-  rand_forest(mode = "regression", trees = 500)
+  education_score ~ ., # La variable que queremos predecir es 'education_score'
+  rand_forest(mode = "regression", trees = 500) # Definimos que nuestro modelo será un Random Forest.
 )
 ```
 
-## 2.4. fit_resamples y last_fit
+## 1.5. Creación del modelo
+
+2. `fit_resample()` calcula un conjunto de métricas de rendimiento a través de uno o más remuestreos.
+
+
 
 ```{r fit, echo=TRUE}
 set.seed(1235678)
 
 edu_res <- fit_resamples(edu_wf, edu_folds)
-collect_metrics(edu_res)
 
-edu_fit <- last_fit(edu_wf, edu_split)
-collect_metrics(edu_fit)
+collect_metrics(edu_res) %>% 
+  select(-c(.estimator, .config))
+```
+## 1.5. Creación del modelo
+
+3. `last_fit()` permite tener todo unificado en un solo tibble. Recibe directamente los datos de entrenamiento y los datos de evaluación y crea sus métricas y sus predicciones. 
+
+
+```{r last-fit, echo=TRUE}
+set.seed(1235678)
+
+edu_last_fit <- last_fit(edu_wf, edu_split)
+
+collect_metrics(edu_last_fit) %>% 
+  select(-c(.estimator, .config))
 ```
 
-## 2.5. Resultados del modelo
+## 1.5. Resultados del modelo
+
+1. `collect_predictions()` extrae un tibble con las predicciones de los datos de evaluación.
+
+2. Creamos un ggplot que permita observar los resultados del modelo.
 
 ```{r resultados, echo=TRUE}
-resultados <- collect_predictions(edu_fit) |>
+resultados <- collect_predictions(edu_last_fit) |>
   ggplot(aes(education_score, .pred)) +
   geom_abline(slope = 1, lty = 2, linewidth = 1.5, alpha = 0.7, color='red') +
   geom_point() +
   coord_fixed() 
 ```
 
+## 1.5. Resultados del modelo
+
 ```{r resultados2, echo=FALSE}
 resultados +
   theme_minimal()+
-  labs(x = "Education score", y = "Predicción")
+  labs(x = "'Education score' original", y = "Predicción 'Education score' modelo",
+       title = "Modelo con la variable size_flag")
 ```
+
+
+
+## 1.6. Repetición del modelo sin la variable size_flag
+
+1. Seleccionaremos todas las variables que hemos usado en el modelo anterior excepto `size_flag` *(tamaño de los municipios)*.
+
+```{r train-test2, echo=TRUE}
+set.seed(1235678)
+
+edu_split2 <-  education %>% 
+  filter(str_detect(income_flag, "deprivation towns") | income_flag == "Cities") %>% 
+  select(education_score, income_flag, coastal, university_flag, rgn11nm) %>% 
+  initial_split(strata = education_score)
+
+edu_train2 <- training(edu_split2)
+edu_test2 <- testing(edu_split2)
+```
+
+## 1.6. Repetición del modelo sin la variable size_flag
+
+2. Repetiremos el código usado en el modelo anterior.
+
+```{r modelo2, echo=TRUE}
+set.seed(1235678)
+
+edu_folds2 <- bootstraps(edu_train2, strata = education_score)
+edu_folds2
+
+# Preparamos para paralelizar
+plan(multisession, workers = 4)
+
+edu_wf2 <- workflow(
+  education_score ~ ., # La variable que queremos predecir es 'education_score'
+  rand_forest(mode = "regression", trees = 500) # Definimos que nuestro modelo será un Random Forest.
+)
+
+set.seed(1235678)
+
+edu_res2 <- fit_resamples(edu_wf2, edu_folds2)
+collect_metrics(edu_res2) %>% 
+  select(-c(.estimator, .config))
+
+edu_last_fit2 <- last_fit(edu_wf2, edu_split2)
+collect_metrics(edu_last_fit2) %>% 
+  select(-c(.estimator, .config))
+```
+
+## 1.6. Repetición del modelo sin la variable size_flag
+
+```{r modelo2-viz, echo=TRUE}
+resultados2 <- collect_predictions(edu_last_fit2) |>
+  ggplot(aes(education_score, .pred)) +
+  geom_abline(slope = 1, lty = 2, linewidth = 1.5, alpha = 0.7, color='red') +
+  geom_point() +
+  coord_fixed() 
+```
+
+```{r modelo2-viz2, echo=FALSE}
+resultados2 +
+  theme_minimal()+
+  labs(x = "'Education score' original", y = "Predicción 'Education score' modelo",
+       title = "Modelo sin la variable size_flag")
+```
+
+## 1.7. Comparación de ambos modelos
+
+::: columns
+::: {.column width="50%"}
+
+```{r resultados-comparacion, echo=FALSE}
+resultados +
+  theme_minimal()+
+  labs(x = "'Education score' original", y = "Predicción 'Education score' modelo",
+       title = "Modelo con la variable size_flag")
+```
+
+```{r metrics-comparacion, echo=FALSE}
+collect_metrics(edu_last_fit) %>% 
+  select(-c(.estimator, .config))
+```
+:::
+
+::: {.column width="50%"}
+
+```{r resultados-comparacion2, echo=FALSE}
+resultados2 +
+  theme_minimal()+
+  labs(x = "'Education score' original", y = "Predicción 'Education score' modelo",
+       title = "Modelo sin la variable size_flag")
+```
+
+```{r metrics-comparacion2, echo=FALSE}
+collect_metrics(edu_last_fit2) %>% 
+  select(-c(.estimator, .config))
+```
+:::
+:::
+
+## 1.8. ¿Para qué se podrían usar estos resultados?
+
+::: incremental
+* **Para hacer predicciones de la evolución de los estudiantes en los próximos años** (creación de políticas específicas, destinar presupuestos...)
+* **Detectar outliers:** Los municipios más pobres tienen menos universitarios, pero hay uno que tiene muchos graduados. ¿A qué se debe? ¿Qué está haciendo distinto al resto?
+* **Hacer comparaciones:** 
+  + El modelo que hemos hecho se puede aplicar a otros países con condiciones similares.
+  + También se puede usar para completar el dataset en caso de no tener los resultados de algunas ciudades.
+
+:::
+
+## 1.9. Práctica
+
+- Escoge las variables del dataset que más interesantes te parezcan.
+- Explóralas con una visualización.   
+- Haz tu propio modelo predictivo cogiendo como guía el ejemplo del caso práctico.
+
+- **¡No te compliques! Ponte creativo/a y explica cómo le sacarías partido a los datos a partir de un modelo predictivo.**

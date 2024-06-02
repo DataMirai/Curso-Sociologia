@@ -397,65 +397,168 @@
 
 </section>
 <section>
-<section id="puesta-a-punto" class="title-slide slide level1 center">
-<h1>1. Puesta a punto</h1>
+<section id="caso-práctico-1" class="title-slide slide level1 center">
+<h1>1. Caso práctico 1</h1>
 
 </section>
-<section id="carga-de-librerías" class="slide level2">
-<h2>1.1. Carga de librerías</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(future)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="contexto" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">1.1. Contexto</h2>
+<div>
+<ul>
+<li class="fragment"><p>Formamos parte de un grupo de investigación de una universidad inglesa que quiere determinar <strong>qué puede influir en el fracaso escolar de los estudiantes ingleses</strong> <em>(Modelo explicativo).</em></p></li>
+<li class="fragment"><p>Para ello, queremos entrenar un modelo para predecir el nivel educativo de los estudiantes de cada municipio a lo largo de los años.</p></li>
+</ul>
 </div>
 </section>
-<section id="descarga-y-exploración-del-dataset" class="slide level2">
-<h2>1.2. Descarga y exploración del dataset</h2>
+<section id="contexto-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">1.1. Contexto</h2>
+<ul>
+<li>Por suerte, encontramos que la Oficina Nacional de Estadística de Reino Unido <em>(ONS)</em> ha recopilado una base de datos de la evolución de los estudiantes nacidos en 1994 hasta cumplir los 22 años en 2016 y algunas características de las ciudades en las que residen.</li>
+</ul>
+</section>
+<section id="los-datos" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">1.2. Los datos</h2>
+<div>
+<ul>
+<li class="fragment">El dataset contiene información sobre:</li>
+</ul>
+<ol type="1">
+<li class="fragment"><strong>Los municipios</strong> (tamaño, si están cerca de la costa, si tienen universidad…)</li>
+<li class="fragment"><strong>Características socioeconómicas</strong> (grado de nivel de pobreza, proporción de adultos con carrera universitaria…)</li>
+<li class="fragment"><strong>Información sobre los estudiantes</strong> (qué notas sacaron, en qué punto dejaron de estudiar, cuántos se han graduado de la universidad…)</li>
+</ol>
+</div>
+</section>
+<section id="los-datos-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">1.2. Los datos</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>education <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-23/english_education.csv'</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">head</span>(education, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb1-1" class="hljs-ln-code"><a href="#cb1-1"></a>education <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'/Users/mireiacamacho/Desktop/Curso-sociologia/Tidymodels_2/dataset-educacion.csv'</span>, <span class="at">sep=</span><span class="st">";"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-2" class="hljs-ln-code"><a href="#cb1-2"></a>  <span class="fu">as.tibble</span>()</span>
+<span id="cb1-3" class="hljs-ln-code"><a href="#cb1-3"></a></span>
+<span id="cb1-4" class="hljs-ln-code"><a href="#cb1-4"></a><span class="fu">glimpse</span>(education)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 31
-   town11cd  town11nm population_2011 size_flag rgn11nm coastal coastal_detailed
-   &lt;chr&gt;     &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;           
- 1 E34000007 Carlton…            5456 Small To… East M… Non-co… Smaller non-coa…
- 2 E34000016 Dorches…           19060 Small To… South … Non-co… Smaller non-coa…
- 3 E34000020 Ely BUA            19090 Small To… East o… Non-co… Smaller non-coa…
- 4 E34000026 Market …            6429 Small To… Yorksh… Non-co… Smaller non-coa…
- 5 E34000027 Downham…           10884 Small To… East o… Non-co… Smaller non-coa…
- 6 E34000039 Penrith…           15181 Small To… North … Non-co… Smaller non-coa…
- 7 E34000048 Bolsove…           11754 Small To… East M… Non-co… Smaller non-coa…
- 8 E34000055 March B…           21051 Medium T… East o… Non-co… Large non-coast…
- 9 E34000056 Southam…            6567 Small To… West M… Non-co… Smaller non-coa…
-10 E34000067 Royston…           15781 Small To… East o… Non-co… Smaller non-coa…
-# ℹ 24 more variables: ttwa11cd &lt;chr&gt;, ttwa11nm &lt;chr&gt;,
-#   ttwa_classification &lt;chr&gt;, job_density_flag &lt;chr&gt;, income_flag &lt;chr&gt;,
-#   university_flag &lt;chr&gt;, level4qual_residents35_64_2011 &lt;chr&gt;,
-#   ks4_2012_2013_counts &lt;dbl&gt;,
-#   key_stage_2_attainment_school_year_2007_to_2008 &lt;dbl&gt;,
-#   key_stage_4_attainment_school_year_2012_to_2013 &lt;dbl&gt;,
-#   level_2_at_age_18 &lt;dbl&gt;, level_3_at_age_18 &lt;dbl&gt;, …</code></pre>
+<pre><code>Rows: 1,104
+Columns: 31
+$ town11cd                                                 &lt;chr&gt; "E34000007", …
+$ town11nm                                                 &lt;chr&gt; "Carlton in L…
+$ population_2011                                          &lt;int&gt; 5456, 19060, …
+$ size_flag                                                &lt;chr&gt; "Small Towns"…
+$ rgn11nm                                                  &lt;chr&gt; "East Midland…
+$ coastal                                                  &lt;chr&gt; "Non-coastal"…
+$ coastal_detailed                                         &lt;chr&gt; "Smaller non-…
+$ ttwa11cd                                                 &lt;chr&gt; "E30000291", …
+$ ttwa11nm                                                 &lt;chr&gt; "Worksop and …
+$ ttwa_classification                                      &lt;chr&gt; "Majority tow…
+$ job_density_flag                                         &lt;chr&gt; "Residential"…
+$ income_flag                                              &lt;chr&gt; "Higher depri…
+$ university_flag                                          &lt;chr&gt; "No universit…
+$ lvl4qual_residents35_64_2011                             &lt;chr&gt; "Low", "Mediu…
+$ ks4_2012_2013_counts                                     &lt;int&gt; 65, 239, 155,…
+$ key_stage_2_att_school_year_2007_2008                    &lt;dbl&gt; 65.00000, 69.…
+$ key_stage_4_att_school_year_2012_2013                    &lt;dbl&gt; 70.76923, 71.…
+$ level_2_at_age_18                                        &lt;dbl&gt; 72.30769, 85.…
+$ level_3_at_age_18                                        &lt;dbl&gt; 50.76923, 60.…
+$ activity_at_age_19_full_time_higher_edu                  &lt;dbl&gt; 30.76923, 41.…
+$ activity_at_age_19_sustained_further_edu                 &lt;dbl&gt; 21.53846, 13.…
+$ activity_at_age_19_appprenticeships                      &lt;dbl&gt; NA, 10.041841…
+$ activity_at_age_19_employment_with_earnings              &lt;dbl&gt; 52.30769, 51.…
+$ activity_at_age_19_employment_with_earnings_above_10_000 &lt;dbl&gt; 36.92308, 24.…
+$ activity_at_age_19_out_of_work                           &lt;dbl&gt; NA, 4.184100,…
+$ highest_lvl_quali_achieved_by_age_22_less_lvl_1          &lt;dbl&gt; NA, NA, NA, N…
+$ highest_lvl_quali_achieved_by_age_22_lvl_1_lvl_2         &lt;dbl&gt; 34.9, 21.7, 3…
+$ highest_lvl_quali_achieved_by_age_22_lvl_3_lvl_5         &lt;dbl&gt; 39.7, 44.6, 3…
+$ highest_lvl_quali_achieved_by_age_22_lvl_6_above         &lt;dbl&gt; NA, 33.3, 32.…
+$ highest_lvl_quali_achieved_by_age_22_average_score       &lt;dbl&gt; 3.323077, 3.7…
+$ education_score                                          &lt;dbl&gt; -0.5337504, 1…</code></pre>
 </div>
 </div>
 </section>
-<section id="descarga-y-exploración-del-dataset-1" class="slide level2">
-<h2>1.2. Descarga y exploración del dataset</h2>
-
-<img data-src="Presentacion_Tidymodels2_files/figure-revealjs/dataset-visualizacion-1.png" width="960" class="r-stretch"></section></section>
-<section>
-<section id="preparación-del-modelo" class="title-slide slide level1 center">
-<h1>2. Preparación del modelo</h1>
-
+<section id="exploración-de-los-datos" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">1.3. Exploración de los datos</h2>
+<div>
+<ul>
+<li class="fragment">En nuestro caso, vamos a ver si los <strong>niveles de pobreza</strong> <em>(income_flag)</em> y el <strong>tamaño de los municipios</strong> <em>(size_flag)</em> afectan o no a los niveles educativos de los estudiantes.</li>
+</ul>
+</div>
 </section>
-<section id="training-y-testing" class="slide level2">
-<h2>2.1. Training y testing</h2>
+<section id="exploración-de-los-datos-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">1.3. Exploración de los datos</h2>
+
+<img data-src="Presentacion_Tidymodels2_files/figure-revealjs/dataset-visualizacion-1.png" width="960" class="r-stretch"></section>
+<section id="exploración-de-los-datos-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">1.3. Exploración de los datos</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="margin-top:100px">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="Presentacion_Tidymodels2_files/figure-revealjs/dataset-visualizacion2-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<div style="font-size:32px; margin-top:40px;">
+<ul>
+<li>Los niveles de pobreza <strong>sí influirían</strong> en el rendimiento de los estudiantes.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="exploración-de-los-datos-3" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">1.3. Exploración de los datos</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="margin-top:100px">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="Presentacion_Tidymodels2_files/figure-revealjs/dataset-visualizacion3-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<div style="font-size:32px; margin-top:40px;">
+<ul>
+<li><p>Los niveles de pobreza <strong>sí influirían</strong> en el rendimiento de los estudiantes.</p></li>
+<li><p>El tipo de municipio <strong>aparentemente no afecta directamente</strong> al rendimiento, aunque las grandes ciudades muestran niveles más parecidos a los municipios con niveles altos y medios de pobreza.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="exploración-de-los-datos-4" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">1.3. Exploración de los datos</h2>
+<div>
+<div style="font-size:32px; margin-top:40px;">
+<ul>
+<li class="fragment"><p>El tipo de municipio aparentemente no afecta al rendimiento, pero como hay una varianza bastante amplia, haremos dos modelos para asegurarnos: uno con esta variable y otro sin ella.</p></li>
+<li class="fragment"><p>Si la variable <strong>afecta</strong> al modelo, los resultados finales deberían verse <strong>distintos</strong>.</p></li>
+<li class="fragment"><p>Si la variable <strong>no afecta</strong> al modelo, <strong>no debería haber diferencias</strong> entre ellos.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="preparación-del-modelo" class="slide level2">
+<h2>1.4. Preparación del modelo</h2>
+<ol type="1">
+<li>Cargamos las librerías que usaremos en este caso práctico.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(future)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="preparación-del-modelo-1" class="slide level2">
+<h2>1.4. Preparación del modelo</h2>
+<ol start="2" type="1">
+<li>Seleccionamos las variables que usaremos y separamos el dataset en dos partes: el conjunto de entrenamiento y el conjunto de evaluación. <br> <span style="font-size:28px;"> * Este modelo será el que sí tiene la variable size_flag <em>(tamaño de las ciudades)</em>.</span></li>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">set.seed</span>(<span class="dv">1235678</span>)</span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
 <span id="cb4-3"><a href="#cb4-3"></a>edu_split <span class="ot">&lt;-</span>  education <span class="sc">%&gt;%</span> </span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="co"># Aislamos aquellos lugares donde hay deprivacion en la ciudades</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(income_flag, <span class="st">"deprivation towns"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="co"># Eliminamos los NA de la variable income_flag</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(income_flag, <span class="st">"deprivation towns"</span>) <span class="sc">|</span> income_flag <span class="sc">==</span> <span class="st">"Cities"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb4-6"><a href="#cb4-6"></a>  <span class="co"># Guardamos algunas variables para modelar </span></span>
 <span id="cb4-7"><a href="#cb4-7"></a>  <span class="fu">select</span>(education_score, income_flag, size_flag, coastal, university_flag, rgn11nm) <span class="sc">%&gt;%</span> </span>
 <span id="cb4-8"><a href="#cb4-8"></a>  <span class="fu">initial_split</span>(<span class="at">strata =</span> education_score)</span>
@@ -464,8 +567,11 @@
 <span id="cb4-11"><a href="#cb4-11"></a>edu_test <span class="ot">&lt;-</span> <span class="fu">testing</span>(edu_split)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="bootstraps" class="slide level2">
-<h2>2.2. Bootstraps</h2>
+<section id="preparación-del-modelo-2" class="slide level2">
+<h2>1.4. Preparación del modelo</h2>
+<ol start="3" type="1">
+<li><code>bootstraps</code>: Crea un tibble con n cantidad de objetos “split” y su correspondiente identificador. En las muestras tipo bootstrap, los individuos pueden aparecer más de una vez en el conjunto de datos.</li>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">set.seed</span>(<span class="dv">1235678</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a></span>
@@ -476,68 +582,242 @@
 # A tibble: 25 × 2
    splits            id         
    &lt;list&gt;            &lt;chr&gt;      
- 1 &lt;split [810/298]&gt; Bootstrap01
- 2 &lt;split [810/303]&gt; Bootstrap02
- 3 &lt;split [810/273]&gt; Bootstrap03
- 4 &lt;split [810/287]&gt; Bootstrap04
- 5 &lt;split [810/315]&gt; Bootstrap05
- 6 &lt;split [810/303]&gt; Bootstrap06
- 7 &lt;split [810/287]&gt; Bootstrap07
- 8 &lt;split [810/305]&gt; Bootstrap08
- 9 &lt;split [810/297]&gt; Bootstrap09
-10 &lt;split [810/305]&gt; Bootstrap10
+ 1 &lt;split [824/301]&gt; Bootstrap01
+ 2 &lt;split [824/305]&gt; Bootstrap02
+ 3 &lt;split [824/279]&gt; Bootstrap03
+ 4 &lt;split [824/288]&gt; Bootstrap04
+ 5 &lt;split [824/316]&gt; Bootstrap05
+ 6 &lt;split [824/309]&gt; Bootstrap06
+ 7 &lt;split [824/299]&gt; Bootstrap07
+ 8 &lt;split [824/315]&gt; Bootstrap08
+ 9 &lt;split [824/301]&gt; Bootstrap09
+10 &lt;split [824/311]&gt; Bootstrap10
 # ℹ 15 more rows</code></pre>
 </div>
 </div>
 </section>
-<section id="workflow" class="slide level2">
-<h2>2.3. Workflow</h2>
+<section id="creación-del-modelo" class="slide level2">
+<h2>1.5. Creación del modelo</h2>
+<ol type="1">
+<li>Con <code>workflow()</code> podemos agrupar el preprocesamiento, modelado y postprocesamiento.</li>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Preparamos para paralelizar</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="fu">plan</span>(multisession, <span class="at">workers =</span> <span class="dv">4</span>)</span>
 <span id="cb7-3"><a href="#cb7-3"></a></span>
 <span id="cb7-4"><a href="#cb7-4"></a>edu_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>(</span>
-<span id="cb7-5"><a href="#cb7-5"></a>  education_score <span class="sc">~</span> ., </span>
-<span id="cb7-6"><a href="#cb7-6"></a>  <span class="fu">rand_forest</span>(<span class="at">mode =</span> <span class="st">"regression"</span>, <span class="at">trees =</span> <span class="dv">500</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a>  education_score <span class="sc">~</span> ., <span class="co"># La variable que queremos predecir es 'education_score'</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>  <span class="fu">rand_forest</span>(<span class="at">mode =</span> <span class="st">"regression"</span>, <span class="at">trees =</span> <span class="dv">500</span>) <span class="co"># Definimos que nuestro modelo será un Random Forest.</span></span>
 <span id="cb7-7"><a href="#cb7-7"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="fit_resamples-y-last_fit" class="slide level2">
-<h2>2.4. fit_resamples y last_fit</h2>
+<section id="creación-del-modelo-1" class="slide level2">
+<h2>1.5. Creación del modelo</h2>
+<ol start="2" type="1">
+<li><code>fit_resample()</code> calcula un conjunto de métricas de rendimiento a través de uno o más remuestreos.</li>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">set.seed</span>(<span class="dv">1235678</span>)</span>
 <span id="cb8-2"><a href="#cb8-2"></a></span>
 <span id="cb8-3"><a href="#cb8-3"></a>edu_res <span class="ot">&lt;-</span> <span class="fu">fit_resamples</span>(edu_wf, edu_folds)</span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="fu">collect_metrics</span>(edu_res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 6
-  .metric .estimator  mean     n std_err .config             
-  &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
-1 rmse    standard   2.71     25 0.0125  Preprocessor1_Model1
-2 rsq     standard   0.444    25 0.00563 Preprocessor1_Model1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>edu_fit <span class="ot">&lt;-</span> <span class="fu">last_fit</span>(edu_wf, edu_split)</span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">collect_metrics</span>(edu_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-4"><a href="#cb8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="fu">collect_metrics</span>(edu_res) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-6"><a href="#cb8-6"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(.estimator, .config))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 4
-  .metric .estimator .estimate .config             
-  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
-1 rmse    standard       2.65  Preprocessor1_Model1
-2 rsq     standard       0.479 Preprocessor1_Model1</code></pre>
+  .metric  mean     n std_err
+  &lt;chr&gt;   &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;
+1 rmse    2.63     25 0.0220 
+2 rsq     0.474    25 0.00587</code></pre>
+</div>
+</div>
+</section>
+<section id="creación-del-modelo-2" class="slide level2">
+<h2>1.5. Creación del modelo</h2>
+<ol start="3" type="1">
+<li><code>last_fit()</code> permite tener todo unificado en un solo tibble. Recibe directamente los datos de entrenamiento y los datos de evaluación y crea sus métricas y sus predicciones.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">set.seed</span>(<span class="dv">1235678</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a>edu_last_fit <span class="ot">&lt;-</span> <span class="fu">last_fit</span>(edu_wf, edu_split)</span>
+<span id="cb10-4"><a href="#cb10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="fu">collect_metrics</span>(edu_last_fit) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-6"><a href="#cb10-6"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(.estimator, .config))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  .metric .estimate
+  &lt;chr&gt;       &lt;dbl&gt;
+1 rmse        2.67 
+2 rsq         0.447</code></pre>
 </div>
 </div>
 </section>
 <section id="resultados-del-modelo" class="slide level2">
-<h2>2.5. Resultados del modelo</h2>
+<h2>1.5. Resultados del modelo</h2>
+<ol type="1">
+<li><p><code>collect_predictions()</code> extrae un tibble con las predicciones de los datos de evaluación.</p></li>
+<li><p>Creamos un ggplot que permita observar los resultados del modelo.</p></li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>resultados <span class="ot">&lt;-</span> <span class="fu">collect_predictions</span>(edu_fit) <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>resultados <span class="ot">&lt;-</span> <span class="fu">collect_predictions</span>(edu_last_fit) <span class="sc">|&gt;</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(education_score, .pred)) <span class="sc">+</span></span>
 <span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">color=</span><span class="st">'red'</span>) <span class="sc">+</span></span>
 <span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">coord_fixed</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="resultados-del-modelo-1" class="slide level2">
+<h2>1.5. Resultados del modelo</h2>
 
-<img data-src="Presentacion_Tidymodels2_files/figure-revealjs/resultados2-1.png" width="960" class="r-stretch"><div class="footer footer-default">
+<img data-src="Presentacion_Tidymodels2_files/figure-revealjs/resultados2-1.png" width="960" class="r-stretch"></section>
+<section id="repetición-del-modelo-sin-la-variable-size_flag" class="slide level2">
+<h2>1.6. Repetición del modelo sin la variable size_flag</h2>
+<ol type="1">
+<li>Seleccionaremos todas las variables que hemos usado en el modelo anterior excepto <code>size_flag</code> <em>(tamaño de los municipios)</em>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">set.seed</span>(<span class="dv">1235678</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a></span>
+<span id="cb13-3"><a href="#cb13-3"></a>edu_split2 <span class="ot">&lt;-</span>  education <span class="sc">%&gt;%</span> </span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(income_flag, <span class="st">"deprivation towns"</span>) <span class="sc">|</span> income_flag <span class="sc">==</span> <span class="st">"Cities"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-5"><a href="#cb13-5"></a>  <span class="fu">select</span>(education_score, income_flag, coastal, university_flag, rgn11nm) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-6"><a href="#cb13-6"></a>  <span class="fu">initial_split</span>(<span class="at">strata =</span> education_score)</span>
+<span id="cb13-7"><a href="#cb13-7"></a></span>
+<span id="cb13-8"><a href="#cb13-8"></a>edu_train2 <span class="ot">&lt;-</span> <span class="fu">training</span>(edu_split2)</span>
+<span id="cb13-9"><a href="#cb13-9"></a>edu_test2 <span class="ot">&lt;-</span> <span class="fu">testing</span>(edu_split2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="repetición-del-modelo-sin-la-variable-size_flag-1" class="slide level2">
+<h2>1.6. Repetición del modelo sin la variable size_flag</h2>
+<ol start="2" type="1">
+<li>Repetiremos el código usado en el modelo anterior.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">set.seed</span>(<span class="dv">1235678</span>)</span>
+<span id="cb14-2"><a href="#cb14-2"></a></span>
+<span id="cb14-3"><a href="#cb14-3"></a>edu_folds2 <span class="ot">&lt;-</span> <span class="fu">bootstraps</span>(edu_train2, <span class="at">strata =</span> education_score)</span>
+<span id="cb14-4"><a href="#cb14-4"></a>edu_folds2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Bootstrap sampling using stratification 
+# A tibble: 25 × 2
+   splits            id         
+   &lt;list&gt;            &lt;chr&gt;      
+ 1 &lt;split [824/301]&gt; Bootstrap01
+ 2 &lt;split [824/305]&gt; Bootstrap02
+ 3 &lt;split [824/279]&gt; Bootstrap03
+ 4 &lt;split [824/288]&gt; Bootstrap04
+ 5 &lt;split [824/316]&gt; Bootstrap05
+ 6 &lt;split [824/309]&gt; Bootstrap06
+ 7 &lt;split [824/299]&gt; Bootstrap07
+ 8 &lt;split [824/315]&gt; Bootstrap08
+ 9 &lt;split [824/301]&gt; Bootstrap09
+10 &lt;split [824/311]&gt; Bootstrap10
+# ℹ 15 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Preparamos para paralelizar</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">plan</span>(multisession, <span class="at">workers =</span> <span class="dv">4</span>)</span>
+<span id="cb16-3"><a href="#cb16-3"></a></span>
+<span id="cb16-4"><a href="#cb16-4"></a>edu_wf2 <span class="ot">&lt;-</span> <span class="fu">workflow</span>(</span>
+<span id="cb16-5"><a href="#cb16-5"></a>  education_score <span class="sc">~</span> ., <span class="co"># La variable que queremos predecir es 'education_score'</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">rand_forest</span>(<span class="at">mode =</span> <span class="st">"regression"</span>, <span class="at">trees =</span> <span class="dv">500</span>) <span class="co"># Definimos que nuestro modelo será un Random Forest.</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a>)</span>
+<span id="cb16-8"><a href="#cb16-8"></a></span>
+<span id="cb16-9"><a href="#cb16-9"></a><span class="fu">set.seed</span>(<span class="dv">1235678</span>)</span>
+<span id="cb16-10"><a href="#cb16-10"></a></span>
+<span id="cb16-11"><a href="#cb16-11"></a>edu_res2 <span class="ot">&lt;-</span> <span class="fu">fit_resamples</span>(edu_wf2, edu_folds2)</span>
+<span id="cb16-12"><a href="#cb16-12"></a><span class="fu">collect_metrics</span>(edu_res2) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-13"><a href="#cb16-13"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(.estimator, .config))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  .metric  mean     n std_err
+  &lt;chr&gt;   &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;
+1 rmse    2.62     25 0.0233 
+2 rsq     0.480    25 0.00543</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>edu_last_fit2 <span class="ot">&lt;-</span> <span class="fu">last_fit</span>(edu_wf2, edu_split2)</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">collect_metrics</span>(edu_last_fit2) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(.estimator, .config))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  .metric .estimate
+  &lt;chr&gt;       &lt;dbl&gt;
+1 rmse        2.68 
+2 rsq         0.441</code></pre>
+</div>
+</div>
+</section>
+<section id="repetición-del-modelo-sin-la-variable-size_flag-2" class="slide level2">
+<h2>1.6. Repetición del modelo sin la variable size_flag</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>resultados2 <span class="ot">&lt;-</span> <span class="fu">collect_predictions</span>(edu_last_fit2) <span class="sc">|&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(education_score, .pred)) <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">color=</span><span class="st">'red'</span>) <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a>  <span class="fu">coord_fixed</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+<img data-src="Presentacion_Tidymodels2_files/figure-revealjs/modelo2-viz2-1.png" width="960" class="r-stretch"></section>
+<section id="comparación-de-ambos-modelos" class="slide level2">
+<h2>1.7. Comparación de ambos modelos</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="Presentacion_Tidymodels2_files/figure-revealjs/resultados-comparacion-1.png" width="960"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  .metric .estimate
+  &lt;chr&gt;       &lt;dbl&gt;
+1 rmse        2.67 
+2 rsq         0.447</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="Presentacion_Tidymodels2_files/figure-revealjs/resultados-comparacion2-1.png" width="960"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  .metric .estimate
+  &lt;chr&gt;       &lt;dbl&gt;
+1 rmse        2.68 
+2 rsq         0.441</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="para-qué-se-podrían-usar-estos-resultados" class="slide level2">
+<h2>1.8. ¿Para qué se podrían usar estos resultados?</h2>
+<div>
+<ul>
+<li class="fragment"><strong>Para hacer predicciones de la evolución de los estudiantes en los próximos años</strong> (creación de políticas específicas, destinar presupuestos…)</li>
+<li class="fragment"><strong>Detectar outliers:</strong> Los municipios más pobres tienen menos universitarios, pero hay uno que tiene muchos graduados. ¿A qué se debe? ¿Qué está haciendo distinto al resto?</li>
+<li class="fragment"><strong>Hacer comparaciones:</strong>
+<ul>
+<li class="fragment">El modelo que hemos hecho se puede aplicar a otros países con condiciones similares.</li>
+<li class="fragment">También se puede usar para completar el dataset en caso de no tener los resultados de algunas ciudades.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="práctica" class="slide level2">
+<h2>1.9. Práctica</h2>
+<ul>
+<li><p>Escoge las variables del dataset que más interesantes te parezcan.</p></li>
+<li><p>Explóralas con una visualización.<br>
+</p></li>
+<li><p>Haz tu propio modelo predictivo cogiendo como guía el ejemplo del caso práctico.</p></li>
+<li><p><strong>¡No te compliques! Ponte creativo/a y explica cómo le sacarías partido a los datos a partir de un modelo predictivo.</strong></p></li>
+</ul>
+<div class="footer footer-default">
 
 </div>
 </section></section>
