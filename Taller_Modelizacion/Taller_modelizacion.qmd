@@ -24,6 +24,49 @@ pacman::p_load(tidyverse)
 
 # 2. Tipos de modelos
 
+## Tipos de modelos 
+
+|                | **Modelos explicativos** | **Modelos predictivos** |
+|----------------|:-------------------------|:------------------------|
+| Relación x e y | Causalidad               | Asociación              |
+| Protagonista   | Teoria                   | Datos                   |
+| Visión         | Retrospectiva            | Futura                  |
+| Varianza       | Minimizar sesgo          | Maximizar predicción    |
+
+## Tipos de modelos
+
+|                              | Modelos explicativos                                                             | Modelos predictivos                                                                                                                  |
+|-------------------|---------------------------|--------------------------|
+| Objetivos                    | Establecer relaciones causales                                                   | Predecir diagnósticos actuales o resultados futuros                                                                                  |
+| Precaución                   | Las posibilidades de hallazgos (Error tipo I)                                    | No ajuste: falta de generalizabilidad a nuevas poblaciones                                                                           |
+| Variables candidatas         | Un conjunto limitado de factores de riesgo y factores de confusión               | Muchos predictores potenciales; algunos pueden no tener relación causal con el resultado.                                            |
+| Selección de variables       | Basada en hipótesis; No debe utilizar procedimientos de selección automatizados. | Exploratorio; Puede utilizar procedimientos de selección automatizados, siempre con la correspondiente validación.                   |
+| Formas de ver el rendimiento | Tamaño de los coeficientes y nivel de significación de las variables             | Discriminación (análisis ROC); calibración (Hosmer-Lemeshow); de ajuste (R2, AIC); reclasificación (índice de reclasificación neta); |
+| Validación                   | Se necesitan nuevos estudios para confirmar las relaciones causales individuales | Validación interna; muestreo dividido; validación cruzada; bootstrap; validación externa.                                            |
+
+## Tipos de modelos 
+
+::: columns
+::: {.column width="50%"}
+Los investigadores con objetivos **explicativos** se desvían.
+
+Intentan optimizar métricas del modelo; $R^2$,curvas ROC ..., y
+descuidan cuestiones como la confusión.
+:::
+
+::: {.column width="50%"}
+Los investigadores con objetivos **predictivos** se desvían.
+
+preocupándose por los coeficientes $\beta$ y valores p, y omiten omiten
+pasos críticos como la calibración o la validación.
+:::
+:::
+
+## Tipos de modelos 
+
+![](Imagenes/Dilema.jpg)
+
+
 ## Tipos de modelos
 
 1.  Aprendizaje **supervisado**
@@ -80,22 +123,21 @@ máquinas."*
 -   Educación: Despido de profesores en Washington DC y Chicago por dar
     demasiado peso en la fórmula las bajas calificaciones de los
     alumnos.
--   Justicia: Janet Collins y su esposo Malcolm a la cárcel por una probabilidad de 1 entre 12 millones. 
--   Política: microtargeting político en redes para dirigir campañas. 
--   Economía: sesgos en el crédito y trabajo de tipo espiral retroalimentativa. 
-
+-   Justicia: Janet Collins y su esposo Malcolm a la cárcel por una
+    probabilidad de 1 entre 12 millones.
+-   Política: microtargeting político en redes para dirigir campañas.
+-   Economía: sesgos en el crédito y trabajo de tipo espiral
+    retroalimentativa.
 
 ## Aprendizaje supervisado
 
-1) Árboles de decisión
-2) Naïve Bayes
-3) Regresión
-3) Técnicas de Supervivencia
-5) Support Vector Machines (SVM)
-6) SARIMA models
-7) Redes neuronales
-
-
+1)  Árboles de decisión
+2)  Naïve Bayes
+3)  Regresión
+4)  Técnicas de Supervivencia
+5)  Support Vector Machines (SVM)
+6)  SARIMA models
+7)  Redes neuronales
 
 # 4. Aprendizaje no supervisado
 
@@ -230,71 +272,42 @@ Target_ejemplo %>%
 
 3.  Requiere menos interacción humana
 
-## Aprendizaje por refuerzo
+## Aprendizaje por refuerzo (Mario)
 
 {{< video /Imagenes/Mario_IA_1.mp4 >}}
 
-## Aprendizaje por refuerzo
+## Aprendizaje por refuerzo (Mario)
 
 {{< video /Imagenes/Mario_IA_2.mp4 >}}
 
-## Aprendizaje por refuerzo
+## Aprendizaje por refuerzo (Pokemon)
 
 {{< video /Imagenes/Pokemon_IA_1.mp4 >}}
 
-## Aprendizaje por refuerzo
+## Aprendizaje por refuerzo (Pokemon)
 
 {{< video /Imagenes/Pokemon_IA_2.mp4 >}}
 
-## Aprendizaje por refuerzo
+## Aprendizaje por refuerzo (Pokemon)
 
 {{< video /Imagenes/Pokemon_IA_3.mp4 >}}
 
-# Tipos de modelos 2
+## Aprendizaje por refuerzo (Casos famosos)
 
-## Tipos de modelos 2
+**AlphaGo y AlphaZero**: Desarrollados por DeepMind, estos sistemas lograron hitos significativos en juegos complejos como el Go, el
+ajedrez y el shogi. 
 
-|                | **Modelos explicativos** | **Modelos predictivos** |
-|----------------|:-------------------------|:------------------------|
-| Relación x e y | Causalidad               | Asociación              |
-| Protagonista   | Teoria                   | Datos                   |
-| Visión         | Retrospectiva            | Futura                  |
-| Varianza       | Minimizar sesgo          | Maximizar predicción    |
+**AlphaGo derrotó al campeón mundial de Go, Lee Sedol**, en 2016, mientras que AlphaZero superó a los mejores
+    programas de ajedrez y shogi tras solo unas pocas horas de
+    autoentrenamiento, aprendiendo desde cero sin datos previos.
 
-## Tipos de modelos 2
+## Aprendizaje por refuerzo (Casos famosos)
 
-|                              | Modelos explicativos                                                             | Modelos predictivos                                                                                                                  |
-|-------------------|---------------------------|--------------------------|
-| Objetivos                    | Establecer relaciones causales                                                   | Predecir diagnósticos actuales o resultados futuros                                                                                  |
-| Precaución                   | Las posibilidades de hallazgos (Error tipo I)                                    | No ajuste: falta de generalizabilidad a nuevas poblaciones                                                                           |
-| Variables candidatas         | Un conjunto limitado de factores de riesgo y factores de confusión               | Muchos predictores potenciales; algunos pueden no tener relación causal con el resultado.                                            |
-| Selección de variables       | Basada en hipótesis; No debe utilizar procedimientos de selección automatizados. | Exploratorio; Puede utilizar procedimientos de selección automatizados, siempre con la correspondiente validación.                   |
-| Formas de ver el rendimiento | Tamaño de los coeficientes y nivel de significación de las variables             | Discriminación (análisis ROC); calibración (Hosmer-Lemeshow); de ajuste (R2, AIC); reclasificación (índice de reclasificación neta); |
-| Validación                   | Se necesitan nuevos estudios para confirmar las relaciones causales individuales | Validación interna; muestreo dividido; validación cruzada; bootstrap; validación externa.                                            |
+**StarCraft II**: AlphaStar, también de DeepMind, logró un desempeño notable en StarCraft II, otro juego de estrategia en tiempo real muy complejo. En 2019, AlphaStar compitió y venció a jugadores profesionales, demostrando habilidades avanzadas de planificación, microgestión y toma de decisiones y sin superar el número de comandos por minuto que un jugador profesional promedio hacía.
 
-## Tipos de modelos 2
 
-::: columns
-::: {.column width="50%"}
-Los investigadores con objetivos **explicativos** se desvían.
 
-Intentan optimizar métricas del modelo; $R^2$,curvas ROC ..., y
-descuidan cuestiones como la confusión.
-:::
 
-::: {.column width="50%"}
-Los investigadores con objetivos **predictivos** se desvían.
-
-preocupándose por los coeficientes $\beta$ y valores p, y omiten omiten
-pasos críticos como la calibración o la validación.
-:::
-:::
-
-## Tipos de modelos 2
-
-![](Imagenes/Dilema.jpg)
-
-## Tipos de modelos 2
 
 
 
@@ -303,12 +316,12 @@ pasos críticos como la calibración o la validación.
 
 ## Métricas para modelos de respuesta Numérica
 
-Toda métrica de evaluación para un modelo de machine learning supervisado se basa 
+Toda métrica de evaluación para un modelo de machine learning
+supervisado se basa en el siguiente concepto:
 
 $$
 e_{i} = original_{i} - prediccion_{i}
-$$
-$$
+$$ $$
 e_{i} = y_{i} - \hat{y_{i}}
 $$
 
@@ -316,151 +329,173 @@ $$
 e_{i} = f(y_{i} - \hat{y_{i}})
 $$
 
-
 ## Métricas: MAE
 
-- El **Error Absoluto Medio** (MAE por sus siglas en inglés *Mean Absolute Error*) 
+-   El **Error Absoluto Medio** (MAE por sus siglas en inglés *Mean
+    Absolute Error*)
 
-- Medida de la magnitud promedio de los errores en un conjunto de predicciones, sin considerar su dirección.
-    $$
-    MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
-    $$
-    Donde:
+-   Medida de la magnitud promedio de los errores en un conjunto de
+    predicciones, sin considerar su dirección. $$
+      MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
+      $$ Donde:
+
     -   *n* es el número de observaciones.
-    -   *y<sub>i</sub>* es el valor observado.
-    -   *\hat{y}_{i}* es el valor predicho por el modelo.
-    
-  
+    -   *y*<sub>i</sub> es el valor observado.
+    -   \*\hat{y}\_{i}\* es el valor predicho por el modelo.
+
 ## Métricas: MAE
 
-- Métrica que evalua el rendimiento del modelo en términos de la magnitud del error. Basada en la **diferencia absoluta promedio**.
+-   Métrica que evalua el rendimiento del modelo en términos de la
+    magnitud del error. Basada en la **diferencia absoluta promedio**.
 
 -   ::: {style="color:#8ABF74;"}
-    Fácil de interpretar ya que se encuentra en la misma escala que los datos originales.
+    Fácil de interpretar ya que se encuentra en la misma escala que los
+    datos originales.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
-    - No penaliza en exceso los valores atípicos (outliers) o errores extremos.
+    -   No penaliza en exceso los valores atípicos (outliers) o errores
+        extremos.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
     **No considera la dirección de los errores**.
     :::
-    Trata todos los errores por igual, independientemente de si son positivos o negativos.
 
+    Trata todos los errores por igual, independientemente de si son
+    positivos o negativos.
 
 ## Métricas: MAE
 
-- Un MAE de 0 indica que el modelo predice exactamente los valores reales.
-- $MAE  > 0$ indica que el modelo tiene un mayor error promedio.
-- No penaliza ni discrimina entre errores grande o pequeños, es un promedio directo. 
-
-
-
-
+-   Un MAE de 0 indica que el modelo predice exactamente los valores
+    reales.
+-   $MAE  > 0$ indica que el modelo tiene un mayor error promedio.
+-   No penaliza ni discrimina entre errores grande o pequeños, es un
+    promedio directo.
 
 ## Métricas: MAPE
 
-- El **Error Absoluto Medio Porcentual** (MAPE por sus siglas en inglés *Mean Absolute Percentage Error*).
+-   El **Error Absoluto Medio Porcentual** (MAPE por sus siglas en
+    inglés *Mean Absolute Percentage Error*).
 
-- Medida de la magnitud promedio de los errores en un conjunto de predicciones, expresada como un porcentaje.
-    $$
-    MAPE = \frac{100}{n} \sum_{i=1}^{n} \left| \frac{y_i - \hat{y}_i}{y_i} \right|
-    $$
-    Donde:
+-   Medida de la magnitud promedio de los errores en un conjunto de
+    predicciones, expresada como un porcentaje. $$
+      MAPE = \frac{100}{n} \sum_{i=1}^{n} \left| \frac{y_i - \hat{y}_i}{y_i} \right|
+      $$ Donde:
+
     -   *n* es el número de observaciones.
-    -   *y<sub>i</sub>* es el valor observado.
-    -   *\(\hat{y}_i\)* es el valor predicho por el modelo.
-    
+    -   *y*<sub>i</sub> es el valor observado.
+    -   \*(\hat{y}\_i)\* es el valor predicho por el modelo.
+
 ## Métricas: MAPE
 
-- Métrica que evalúa el rendimiento del modelo en términos de la magnitud del error relativo. Basada en la **diferencia porcentual promedio absoluta**.
+-   Métrica que evalúa el rendimiento del modelo en términos de la
+    magnitud del error relativo. Basada en la **diferencia porcentual
+    promedio absoluta**.
 
 -   ::: {style="color:#8ABF74;"}
-    Expresa el error como un porcentaje, lo cual facilita la interpretación y comparación entre diferentes modelos y escalas.
+    Expresa el error como un porcentaje, lo cual facilita la
+    interpretación y comparación entre diferentes modelos y escalas.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
-    - Puede ser muy grande o indefinida si los valores observados son cercanos a cero.
+    -   Puede ser muy grande o indefinida si los valores observados son
+        cercanos a cero.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
     **No considera la dirección de los errores**.
     :::
-    Trata todos los errores por igual, independientemente de si son positivos o negativos.
+
+    Trata todos los errores por igual, independientemente de si son
+    positivos o negativos.
 
 ## Métricas: MAPE
 
-- Un MAPE de 0% indica que el modelo predice exactamente los valores reales.
-- MAPE > 0% indica que el modelo tiene un mayor error porcentual promedio.
-- Es útil para comparar la precisión de modelos en diferentes escalas y unidades, pero puede ser problemático con valores observados cercanos a cero.
-
-
-
+-   Un MAPE de 0% indica que el modelo predice exactamente los valores
+    reales.
+-   MAPE \> 0% indica que el modelo tiene un mayor error porcentual
+    promedio.
+-   Es útil para comparar la precisión de modelos en diferentes escalas
+    y unidades, pero puede ser problemático con valores observados
+    cercanos a cero.
 
 ## Métricas: MSE
 
-- El **Error Cuadrático Medio** (MSE por sus siglas en inglés *Mean Squared Error*).
+-   El **Error Cuadrático Medio** (MSE por sus siglas en inglés *Mean
+    Squared Error*).
 
-- Medida de la magnitud promedio de los errores en un conjunto de predicciones, considerando la dirección y penalizando los errores grandes más que los pequeños.
-    $$
-    MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
-    $$
-    Donde:
+-   Medida de la magnitud promedio de los errores en un conjunto de
+    predicciones, considerando la dirección y penalizando los errores
+    grandes más que los pequeños. $$
+      MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+      $$ Donde:
+
     -   *n* es el número de observaciones.
-    -   *y<sub>i</sub>* es el valor observado.
-    -   *\(\hat{y}_i\)* es el valor predicho por el modelo.
-    
+    -   *y*<sub>i</sub> es el valor observado.
+    -   \*(\hat{y}\_i)\* es el valor predicho por el modelo.
+
 ## Métricas: MSE
 
-- Métrica que evalúa el rendimiento del modelo en términos de la magnitud del error. Basada en la **diferencia cuadrática promedio**.
+-   Métrica que evalúa el rendimiento del modelo en términos de la
+    magnitud del error. Basada en la **diferencia cuadrática promedio**.
 
 -   ::: {style="color:#8ABF74;"}
-    - Penaliza los errores grandes más que los pequeños debido a la elevación al cuadrado de las diferencias.
+    -   Penaliza los errores grandes más que los pequeños debido a la
+        elevación al cuadrado de las diferencias.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
-    Se utiliza principalmente en análisis teóricos y en optimización de modelos de alta complejidad. 
+    Se utiliza principalmente en análisis teóricos y en optimización de
+    modelos de alta complejidad.
     :::
-    - las unidades  del error son al cuadrado, puede ser difícil de interpretar directamente en términos de la escala original de los datos.
+
+    -   las unidades del error son al cuadrado, puede ser difícil de
+        interpretar directamente en términos de la escala original de
+        los datos.
 
 -   ::: {style="color:#BF1E1A;"}
     **Es sensible a los valores atípicos**.
     :::
-    Unos pocos valores atípicos pueden incrementar significativamente el MSE.
 
+    Unos pocos valores atípicos pueden incrementar significativamente el
+    MSE.
 
 ## Métricas: MSE
 
-- Un MSE de 0 indica que el modelo predice exactamente los valores reales.
-- MSE > 0 indica que el modelo tiene un mayor error promedio.
-- Penaliza más los errores grandes que los pequeños. Útil en contextos donde los errores grandes son especialmente perjudiciales.
-
-
+-   Un MSE de 0 indica que el modelo predice exactamente los valores
+    reales.
+-   MSE \> 0 indica que el modelo tiene un mayor error promedio.
+-   Penaliza más los errores grandes que los pequeños. Útil en contextos
+    donde los errores grandes son especialmente perjudiciales.
 
 ## Métricas: RMSE
 
-- El **Error Cuadrático Medio Raiz** (RMSE por sus siglas en inglés *Root Mean Squared Error*).
+-   El **Error Cuadrático Medio Raiz** (RMSE por sus siglas en inglés
+    *Root Mean Squared Error*).
 
-- Medida de la magnitud promedio de los errores en un conjunto de predicciones, considerando su dirección.
-    $$
-    RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}
-    $$
-    Donde:
+-   Medida de la magnitud promedio de los errores en un conjunto de
+    predicciones, considerando su dirección. $$
+      RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}
+      $$ Donde:
+
     -   *n* es el número de observaciones.
-    -   *y<sub>i</sub>* es el valor observado.
-    -   *\(\hat{y}_i\)* es el valor predicho por el modelo.
-    
+    -   *y*<sub>i</sub> es el valor observado.
+    -   \*(\hat{y}\_i)\* es el valor predicho por el modelo.
+
 ## Métricas: RMSE
 
-- Métrica que evalúa el rendimiento del modelo en términos de la magnitud del error. Basada en la **diferencia cuadrática promedio**.
+-   Métrica que evalúa el rendimiento del modelo en términos de la
+    magnitud del error. Basada en la **diferencia cuadrática promedio**.
 
 -   ::: {style="color:#8ABF74;"}
-    Fácil de interpretar ya que se encuentra en la misma escala que los datos originales.
+    Fácil de interpretar ya que se encuentra en la misma escala que los
+    datos originales.
     :::
 
-- Penaliza altamente los valores atípicos (outliers) o errores extremos debido a la elevación al cuadrado de las diferencias y luego devolverlos a la escala original.
-
+-   Penaliza altamente los valores atípicos (outliers) o errores
+    extremos debido a la elevación al cuadrado de las diferencias y
+    luego devolverlos a la escala original.
 
 -   ::: {style="color:#BF1E1A;"}
     Es **muy** sensible a los valores atípicos.
@@ -468,135 +503,146 @@ $$
 
 ## Métricas: RMSE
 
-- Un RMSE de 0 indica que el modelo predice exactamente los valores reales.
-- RMSE > 0 indica que el modelo tiene un mayor error promedio.
-- Penaliza los errores grandes más que los pequeños, por lo tanto, es útil en contextos donde los errores grandes son especialmente perjudiciales.
-
-
-
-
+-   Un RMSE de 0 indica que el modelo predice exactamente los valores
+    reales.
+-   RMSE \> 0 indica que el modelo tiene un mayor error promedio.
+-   Penaliza los errores grandes más que los pequeños, por lo tanto, es
+    útil en contextos donde los errores grandes son especialmente
+    perjudiciales.
 
 ## Métricas: $R^2$
 
-- El **Coeficiente de Determinación** $R^2$.
+-   El **Coeficiente de Determinación** $R^2$.
 
-- Medida que indica la proporción de la variabilidad de la variable dependiente que es explicada por el modelo.
-    $$
-    R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
-    $$
-    Donde:
+-   Medida que indica la proporción de la variabilidad de la variable
+    dependiente que es explicada por el modelo. $$
+      R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
+      $$ Donde:
+
     -   *n* es el número de observaciones.
-    -   *y<sub>i</sub>* es el valor observado.
-    -   *$\hat{y}_{i}$* es el valor predicho por el modelo.
-    -   *$\bar{y}$* es la media de los valores observados.
+    -   *y*<sub>i</sub> es el valor observado.
+    -   $\hat{y}_{i}$ es el valor predicho por el modelo.
+    -   $\bar{y}$ es la media de los valores observados.
 
-  
 ## Métricas: $R^2$
 
-- Métrica que evalúa el rendimiento del modelo en términos de la proporción de variabilidad explicada. Basada en la **relación entre la suma de los errores residuales y la suma total de los cuadrados**.
+-   Métrica que evalúa el rendimiento del modelo en términos de la
+    proporción de variabilidad explicada. Basada en la **relación entre
+    la suma de los errores residuales y la suma total de los
+    cuadrados**.
 
 -   ::: {style="color:#8ABF74;"}
-    Facilita la interpretación de la efectividad del modelo, ya que varía entre 0 y 1.
+    Facilita la interpretación de la efectividad del modelo, ya que
+    varía entre 0 y 1.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
-    - Puede ser engañoso en modelos no lineales o con muchos parámetros(atención modelos predictivos)
+    -   Puede ser engañoso en modelos no lineales o con muchos
+        parámetros(atención modelos predictivos)
     :::
 
 -   ::: {style="color:#BF1E1A;"}
     **No informa sobre el sesgo o la varianza del modelo**.
     :::
+
     Solo indica la proporción de la varianza explicada.
 
 ## Métricas: $R^2$
 
-- Un $R^2$ de 1 indica que el modelo explica toda la variabilidad de los datos.
-- $R^2 = 0$ indica que el modelo no explica ninguna variabilidad de los datos.
-- Valores negativos de $R^2$ pueden ocurrir y indican que el modelo es peor que uno que simplemente predice la media de los datos.
-
-
-
-
+-   Un $R^2$ de 1 indica que el modelo explica toda la variabilidad de
+    los datos.
+-   $R^2 = 0$ indica que el modelo no explica ninguna variabilidad de
+    los datos.
+-   Valores negativos de $R^2$ pueden ocurrir y indican que el modelo es
+    peor que uno que simplemente predice la media de los datos.
 
 ## Métricas: Huber Loss
 
-- también conocida como **error cuadrático medio suavizado**
+-   también conocida como **error cuadrático medio suavizado**
 
-- Ccombina el MAE con MSE, siendo menos sensible a los valores atípicos que el MSE y más robusta que el MAE.
-    $$
-    L_\delta(y, \hat{y}) = 
-    \begin{cases} 
-    \frac{1}{2}(y - \hat{y})^2 & \text{si } |y - \hat{y}| \le \delta \\
-    \delta \cdot (|y - \hat{y}| - \frac{1}{2}\delta) & \text{si } |y - \hat{y}| > \delta
-    \end{cases}
-    $$
-    Donde:
+-   Ccombina el MAE con MSE, siendo menos sensible a los valores
+    atípicos que el MSE y más robusta que el MAE. $$
+      L_\delta(y, \hat{y}) = 
+      \begin{cases} 
+      \frac{1}{2}(y - \hat{y})^2 & \text{si } |y - \hat{y}| \le \delta \\
+      \delta \cdot (|y - \hat{y}| - \frac{1}{2}\delta) & \text{si } |y - \hat{y}| > \delta
+      \end{cases}
+      $$ Donde:
+
     -   *y* es el valor observado.
-    -   *$\hat{y}$* es el valor predicho por el modelo.
-    -   *$\delta$* es un umbral positivo que determina la transición entre el MAE y el MSE.
+    -   $\hat{y}$ es el valor predicho por el modelo.
+    -   $\delta$ es un umbral positivo que determina la transición entre
+        el MAE y el MSE.
 
 ## Métricas: Huber Loss
 
-- Métrica que evalúa el rendimiento del modelo en términos de la magnitud del error, combinando **propiedades del MAE y el MSE**.
+-   Métrica que evalúa el rendimiento del modelo en términos de la
+    magnitud del error, combinando **propiedades del MAE y el MSE**.
 
-- La elección de $\delta$ es crucial y puede influir en la sensibilidad del modelo a los valores atípicos.
+-   La elección de $\delta$ es crucial y puede influir en la
+    sensibilidad del modelo a los valores atípicos.
 
-- Muy utlizado en técnicas de optimización basadas en gradientes. (XGBoost) 
+-   Muy utlizado en técnicas de optimización basadas en gradientes.
+    (XGBoost)
 
 ## Métricas: Huber Loss
 
-- Un valor de Huber Loss cercano a 0 indica que el modelo predice con alta precisión.
-- La Huber Loss se ajusta dependiendo de la elección de $\delta$, lo que permite controlar el equilibrio entre penalización de errores grandes y pequeños.
-- Resumen información del MAE i el MSE, de modo que vale la pena computar ambos para tener un contexto amplio de la situación. 
-
-
-
-
-
+-   Un valor de Huber Loss cercano a 0 indica que el modelo predice con
+    alta precisión.
+-   La Huber Loss se ajusta dependiendo de la elección de $\delta$, lo
+    que permite controlar el equilibrio entre penalización de errores
+    grandes y pequeños.
+-   Resumen información del MAE i el MSE, de modo que vale la pena
+    computar ambos para tener un contexto amplio de la situación.
 
 ## Métricas: ICC
 
-- El **Índice de Ideabilidad de Correlación** (ICC por sus siglas en inglés *Index of Ideality of Correlation*).
+-   El **Índice de Ideabilidad de Correlación** (ICC por sus siglas en
+    inglés *Index of Ideality of Correlation*).
 
-- Medida que evalúa la precisión predictiva de un modelo al comparar los valores predichos con los valores observados.
-    $$
-    ICC = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \overline{y})^2 + \sum_{i=1}^{n} (\hat{y}_i - \overline{\hat{y}})^2}
-    $$
-    Donde:
+-   Medida que evalúa la precisión predictiva de un modelo al comparar
+    los valores predichos con los valores observados. $$
+      ICC = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \overline{y})^2 + \sum_{i=1}^{n} (\hat{y}_i - \overline{\hat{y}})^2}
+      $$ Donde:
+
     -   *n* es el número de observaciones.
-    -   *y<sub>i</sub>* es el valor observado.
-    -   *\(\hat{y}_i\)* es el valor predicho por el modelo.
-    -   *\(\overline{y}\)* es la media de los valores observados.
-    -   *\(\overline{\hat{y}}\)* es la media de los valores predichos.
+    -   *y*<sub>i</sub> es el valor observado.
+    -   \*(\hat{y}\_i)\* es el valor predicho por el modelo.
+    -   *(*\overline{y}) es la media de los valores observados.
+    -   *(*\overline{\hat{y}}) es la media de los valores predichos.
 
-  
 ## Métricas: ICC
 
-- Métrica que evalúa el rendimiento del modelo en términos de precisión predictiva. Basada en la **relación entre la suma de los errores residuales y las sumas de las desviaciones totales y predichas**.
+-   Métrica que evalúa el rendimiento del modelo en términos de
+    precisión predictiva. Basada en la **relación entre la suma de los
+    errores residuales y las sumas de las desviaciones totales y
+    predichas**.
 
 -   ::: {style="color:#8ABF74;"}
-    Proporciona una medida comprensible de la precisión predictiva del modelo.
+    Proporciona una medida comprensible de la precisión predictiva del
+    modelo.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
-    - Puede ser sensible a la distribución de los valores observados y predichos.
+    -   Puede ser sensible a la distribución de los valores observados y
+        predichos.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
     **Puede ser influenciado por la escala de los datos**.
     :::
-    Los resultados pueden variar dependiendo de la escala de los valores observados y predichos.
+
+    Los resultados pueden variar dependiendo de la escala de los valores
+    observados y predichos.
 
 ## Métricas: ICC
 
-- Un ICC de 1 indica que el modelo predice exactamente los valores reales.
-- ICC cercano a 0 indica que el modelo no tiene una buena precisión predictiva.
-- ICC puede ser negativo si el modelo tiene un rendimiento peor que el promedio.
-
-
-
-
-
+-   Un ICC de 1 indica que el modelo predice exactamente los valores
+    reales.
+-   ICC cercano a 0 indica que el modelo no tiene una buena precisión
+    predictiva.
+-   ICC puede ser negativo si el modelo tiene un rendimiento peor que el
+    promedio.
 
 ## Métricas: AIC
 
@@ -624,12 +670,20 @@ $$
 -   ::: {style="color:#BF1E1A;"}
     **Un AIC por si solo no tiene ningún valor**.
     :::
-    Se necesitan de otras
-    métricas o compararse con el AIC de otro modelo2 para darle
-    contexto.
-    
+
+    Se necesitan de otras métricas o compararse con el AIC de otro
+    modelo2 para darle contexto.
 
 ## Métricas: AIC
 
 ![](Imagenes/AIC%20vs%20R2.png){width="711" height="469"}
 
+## Métricas para modelos de respuesta Numérica
+
+Toda métrica de evaluación para un modelo de machine learning
+supervisado se basa en el siguiente concepto:
+
+|                         | Prediccion TRUE     | Prediccion FALSE    |
+|-------------------------|---------------------|---------------------|
+| **Dato original TRUE**  | TRUE Positivo (TP)  | FALSE Positive (FP) |
+| **Dato original FALSE** | Falso Negativo (FN) | True Negativo (TN)  |

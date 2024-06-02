@@ -480,6 +480,7 @@
 <li class="fragment">Árboles de decisión</li>
 <li class="fragment">Naïve Bayes</li>
 <li class="fragment">Regresión</li>
+<li class="fragment">Técnicas de Supervivencia</li>
 <li class="fragment">Support Vector Machines (SVM)</li>
 <li class="fragment">SARIMA models</li>
 <li class="fragment">Redes neuronales</li>
@@ -903,7 +904,7 @@
 </section>
 <section id="métricas-para-modelos-de-respuesta-numérica" class="slide level2">
 <h2>Métricas para modelos de respuesta Numérica</h2>
-<p>Toda métrica de evaluación para un modelo de machine learning supervisado se basa</p>
+<p>Toda métrica de evaluación para un modelo de machine learning supervisado se basa en el siguiente concepto:</p>
 <p><span class="math display">\[
 e_{i} = original_{i} - prediccion_{i}
 \]</span> <span class="math display">\[
@@ -922,7 +923,7 @@ e_{i} = f(y_{i} - \hat{y_{i}})
   \]</span> Donde:</p>
 <ul>
 <li class="fragment"><em>n</em> es el número de observaciones.</li>
-<li class="fragment"><em>y<sub>i</sub></em> es el valor observado.</li>
+<li class="fragment"><em>y</em><sub>i</sub> es el valor observado.</li>
 <li class="fragment">*_{i}* es el valor predicho por el modelo.</li>
 </ul></li>
 </ul>
@@ -962,7 +963,7 @@ e_{i} = f(y_{i} - \hat{y_{i}})
   \]</span> Donde:</p>
 <ul>
 <li class="fragment"><em>n</em> es el número de observaciones.</li>
-<li class="fragment"><em>y<sub>i</sub></em> es el valor observado.</li>
+<li class="fragment"><em>y</em><sub>i</sub> es el valor observado.</li>
 <li class="fragment">*(_i)* es el valor predicho por el modelo.</li>
 </ul></li>
 </ul>
@@ -1002,7 +1003,7 @@ e_{i} = f(y_{i} - \hat{y_{i}})
   \]</span> Donde:</p>
 <ul>
 <li class="fragment"><em>n</em> es el número de observaciones.</li>
-<li class="fragment"><em>y<sub>i</sub></em> es el valor observado.</li>
+<li class="fragment"><em>y</em><sub>i</sub> es el valor observado.</li>
 <li class="fragment">*(_i)* es el valor predicho por el modelo.</li>
 </ul></li>
 </ul>
@@ -1045,7 +1046,7 @@ e_{i} = f(y_{i} - \hat{y_{i}})
   \]</span> Donde:</p>
 <ul>
 <li class="fragment"><em>n</em> es el número de observaciones.</li>
-<li class="fragment"><em>y<sub>i</sub></em> es el valor observado.</li>
+<li class="fragment"><em>y</em><sub>i</sub> es el valor observado.</li>
 <li class="fragment">*(_i)* es el valor predicho por el modelo.</li>
 </ul></li>
 </ul>
@@ -1080,9 +1081,9 @@ e_{i} = f(y_{i} - \hat{y_{i}})
   \]</span> Donde:</p>
 <ul>
 <li class="fragment"><em>n</em> es el número de observaciones.</li>
-<li class="fragment"><em>y<sub>i</sub></em> es el valor observado.</li>
-<li class="fragment"><em><span class="math inline">\(\hat{y}_{i}\)</span></em> es el valor predicho por el modelo.</li>
-<li class="fragment"><em><span class="math inline">\(\bar{y}\)</span></em> es la media de los valores observados.</li>
+<li class="fragment"><em>y</em><sub>i</sub> es el valor observado.</li>
+<li class="fragment"><span class="math inline">\(\hat{y}_{i}\)</span> es el valor predicho por el modelo.</li>
+<li class="fragment"><span class="math inline">\(\bar{y}\)</span> es la media de los valores observados.</li>
 </ul></li>
 </ul>
 </section>
@@ -1125,8 +1126,8 @@ e_{i} = f(y_{i} - \hat{y_{i}})
   \]</span> Donde:</p>
 <ul>
 <li class="fragment"><em>y</em> es el valor observado.</li>
-<li class="fragment"><em><span class="math inline">\(\hat{y}\)</span></em> es el valor predicho por el modelo.</li>
-<li class="fragment"><em><span class="math inline">\(\delta\)</span></em> es un umbral positivo que determina la transición entre el MAE y el MSE.</li>
+<li class="fragment"><span class="math inline">\(\hat{y}\)</span> es el valor predicho por el modelo.</li>
+<li class="fragment"><span class="math inline">\(\delta\)</span> es un umbral positivo que determina la transición entre el MAE y el MSE.</li>
 </ul></li>
 </ul>
 </section>
@@ -1155,10 +1156,10 @@ e_{i} = f(y_{i} - \hat{y_{i}})
   \]</span> Donde:</p>
 <ul>
 <li class="fragment"><em>n</em> es el número de observaciones.</li>
-<li class="fragment"><em>y<sub>i</sub></em> es el valor observado.</li>
+<li class="fragment"><em>y</em><sub>i</sub> es el valor observado.</li>
 <li class="fragment">*(_i)* es el valor predicho por el modelo.</li>
-<li class="fragment"><em>()</em> es la media de los valores observados.</li>
-<li class="fragment"><em>()</em> es la media de los valores predichos.</li>
+<li class="fragment"><em>(</em>) es la media de los valores observados.</li>
+<li class="fragment"><em>(</em>) es la media de los valores predichos.</li>
 </ul></li>
 </ul>
 </section>
@@ -1218,6 +1219,31 @@ AIC = 2{k} - \ln(\mathcal{L})
 <section id="métricas-aic-2" class="slide level2">
 <h2>Métricas: AIC</h2>
 <p><img data-src="Imagenes/AIC%20vs%20R2.png" width="711" height="469"></p>
+</section>
+<section id="métricas-para-modelos-de-respuesta-numérica-1" class="slide level2">
+<h2>Métricas para modelos de respuesta Numérica</h2>
+<p>Toda métrica de evaluación para un modelo de machine learning supervisado se basa en el siguiente concepto:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Prediccion TRUE</th>
+<th>Prediccion FALSE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Dato original TRUE</strong></td>
+<td>TRUE Positivo (TP)</td>
+<td>FALSE Positive (FP)</td>
+</tr>
+<tr class="even">
+<td><strong>Dato original FALSE</strong></td>
+<td>Falso Negativo (FN)</td>
+<td>True Negativo (TN)</td>
+</tr>
+</tbody>
+</table>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
