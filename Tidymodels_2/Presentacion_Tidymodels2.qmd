@@ -1,5 +1,5 @@
 ---
-title: "Ejemplos prácticos Tidymodels"
+title: "Ejemplos prácticos Tidymodels 2"
 format: 
   revealjs:
     #incremental: true  
@@ -343,7 +343,7 @@ collect_metrics(edu_last_fit2) %>%
 - Explóralas con una visualización.   
 - Haz tu propio modelo predictivo cogiendo como guía el ejemplo del caso práctico.
 
-- **¡No te compliques! Ponte creativo/a y explica cómo le sacarías partido a los datos a partir de un modelo predictivo.**
+- **¡No te compliques! Ponte creativo/a y piensa cómo le sacarías partido a los datos a partir de un modelo predictivo.**
 
 
 # 2. Caso práctico 2
