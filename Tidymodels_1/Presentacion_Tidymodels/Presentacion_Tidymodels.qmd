@@ -13,13 +13,13 @@ format:
 
 ## 1.1. Un poquito de historia {auto-animate="true"}
 
-![](Imagenes/Max_Kuhn.jpeg){width="400" height="400" margin-top="200px" margin-bottom="0px" padding="0px" fig-align="center"}
+<div style="margin-top:50px; padding:0px; margin-bottom=0px">
+![](Imagenes/Max_Kuhn.jpeg){width="400" height="400" fig-align="center"}
+</div>
 
-<p style="text-align: center; margin-top:0; padding:0">
-
+<div style="text-align: center; margin-top:0px; padding:0px">
 Max Kuhn
-
-</p>
+</div>
 
 ## 1.1. Un poquito de historia {auto-animate="true"}
 
@@ -274,9 +274,9 @@ model <-
 
 -   Los médicos han hecho un estudio caso-control en el que se miran unas cuantas variables; y al cabo de un año se da un diagnostico definitivo de *Var_respuesta*.
 
--   Haremos una modelización de tipo clasificatoria binaria, es decir de 2 niveles: o tiene la enfermedad o no la tiene. 👍/👎
+-   Haremos una modelización de tipo clasificatoria binaria, es decir de 2 niveles: o tiene la enfermedad o no la tiene 👍/👎.
 
--   Además de de nuestra variable *Var_respuesta*, tenemos otras 25 variables: de cognición, bioquímicas, genéticas, etc.
+-   Además de nuestra variable *Var_respuesta*, tenemos otras 25 variables: de cognición, bioquímicas, genéticas, etc.
 :::
 :::
 
@@ -363,7 +363,7 @@ initial_split(datos, prop = 0.6 )
 
 ## 4.1.2. Algunas funciones importantes en *RSample* {auto-animate="true"}
 
--   `bootstraps`: Crea un tibble con n cantidad de objetos “split” y su correspondiente identificador. En las muestras tipo bootsrap, los individuos pueden aparecer más de una vez en el conjunto de datos.
+-   `bootstraps`: Crea un tibble con *n* cantidad de objetos “split” y su correspondiente identificador. En las muestras tipo bootsrap, los individuos pueden aparecer más de una vez en el conjunto de datos.
 
 ```{r echo=TRUE}
 rsample::bootstraps(datos,5)
@@ -371,7 +371,7 @@ rsample::bootstraps(datos,5)
 
 ## 4.1.2. Algunas funciones importantes en *RSample* {auto-animate="true"}
 
--   `rolling_origin`: Crea un tibble con n cantidad de objetos “split” y su correspondiente identificador. En este caso, los remuestreos no son aleatorios y cada partición contiene datos consecutivos.
+-   `rolling_origin`: Crea un tibble con *n* cantidad de objetos “split” y su correspondiente identificador. En este caso, los remuestreos no son aleatorios y cada partición contiene datos consecutivos.
 
 ```{r echo=TRUE, eval=FALSE}
 rolling_origin(datos, initial = 20, assess = 20, skip = 40, cumulative = FALSE)
@@ -555,11 +555,11 @@ Folds_training
 
 ## 5.1. Pre-procesamiento de datos {auto-animate="true"}
 
-<p style="margin-top:200px">
+<div style="margin-top:200px; font-size:50px;">
 
 ¿Debemos ejecutar el pre-procesamiento una y otra vez?
 
-</p>
+</div>
 
 ## 5.1. Pre-procesamiento de datos {auto-animate="true"}
 
@@ -668,7 +668,7 @@ Training_datos_adasyn <- Training_datos %>%
     as.formula("Var_respuesta ~ Cognicion_01 +Cognicion_02+Escala_01+Escala_02"),
     data = . , 
     strata = Var_respuesta )  %>% 
-  #  2. Step (haz la transoformación que requieras) 
+  #  2. Step (haz la transformación que requieras) 
   #  step de  imputación por árboles manteniendo la estructura de todas las covariables
   step_impute_bag(all_numeric()) %>% 
   # 🔴 step para sobremuestrear el nivel menor en la variable respuesta.
@@ -1051,9 +1051,9 @@ WF_hiperparametros_mejor %>%
   knitr::kable()
 ```
 
-# 10. La conversión de todo: `fit()` y `predict()`
+# 10. La conversión de todo: fit() y predict()
 
-## 10. La conversión de todo: `fit()` y `predict()` {auto-animate="true"}
+## 10. La conversión de todo: fit() y predict() {auto-animate="true"}
 
 ```{r modelo-fitted, echo=TRUE}
 Modelo_fitted <- WF_Receta_modelo_1_Random_forest %>% 
@@ -1067,7 +1067,7 @@ Modelo_fitted <- WF_Receta_modelo_1_Random_forest %>%
 Modelo_fitted
 ```
 
-## 10. La conversión de todo: `fit()` y `predict()` {auto-animate="true"}
+## 10. La conversión de todo: fit() y predict() {auto-animate="true"}
 
 ```{r nuevo-caso-modelo, echo=TRUE}
 Nuevo_caso <- tibble(
@@ -1082,19 +1082,19 @@ Nuevo_caso <- tibble(
 )
 ```
 
-## 10. La conversión de todo: `fit()` y `predict()` {auto-animate="true"}
+## 10. La conversión de todo: fit() y predict() {auto-animate="true"}
 
 ::: incremental
 La función `predict()` de la librería stats tiene sinergias con Tidymodels y necesita de estos argumentos:
 
-1.  El modelo ya ajustado (model_fitted)
+1.  El modelo ya ajustado (*model_fitted*)
 
 2.  Un tibble/dataframe con la nueva predicción (debe contener las mismas variables)
 
 3.  Un tipo de predicción en los casos de clasificación, si queremos las probabilidades de cada categoría o la categoría predicha directamente
 :::
 
-## 10. La conversión de todo: `fit()` y `predict()` {auto-animate="true"}
+## 10. La conversión de todo: fit() y predict() {auto-animate="true"}
 
 ```{r predict-modelo, echo=TRUE}
 tibble(
@@ -1102,13 +1102,13 @@ tibble(
   predict(Modelo_fitted, Nuevo_caso, type = "class"))
 ```
 
-## 10.1. La función `last_fit()` {auto-animate="true"}
+## 10.1. La función last_fit() {auto-animate="true"}
 
 ::: incremental
 -   La función `last_fit()` permite tener todo unificado en un solo tibble. Recibe directamente los datos de entrenamiento y los datos de evaluación y crea sus métricas y sus predicciones.
 :::
 
-## 10.1. La función `last_fit()` {auto-animate="true"}
+## 10.1. La función last_fit() {auto-animate="true"}
 
 ```{r extract-workflow-1, echo=TRUE}
 Modelo_1_final <-  WF_Receta_modelo_1_Random_forest %>% 
@@ -1122,7 +1122,7 @@ Modelo_1_final <-  WF_Receta_modelo_1_Random_forest %>%
 Modelo_1_final
 ```
 
-## 10.1. La función `last_fit()` {auto-animate="true"}
+## 10.1. La función last_fit() {auto-animate="true"}
 
 ::: incremental
 -   Contamos con una serie de funciones para extraer todo lo que necesitemos de ellas:
@@ -1135,7 +1135,7 @@ Modelo_1_final
 :::
 :::
 
-## 10.1. La función `last_fit()` {auto-animate="true"}
+## 10.1. La función last_fit() {auto-animate="true"}
 
 ```{r extract-workflow-2, echo=TRUE}
 WF_Receta_modelo_1_Random_forest %>%
@@ -1147,7 +1147,7 @@ WF_Receta_modelo_1_Random_forest %>%
   extract_workflow()
 ```
 
-## 10.1. La función `last_fit()` {auto-animate="true"}
+## 10.1. La función last_fit() {auto-animate="true"}
 
 ```{r extract-workflow-3, echo=TRUE}
 Modelo_1_final %>%
@@ -1158,7 +1158,7 @@ Modelo_1_final %>%
 
 ```
 
-## 10.1. La función `last_fit()` {auto-animate="true"}
+## 10.1. La función last_fit() {auto-animate="true"}
 
 ```{r curva-roc, echo=FALSE}
 options(yardstick.event_first = FALSE)
@@ -1251,11 +1251,12 @@ Modelo_1_final_Threshold_performance %>%
   theme_minimal()
 ```
 
-# 12. `workflow_set()` para unificarlas todas
+# 12. workflow_set() para unificarlas todas
 
 ## 12.1. workflow_set() {auto-animate="true"}
 
--   Supongamos que queremos evaluar 2 recetas con 1 modelo de RF:
+::: incremental
+-   Supongamos que queremos evaluar 2 recetas con 1 modelo de Random Forest:
 
 ::: {style="margin-left:50px; font-size:35px;"}
 1.  Una con solo las variables 'Escala'
@@ -1263,6 +1264,7 @@ Modelo_1_final_Threshold_performance %>%
 :::
 
 -   Queremos dejarlo abierto a que puedan haber más.
+:::
 
 ## 12.1. workflow_set() {auto-animate="true"}
 
@@ -1513,12 +1515,31 @@ ggpubr::ggarrange( Plot_ROC_CURVE_training_todos_los_posibles_modelos,
 ## 13. SHAP values
 
 ::: incremental
--   Forma de ver la contribución de las variables utilizadas en las predicciones.
+- Los valores de Shapley (*Shap values*), que deben su nombre al premio Nobel Lloyd Shapley, son un concepto de la teoría de juegos cooperativos que ha acabado encontrado aplicaciones en el aprendizaje automático.
 
--   Se pueden utilizar tanto como para el modelo general como en individuos.
+- En el contexto del aprendizaje automático, las características o variables se consideran jugadores, y el juego consiste en **cuánto contribuye cada característica a la predicción de un modelo.**
 
--   Algunos paquetes que se encargan de generar shap values son h2o y DALEXTRA.
 :::
+
+## 13. SHAP values
+
+::: incremental
+- Los *valores de Shapley* son sencillamente las **marginales de cada variable dentro del modelo.** 
+
+- Compilarlos es computacionalmente extenso, ya que hay que hacer cada combinación de valores para una fila y evaluar de cuánto es su marginal. 
+
+- El valor final llamado *Shap value* es **el promedio de todas las aportaciones de una variable marginal.**
+
+:::
+
+## 13. SHAP values
+
+::: incremental
+- Aparte de su extenso coste computacional, todo Shap value asume que está utilizando un modelo de caja negra, de manera que si el modelo no está bien especificado es posible que esté dando indicaciones erróneas.
+
+- Algunos paquetes que se encargan de generar shap values son **h2o** y **DALEXTRA**.
+
+::: 
 
 ## 13. SHAP values
 
@@ -1545,3 +1566,16 @@ modelo_h20 %>%
 ```{r shap-values-2, echo=FALSE}
 h2o_end()
 ```
+
+## 13. SHAP values
+
+::: incremental
+
+- Para cada predicción, los valores de Shapley representan la contribución de cada característica a la diferencia entre la predicción del modelo y la predicción media. En otras palabras, **indican cuánto añade o resta cada característica a la predicción media.**
+
+- Si una predicción media es de 0.5, y el shap value es de 0.1, indicará que esa variable sola podría llegar a tener un impacto tal que haga que la predicción llege a 0.6.
+
+::: 
+
+
+

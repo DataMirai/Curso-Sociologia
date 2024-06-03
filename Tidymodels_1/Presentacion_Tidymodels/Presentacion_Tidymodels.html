@@ -403,14 +403,16 @@
 </section>
 <section id="un-poquito-de-historia" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">1.1. Un poquito de historia</h2>
+<div style="margin-top:50px; padding:0px; margin-bottom=0px">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Imagenes/Max_Kuhn.jpeg" data-margin-top="200px" data-margin-bottom="0px" data-padding="0px" width="400" height="400"></p>
+<p><img data-src="Imagenes/Max_Kuhn.jpeg" width="400" height="400"></p>
 </figure>
 </div>
-<p style="text-align: center; margin-top:0; padding:0">
-</p><p>Max Kuhn</p>
-<p></p>
+</div>
+<div style="text-align: center; margin-top:0px; padding:0px">
+<p>Max Kuhn</p>
+</div>
 </section>
 <section id="un-poquito-de-historia-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">1.1. Un poquito de historia</h2>
@@ -716,8 +718,8 @@
 <li class="fragment"><p>Somos unos expertos en aprendizaje automático y nos piden ayuda de un hospital 🏥</p></li>
 <li class="fragment"><p>Al parecer, nuestra variable, <em>Var_respuesta</em>, es una enfermedad complicada de diagnosticar.</p></li>
 <li class="fragment"><p>Los médicos han hecho un estudio caso-control en el que se miran unas cuantas variables; y al cabo de un año se da un diagnostico definitivo de <em>Var_respuesta</em>.</p></li>
-<li class="fragment"><p>Haremos una modelización de tipo clasificatoria binaria, es decir de 2 niveles: o tiene la enfermedad o no la tiene. 👍/👎</p></li>
-<li class="fragment"><p>Además de de nuestra variable <em>Var_respuesta</em>, tenemos otras 25 variables: de cognición, bioquímicas, genéticas, etc.</p></li>
+<li class="fragment"><p>Haremos una modelización de tipo clasificatoria binaria, es decir de 2 niveles: o tiene la enfermedad o no la tiene 👍/👎.</p></li>
+<li class="fragment"><p>Además de nuestra variable <em>Var_respuesta</em>, tenemos otras 25 variables: de cognición, bioquímicas, genéticas, etc.</p></li>
 </ul>
 </div>
 </div>
@@ -1497,7 +1499,7 @@
 <section id="algunas-funciones-importantes-en-rsample-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">4.1.2. Algunas funciones importantes en <em>RSample</em></h2>
 <ul>
-<li><code>bootstraps</code>: Crea un tibble con n cantidad de objetos “split” y su correspondiente identificador. En las muestras tipo bootsrap, los individuos pueden aparecer más de una vez en el conjunto de datos.</li>
+<li><code>bootstraps</code>: Crea un tibble con <em>n</em> cantidad de objetos “split” y su correspondiente identificador. En las muestras tipo bootsrap, los individuos pueden aparecer más de una vez en el conjunto de datos.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb9-1" class="hljs-ln-code"><a href="#cb9-1"></a>rsample<span class="sc">::</span><span class="fu">bootstraps</span>(datos,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1506,18 +1508,18 @@
 # A tibble: 5 × 2
   splits            id        
   &lt;list&gt;            &lt;chr&gt;     
-1 &lt;split [285/93]&gt;  Bootstrap1
-2 &lt;split [285/112]&gt; Bootstrap2
-3 &lt;split [285/113]&gt; Bootstrap3
-4 &lt;split [285/104]&gt; Bootstrap4
-5 &lt;split [285/102]&gt; Bootstrap5</code></pre>
+1 &lt;split [285/94]&gt;  Bootstrap1
+2 &lt;split [285/105]&gt; Bootstrap2
+3 &lt;split [285/100]&gt; Bootstrap3
+4 &lt;split [285/100]&gt; Bootstrap4
+5 &lt;split [285/104]&gt; Bootstrap5</code></pre>
 </div>
 </div>
 </section>
 <section id="algunas-funciones-importantes-en-rsample-2" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">4.1.2. Algunas funciones importantes en <em>RSample</em></h2>
 <ul>
-<li><code>rolling_origin</code>: Crea un tibble con n cantidad de objetos “split” y su correspondiente identificador. En este caso, los remuestreos no son aleatorios y cada partición contiene datos consecutivos.</li>
+<li><code>rolling_origin</code>: Crea un tibble con <em>n</em> cantidad de objetos “split” y su correspondiente identificador. En este caso, los remuestreos no son aleatorios y cada partición contiene datos consecutivos.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb11-1" class="hljs-ln-code"><a href="#cb11-1"></a><span class="fu">rolling_origin</span>(datos, <span class="at">initial =</span> <span class="dv">20</span>, <span class="at">assess =</span> <span class="dv">20</span>, <span class="at">skip =</span> <span class="dv">40</span>, <span class="at">cumulative =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2060,9 +2062,9 @@
 </section>
 <section id="pre-procesamiento-de-datos-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">5.1. Pre-procesamiento de datos</h2>
-<p style="margin-top:200px">
-</p><p>¿Debemos ejecutar el pre-procesamiento una y otra vez?</p>
-<p></p>
+<div style="margin-top:200px; font-size:50px;">
+<p>¿Debemos ejecutar el pre-procesamiento una y otra vez?</p>
+</div>
 </section>
 <section id="pre-procesamiento-de-datos-2" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">5.1. Pre-procesamiento de datos</h2>
@@ -2316,7 +2318,7 @@
 <span id="cb21-7" class="hljs-ln-code"><a href="#cb21-7"></a>    <span class="fu">as.formula</span>(<span class="st">"Var_respuesta ~ Cognicion_01 +Cognicion_02+Escala_01+Escala_02"</span>),</span>
 <span id="cb21-8" class="hljs-ln-code"><a href="#cb21-8"></a>    <span class="at">data =</span> . , </span>
 <span id="cb21-9" class="hljs-ln-code"><a href="#cb21-9"></a>    <span class="at">strata =</span> Var_respuesta )  <span class="sc">%&gt;%</span> </span>
-<span id="cb21-10" class="hljs-ln-code"><a href="#cb21-10"></a>  <span class="co">#  2. Step (haz la transoformación que requieras) </span></span>
+<span id="cb21-10" class="hljs-ln-code"><a href="#cb21-10"></a>  <span class="co">#  2. Step (haz la transformación que requieras) </span></span>
 <span id="cb21-11" class="hljs-ln-code"><a href="#cb21-11"></a>  <span class="co">#  step de  imputación por árboles manteniendo la estructura de todas las covariables</span></span>
 <span id="cb21-12" class="hljs-ln-code"><a href="#cb21-12"></a>  <span class="fu">step_impute_bag</span>(<span class="fu">all_numeric</span>()) <span class="sc">%&gt;%</span> </span>
 <span id="cb21-13" class="hljs-ln-code"><a href="#cb21-13"></a>  <span class="co"># 🔴 step para sobremuestrear el nivel menor en la variable respuesta.</span></span>
@@ -2887,11 +2889,11 @@ Computational engine: ranger </code></pre>
 </section></section>
 <section>
 <section id="la-conversión-de-todo-fit-y-predict" class="title-slide slide level1 center">
-<h1>10. La conversión de todo: <code>fit()</code> y <code>predict()</code></h1>
+<h1>10. La conversión de todo: fit() y predict()</h1>
 
 </section>
 <section id="la-conversión-de-todo-fit-y-predict-1" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">10. La conversión de todo: <code>fit()</code> y <code>predict()</code></h2>
+<h2 data-id="quarto-animate-title">10. La conversión de todo: fit() y predict()</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb41-1" class="hljs-ln-code"><a href="#cb41-1"></a>Modelo_fitted <span class="ot">&lt;-</span> WF_Receta_modelo_1_Random_forest <span class="sc">%&gt;%</span> </span>
 <span id="cb41-2" class="hljs-ln-code"><a href="#cb41-2"></a>  <span class="co"># 🔴 Finalizamos el flujo de trabajo con la mejor combinación de Hiperparámetros encontrada</span></span>
@@ -2934,7 +2936,7 @@ OOB prediction error (Brier s.):  0.1440296 </code></pre>
 </div>
 </section>
 <section id="la-conversión-de-todo-fit-y-predict-2" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">10. La conversión de todo: <code>fit()</code> y <code>predict()</code></h2>
+<h2 data-id="quarto-animate-title">10. La conversión de todo: fit() y predict()</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb43-1" class="hljs-ln-code"><a href="#cb43-1"></a>Nuevo_caso <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb43-2" class="hljs-ln-code"><a href="#cb43-2"></a>  <span class="st">'Cognicion_01'</span> <span class="ot">=</span> <span class="dv">123</span>,</span>
@@ -2949,18 +2951,18 @@ OOB prediction error (Brier s.):  0.1440296 </code></pre>
 </div>
 </section>
 <section id="la-conversión-de-todo-fit-y-predict-3" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">10. La conversión de todo: <code>fit()</code> y <code>predict()</code></h2>
+<h2 data-id="quarto-animate-title">10. La conversión de todo: fit() y predict()</h2>
 <div>
 <p>La función <code>predict()</code> de la librería stats tiene sinergias con Tidymodels y necesita de estos argumentos:</p>
 <ol type="1">
-<li class="fragment"><p>El modelo ya ajustado (model_fitted)</p></li>
+<li class="fragment"><p>El modelo ya ajustado (<em>model_fitted</em>)</p></li>
 <li class="fragment"><p>Un tibble/dataframe con la nueva predicción (debe contener las mismas variables)</p></li>
 <li class="fragment"><p>Un tipo de predicción en los casos de clasificación, si queremos las probabilidades de cada categoría o la categoría predicha directamente</p></li>
 </ol>
 </div>
 </section>
 <section id="la-conversión-de-todo-fit-y-predict-4" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">10. La conversión de todo: <code>fit()</code> y <code>predict()</code></h2>
+<h2 data-id="quarto-animate-title">10. La conversión de todo: fit() y predict()</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb44-1" class="hljs-ln-code"><a href="#cb44-1"></a><span class="fu">tibble</span>(</span>
 <span id="cb44-2" class="hljs-ln-code"><a href="#cb44-2"></a>  <span class="fu">predict</span>(Modelo_fitted, Nuevo_caso, <span class="at">type =</span> <span class="st">"prob"</span> ),</span>
@@ -2974,7 +2976,7 @@ OOB prediction error (Brier s.):  0.1440296 </code></pre>
 </div>
 </section>
 <section id="la-función-last_fit" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">10.1. La función <code>last_fit()</code></h2>
+<h2 data-id="quarto-animate-title">10.1. La función last_fit()</h2>
 <div>
 <ul>
 <li class="fragment">La función <code>last_fit()</code> permite tener todo unificado en un solo tibble. Recibe directamente los datos de entrenamiento y los datos de evaluación y crea sus métricas y sus predicciones.</li>
@@ -2982,7 +2984,7 @@ OOB prediction error (Brier s.):  0.1440296 </code></pre>
 </div>
 </section>
 <section id="la-función-last_fit-1" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">10.1. La función <code>last_fit()</code></h2>
+<h2 data-id="quarto-animate-title">10.1. La función last_fit()</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb46-1" class="hljs-ln-code"><a href="#cb46-1"></a>Modelo_1_final <span class="ot">&lt;-</span>  WF_Receta_modelo_1_Random_forest <span class="sc">%&gt;%</span> </span>
 <span id="cb46-2" class="hljs-ln-code"><a href="#cb46-2"></a>  <span class="co"># 🔴 Finalizamos el flujo de trabajo con la mejor combinación de hiperparámetros encontrada</span></span>
@@ -3002,7 +3004,7 @@ OOB prediction error (Brier s.):  0.1440296 </code></pre>
 </div>
 </section>
 <section id="la-función-last_fit-2" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">10.1. La función <code>last_fit()</code></h2>
+<h2 data-id="quarto-animate-title">10.1. La función last_fit()</h2>
 <div>
 <ul>
 <li class="fragment">Contamos con una serie de funciones para extraer todo lo que necesitemos de ellas:</li>
@@ -3018,7 +3020,7 @@ OOB prediction error (Brier s.):  0.1440296 </code></pre>
 </div>
 </section>
 <section id="la-función-last_fit-3" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">10.1. La función <code>last_fit()</code></h2>
+<h2 data-id="quarto-animate-title">10.1. La función last_fit()</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb48-1" class="hljs-ln-code"><a href="#cb48-1"></a>WF_Receta_modelo_1_Random_forest <span class="sc">%&gt;%</span></span>
 <span id="cb48-2" class="hljs-ln-code"><a href="#cb48-2"></a>  <span class="co"># 🔴 Finalizamos el flujo de trabajo con la mejor combinación de hiperparámetros encontrada</span></span>
@@ -3061,7 +3063,7 @@ OOB prediction error (Brier s.):  0.1440296 </code></pre>
 </div>
 </section>
 <section id="la-función-last_fit-4" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">10.1. La función <code>last_fit()</code></h2>
+<h2 data-id="quarto-animate-title">10.1. La función last_fit()</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb50-1" class="hljs-ln-code"><a href="#cb50-1"></a>Modelo_1_final <span class="sc">%&gt;%</span></span>
 <span id="cb50-2" class="hljs-ln-code"><a href="#cb50-2"></a>  <span class="co"># 🔴 Con esta función podemos recopilar todas las métricas de un modelo</span></span>
@@ -3085,7 +3087,7 @@ OOB prediction error (Brier s.):  0.1440296 </code></pre>
 </div>
 </section>
 <section id="la-función-last_fit-5" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">10.1. La función <code>last_fit()</code></h2>
+<h2 data-id="quarto-animate-title">10.1. La función last_fit()</h2>
 
 <img data-src="Presentacion_Tidymodels_files/figure-revealjs/curva-roc-1.png" width="960" class="r-stretch"></section></section>
 <section>
@@ -3199,23 +3201,25 @@ OOB prediction error (Brier s.):  0.1440296 </code></pre>
 <img data-src="Presentacion_Tidymodels_files/figure-revealjs/Threshold-2-1.png" width="960" class="r-stretch"></section></section>
 <section>
 <section id="workflow_set-para-unificarlas-todas" class="title-slide slide level1 center">
-<h1>12. <code>workflow_set()</code> para unificarlas todas</h1>
+<h1>12. workflow_set() para unificarlas todas</h1>
 
 </section>
 <section id="workflow_set" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">12.1. workflow_set()</h2>
+<div>
 <ul>
-<li>Supongamos que queremos evaluar 2 recetas con 1 modelo de RF:</li>
+<li class="fragment">Supongamos que queremos evaluar 2 recetas con 1 modelo de Random Forest:</li>
 </ul>
 <div style="margin-left:50px; font-size:35px;">
 <ol type="1">
-<li>Una con solo las variables ‘Escala’</li>
-<li>Otra con solo las variables ‘Cognición’</li>
+<li class="fragment">Una con solo las variables ‘Escala’</li>
+<li class="fragment">Otra con solo las variables ‘Cognición’</li>
 </ol>
 </div>
 <ul>
-<li>Queremos dejarlo abierto a que puedan haber más.</li>
+<li class="fragment">Queremos dejarlo abierto a que puedan haber más.</li>
 </ul>
+</div>
 </section>
 <section id="workflow_set-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">12.1. workflow_set()</h2>
@@ -3432,16 +3436,53 @@ OOB prediction error (Brier s.):  0.1440296 </code></pre>
 <h2>13. SHAP values</h2>
 <div>
 <ul>
+<li class="fragment"><p>Los valores de Shapley (<em>Shap values</em>), que deben su nombre al premio Nobel Lloyd Shapley, son un concepto de la teoría de juegos cooperativos que ha acabado encontrado aplicaciones en el aprendizaje automático.</p></li>
+<li class="fragment"><p>En el contexto del aprendizaje automático, las características o variables se consideran jugadores, y el juego consiste en <strong>cuánto contribuye cada característica a la predicción de un modelo.</strong></p></li>
+</ul>
+</div>
+</section>
+<section id="shap-values-2" class="slide level2">
+<h2>13. SHAP values</h2>
+<div>
+<ul>
+<li class="fragment"><p>Los valores de Shapley son sencillamente las <strong>marginales de cada variable dentro del modelo.</strong></p></li>
+<li class="fragment"><p>Compilarlos es computacionalmente extenso, ya que hay que hacer cada combinación de valores para una fila y evaluar de cuánto es su marginal.</p></li>
+<li class="fragment"><p>El valor final llamado Shap value es <strong>el promedio de todas las aportaciones de una variable marginal.</strong></p></li>
+</ul>
+</div>
+</section>
+<section id="shap-values-3" class="slide level2">
+<h2>13. SHAP values</h2>
+<div>
+<ul>
+<li class="fragment"><p>Aparte de su extenso coste computacional, todo Shap value asume que está utilizando un modelo de caja negra, de manera que si el modelo no está bien especificado es posible que esté dando indicaciones erróneas.</p></li>
+<li class="fragment"><p>Algunos paquetes que se encargan de generar shap values son <strong>h2o</strong> y <strong>DALEXTRA</strong>.</p></li>
+</ul>
+</div>
+</section>
+<section id="shap-values-4" class="slide level2">
+<h2>13. SHAP values</h2>
+<div>
+<ul>
 <li class="fragment"><p>Forma de ver la contribución de las variables utilizadas en las predicciones.</p></li>
 <li class="fragment"><p>Se pueden utilizar tanto como para el modelo general como en individuos.</p></li>
 <li class="fragment"><p>Algunos paquetes que se encargan de generar shap values son h2o y DALEXTRA.</p></li>
 </ul>
 </div>
 </section>
-<section id="shap-values-2" class="slide level2">
+<section id="shap-values-5" class="slide level2">
 <h2>13. SHAP values</h2>
 
-<img data-src="Presentacion_Tidymodels_files/figure-revealjs/shap-values-12-1.png" width="960" class="r-stretch"><div class="footer footer-default">
+<img data-src="Presentacion_Tidymodels_files/figure-revealjs/shap-values-12-1.png" width="960" class="r-stretch"></section>
+<section id="shap-values-6" class="slide level2">
+<h2>13. SHAP values</h2>
+<div>
+<ul>
+<li class="fragment"><p>Para cada predicción, los valores de Shapley representan la contribución de cada característica a la diferencia entre la predicción del modelo y la predicción media. En otras palabras, <strong>indican cuánto añade o resta cada característica a la predicción media.</strong></p></li>
+<li class="fragment"><p>Si una predicción media es de 0.5, y el shap value es de 0.1, indicará que esa variable sola podría llegar a tener un impacto tal que haga que la predicción llege a 0.6.</p></li>
+</ul>
+</div>
+<div class="footer footer-default">
 
 </div>
 </section></section>

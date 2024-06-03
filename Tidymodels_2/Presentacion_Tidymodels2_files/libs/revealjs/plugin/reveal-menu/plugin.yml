@@ -4,6 +4,7 @@ stylesheet: [menu.css, quarto-menu.css]
 config:
   menu:
     side: "left"
+    titleSelector: 'h1',
     useTextContentForMissingTitles: true
     markers: false
     loadIcons: false
