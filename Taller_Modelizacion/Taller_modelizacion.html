@@ -411,7 +411,11 @@
 <li class="fragment">Tener más o menos claras las variables que interfieren en el proceso</li>
 <li class="fragment">Tener Una idea de la complejidad de la pregunta</li>
 </ol>
-</section></section>
+</section>
+<section id="bases-de-modelización-2" class="slide level2">
+<h2>Bases de modelización</h2>
+
+<img data-src="Imagenes/60860fbc7d3ee.jpeg" class="r-stretch quarto-figure-center"><p class="caption">Machine learning: el sentimiento</p></section></section>
 <section>
 <section id="tipos-de-modelos" class="title-slide slide level1 center">
 <h1>2. Tipos de modelos</h1>
@@ -516,7 +520,11 @@
 <h2>Tipos de modelos</h2>
 
 <img data-src="Imagenes/Dilema.jpg" class="r-stretch"></section>
-<section id="tipos-de-modelos-5" class="slide level2 scrollable">
+<section id="tipos-de-modelos-5" class="slide level2">
+<h2>Tipos de modelos</h2>
+<video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Both.mp4"></video>
+</section>
+<section id="tipos-de-modelos-6" class="slide level2 scrollable">
 <h2>Tipos de modelos</h2>
 <ol type="1">
 <li class="fragment">Aprendizaje <strong>supervisado</strong></li>
@@ -576,14 +584,195 @@
 <section id="aprendizaje-supervisado-5" class="slide level2 scrollable">
 <h2>Aprendizaje supervisado</h2>
 <ol type="1">
+<li class="fragment">Regresión</li>
 <li class="fragment">Árboles de decisión</li>
 <li class="fragment">Naïve Bayes</li>
-<li class="fragment">Regresión</li>
 <li class="fragment">Técnicas de Supervivencia</li>
 <li class="fragment">Support Vector Machines (SVM)</li>
 <li class="fragment">SARIMA models</li>
 <li class="fragment">Redes neuronales</li>
 </ol>
+</section>
+<section id="aprendizaje-supervisado-regresión" class="slide level2">
+<h2>Aprendizaje supervisado (Regresión)</h2>
+<ul>
+<li class="fragment"><p>Definición: Modelos que predicen una variable numérica continua.</p></li>
+<li class="fragment"><p>Forma básica (lineal):</p></li>
+</ul>
+<p><span class="math inline">\(Y = \beta_0 + \beta X +\epsilon\)</span></p>
+<ul>
+<li class="fragment">Forma completa:</li>
+</ul>
+<p><span class="math inline">\(Y = f\left( \beta_0 + \beta X + \lambda \left( \frac{1 - \alpha}{2}\sum_{j=1}^{p}\beta_{j}^{2} + \alpha \sum_{j=1}^{p}|\beta_{j}| \right) + \epsilon \right)\)</span></p>
+</section>
+<section id="aprendizaje-supervisado-regresión-1" class="slide level2">
+<h2>Aprendizaje supervisado (Regresión)</h2>
+<ul>
+<li class="fragment">Segun la funcion de enlace:
+<ul>
+<li class="fragment">Regresión lineal.</li>
+<li class="fragment">Regresión múltiple.</li>
+<li class="fragment">Regresión polinómica.</li>
+</ul></li>
+<li class="fragment">Según la restricción:
+<ul>
+<li class="fragment">Regresión Lasso (elimina coeficientes)</li>
+<li class="fragment">Regresión Ridge (elimina colinealidad)</li>
+<li class="fragment">Regresión <em>elastic net</em> (ambos mundos, pero un poco más malos que su versión sola)</li>
+</ul></li>
+<li class="fragment">Según el diseño experimental:
+<ul>
+<li class="fragment">Efectos fijos</li>
+<li class="fragment">Efectos aleatorios</li>
+<li class="fragment">Efectos mixtos</li>
+</ul></li>
+</ul>
+</section>
+<section id="aprendizaje-supervisado-regresión-2" class="slide level2">
+<h2>Aprendizaje supervisado (Regresión)</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ wt + hp, data = mtcars)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-3.941 -1.600 -0.182  1.050  5.854 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 37.22727    1.59879  23.285  &lt; 2e-16 ***
+wt          -3.87783    0.63273  -6.129 1.12e-06 ***
+hp          -0.03177    0.00903  -3.519  0.00145 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.593 on 29 degrees of freedom
+Multiple R-squared:  0.8268,    Adjusted R-squared:  0.8148 
+F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-2-2.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-2-3.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-2-4.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="aprendizaje-supervisado-regresión-3" class="slide level2">
+<h2>Aprendizaje supervisado (Regresión)</h2>
+<p>Contras y Advertencias:</p>
+<ul>
+<li class="fragment">Sensibilidad a valores atípicos.</li>
+<li class="fragment">Multicolinealidad entre variables independientes.</li>
+<li class="fragment">Suposiciones estrictas deben ser verificadas.</li>
+<li class="fragment">Puede no capturar relaciones no lineales, incluso las simples.</li>
+</ul>
+</section>
+<section id="aprendizaje-supervisado-árboles-de-decisión" class="slide level2">
+<h2>Aprendizaje supervisado (Árboles de decisión)</h2>
+<p>Definición: Modelos que segmentan los datos en ramas según condiciones.</p>
+<p>Características:</p>
+<ul>
+<li class="fragment">Interpretabilidad fácil.</li>
+<li class="fragment">No necesita suposiciones sobre la distribución de datos.</li>
+<li class="fragment">Tipos:
+<ul>
+<li class="fragment">Clasificación</li>
+<li class="fragment">regresión (CART).</li>
+</ul></li>
+</ul>
+</section>
+<section id="aprendizaje-supervisado-árboles-de-decisión-1" class="slide level2">
+<h2>Aprendizaje supervisado (Árboles de decisión)</h2>
+<p>Conceptos Clave:</p>
+<ul>
+<li class="fragment">Nodo raíz,</li>
+<li class="fragment">nodos internos</li>
+<li class="fragment">hojas.</li>
+</ul>
+<p>Criterios de partición:</p>
+<ul>
+<li class="fragment">Gini,</li>
+<li class="fragment">entropía,</li>
+<li class="fragment">varianza.</li>
+</ul>
+</section>
+<section id="aprendizaje-supervisado-árboles-de-decisión-2" class="slide level2">
+<h2>Aprendizaje supervisado (Árboles de decisión)</h2>
+
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section id="aprendizaje-supervisado-árboles-de-decisión-3" class="slide level2">
+<h2>Aprendizaje supervisado (Árboles de decisión)</h2>
+<p>Contras y Advertencias:</p>
+<ul>
+<li class="fragment">Tendencia a sobreajuste (overfitting). Sobre en algoritmos de árbol más complejos</li>
+<li class="fragment">Muy sensibles a pequeñas variaciones en los datos. (difíciles de tener en producción bien depurados)</li>
+<li class="fragment">Pueden generar árboles muy complejos si no se poda correctamente.</li>
+</ul>
+</section>
+<section id="aprendizaje-supervisado-random-forest" class="slide level2">
+<h2>Aprendizaje supervisado (Random Forest)</h2>
+<p>Definición: Conjunto de árboles de decisión que mejora la precisión y robustez.</p>
+<p>Características: - Utiliza el bagging (bootstrap aggregating). - Promedia los resultados de múltiples árboles. - Reduce la varianza del árbol de decisión y mejora la generalización.</p>
+</section>
+<section id="aprendizaje-supervisado-random-forest-1" class="slide level2">
+<h2>Aprendizaje supervisado (Random Forest)</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>             MeanDecreaseGini
+Sepal.Length         8.997856
+Sepal.Width          2.205258
+Petal.Length        49.185497
+Petal.Width         38.860656</code></pre>
+</div>
+
+</div>
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<section id="aprendizaje-supervisado-random-forest-2" class="slide level2">
+<h2>Aprendizaje supervisado (Random Forest)</h2>
+<p>Contras y Advertencias: - Requiere bastantes más recursos computacionales que un solo árbol. - Interpretación más compleja debido al conjunto de modelos. - No es ideal para datasets con un número muy alto de características debido al riesgo de sobreajuste.</p>
+</section>
+<section id="aprendizaje-supervisado-naïve-bayes" class="slide level2">
+<h2>Aprendizaje supervisado (Naïve Bayes)</h2>
+</section>
+<section id="aprendizaje-supervisado-técnicas-de-supervivencia" class="slide level2">
+<h2>Aprendizaje supervisado (Técnicas de Supervivencia)</h2>
+</section>
+<section id="aprendizaje-supervisado-técnicas-de-supervivencia-1" class="slide level2">
+<h2>Aprendizaje supervisado (Técnicas de Supervivencia)</h2>
+</section>
+<section id="aprendizaje-supervisado-support-vector-machines" class="slide level2">
+<h2>Aprendizaje supervisado (Support Vector Machines)</h2>
+</section>
+<section id="aprendizaje-supervisado-sarima-models" class="slide level2">
+<h2>Aprendizaje supervisado (SARIMA models)</h2>
+</section>
+<section id="aprendizaje-supervisado-redes-neuronales" class="slide level2">
+<h2>Aprendizaje supervisado (Redes neuronales)</h2>
 </section></section>
 <section>
 <section id="aprendizaje-no-supervisado" class="title-slide slide level1 center">
@@ -742,14 +931,14 @@
 <section id="aprendizaje-no-supervisado-caso-target-4" class="slide level2">
 <h2>Aprendizaje no supervisado, caso Target</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Aplicar K-means</span></span>
-<span id="cb1-2"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reproducibilidad</span></span>
-<span id="cb1-3"><a href=""></a>kmeans_result <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">kmeans</span>(Target_ejemplo[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">centers =</span> <span class="dv">3</span>)</span>
-<span id="cb1-4"><a href=""></a></span>
-<span id="cb1-5"><a href=""></a><span class="co"># Añadir los resultados del cluster al dataframe</span></span>
-<span id="cb1-6"><a href=""></a>Target_ejemplo <span class="ot">&lt;-</span> Target_ejemplo <span class="sc">%&gt;%</span>  </span>
-<span id="cb1-7"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">Cluster =</span> <span class="fu">as_factor</span>(kmeans_result<span class="sc">$</span>cluster) ) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-8"><a href=""></a>  <span class="fu">select</span>(ClienteID, Cluster, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Aplicar K-means</span></span>
+<span id="cb3-2"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reproducibilidad</span></span>
+<span id="cb3-3"><a href=""></a>kmeans_result <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">kmeans</span>(Target_ejemplo[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">centers =</span> <span class="dv">3</span>)</span>
+<span id="cb3-4"><a href=""></a></span>
+<span id="cb3-5"><a href=""></a><span class="co"># Añadir los resultados del cluster al dataframe</span></span>
+<span id="cb3-6"><a href=""></a>Target_ejemplo <span class="ot">&lt;-</span> Target_ejemplo <span class="sc">%&gt;%</span>  </span>
+<span id="cb3-7"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">Cluster =</span> <span class="fu">as_factor</span>(kmeans_result<span class="sc">$</span>cluster) ) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-8"><a href=""></a>  <span class="fu">select</span>(ClienteID, Cluster, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="aprendizaje-no-supervisado-caso-target-5" class="slide level2">
@@ -848,7 +1037,7 @@
 <section id="aprendizaje-no-supervisado-caso-target-6" class="slide level2">
 <h2>Aprendizaje no supervisado, caso Target</h2>
 
-<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section></section>
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section></section>
 <section>
 <section id="aprendizaje-por-refuerzo" class="title-slide slide level1 center">
 <h1>5. Aprendizaje por refuerzo</h1>
@@ -871,23 +1060,23 @@
 </section>
 <section id="aprendizaje-por-refuerzo-mario" class="slide level2">
 <h2>Aprendizaje por refuerzo (Mario)</h2>
-<video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Mario_IA_1.mp4"></video>
+<video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Mario_IA_1.mp4"></video>
 </section>
 <section id="aprendizaje-por-refuerzo-mario-1" class="slide level2">
 <h2>Aprendizaje por refuerzo (Mario)</h2>
-<video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Mario_IA_2.mp4"></video>
+<video id="video_shortcode_videojs_video3" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Mario_IA_2.mp4"></video>
 </section>
 <section id="aprendizaje-por-refuerzo-pokemon" class="slide level2">
 <h2>Aprendizaje por refuerzo (Pokemon)</h2>
-<video id="video_shortcode_videojs_video3" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Pokemon_IA_1.mp4"></video>
+<video id="video_shortcode_videojs_video4" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Pokemon_IA_1.mp4"></video>
 </section>
 <section id="aprendizaje-por-refuerzo-pokemon-1" class="slide level2">
 <h2>Aprendizaje por refuerzo (Pokemon)</h2>
-<video id="video_shortcode_videojs_video4" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Pokemon_IA_2.mp4"></video>
+<video id="video_shortcode_videojs_video5" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Pokemon_IA_2.mp4"></video>
 </section>
 <section id="aprendizaje-por-refuerzo-pokemon-2" class="slide level2">
 <h2>Aprendizaje por refuerzo (Pokemon)</h2>
-<video id="video_shortcode_videojs_video5" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Pokemon_IA_3.mp4"></video>
+<video id="video_shortcode_videojs_video6" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Pokemon_IA_3.mp4"></video>
 </section>
 <section id="aprendizaje-por-refuerzo-casos-famosos" class="slide level2">
 <h2>Aprendizaje por refuerzo (Casos famosos)</h2>
@@ -1291,6 +1480,45 @@ AIC = 2{k} - \ln(\mathcal{L})
 <li class="fragment">En contextos con clases desbalanceadas, otras métricas suelen ser más informativas.</li>
 </ul>
 </section>
+<section id="métricas-precision" class="slide level2">
+<h2>Métricas: Precision</h2>
+<ul>
+<li class="fragment"><p>La <strong>Precisión</strong> (Precision), también conocida como <strong>Valor Predictivo Positivo</strong>.</p></li>
+<li class="fragment"><p>Medida que evalúa la proporción de verdaderos positivos sobre el total de predicciones positivas realizadas por el modelo. <span class="math display">\[
+  Precision = \frac{TP}{TP + FP}
+  \]</span> Donde:</p>
+<ul>
+<li class="fragment"><em>TP</em> es el número de verdaderos positivos.</li>
+<li class="fragment"><em>FP</em> es el número de falsos positivos.</li>
+</ul></li>
+</ul>
+</section>
+<section id="métricas-precision-1" class="slide level2">
+<h2>Métricas: Precision</h2>
+<ul>
+<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>exactitud de las predicciones positivas</strong>.</p></li>
+<li class="fragment"><div style="color:#8ABF74;">
+<p>Importante en contextos donde es crucial minimizar los falsos positivos.</p>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<ul>
+<li class="fragment">Puede ser alta a costa de reducir la sensibilidad.</li>
+</ul>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<p><strong>No considera los falsos negativos</strong>.</p>
+</div>
+<p>Puede no ser suficiente por sí sola para evaluar el rendimiento global del modelo.</p></li>
+</ul>
+</section>
+<section id="métricas-precision-2" class="slide level2">
+<h2>Métricas: Precision</h2>
+<ul>
+<li class="fragment">Una Precisión de 1 indica que todas las predicciones positivas del modelo son correctas.</li>
+<li class="fragment">Precisión cercana a 0 indica un alto número de falsos positivos.</li>
+<li class="fragment">Es útil en contextos donde los falsos positivos son más costosos que los falsos negativos.</li>
+</ul>
+</section>
 <section id="métricas-sensibilidad" class="slide level2">
 <h2>Métricas: Sensibilidad</h2>
 <ul>
@@ -1334,7 +1562,7 @@ AIC = 2{k} - \ln(\mathcal{L})
 <h2>Métricas: Especificidad</h2>
 <ul>
 <li class="fragment"><p>La <strong>Especificidad</strong> (también conocida como <strong>Tasa de Verdaderos Negativos</strong>).</p></li>
-<li class="fragment"><p>Medida que evalúa la proporción de verdaderos negativos correctamente identificados por el modelo sobre el total de negativos reales. <span class="math display">\[
+<li class="fragment"><p>Medida que evalúa la proporción de verdaderos negativos sobre el total de negativos. <span class="math display">\[
   Especificidad = \frac{TN}{TN + FP}
   \]</span> Donde:</p>
 <ul>
@@ -1348,7 +1576,7 @@ AIC = 2{k} - \ln(\mathcal{L})
 <ul>
 <li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>capacidad para identificar correctamente los negativos</strong>.</p></li>
 <li class="fragment"><div style="color:#8ABF74;">
-<p>Importante en contextos donde es crucial identificar correctamente todos los casos negativos.</p>
+<p>Importante en contextos donde es crucial identificar correctamente todos los casos negativos. (Inclusión)</p>
 </div></li>
 <li class="fragment"><div style="color:#BF1E1A;">
 <ul>
@@ -1358,7 +1586,7 @@ AIC = 2{k} - \ln(\mathcal{L})
 <li class="fragment"><div style="color:#BF1E1A;">
 <p><strong>No considera la tasa de falsos negativos</strong>.</p>
 </div>
-<p>Puede no ser suficiente por sí sola para evaluar el rendimiento global del modelo.</p></li>
+<p>Insuficiente por sí sola para evaluar el rendimiento global del modelo.</p></li>
 </ul>
 </section>
 <section id="métricas-especificidad-2" class="slide level2">
@@ -1391,7 +1619,7 @@ AIC = 2{k} - \ln(\mathcal{L})
 </div></li>
 <li class="fragment"><div style="color:#BF1E1A;">
 <ul>
-<li class="fragment">No distingue entre tipos de errores ni pondera la importancia relativa de sensibilidad y especificidad.</li>
+<li class="fragment">No pondera la importancia relativa de sensibilidad y especificidad, no distingue entre tipos de errores.</li>
 </ul>
 </div></li>
 <li class="fragment"><div style="color:#BF1E1A;">
@@ -1406,6 +1634,84 @@ AIC = 2{k} - \ln(\mathcal{L})
 <li class="fragment">Un J-Index de 1 indica que el modelo predice perfectamente tanto los positivos como los negativos reales.</li>
 <li class="fragment">J-Index cercano a 0 indica un bajo rendimiento del modelo.</li>
 <li class="fragment">Es útil para comparar modelos en términos de su capacidad global para diferenciar entre clases.</li>
+</ul>
+</section>
+<section id="métricas-f1-score" class="slide level2">
+<h2>Métricas: F1 Score</h2>
+<ul>
+<li class="fragment"><p>El <strong>F1 Score</strong>.</p></li>
+<li class="fragment"><p>Medida que combina la precisión y la sensibilidad en una única métrica armonizada. <span class="math display">\[
+  F1\ Score = 2 \times \frac{Precision \times Sensibilidad}{Precision + Sensibilidad}
+  \]</span> Donde:</p>
+<ul>
+<li class="fragment"><em>Precision</em> es la precisión.</li>
+<li class="fragment"><em>Sensibilidad</em> es la sensibilidad (también conocida como recall).</li>
+</ul></li>
+</ul>
+</section>
+<section id="métricas-f1-score-1" class="slide level2">
+<h2>Métricas: F1 Score</h2>
+<ul>
+<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>balance entre precisión y sensibilidad</strong>.</p></li>
+<li class="fragment"><div style="color:#8ABF74;">
+<p>Proporciona una medida equilibrada del rendimiento del modelo cuando hay una distribución desigual de clases.</p>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<ul>
+<li class="fragment">Puede no ser suficiente por sí sola en todos los contextos.</li>
+</ul>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<p><strong>Puede ser influenciada por clases desbalanceadas</strong>.</p>
+</div>
+<p>Es útil en combinación con otras métricas para una evaluación más completa.</p></li>
+</ul>
+</section>
+<section id="métricas-f1-score-2" class="slide level2">
+<h2>Métricas: F1 Score</h2>
+<ul>
+<li class="fragment">Un F1 Score de 1 indica que el modelo tiene perfecta precisión y sensibilidad.</li>
+<li class="fragment">F1 Score cercano a 0 indica un bajo rendimiento del modelo.</li>
+<li class="fragment">Es útil cuando se busca un equilibrio entre precisión y sensibilidad, especialmente en conjuntos de datos desbalanceados.</li>
+</ul>
+</section>
+<section id="métricas-false-discovery-rate" class="slide level2">
+<h2>Métricas: False Discovery Rate</h2>
+<ul>
+<li class="fragment"><p>La <strong>Tasa de Falsos Descubrimientos</strong> (False Discovery Rate, FDR).</p></li>
+<li class="fragment"><p>Medida que evalúa la proporción de falsos positivos sobre el total de predicciones positivas realizadas por el modelo. <span class="math display">\[
+  FDR = \frac{FP}{TP + FP}
+  \]</span> Donde:</p>
+<ul>
+<li class="fragment"><em>FP</em> es el número de falsos positivos.</li>
+<li class="fragment"><em>TP</em> es el número de verdaderos positivos.</li>
+</ul></li>
+</ul>
+</section>
+<section id="métricas-false-discovery-rate-1" class="slide level2">
+<h2>Métricas: False Discovery Rate</h2>
+<ul>
+<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>proporción de falsos positivos</strong> en las predicciones positivas.</p></li>
+<li class="fragment"><div style="color:#8ABF74;">
+<p>Útil en contextos donde es crucial controlar el número de falsos positivos.</p>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<ul>
+<li class="fragment">Puede ser alta si el modelo tiene baja precisión.</li>
+</ul>
+</div></li>
+<li class="fragment"><div style="color:#BF1E1A;">
+<p><strong>No considera los verdaderos negativos ni los falsos negativos</strong>.</p>
+</div>
+<p>Se enfoca solo en las predicciones positivas.</p></li>
+</ul>
+</section>
+<section id="métricas-false-discovery-rate-2" class="slide level2">
+<h2>Métricas: False Discovery Rate</h2>
+<ul>
+<li class="fragment">Una FDR de 0 indica que no hay falsos positivos en las predicciones positivas del modelo.</li>
+<li class="fragment">FDR cercana a 1 indica que la mayoría de las predicciones positivas son incorrectas.</li>
+<li class="fragment">Es útil en contextos donde los falsos positivos son más costosos y deben ser minimizados.</li>
 </ul>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1880,6 +2186,7 @@ AIC = 2{k} - \ln(\mathcal{L})
     <script>videojs(video_shortcode_videojs_video3);</script>
     <script>videojs(video_shortcode_videojs_video4);</script>
     <script>videojs(video_shortcode_videojs_video5);</script>
+    <script>videojs(video_shortcode_videojs_video6);</script>
     
 
 </body></html>

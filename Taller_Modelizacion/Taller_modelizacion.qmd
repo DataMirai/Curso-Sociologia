@@ -22,6 +22,11 @@ pacman::p_load(tidyverse)
 2.  Tener más o menos claras las variables que interfieren en el proceso
 3.  Tener Una idea de la complejidad de la pregunta
 
+## Bases de modelización
+
+![Machine learning: el sentimiento ](Imagenes/60860fbc7d3ee.jpeg)
+
+
 # 2. Tipos de modelos
 
 ## Tipos de modelos 
@@ -66,12 +71,18 @@ pasos críticos como la calibración o la validación.
 
 ![](Imagenes/Dilema.jpg)
 
+## Tipos de modelos 
+
+{{< video /Imagenes/Both.mp4 >}}
+
+
 
 ## Tipos de modelos
 
 1.  Aprendizaje **supervisado**
 2.  Aprendizaje **no supervisado**
 3.  Aprendizaje **por refuerzo**
+
 
 # 3. Aprendizaje supervisado
 
@@ -139,24 +150,409 @@ máquinas."*
 6)  SARIMA models
 7)  Redes neuronales
 
-## Aprendizaje supervisado (Regresión)
+##  Regresión
+
+- Definición: Modelos que predicen una variable numérica continua.
+
+- Forma básica (lineal): 
+
+$Y = \beta_0 + \beta X +\epsilon$
+
+- Forma completa:
+
+$Y = f\left( \beta_0 + \beta X + \lambda \left( \frac{1 - \alpha}{2}\sum_{j=1}^{p}\beta_{j}^{2} + \alpha \sum_{j=1}^{p}|\beta_{j}| \right) + \epsilon \right)$
+
+##  Regresión
+
+- Segun la funcion de enlace:
+  + Regresión lineal.
+  + Regresión múltiple.
+  + Regresión polinómica.
+
+- Según la restricción:
+  + Regresión Lasso (elimina coeficientes)
+  + Regresión Ridge (elimina colinealidad)
+  + Regresión *elastic net* (ambos mundos, pero un poco más malos que su versión sola)
+  
+- Según el diseño experimental:
+  + Efectos fijos
+  + Efectos aleatorios
+  + Efectos mixtos
+
+##  Regresión
+
+```{r}
+# Cargar librerías
+library(ggplot2)
+
+# Dataset de ejemplo
+data(mtcars)
+
+# Modelo de regresión lineal
+modelo <- lm(mpg ~ wt + hp, data = mtcars)
+
+# Resumen del modelo
+summary(modelo)
+
+# Visualización
+plot(modelo)
+```
+##  Regresión
+
+Contras y Advertencias:
+
+- Sensibilidad a valores atípicos. 
+- Multicolinealidad entre variables independientes.
+- Suposiciones estrictas deben ser verificadas.
+- Puede no capturar relaciones no lineales, incluso las simples.
 
 
-## Aprendizaje supervisado (Árboles de decisión)
+##  Árboles de decisión
 
-## Aprendizaje supervisado (Naïve Bayes)
+Definición: Modelos que segmentan los datos en ramas según condiciones.
 
-## Aprendizaje supervisado (Técnicas de Supervivencia)
+Características:
 
-## Aprendizaje supervisado (Técnicas de Supervivencia)
+- Interpretabilidad fácil.
+- No necesita suposiciones sobre la distribución de datos.
+- Tipos: 
+  * Clasificación 
+  * regresión (CART).
+  
+##  Árboles de decisión
 
-## Aprendizaje supervisado (Support Vector Machines)
+Conceptos Clave:
 
-## Aprendizaje supervisado (SARIMA models)
+- Nodo raíz, 
+- nodos internos
+- hojas.
 
-## Aprendizaje supervisado (Redes neuronales)
+Criterios de partición: 
+
+- Gini, 
+- entropía, 
+- varianza.
+
+## Árboles de decisión
+
+```{r}
+# Cargar librerías
+library(rpart)
+library(rpart.plot)
+
+# Dataset de ejemplo
+data(iris)
+
+# Modelo de árbol de decisión
+modelo <- rpart(Species ~ ., data = iris, method = "class")
+
+# Visualización del árbol
+rpart.plot(modelo)
+```
+
+## Árboles de decisión
+
+Contras y Advertencias:
+
+- Tendencia a sobreajuste (overfitting). Sobre en algoritmos de árbol más complejos
+- Muy sensibles a pequeñas variaciones en los datos. (difíciles de tener en producción bien depurados)
+- Pueden generar árboles muy complejos si no se poda correctamente.
+
+## Random Forest
+Definición: Conjunto de árboles de decisión que mejora la precisión y robustez.
+
+Características:
+- Utiliza el bagging (bootstrap aggregating).
+- Promedia los resultados de múltiples árboles.
+- Reduce la varianza del árbol de decisión y mejora la generalización.
+
+## Random Forest
+
+```{r}
+# Cargar librerías
+library(randomForest)
+
+# Dataset de ejemplo
+data(iris)
+
+# Modelo Random Forest
+modelo <- randomForest(Species ~ ., data = iris, ntree = 100)
+
+# Importancia de las variables
+importance(modelo)
+
+# Visualización del error
+plot(modelo)
+
+```
+
+## Random Forest
+
+Contras y Advertencias:
+- Requiere bastantes más recursos computacionales que un solo árbol.
+- Interpretación más compleja debido al conjunto de modelos. 
+- No es ideal para datasets con un número muy alto de características debido al riesgo de sobreajuste.
 
 
+
+## Naïve Bayes
+
+Definición: Clasificador basado en la probabilidad Bayesiana.
+
+Características:
+- Supone independencia entre predictores.
+- Muy eficiente en términos de tiempo.
+- Funciona bien con *datos pequeños y ruidosos*.
+
+## Naïve Bayes
+
+```{r}
+# Cargar librerías
+library(e1071)
+
+# Dataset de ejemplo
+data(iris)
+
+# Modelo Naïve Bayes
+modelo <- naiveBayes(Species ~ ., data = iris)
+
+# Predicciones
+predicciones <- predict(modelo, iris)
+
+# Matriz de confusión
+table(predicciones, iris$Species)
+
+```
+
+## Naïve Bayes
+
+Contras y Advertencias:
+
+- La suposición de independencia rara vez se cumple en la práctica.
+- Suele ser superado por modelos más complejos.
+- No maneja bien características continuas, requiere de discretización sin discretización.
+
+## Técnicas de Supervivencia
+
+Definición: Modelos que analizan el tiempo hasta que ocurre un evento.
+
+Conceptos Clave:
+- Función de supervivencia: Probabilidad de que el evento no ocurra hasta cierto tiempo.
+- Función de riesgo: Tasa instantánea de ocurrencia del evento en el tiempo t.
+
+Modelos Comunes:
+- **Kaplan-Meier**: Estimación no paramétrica de la función de supervivencia.
+- **Modelo de Cox**: Análisis de riesgos proporcionales para estudiar el efecto de variables explicativas.
+- **Modelos de Vida Acelerada**: Analiza el tiempo hasta el evento con supuestos diferentes a los riesgos proporcionales.
+
+## Técnicas de Supervivencia / Kaplan_Meyer
+
+```{r}
+# Cargar librerías
+library(survival)
+
+# Dataset de ejemplo
+data(lung)
+
+# Modelo Kaplan-Meier
+modelo <- survfit(Surv(time, status) ~ sex, data = lung)
+
+# Visualización
+plot(modelo, col = c("red", "blue"))
+
+```
+
+## Técnicas de Supervivencia / Kaplan_Meyer
+
+Contras y Advertencias:
+
+- No ajusta para variables explicativas múltiples.
+- Asume que censura es independiente del riesgo de evento.
+- No permite modelar efectos de covariables en la supervivencia.
+
+
+##  Técnicas de Supervivencia / Cox
+
+```{r}
+# Cargar librerías
+library(survival)
+library(survminer)
+
+# Dataset de ejemplo
+data(lung)
+
+# Modelo de Cox
+cox_fit <- coxph(Surv(time, status) ~ age + sex + ph.ecog, data = lung)
+
+# Resumen del modelo
+summary(cox_fit)
+
+# Visualización del efecto de las covariables
+ggcoxzph(cox.zph(cox_fit))
+
+```
+
+
+##  Técnicas de Supervivencia / Cox
+
+Contras y Advertencias:
+- Supone riesgos proporcionales, lo cual puede no ser realista.
+- Requiere suficiente tamaño muestral para estimaciones confiables.
+- Interpretación de coeficientes requiere cuidado, especialmente con interacciones y variables categóricas.
+
+## Técnicas de Supervivencia / AFT
+
+Definición: Modelos que asumen que el efecto de las covariables acelera o desacelera el tiempo hasta el evento.
+
+Características:
+- No supone riesgos proporcionales.
+- Modela directamente el tiempo hasta el evento.
+- Puede utilizar diversas distribuciones (Weibull, log-normal, log-logistic).
+
+## Técnicas de Supervivencia / AFT
+
+```{r}
+# Cargar librerías
+library(survival)
+
+# Dataset de ejemplo
+data(lung)
+
+# Modelo de Vida Acelerada (Weibull)
+aft_fit <- survreg(Surv(time, status) ~ age + sex + ph.ecog, data = lung, dist = "weibull")
+
+# Resumen del modelo
+summary(aft_fit)
+
+# Predicción de tiempos medios
+predict(aft_fit, type = "response")
+
+```
+
+## Técnicas de Supervivencia / AFT
+
+
+
+
+##  Support Vector Machines
+
+Definición: Modelos que encuentran un hiperplano óptimo para la clasificación.
+
+Características:
+- Eficaz en espacios de alta dimensión.
+- Utiliza un subconjunto de puntos de entrenamiento (vectores de soporte).
+- Tipos de kernel:
+  + lineal
+  + polinomial
+  + radial.
+
+
+##  Support Vector Machines
+
+```{r}
+# Cargar librerías
+library(e1071)
+
+# Dataset de ejemplo
+data(iris)
+
+# Modelo SVM
+modelo <- svm(Species ~ ., data = iris, kernel = "linear")
+
+# Predicciones
+predicciones <- predict(modelo, iris)
+
+# Matriz de confusión
+table(predicciones, iris$Species)
+
+```
+
+##  Support Vector Machines
+
+Contras y Advertencias:
+
+- Muy sensible a su parametrización. 
+- Suele requerir de mucho tiempo de entrenamiento con grandes datasets.
+- La interpretabildiad del modelo no es muy intuitiva cuando hay más de 2 casos.
+
+
+##  SARIMA
+
+Definición: Modelos de series temporales que combinan autorregresión y media móvil.
+
+Características:
+
+- Captura estacionalidad y tendencias en los datos.
+- Basado en diferencias para hacer la serie estacionaria.
+- Parámetros: p, d, q (ARIMA); P, D, Q, s (SARIMA).
+
+##  SARIMA
+
+```{r}
+# Cargar librerías
+library(forecast)
+
+# Dataset de ejemplo
+data(AirPassengers)
+
+# Modelo SARIMA
+modelo <- auto.arima(AirPassengers)
+
+# Predicciones
+predicciones <- forecast(modelo, h = 12)
+
+# Visualización
+plot(predicciones)
+
+```
+
+
+##  SARIMA
+
+Contras y Advertencias:
+
+- Requiere series temporales **estacionarias**.
+- La selección de parámetros puede ser compleja.
+- Sensible a datos faltantes o anomalías.
+
+##  Redes neuronales
+
+Definición: Modelos inspirados en la estructura del cerebro humano para el aprendizaje.
+Características:
+- Capacidad de aprender relaciones no lineales complejas.
+- Compuesto de capas (entrada, ocultas, salida).
+- Utiliza Algoritmo de retropropagación para el aprendizaje.
+
+##  Redes neuronales
+
+```{r}
+# Cargar librerías
+library(neuralnet)
+
+# Dataset de ejemplo
+data(iris)
+
+# Preprocesamiento
+iris$Species <- as.numeric(iris$Species) - 1
+
+# Modelo de red neuronal
+modelo <- neuralnet(Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width, data = iris, hidden = 3)
+
+# Visualización del modelo
+plot(modelo)
+
+```
+
+##  Redes neuronales
+
+Contras y Advertencias:
+
+- Requiere gran cantidad de datos para buen rendimiento.
+- el tiempo de entrenamiento puede ser largo.
+- El más complicado de interpretar y explicar resultados.
+
+
+Riesgo de sobreajuste sin regularización adecuada.
 
 
 # 4. Aprendizaje no supervisado
@@ -341,14 +737,14 @@ supervisado se basa en el siguiente concepto:
 
 $$
 e_{i} = original_{i} - prediccion_{i}
-$$ $$
+$$
+$$
 e_{i} = y_{i} - \hat{y_{i}}
 $$
 
 $$
 e_{i} = f(y_{i} - \hat{y_{i}})
 $$
-
 
 ## Métricas: MAE
 
