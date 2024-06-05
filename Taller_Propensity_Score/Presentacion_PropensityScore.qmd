@@ -10,202 +10,180 @@ editor:
     wrap: 72
 ---
 
-# Modelizar es un arte
+# 1. Modelizar es un arte
 
-## Modelizar es un arte {auto-animate="true"}
+## 1. Modelizar es un arte {auto-animate="true"}
 
-Cualquier puede hacer arte.
+::: incremental
+-   Cualquiera puede hacer *arte.*
 
-Pero una buena carrera en el mundo del arte requiere de conocimientos en
-técnicas, expresividad herramientas y referencias/inspiración.
+-   Pero una buena carrera en el mundo del arte requiere de
+    **conocimientos en** **técnicas, expresividad herramientas y
+    referencias/inspiración.**
+:::
 
-## Modelizar es un arte {auto-animate="true"}
+## 1. Modelizar es un arte {auto-animate="true"}
 
-Cualquier puede hacer modelos.
+::: incremental
+-   Cualquiera puede hacer *modelos.*
 
-Pero una buena carrera en el mundo de al modelización de datos requiere
-de conocimientos en modelos, contexto de datos y diseño experimental.
+-   Pero una buena carrera en el mundo de al modelización de datos
+    requiere de **conocimientos en modelos, contexto de datos y diseño
+    experimental.**
+:::
 
-## Modelizar es un arte {auto-animate="true"}
+## 1. Modelizar es un arte {auto-animate="true"}
 
-Yo apenas puedo explicar contexto de datos, pero si puedo ayudar en
-modelos y en diseño experimental.
+::: {style="margin-top:180px;"}
+Yo apenas puedo explicar *contexto de datos*... pero si puedo ayudar en
+**modelos** y en **diseño experimental**.
+:::
 
-## Modelizar es un arte {auto-animate="true"}
+## 1. Modelizar es un arte {auto-animate="true"}
 
-No hay un modelo mejor que otro: cada situación requerirá de diferentes
-herramientas.
+::: incremental
+-   **No hay un modelo mejor que otro**: cada situación requerirá de
+    diferentes herramientas.
 
-La regresión logística, por ejemplo, es deseable cuando funciona porque
-los parámetros son muy interpretables. Los Random Forest son geniales
-porque pueden lidiar con patrones muy difíciles, pero olvídate de
+    -   La **Regresión logística**, por ejemplo, es deseable cuando
+        funciona porque los parámetros son muy interpretables.
+    -   Los **Random Forest** son geniales porque pueden lidiar con
+        patrones muy difíciles, pero olvídate de
+:::
 
-Cada modelo tiene sus propiedades. Cubriremos los principales a lo largo
-de este curso.
+## 1. Modelizar es un arte {auto-animate="true"}
 
-## Modelizar es un arte {auto-animate="true"}
+::: {style="text-align:center; margin-top:180px; font-size:45px"}
+**Cada modelo tiene sus propiedades.** <br> **Cubriremos los principales
+a lo largo de este curso.**
+:::
 
-Antes de lanzarte a hacer cualquier tipo de modelización, es necesario
-fijar un contexto de los datos y estar seguros de que todo será
-comaprable entre si. Ten un buen diseño y minimiza confusión.
+## 1. Modelizar es un arte {auto-animate="true"}
 
-Sin esto, \*Los modelos fallarán a la hora de inferenciar\*
+::: incremental
+-   Antes de lanzarte a hacer cualquier tipo de modelización, es
+    necesario **fijar el contexto de los datos** y estar seguro de que
+    **todo será comaprable entre si.**
 
-# Todos los modelos están equivocados {auto-animate="true"}
+-   Ten un buen diseño y minimiza la confusión.
 
-## Todos los modelos están equivocados {auto-animate="true"}
+-   Sin esto, **los modelos fallarán a la hora de inferenciar.**
+:::
 
-## Todos los modelos están equivocados {auto-animate="true"}
+# 2. Todos los modelos están equivocados {auto-animate="true"}
+
+## 2. Todos los modelos están equivocados {auto-animate="true"}
+
+## 2. Todos los modelos están equivocados {auto-animate="true"}
 
 ::: columns
 ::: {.column width="30%"}
+::: {style="margin-top:10px;"}
 ![](Imagenes/GeorgeEPBox.jpg){width="300" fig-align="center"}
+:::
 :::
 
 ::: {.column width="70%"}
-“All models are wrong, but some are useful” George E. P. Box
+::: {style="text-align:left; margin-top:150px; margin-left:70px; font-size:55px; margin-bottom:0px; padding:0px;"}
+“All models are wrong, but some are useful”
+:::
+
+::: {style="text-align:right; margin-top:0px; margin-right:70px; padding:0px; font-size:35px; color:#808080;"}
+*- George E. P. Box*
+:::
 :::
 :::
 
-## Todos los modelos están equivocados {auto-animate="true"}
+## 2. Todos los modelos están equivocados {auto-animate="true"}
 
 ::: columns
 ::: {.column width="30%"}
+::: {style="margin-top:10px;"}
 ![](Imagenes/GeorgeEPBox.jpg){width="300" fig-align="center"}
+:::
 :::
 
 ::: {.column width="70%"}
--   Bo-Jenkins
--   BoxCox transformations
--   Definición de "robustez" estadística
-:::
-:::
-
-## Todos los modelos están equivocados {auto-animate="true"}
-
-::: columns
-::: {.column width="30%"}
-![](Imagenes/GeorgeEPBox.jpg){width="300" fig-align="center"}
-:::
-
-::: {.column width="70%"}
+::: {style="margin-top:10px;"}
 -   Box-Jenkins (procedimientos de *time series*)
 -   BoxCox transformations
 -   Definición de "robustez" estadística
 -   **"Sesión de cerveza del lunes por la noche"**
 :::
 :::
-
-## Todos los modelos están equivocados {auto-animate="true"}
-
-## Todos los modelos están equivocados {auto-animate="true"}
-
-::: columns
-::: {.column width="30%"}
-![](Imagenes/GeorgeEPBox.jpg){width="300" fig-align="center"}
 :::
 
-::: {.column width="70%"}
-Criterios para la elección de modelos
-:::
-:::
+## 2. Todos los modelos están equivocados {auto-animate="true"}
 
-## Todos los modelos están equivocados {auto-animate="true"}
-
-::: columns
-::: {.column width="30%"}
-![](Imagenes/GeorgeEPBox.jpg){width="300" fig-align="center"}
+::: {style="font-size:35px;"}
+-   Criterios para la elección de modelos:
 :::
 
-::: {.column width="70%"}
-**Parsimonia**
-
-Dado que todos los modelos son erróneos, un científico no puede obtener
-uno que sea "correcto" por muy elaborado que lo haya hecho.
+::: incremental
+::: {style="margin-left:50px; font-size:35px;"}
+-   **Parsimonia**
+    -   Dado que todos los modelos son erróneos, un científico no puede
+        obtener uno que sea "correcto" por muy elaborado que lo haya
+        hecho.
+-   **Preocupación selectiva**
+    -   Hay que conocer el contexto para detectar en qué punto está el
+        error.
 :::
 :::
 
-## Todos los modelos están equivocados {auto-animate="true"}
+## 3. Diseño experimental {auto-animate="true"}
 
-::: columns
-::: {.column width="30%"}
-![](Imagenes/GeorgeEPBox.jpg){width="300" fig-align="center"}
-:::
+![](Imagenes/hznah1jzh8fa1111111.png){fig-align="center" width="320"}
 
-::: {.column width="70%"}
-**Parsimonia**
+## 3. Diseño experimental {auto-animate="true"}
 
-No se puede obtener un modelo que sea "verdadero", por muy elaborado que
-lo haya hecho.
-
-**Preocupación selectiva**
-
-Hay que conocer el contexto para detectar en qué punto está el error.
-:::
-:::
-
-## Todos los modelos están equivocados {auto-animate="true"}
-
-![](Imagenes/hznah1jzh8fa1111111.png) \# Diseño experimental
-{auto-animate="true"}
-
-## Diseño experimental {auto-animate="true"}
-
+<div style="margin-top:180px; text-align:center;">
 Permite identificar y cuantificar las causas de un efecto dentro de un
 estudio experimental.
+</div>
 
-## Diseño experimental {auto-animate="true"}
+## 3. Diseño experimental {auto-animate="true"}
 
-![](Imagenes/u9uxysfx4l1c1.png)
+![](Imagenes/u9uxysfx4l1c1.png){fig-align="center"}
 
-## 3. Tipos de diseño experimental {auto-animate="true"}
+## 3.1. Tipos de diseño experimental {auto-animate="true"}
 
-Para poder hacer un cualquier estudio, es necesario tener algo un
+<div style="margin-top:50px;">
+- Para poder hacer cualquier estudio, es necesario tener un
 objetivo, normalmente algo con lo que comparar.
+</div>
 
-## 3. Tipos de diseño experimental {auto-animate="true"}
+## 3.1. Tipos de diseño experimental {auto-animate="true"}
 
-Para poder hacer un estudio sea el que sea, es necesario tener algo que
-comparar.
-
+<div style="margin-top:50px;">
+- Para poder hacer cualquier estudio, es necesario tener un
+objetivo, normalmente algo con lo que comparar.
+</div>
+<div style="font-size:55px; margin-top:70px; text-align:center;">
 **¿Pero qué son cosas comparables?**
+</div>
 
-## 3. Tipos de diseño experimental {auto-animate="true"}
 
-Todo estudio necesita un "tratamiento vs control"
+## 3.1. Tipos de diseño experimental {auto-animate="true"}
 
-## 3. Tipos de diseño experimental {auto-animate="true"}
+::: incremental
+<div style="margin-top:70px;">
+- Todo estudio necesita un "**tratamiento** *vs* **control**"
+<br>
+<br>
+- Todo estudio necesita un "**exposición** *vs* **no exposición**"
+<br>
+<br>
+- Todo estudio necesita un "**hace algo** *vs* **no hace algo**"
+</div>
+:::
 
-Todo estudio necesita un "tratamiento vs control"
-
-Todo estudio necesita un "exposición vs no exposición"
-
-## 3. Tipos de diseño experimental {auto-animate="true"}
-
-Todo estudio necesita un "tratamiento vs control"
-
-Todo estudio necesita un "exposición vs no exposición"
-
-## 3. Tipos de diseño experimental {auto-animate="true"}
-
-Todo estudio necesita un "tratamiento vs control"
-
-Todo estudio necesita un "exposición vs no exposición"
-
-Todo estudio necesita un "hace algo vs no hace algo"
-
-## 3. Tipos de diseño experimental {auto-animate="true"}
+## 3.1. Tipos de diseño experimental {auto-animate="true"}
 
 ![](Imagenes/Piramide_tipos_diseñoExperimental.png){width="300"
 fig-align="center"}
 
-## 3. Tipos de diseño experimental {auto-animate="true"}
-
--   Estudios observacionales
-
--   Estudios experimentales aleatorizados
-
-## 3.3. Relevancia y Aplicación {auto-animate="true"}
+## 3.2. Relevancia y Aplicación {auto-animate="true"}
 
 ::: incremental
 -   **Estudios Observacionales:** Son muy comunes en sociología debido a
@@ -219,7 +197,7 @@ fig-align="center"}
     proporcionan evidencia más sólida sobre las relaciones causales.
 :::
 
-## 3.4. Ejemplos de Aplicación en Sociología {auto-animate="true"}
+## 3.2.1. Ejemplos de Aplicación en Sociología {auto-animate="true"}
 
 ::: incremental
 -   **Estudios Observacionales:** Un estudio longitudinal que investiga
@@ -231,9 +209,10 @@ fig-align="center"}
     en el rendimiento académico de los estudiantes.
 :::
 
-## 3.1. Estudios observacionales {auto-animate="true"}
+## 3.3. Estudios observacionales {auto-animate="true"}
 
 ::: incremental
+<div style="font-size:35px;">
 -   **Caso de estudio:** Se centran en un individuo, grupo o evento
     específico para una observación profunda y detallada.
 
@@ -248,11 +227,14 @@ fig-align="center"}
 -   **Estudios ecológicos:** Involucran la observación participante y
     entrevistas para comprender las culturas y prácticas de grupos
     específicos.
+
+</div>
 :::
 
-## 3.2. Estudios experimentales aleatorizados {auto-animate="true"}
+## 3.4. Estudios experimentales aleatorizados {auto-animate="true"}
 
 ::: incremental
+<div style="font-size:30px;">
 -   **Experimentos de Laboratorio:** Se realizan en entornos controlados
     donde los sociólogos manipulan una o más variables para observar los
     efectos en un grupo de sujetos. Por ejemplo, estudiar cómo
@@ -267,19 +249,23 @@ fig-align="center"}
     grupos experimentales y de control. En sociología se utilizan para
     estudiar el efecto de intervenciones específicas en la conducta
     social.
-:::
 
+</div>
+::: 
+
+<div style="font-size:40px; text-align:left;">
 # Para hacer un experimento/modelo hay que tener 2 grupos
+</div>
 
 # 4. ¿Cómo se que existe una diferencia entre ambos grupos ?
 
-## 4. Conocimiento previo/experto {auto-animate="true"}
+## 4.1. Conocimiento previo/experto {auto-animate="true"}
 
+::: {style="text-align:center; margin-top:180px; font-size:45px"}
 **Nada supera el conocimiento del experto.**
+:::
 
-**CASO PUNGA**
-
-## 4. Conocimiento previo/experto {auto-animate="true"}
+## 4.1.1. Conocimiento previo/experto: Caso Punga {auto-animate="true"}
 
 ```{r}
 library('tidyverse')
@@ -471,10 +457,12 @@ fig-align="center"}
 
 ## 4.1.3. Dependencias de los *P valores*? {auto-animate="true"}
 
-En la era de la memoria barata, los grandes volúmenes de datos y los procesadores rápidos, las pruebas de normalidad deberían rechazar siempre la nulidad de la distribución normal para muestras grandes (aunque no increíblemente grandes). 
+En la era de la memoria barata, los grandes volúmenes de datos y los
+procesadores rápidos, las pruebas de normalidad deberían rechazar
+siempre la nulidad de la distribución normal para muestras grandes
+(aunque no increíblemente grandes).
 
 ## 4.1.3. Dependencias de los *P valores*? {auto-animate="true"}
-
 
 ```{r}
 
@@ -529,12 +517,12 @@ x<0.05
 rowMeans(x<0.05) # the proportion of significant deviations
 
 ```
+
 ## 4.1.3. Dependencias de los *P valores*? {auto-animate="true"}
 
 ¿Existen pruebas convincentes de alguna desviación del ideal gaussiano?
 
-El test apunt a tener datos perfectos sobre una normal. Eso no pasa. 
-
+El test apunt a tener datos perfectos sobre una normal. Eso no pasa.
 
 # Si los p valores no son buenos indicativos \\n Entonces, ¿Qué se debe usar en estos casos?
 
