@@ -14,23 +14,21 @@ editor:
 
 ## 1. Modelizar es un arte {auto-animate="true"}
 
-::: incremental
 -   Cualquiera puede hacer *arte.*
 
 -   Pero una buena carrera en el mundo del arte requiere de
     **conocimientos en** **técnicas, expresividad herramientas y
     referencias/inspiración.**
-:::
+
 
 ## 1. Modelizar es un arte {auto-animate="true"}
 
-::: incremental
+
 -   Cualquiera puede hacer *modelos.*
 
 -   Pero una buena carrera en el mundo de al modelización de datos
-    requiere de **conocimientos en modelos, contexto de datos y diseño
-    experimental.**
-:::
+    requiere de **conocimientos en modelos, contexto de datos y diseño experimental.**
+
 
 ## 1. Modelizar es un arte {auto-animate="true"}
 
@@ -41,15 +39,15 @@ Yo apenas puedo explicar *contexto de datos*... pero si puedo ayudar en
 
 ## 1. Modelizar es un arte {auto-animate="true"}
 
-::: incremental
 -   **No hay un modelo mejor que otro**: cada situación requerirá de
     diferentes herramientas.
+    
 
     -   La **Regresión logística**, por ejemplo, es deseable cuando
         funciona porque los parámetros son muy interpretables.
     -   Los **Random Forest** son geniales porque pueden lidiar con
         patrones muy difíciles, pero olvídate de
-:::
+
 
 ## 1. Modelizar es un arte {auto-animate="true"}
 
@@ -60,7 +58,6 @@ a lo largo de este curso.**
 
 ## 1. Modelizar es un arte {auto-animate="true"}
 
-::: incremental
 -   Antes de lanzarte a hacer cualquier tipo de modelización, es
     necesario **fijar el contexto de los datos** y estar seguro de que
     **todo será comaprable entre si.**
@@ -68,11 +65,9 @@ a lo largo de este curso.**
 -   Ten un buen diseño y minimiza la confusión.
 
 -   Sin esto, **los modelos fallarán a la hora de inferenciar.**
-:::
+
 
 # 2. Todos los modelos están equivocados {auto-animate="true"}
-
-## 2. Todos los modelos están equivocados {auto-animate="true"}
 
 ## 2. Todos los modelos están equivocados {auto-animate="true"}
 
@@ -119,7 +114,7 @@ a lo largo de este curso.**
 -   Criterios para la elección de modelos:
 :::
 
-::: incremental
+
 ::: {style="margin-left:50px; font-size:35px;"}
 -   **Parsimonia**
     -   Dado que todos los modelos son erróneos, un científico no puede
@@ -128,7 +123,7 @@ a lo largo de este curso.**
 -   **Preocupación selectiva**
     -   Hay que conocer el contexto para detectar en qué punto está el
         error.
-:::
+
 :::
 
 # 3. Diseño experimental {auto-animate="true"}
@@ -170,7 +165,7 @@ estudio experimental.
 
 ## 3.1. Tipos de diseño experimental {auto-animate="true"}
 
-::: incremental
+
 ::: {style="margin-top:70px;"}
 -   Todo estudio necesita un "**tratamiento** *vs* **control**" <br>
     <br>
@@ -178,7 +173,7 @@ estudio experimental.
     <br> <br>
 -   Todo estudio necesita un "**hace algo** *vs* **no hace algo**"
 :::
-:::
+
 
 ## 3.1. Tipos de diseño experimental {auto-animate="true"}
 
@@ -187,7 +182,6 @@ fig-align="center"}
 
 ## 3.2. Relevancia y Aplicación {auto-animate="true"}
 
-::: incremental
 -   **Estudios Observacionales:** Son muy comunes en sociología debido a
     la facilidad de recopilación de datos y la capacidad de estudiar
     fenómenos en su contexto natural. Sin embargo, pueden estar sujetos
@@ -197,11 +191,10 @@ fig-align="center"}
     dificultades éticas y logísticas, tienen una gran relevancia en
     sociología cuando es posible implementarlos. Estos estudios
     proporcionan evidencia más sólida sobre las relaciones causales.
-:::
+
 
 ## 3.2.1. Ejemplos de Aplicación en Sociología {auto-animate="true"}
 
-::: incremental
 -   **Estudios Observacionales:** Un estudio longitudinal que investiga
     el impacto de la educación en la movilidad social a lo largo de
     varias décadas.
@@ -209,11 +202,10 @@ fig-align="center"}
 -   **Experimentos Aleatorizados:** Un experimento de campo que mide el
     impacto de un programa de intervención social (como tutoría escolar)
     en el rendimiento académico de los estudiantes.
-:::
+
 
 ## 3.3. Estudios observacionales {auto-animate="true"}
 
-::: incremental
 ::: {style="font-size:35px;"}
 -   **Caso de estudio:** Se centran en un individuo, grupo o evento
     específico para una observación profunda y detallada.
@@ -229,12 +221,11 @@ fig-align="center"}
 -   **Estudios ecológicos:** Involucran la observación participante y
     entrevistas para comprender las culturas y prácticas de grupos
     específicos.
-:::
+
 :::
 
 ## 3.4. Estudios experimentales aleatorizados {auto-animate="true"}
 
-::: incremental
 ::: {style="font-size:30px;"}
 -   **Experimentos de Laboratorio:** Se realizan en entornos controlados
     donde los sociólogos manipulan una o más variables para observar los
@@ -250,7 +241,7 @@ fig-align="center"}
     grupos experimentales y de control. En sociología se utilizan para
     estudiar el efecto de intervenciones específicas en la conducta
     social.
-:::
+    
 :::
 
 ::: {style="font-size:40px; text-align:left;"}
@@ -265,12 +256,12 @@ fig-align="center"}
 **Nada supera el conocimiento del experto.**
 :::
 
-## 4.1.1. Conocimiento previo/experto: Caso Punga {auto-animate="true"}
+## 4.1.1. Conocimiento previo/experto: Caso práctico {auto-animate="true"}
 
 ::: columns
 ::: {.column width="45%"}
 ::: {style="font-size:25px; margin-bottom:15px;"}
--   Lo que Punga hizo:
+-   Lo que el experto hizo:
 :::
 
 ::: {style="font-size:35px;"}
@@ -296,7 +287,7 @@ PIB_datos <- read.csv(
 
 # Lo que punga hizo:
 PIB_datos %>% 
-  mutate(Desviacion_Punga = sqrt((PIBxC - mean(PIBxC))^2)/n() )
+  mutate(Desviacion_Experto = sqrt((PIBxC - mean(PIBxC))^2)/n() )
 
 ```
 :::
@@ -314,10 +305,16 @@ PIB_datos %>%
         axis.title.y = element_text(size = 25))
 ```
 :::
+
+::: {style="font-size:30px; text-align:center;"}
+
+**Media PIBxC:** *8.64*
+
+:::
 :::
 :::
 
-## 4.1.1. Conocimiento previo/experto: Caso Punga {auto-animate="true"}
+## 4.1.1. Conocimiento previo/experto: Caso práctico {auto-animate="true"}
 
 ::: columns
 ::: {.column width="45%"}
@@ -401,7 +398,7 @@ PIB_2 %>%
 :::
 :::
 
-## 4.1.1. Conocimiento previo/experto: Caso Punga {auto-animate="true"}
+## 4.1.1. Conocimiento previo/experto: Caso práctico {auto-animate="true"}
 
 ::: {style="font-size:28px;"}
 ```{r}
@@ -439,26 +436,26 @@ PIB_periodos_subperiodos
 ```
 :::
 
-## 4.1.1. Conocimiento previo/experto: Caso Punga {auto-animate="true"}
+## 4.1.1. Conocimiento previo/experto: Caso práctico {auto-animate="true"}
 
 ::: {style="text-align:center; margin-top:130px; font-size:45px"}
 El conocimiento del experto tiene que ser reforzado, pero en muchas
 ocasiones es mejor reforzarlo usando un modelo bien fundamentado.
 :::
 
-## 4.1.1. Conocimiento previo/experto: Caso Punga {auto-animate="true"}
+## 4.1.1. Conocimiento previo/experto: Caso práctico {auto-animate="true"}
 
 ::: {style="font-size:35px"}
-::: incremental
+
 1.  No se tuvo en cuenta el factor de inflación, demasiada poca
     desviación.
 2.  Desviación no necesariamente tiene que ser negativo, puede deberse
     al crecimiento económico.
 3.  Incluso dentro de un periodo, los subperiodos contienen información.
-:::
+
 :::
 
-## 4.1.1. Conocimiento previo/experto: Caso Punga {auto-animate="true"}
+## 4.1.1. Conocimiento previo/experto: Caso práctico {auto-animate="true"}
 
 ::: {style="font-size:35px"}
 1.  No se tuvo en cuenta el factor de inflación, demasiada poca
@@ -475,14 +472,14 @@ valioso**
 
 ## 4.2. El *P valor* {auto-animate="true"}
 
-::: incremental
+
 -   *P valor* es la probabilidad de que lo que hayas observado sea no
     aleatorio, asumiendo que la hipótesis nula de la cual se parte es
     cierta.
 
 -   Tener un *P valor* de 0.05 viene a significar que la probabilidad de
     que lo que se está observando NO es aleatorio es de un 5%.
-:::
+
 
 ## 4.2. El *P valor* {auto-animate="true"}
 
@@ -498,13 +495,13 @@ valioso**
 
 ## 4.2.1. Puntos débiles de los *P valores* {auto-animate="true"}
 
-::: incremental
+
 -   Un *P valor* NO dice nada sobre la importancia clínica o científica.
 -   Un *P valor* NO tiene en cuenta el sesgo, sólo el error aleatorio.
 -   Un *P valor* «muy bajo» NO implica que la variable o magnitud del
     efecto del tratamiento tenga relevancia.
 -   NUNCA se deben comparar *P valores*.
-:::
+
 
 ## 4.2.2. Dependencias de los *P valores*? {auto-animate="true"}
 
@@ -536,7 +533,6 @@ valioso**
 ## 4.2.2. Dependencias de los *P valores*? {auto-animate="true"}
 
 ```{r}
-
 x <- replicate(100, 
   { # generates 100 different tests on each distribution
     c(
@@ -546,8 +542,10 @@ x <- replicate(100,
       shapiro.test(rnorm(5000))$p.value) #$
   } # rnorm gives a random draw from the normal distribution
 )
+```
 
 
+```{r}
 rownames(x) <- c("n10","n100","n1000","n5000")
 ```
 
@@ -629,12 +627,11 @@ $$
 ::: {style="font-size:25px; margin-top:70px;"}
 Donde :
 
-::: incremental
 -   $M_1$ es la media o proporción del grupo 1
 -   $M_2$ es la media o proporción del grupo 2
 -   $S_1$ es desviación estándard de grupo 1
 -   $S_2$ es desviación estándard de grupo 2
-:::
+
 :::
 
 ## 5. Standarized mean deviation *(SMD)* {auto-animate="true"}
@@ -663,8 +660,7 @@ Donde :
 ![](Imagenes/efectos_externos.png){fig-align="center"}
 
 ::: {style="text-align:center; font-size:28px"}
-*"La gripe se elimina con paracetamol en 7 días pero si no, se cura solo
-en una semana."*
+*"La gripe se elimina con paracetamol en 7 días pero si no, se cura sola en una semana."*
 :::
 
 # ¿Cómo lidiamos con los factores externos?
@@ -681,7 +677,6 @@ en una semana."*
 
 ## 7.1. Criterios para seleccionar las covariables {auto-animate="true"}
 
-::: incremental
 -   Se pueden seleccionar covariables que...
 
     -   pueden **influir en el proceso de selección** del tratamiento.
@@ -690,19 +685,17 @@ en una semana."*
         modelo.
     -   incluyan los **factores de riesgo** y los **términos de
         interacción** importantes entre los factores de confusión.
-:::
+
 
 ## 7.1. Criterios para seleccionar las covariables {auto-animate="true"}
 
 Además se debe considerar que:
 
-::: incremental
 -   No todas las covariables tienen la misma importancia.
 -   Se seleccionarán únicamente aquellas que probablemente afecten al
     resultado.
 -   No se deben utilizar los datos de resultados en el proceso de
     Propensity Score.
-:::
 
 ## 7.2. Análisis de *PS* paso a paso {auto-animate="true"}
 
