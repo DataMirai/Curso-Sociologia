@@ -38,7 +38,7 @@ library(knitr)
 ```
 
 ```{r dataset, echo=TRUE}
-education <- read.csv('https://raw.githubusercontent.com/DataMirai/Curso-Sociologia/main/Tidymodels_2/dataset-educacion.csv?token=GHSAT0AAAAAACJ4X5QZ7AUBG5W7JTJWZTTEZS3ZDWA', sep=";") %>% 
+education <- read.csv('https://raw.githubusercontent.com/DataMirai/Curso-Sociologia/main/Tidymodels_2/dataset-educacion.csv?token=GHSAT0AAAAAACJ4X5QZ2TRZ2NAUY7ZZNM3MZTCISKA', sep=";") %>% 
   as.tibble()
 
 glimpse(education)
@@ -347,3 +347,4 @@ collect_metrics(edu_last_fit2) %>%
 
 
 # 2. Caso práctico 2
+

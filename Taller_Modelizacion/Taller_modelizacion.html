@@ -10,7 +10,7 @@
 <link href="Taller_modelizacion_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="Taller_modelizacion_files/libs/quarto-contrib/videojs/video.min.js"></script>
 <link href="Taller_modelizacion_files/libs/quarto-contrib/videojs/video-js.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.553">
+  <meta name="generator" content="quarto-1.3.450">
 
   <title>Que comience el periplo de la Modelización</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -222,8 +222,7 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -404,7 +403,7 @@
 <h1>1. Bases de modelización</h1>
 
 </section>
-<section id="bases-de-modelización-1" class="slide level2 scrollable">
+<section id="bases-de-modelización-1" class="slide level2">
 <h2>Bases de modelización</h2>
 <ol type="1">
 <li class="fragment">Tener clara la pregunta</li>
@@ -524,7 +523,7 @@
 <h2>Tipos de modelos</h2>
 <video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Both.mp4"></video>
 </section>
-<section id="tipos-de-modelos-6" class="slide level2 scrollable">
+<section id="tipos-de-modelos-6" class="slide level2">
 <h2>Tipos de modelos</h2>
 <ol type="1">
 <li class="fragment">Aprendizaje <strong>supervisado</strong></li>
@@ -581,7 +580,7 @@
 <li class="fragment">Economía: sesgos en el crédito y trabajo de tipo espiral retroalimentativa.</li>
 </ul>
 </section>
-<section id="aprendizaje-supervisado-5" class="slide level2 scrollable">
+<section id="aprendizaje-supervisado-5" class="slide level2">
 <h2>Aprendizaje supervisado</h2>
 <ol type="1">
 <li class="fragment">Regresión</li>
@@ -593,8 +592,8 @@
 <li class="fragment">Redes neuronales</li>
 </ol>
 </section>
-<section id="aprendizaje-supervisado-regresión" class="slide level2">
-<h2>Aprendizaje supervisado (Regresión)</h2>
+<section id="regresión" class="slide level2">
+<h2>Regresión</h2>
 <ul>
 <li class="fragment"><p>Definición: Modelos que predicen una variable numérica continua.</p></li>
 <li class="fragment"><p>Forma básica (lineal):</p></li>
@@ -605,8 +604,8 @@
 </ul>
 <p><span class="math inline">\(Y = f\left( \beta_0 + \beta X + \lambda \left( \frac{1 - \alpha}{2}\sum_{j=1}^{p}\beta_{j}^{2} + \alpha \sum_{j=1}^{p}|\beta_{j}| \right) + \epsilon \right)\)</span></p>
 </section>
-<section id="aprendizaje-supervisado-regresión-1" class="slide level2">
-<h2>Aprendizaje supervisado (Regresión)</h2>
+<section id="regresión-1" class="slide level2">
+<h2>Regresión</h2>
 <ul>
 <li class="fragment">Segun la funcion de enlace:
 <ul>
@@ -628,8 +627,8 @@
 </ul></li>
 </ul>
 </section>
-<section id="aprendizaje-supervisado-regresión-2" class="slide level2">
-<h2>Aprendizaje supervisado (Regresión)</h2>
+<section id="regresión-2" class="slide level2">
+<h2>Regresión</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -653,37 +652,21 @@ Multiple R-squared:  0.8268,    Adjusted R-squared:  0.8148
 F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 </div>
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-2-2.png" width="960"></p>
-</figure>
-</div>
 </div>
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-2-3.png" width="960"></p>
-</figure>
-</div>
 </div>
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-2-4.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </section>
-<section id="aprendizaje-supervisado-regresión-3" class="slide level2">
-<h2>Aprendizaje supervisado (Regresión)</h2>
+<section id="regresión-3" class="slide level2">
+<h2>Regresión</h2>
 <p>Contras y Advertencias:</p>
 <ul>
 <li class="fragment">Sensibilidad a valores atípicos.</li>
@@ -692,8 +675,8 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <li class="fragment">Puede no capturar relaciones no lineales, incluso las simples.</li>
 </ul>
 </section>
-<section id="aprendizaje-supervisado-árboles-de-decisión" class="slide level2">
-<h2>Aprendizaje supervisado (Árboles de decisión)</h2>
+<section id="árboles-de-decisión" class="slide level2">
+<h2>Árboles de decisión</h2>
 <p>Definición: Modelos que segmentan los datos en ramas según condiciones.</p>
 <p>Características:</p>
 <ul>
@@ -706,8 +689,8 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 </ul></li>
 </ul>
 </section>
-<section id="aprendizaje-supervisado-árboles-de-decisión-1" class="slide level2">
-<h2>Aprendizaje supervisado (Árboles de decisión)</h2>
+<section id="árboles-de-decisión-1" class="slide level2">
+<h2>Árboles de decisión</h2>
 <p>Conceptos Clave:</p>
 <ul>
 <li class="fragment">Nodo raíz,</li>
@@ -721,12 +704,12 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <li class="fragment">varianza.</li>
 </ul>
 </section>
-<section id="aprendizaje-supervisado-árboles-de-decisión-2" class="slide level2">
-<h2>Aprendizaje supervisado (Árboles de decisión)</h2>
+<section id="árboles-de-decisión-2" class="slide level2">
+<h2>Árboles de decisión</h2>
 
 <img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
-<section id="aprendizaje-supervisado-árboles-de-decisión-3" class="slide level2">
-<h2>Aprendizaje supervisado (Árboles de decisión)</h2>
+<section id="árboles-de-decisión-3" class="slide level2">
+<h2>Árboles de decisión</h2>
 <p>Contras y Advertencias:</p>
 <ul>
 <li class="fragment">Tendencia a sobreajuste (overfitting). Sobre en algoritmos de árbol más complejos</li>
@@ -734,45 +717,236 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <li class="fragment">Pueden generar árboles muy complejos si no se poda correctamente.</li>
 </ul>
 </section>
-<section id="aprendizaje-supervisado-random-forest" class="slide level2">
-<h2>Aprendizaje supervisado (Random Forest)</h2>
+<section id="random-forest" class="slide level2">
+<h2>Random Forest</h2>
 <p>Definición: Conjunto de árboles de decisión que mejora la precisión y robustez.</p>
 <p>Características: - Utiliza el bagging (bootstrap aggregating). - Promedia los resultados de múltiples árboles. - Reduce la varianza del árbol de decisión y mejora la generalización.</p>
 </section>
-<section id="aprendizaje-supervisado-random-forest-1" class="slide level2">
-<h2>Aprendizaje supervisado (Random Forest)</h2>
+<section id="random-forest-1" class="slide level2">
+<h2>Random Forest</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>             MeanDecreaseGini
-Sepal.Length         8.997856
-Sepal.Width          2.205258
-Petal.Length        49.185497
-Petal.Width         38.860656</code></pre>
+Sepal.Length         8.993741
+Sepal.Width          2.238831
+Petal.Length        41.680535
+Petal.Width         46.375628</code></pre>
 </div>
 
 </div>
 <img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
-<section id="aprendizaje-supervisado-random-forest-2" class="slide level2">
-<h2>Aprendizaje supervisado (Random Forest)</h2>
+<section id="random-forest-2" class="slide level2">
+<h2>Random Forest</h2>
 <p>Contras y Advertencias: - Requiere bastantes más recursos computacionales que un solo árbol. - Interpretación más compleja debido al conjunto de modelos. - No es ideal para datasets con un número muy alto de características debido al riesgo de sobreajuste.</p>
 </section>
-<section id="aprendizaje-supervisado-naïve-bayes" class="slide level2">
-<h2>Aprendizaje supervisado (Naïve Bayes)</h2>
+<section id="naïve-bayes" class="slide level2">
+<h2>Naïve Bayes</h2>
+<p>Definición: Clasificador basado en la probabilidad Bayesiana.</p>
+<p>Características: - Supone independencia entre predictores. - Muy eficiente en términos de tiempo. - Funciona bien con <em>datos pequeños y ruidosos</em>.</p>
 </section>
-<section id="aprendizaje-supervisado-técnicas-de-supervivencia" class="slide level2">
-<h2>Aprendizaje supervisado (Técnicas de Supervivencia)</h2>
+<section id="naïve-bayes-1" class="slide level2">
+<h2>Naïve Bayes</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>            
+predicciones setosa versicolor virginica
+  setosa         50          0         0
+  versicolor      0         47         3
+  virginica       0          3        47</code></pre>
+</div>
+</div>
 </section>
-<section id="aprendizaje-supervisado-técnicas-de-supervivencia-1" class="slide level2">
-<h2>Aprendizaje supervisado (Técnicas de Supervivencia)</h2>
+<section id="naïve-bayes-2" class="slide level2">
+<h2>Naïve Bayes</h2>
+<p>Contras y Advertencias:</p>
+<ul>
+<li class="fragment">La suposición de independencia rara vez se cumple en la práctica.</li>
+<li class="fragment">Suele ser superado por modelos más complejos.</li>
+<li class="fragment">No maneja bien características continuas, requiere de discretización sin discretización.</li>
+</ul>
 </section>
-<section id="aprendizaje-supervisado-support-vector-machines" class="slide level2">
-<h2>Aprendizaje supervisado (Support Vector Machines)</h2>
+<section id="técnicas-de-supervivencia" class="slide level2">
+<h2>Técnicas de Supervivencia</h2>
+<p>Definición: Modelos que analizan el tiempo hasta que ocurre un evento.</p>
+<p>Conceptos Clave: - Función de supervivencia: Probabilidad de que el evento no ocurra hasta cierto tiempo. - Función de riesgo: Tasa instantánea de ocurrencia del evento en el tiempo t.</p>
+<p>Modelos Comunes: - <strong>Kaplan-Meier</strong>: Estimación no paramétrica de la función de supervivencia. - <strong>Modelo de Cox</strong>: Análisis de riesgos proporcionales para estudiar el efecto de variables explicativas. - <strong>Modelos de Vida Acelerada</strong>: Analiza el tiempo hasta el evento con supuestos diferentes a los riesgos proporcionales.</p>
 </section>
-<section id="aprendizaje-supervisado-sarima-models" class="slide level2">
-<h2>Aprendizaje supervisado (SARIMA models)</h2>
+<section id="técnicas-de-supervivencia-kaplan_meyer" class="slide level2">
+<h2>Técnicas de Supervivencia / Kaplan_Meyer</h2>
+
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
+<section id="técnicas-de-supervivencia-kaplan_meyer-1" class="slide level2">
+<h2>Técnicas de Supervivencia / Kaplan_Meyer</h2>
+<p>Contras y Advertencias:</p>
+<ul>
+<li class="fragment">No ajusta para variables explicativas múltiples.</li>
+<li class="fragment">Asume que censura es independiente del riesgo de evento.</li>
+<li class="fragment">No permite modelar efectos de covariables en la supervivencia.</li>
+</ul>
 </section>
-<section id="aprendizaje-supervisado-redes-neuronales" class="slide level2">
-<h2>Aprendizaje supervisado (Redes neuronales)</h2>
+<section id="técnicas-de-supervivencia-cox" class="slide level2">
+<h2>Técnicas de Supervivencia / Cox</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+coxph(formula = Surv(time, status) ~ age + sex + ph.ecog, data = lung)
+
+  n= 227, number of events= 164 
+   (1 observation deleted due to missingness)
+
+             coef exp(coef)  se(coef)      z Pr(&gt;|z|)    
+age      0.011067  1.011128  0.009267  1.194 0.232416    
+sex     -0.552612  0.575445  0.167739 -3.294 0.000986 ***
+ph.ecog  0.463728  1.589991  0.113577  4.083 4.45e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+        exp(coef) exp(-coef) lower .95 upper .95
+age        1.0111     0.9890    0.9929    1.0297
+sex        0.5754     1.7378    0.4142    0.7994
+ph.ecog    1.5900     0.6289    1.2727    1.9864
+
+Concordance= 0.637  (se = 0.025 )
+Likelihood ratio test= 30.5  on 3 df,   p=1e-06
+Wald test            = 29.93  on 3 df,   p=1e-06
+Score (logrank) test = 30.5  on 3 df,   p=1e-06</code></pre>
+</div>
+
+</div>
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<section id="técnicas-de-supervivencia-cox-1" class="slide level2">
+<h2>Técnicas de Supervivencia / Cox</h2>
+<p>Contras y Advertencias: - Supone riesgos proporcionales, lo cual puede no ser realista. - Requiere suficiente tamaño muestral para estimaciones confiables. - Interpretación de coeficientes requiere cuidado, especialmente con interacciones y variables categóricas.</p>
+</section>
+<section id="técnicas-de-supervivencia-aft" class="slide level2">
+<h2>Técnicas de Supervivencia / AFT</h2>
+<p>Definición: Modelos que asumen que el efecto de las covariables acelera o desacelera el tiempo hasta el evento.</p>
+<p>Características: - No supone riesgos proporcionales. - Modela directamente el tiempo hasta el evento. - Puede utilizar diversas distribuciones (Weibull, log-normal, log-logistic).</p>
+</section>
+<section id="técnicas-de-supervivencia-aft-1" class="slide level2">
+<h2>Técnicas de Supervivencia / AFT</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+survreg(formula = Surv(time, status) ~ age + sex + ph.ecog, data = lung, 
+    dist = "weibull")
+               Value Std. Error     z       p
+(Intercept)  6.27344    0.45358 13.83 &lt; 2e-16
+age         -0.00748    0.00676 -1.11  0.2690
+sex          0.40109    0.12373  3.24  0.0012
+ph.ecog     -0.33964    0.08348 -4.07 4.7e-05
+Log(scale)  -0.31319    0.06135 -5.11 3.3e-07
+
+Scale= 0.731 
+
+Weibull distribution
+Loglik(model)= -1132.4   Loglik(intercept only)= -1147.4
+    Chisq= 29.98 on 3 degrees of freedom, p= 1.4e-06 
+Number of Newton-Raphson Iterations: 5 
+n=227 (1 observation deleted due to missingness)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 324.3117 476.3705 521.0788 368.2594 505.7282 324.3117 360.6869 352.6880
+  [9] 379.4373 254.4865 368.2594 360.6869 506.5628 368.2594 341.7342 334.1557
+ [17] 250.7100 394.5380 368.2594 341.7342 820.0127 388.0428 513.3461 462.3370
+ [25] 499.0456 505.7282 169.4115 379.4373 230.9190 502.7902 232.6517 280.4593
+ [33] 382.9153 254.4865 377.2329 246.9896 514.1933 230.9190 521.9387 334.1557
+ [41] 347.4543 760.9483 382.9153 339.1891 339.7489 455.4761 352.1070 455.4761
+ [49] 579.5235 491.6399 494.5128 476.3705 513.3461 362.7946 498.2234 727.5719
+ [57] 262.2110 545.8820 521.9387 342.2982 393.8880 326.7452 518.0515 336.6630
+ [65] 241.5121 363.3933 733.0312 476.3705 341.7342 494.5128 588.2530 230.9190
+ [73] 418.1625 566.6716 495.3289 807.8440 554.1047 432.2548 458.8938 509.5229
+ [81] 373.8066 411.9571 606.1084 405.8438 331.6670 529.8008 501.9618 606.1084
+ [89] 234.3974 494.5128 334.1557 344.2984 549.9780 706.1382 234.3974 336.6630
+ [97] 331.6670 349.4846 700.8792 766.6580 502.7902 371.0226 352.1070 258.3199
+[105] 344.2984 562.4513 341.7342 373.8066 342.2982 472.8227 405.8438 310.0869
+[113] 675.1659 562.4513 227.4923 278.3705 241.5121 245.1501 310.0869 452.0839
+[121] 382.9153 502.7902 234.3974 469.3013 344.2984 388.0428 349.4846 337.2186
+[129] 826.1656 541.8165 379.4373 557.3426 558.2624 479.9449 344.8666 545.8820
+[137] 264.1785 376.6114 521.0788 347.4543 324.3117 227.4923 518.0515 368.2594
+[145] 566.6716 465.8062 376.6114 429.0355 760.9483 334.1557 505.7282 744.0730
+[153] 566.6716 266.1607 239.7135 506.5628 252.5912 352.1070 554.1047 744.0730
+[161] 606.1084 239.7135 352.1070 349.4846 772.4106 537.7812 561.5246 357.4108
+[169] 487.1744 357.4108 766.6580 371.0226 857.6297 379.4373 541.8165 264.1785
+[177] 558.2624 566.6716 680.2319 505.7282 591.6905 722.1532 518.0515 807.8440
+[185] 844.9028 350.0614 513.3461 349.4846 532.8967 329.1969 272.1972 388.0428
+[193] 349.4846 331.6670 469.3013 525.8550 349.4846 801.8275 360.0926 521.9387
+[201] 326.7452 738.5314 813.9056 738.5314 252.5912 784.0456 412.6370 336.6630
+[209] 541.8165 755.2811 341.7342 336.6630 371.6349 346.8818 346.8818 619.8548
+[217] 227.4923 355.3344 772.4106 341.7342 495.3289 319.4990 317.1196 591.6905
+[225] 342.2982 344.2984 545.8820</code></pre>
+</div>
+</div>
+</section>
+<section id="técnicas-de-supervivencia-aft-2" class="slide level2">
+<h2>Técnicas de Supervivencia / AFT</h2>
+</section>
+<section id="support-vector-machines" class="slide level2">
+<h2>Support Vector Machines</h2>
+<p>Definición: Modelos que encuentran un hiperplano óptimo para la clasificación.</p>
+<p>Características: - Eficaz en espacios de alta dimensión. - Utiliza un subconjunto de puntos de entrenamiento (vectores de soporte). - Tipos de kernel: + lineal + polinomial + radial.</p>
+</section>
+<section id="support-vector-machines-1" class="slide level2">
+<h2>Support Vector Machines</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>            
+predicciones setosa versicolor virginica
+  setosa         50          0         0
+  versicolor      0         46         1
+  virginica       0          4        49</code></pre>
+</div>
+</div>
+</section>
+<section id="support-vector-machines-2" class="slide level2">
+<h2>Support Vector Machines</h2>
+<p>Contras y Advertencias:</p>
+<ul>
+<li class="fragment">Muy sensible a su parametrización.</li>
+<li class="fragment">Suele requerir de mucho tiempo de entrenamiento con grandes datasets.</li>
+<li class="fragment">La interpretabildiad del modelo no es muy intuitiva cuando hay más de 2 casos.</li>
+</ul>
+</section>
+<section id="sarima" class="slide level2">
+<h2>SARIMA</h2>
+<p>Definición: Modelos de series temporales que combinan autorregresión y media móvil.</p>
+<p>Características:</p>
+<ul>
+<li class="fragment">Captura estacionalidad y tendencias en los datos.</li>
+<li class="fragment">Basado en diferencias para hacer la serie estacionaria.</li>
+<li class="fragment">Parámetros: p, d, q (ARIMA); P, D, Q, s (SARIMA).</li>
+</ul>
+</section>
+<section id="sarima-1" class="slide level2">
+<h2>SARIMA</h2>
+
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<section id="sarima-2" class="slide level2">
+<h2>SARIMA</h2>
+<p>Contras y Advertencias:</p>
+<ul>
+<li class="fragment">Requiere series temporales <strong>estacionarias</strong>.</li>
+<li class="fragment">La selección de parámetros puede ser compleja.</li>
+<li class="fragment">Sensible a datos faltantes o anomalías.</li>
+</ul>
+</section>
+<section id="redes-neuronales" class="slide level2">
+<h2>Redes neuronales</h2>
+<p>Definición: Modelos inspirados en la estructura del cerebro humano para el aprendizaje. Características: - Capacidad de aprender relaciones no lineales complejas. - Compuesto de capas (entrada, ocultas, salida). - Utiliza Algoritmo de retropropagación para el aprendizaje.</p>
+</section>
+<section id="redes-neuronales-1" class="slide level2">
+<h2>Redes neuronales</h2>
+</section>
+<section id="redes-neuronales-2" class="slide level2">
+<h2>Redes neuronales</h2>
+<p>Contras y Advertencias:</p>
+<ul>
+<li class="fragment">Requiere gran cantidad de datos para buen rendimiento.</li>
+<li class="fragment">el tiempo de entrenamiento puede ser largo.</li>
+<li class="fragment">El más complicado de interpretar y explicar resultados.</li>
+</ul>
+<p>Riesgo de sobreajuste sin regularización adecuada.</p>
 </section></section>
 <section>
 <section id="aprendizaje-no-supervisado" class="title-slide slide level1 center">
@@ -821,7 +995,7 @@ Petal.Width         38.860656</code></pre>
 </ul>
 <p>factoriza una matriz, A, en tres matrices de rango inferior.</p>
 </section>
-<section id="aprendizaje-no-supervisado-caso-target" class="slide level2 scrollable">
+<section id="aprendizaje-no-supervisado-caso-target" class="slide level2">
 <h2>Aprendizaje no supervisado, caso Target</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -931,14 +1105,14 @@ Petal.Width         38.860656</code></pre>
 <section id="aprendizaje-no-supervisado-caso-target-4" class="slide level2">
 <h2>Aprendizaje no supervisado, caso Target</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Aplicar K-means</span></span>
-<span id="cb3-2"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reproducibilidad</span></span>
-<span id="cb3-3"><a href=""></a>kmeans_result <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">kmeans</span>(Target_ejemplo[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">centers =</span> <span class="dv">3</span>)</span>
-<span id="cb3-4"><a href=""></a></span>
-<span id="cb3-5"><a href=""></a><span class="co"># Añadir los resultados del cluster al dataframe</span></span>
-<span id="cb3-6"><a href=""></a>Target_ejemplo <span class="ot">&lt;-</span> Target_ejemplo <span class="sc">%&gt;%</span>  </span>
-<span id="cb3-7"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">Cluster =</span> <span class="fu">as_factor</span>(kmeans_result<span class="sc">$</span>cluster) ) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-8"><a href=""></a>  <span class="fu">select</span>(ClienteID, Cluster, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Aplicar K-means</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reproducibilidad</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>kmeans_result <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">kmeans</span>(Target_ejemplo[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">centers =</span> <span class="dv">3</span>)</span>
+<span id="cb8-4"><a href="#cb8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="co"># Añadir los resultados del cluster al dataframe</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>Target_ejemplo <span class="ot">&lt;-</span> Target_ejemplo <span class="sc">%&gt;%</span>  </span>
+<span id="cb8-7"><a href="#cb8-7"></a>  <span class="fu">mutate</span>(<span class="at">Cluster =</span> <span class="fu">as_factor</span>(kmeans_result<span class="sc">$</span>cluster) ) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-8"><a href="#cb8-8"></a>  <span class="fu">select</span>(ClienteID, Cluster, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="aprendizaje-no-supervisado-caso-target-5" class="slide level2">
@@ -1037,7 +1211,7 @@ Petal.Width         38.860656</code></pre>
 <section id="aprendizaje-no-supervisado-caso-target-6" class="slide level2">
 <h2>Aprendizaje no supervisado, caso Target</h2>
 
-<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section></section>
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section></section>
 <section>
 <section id="aprendizaje-por-refuerzo" class="title-slide slide level1 center">
 <h1>5. Aprendizaje por refuerzo</h1>
@@ -1050,7 +1224,7 @@ Petal.Width         38.860656</code></pre>
 <li class="fragment"><p>Ensayo y error (Supervisado y no supervisado al mismo tiempo)</p></li>
 </ul>
 </section>
-<section id="aprendizaje-por-refuerzo-2" class="slide level2 scrollable">
+<section id="aprendizaje-por-refuerzo-2" class="slide level2">
 <h2>Aprendizaje por refuerzo</h2>
 <ol type="1">
 <li class="fragment"><p>Sobresale en entornos complejos</p></li>
@@ -1144,7 +1318,7 @@ e_{i} = f(y_{i} - \hat{y_{i}})
 <h2>Métricas: MAE</h2>
 <ul>
 <li class="fragment">Un MAE de 0 indica que el modelo predice exactamente los valores reales.</li>
-<li class="fragment"><span class="math inline">\(MAE  &gt; 0\)</span> indica que el modelo tiene un mayor error promedio.</li>
+<li class="fragment"><span class="math inline">\(MAE &gt; 0\)</span> indica que el modelo tiene un mayor error promedio.</li>
 <li class="fragment">No penaliza ni discrimina entre errores grande o pequeños, es un promedio directo.</li>
 </ul>
 </section>
@@ -1713,10 +1887,8 @@ AIC = 2{k} - \ln(\mathcal{L})
 <li class="fragment">FDR cercana a 1 indica que la mayoría de las predicciones positivas son incorrectas.</li>
 <li class="fragment">Es útil en contextos donde los falsos positivos son más costosos y deben ser minimizados.</li>
 </ul>
-<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
-</div>
 </div>
 </section></section>
     </div>
@@ -1745,6 +1917,7 @@ AIC = 2{k} - \ln(\mathcal{L})
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1930,80 +2103,42 @@ AIC = 2{k} - \ln(\mathcal{L})
       });
     </script>
     
-
     <script>
-
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
       // slide changes (different for each slide format).
-
       (function () {
-
         // dispatch for htmlwidgets
-
         function fireSlideEnter() {
-
           const event = window.document.createEvent("Event");
-
           event.initEvent("slideenter", true, true);
-
           window.document.dispatchEvent(event);
-
         }
-
-    
 
         function fireSlideChanged(previousSlide, currentSlide) {
-
           fireSlideEnter();
 
-    
-
           // dispatch for shiny
-
           if (window.jQuery) {
-
             if (previousSlide) {
-
               window.jQuery(previousSlide).trigger("hidden");
-
             }
-
             if (currentSlide) {
-
               window.jQuery(currentSlide).trigger("shown");
-
             }
-
           }
-
         }
-
-    
 
         // hookup for slidy
-
         if (window.w3c_slidy) {
-
           window.w3c_slidy.add_observer(function (slide_num) {
-
             // slide_num starts at position 1
-
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
           });
-
         }
 
-    
-
       })();
-
     </script>
-
-    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -2081,27 +2216,10 @@ AIC = 2{k} - \ln(\mathcal{L})
         // clear code selection
         e.clearSelection();
       });
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
-            }
-          }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      function tippyHover(el, contentFn) {
         const config = {
           allowHTML: true,
+          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -2111,17 +2229,8 @@ AIC = 2{k} - \ln(\mathcal{L})
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start',
+          placement: 'bottom-start'
         };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -2135,11 +2244,7 @@ AIC = 2{k} - \ln(\mathcal{L})
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
+          return note.innerHTML;
         });
       }
       const findCites = (el) => {
@@ -2181,12 +2286,12 @@ AIC = 2{k} - \ln(\mathcal{L})
       }
     });
     </script>
-    <script>videojs(video_shortcode_videojs_video1);</script>
-    <script>videojs(video_shortcode_videojs_video2);</script>
-    <script>videojs(video_shortcode_videojs_video3);</script>
-    <script>videojs(video_shortcode_videojs_video4);</script>
-    <script>videojs(video_shortcode_videojs_video5);</script>
-    <script>videojs(video_shortcode_videojs_video6);</script>
+    
+    
+    
+    
+    
+    
     
 
 </body></html>
