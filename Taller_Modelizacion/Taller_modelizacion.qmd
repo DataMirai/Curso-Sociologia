@@ -2,7 +2,7 @@
 title: "Que comience el periplo de la Modelización"
 format:
   revealjs:
-    incremental: true  
+    incremental: False  
     scrollable: true
     transition: slide
 editor: 
@@ -16,20 +16,65 @@ pacman::p_load(tidyverse)
 
 # 1. Bases de modelización
 
-## Bases de modelización
+## Tener las cosas claras antes de empezar
 
 1.  Tener clara la pregunta
-2.  Tener más o menos claras las variables que interfieren en el proceso
-3.  Tener Una idea de la complejidad de la pregunta
+2.  Tener una idea de la complejidad de la pregunta.
+3.  Tener más o menos claras las variables que interfieren en el proceso.
+4.  Tener claro **las técnicas y el flujo de trabajo necesarios para responder**
+
 
 ## Bases de modelización
 
-![Machine learning: el sentimiento ](Imagenes/60860fbc7d3ee.jpeg)
+![Machine learning: el sentimiento cuando te asomas por primera vez](Imagenes/60860fbc7d3ee.jpeg)
+
+## Flujo completo de modelización
+
+```{mermaid, height=800, width=800}
+%%| fig-width: 6
+%%| fig-cap: |
+%%|   Flujo completo de un proceso de modelización con machine learning. 
 
 
-# 2. Tipos de modelos
+flowchart TD
+    A[Pregunta / hipótesis] -->|Conseguir Datos| B[Datos]
+    B --> C[Datos: Entrenamiento]
+    B --> F[Datos: Evaluación]
+    C --> D[Datos: Aprendizaje]
+    C -->|Conjunto de validación| E[Datos: Validación]
+    D -->|Pre procesamiento| G[Entrenamiento del modelo]
+    E -->|HiperParámetros| G
+    G -->|Métricas Entrenamiento| H[Entrenamiento Seleccionado]
+    H --> F
+    F -->|Métricas Testing| I[Modelo Final]
+    I -.-> |No satisfactorio| G
+    I -->|Cloud Services| J[Modelo en producción]
+    H -.->|Re-procesamiento| G
+```
+
+
+# 2. Validación cruzada
+
+
+# 3. Tipos de modelos
 
 ## Tipos de modelos 
+
+- Respecto a la utilidad:
+  + Explicativo 
+  + Predictivo
+  
+- Respecto a la escalabilidad:
+  + Exploratorios
+  + En producción
+
+- Respecto la necesidad:
+  + Supervisado
+  + No supervisado
+  + Por refuerzo
+
+
+## Respecto a la utilidad
 
 |                | **Modelos explicativos** | **Modelos predictivos** |
 |----------------|:-------------------------|:------------------------|
@@ -38,7 +83,7 @@ pacman::p_load(tidyverse)
 | Visión         | Retrospectiva            | Futura                  |
 | Varianza       | Minimizar sesgo          | Maximizar predicción    |
 
-## Tipos de modelos
+## Respecto a la utilidad
 
 |                              | Modelos explicativos                                                             | Modelos predictivos                                                                                                                  |
 |-------------------|---------------------------|--------------------------|
@@ -49,7 +94,7 @@ pacman::p_load(tidyverse)
 | Formas de ver el rendimiento | Tamaño de los coeficientes y nivel de significación de las variables             | Discriminación (análisis ROC); calibración (Hosmer-Lemeshow); de ajuste (R2, AIC); reclasificación (índice de reclasificación neta); |
 | Validación                   | Se necesitan nuevos estudios para confirmar las relaciones causales individuales | Validación interna; muestreo dividido; validación cruzada; bootstrap; validación externa.                                            |
 
-## Tipos de modelos 
+## Respecto a la utilidad
 
 ::: columns
 ::: {.column width="50%"}
@@ -67,24 +112,30 @@ pasos críticos como la calibración o la validación.
 :::
 :::
 
-## Tipos de modelos 
+## Respecto a la utilidad
 
 ![](Imagenes/Dilema.jpg)
 
-## Tipos de modelos 
+## Respecto a la utilidad
 
 {{< video /Imagenes/Both.mp4 >}}
 
 
+## Respecto a la escalabilidad:
+  
+  - Modelos Exploratorios: fases neofita. Utilizados a por el equipo de investigación.  No tienen alcance, ni necesidad de mantenimiento o depuración.
+  
+  - Modelo en producción: han sido aprobados y se requiere de que sean de uso abierto para su uso. **require de poner el modelo en la nube** y que otreos usuarios los utilicen.
 
-## Tipos de modelos
+## Respecto la necesidad:
 
 1.  Aprendizaje **supervisado**
 2.  Aprendizaje **no supervisado**
 3.  Aprendizaje **por refuerzo**
 
 
-# 3. Aprendizaje supervisado
+
+# 4. Aprendizaje supervisado
 
 ## Aprendizaje supervisado
 
@@ -113,6 +164,10 @@ Kevin P. Murphy, *Machine Learning: A Probabilistic Perspective*
 
     -   **clasificación**: Variables factor.
     -   **regresion**: Variables numericas.
+
+
+
+
 
 ## Aprendizaje supervisado
 
@@ -555,7 +610,7 @@ Contras y Advertencias:
 Riesgo de sobreajuste sin regularización adecuada.
 
 
-# 4. Aprendizaje no supervisado
+# 5. Aprendizaje no supervisado
 
 ## Aprendizaje no supervisado
 
@@ -671,9 +726,9 @@ Target_ejemplo %>%
   geom_tile()
 ```
 
-# 5. Aprendizaje por refuerzo
+# 6. Aprendizaje por refuerzo
 
-## 5 Aprendizaje por refuerzo
+## Funcion
 
 -   Entrena al software para que tome decisiones a fin de lograr los
     mejores resultados.
@@ -728,9 +783,9 @@ En 2019, **AlphaStar compitió y venció a jugadores profesionales**, demostrand
 
 
 
-# 6 Métricas
+# 7 Métricas
 
-## 6.1 Métricas para modelos de regresión
+## 7.1 Métricas para modelos de regresión
 
 Toda métrica de evaluación para un modelo de machine learning
 supervisado se basa en el siguiente concepto:
@@ -1099,7 +1154,7 @@ $$
 
 
 
-## 6.2 Métricas para modelos clasifiación
+## 7.2 Métricas para modelos clasifiación
 
 Toda métrica de evaluación para un modelo de machine learning
 supervisado se basa en el siguiente concepto:
@@ -1109,6 +1164,16 @@ supervisado se basa en el siguiente concepto:
 | **Dato original TRUE**  | TRUE Positivo (TP)  | FALSE Positive (FP) |
 | **Dato original FALSE** | Falso Negativo (FN) | True Negativo (TN)  |
 
+
+## Casos de interpretación. 
+
+Supongamos que hemos construido un modelo de tipo regresión para **predecir los ingresos anuales de individuos basándonos en su nivel educativo (en años de educación formal)**. 
+
+Se evalua el modelo con el conjunto de entrenamiento. Las métricas son las siguientes:
+
+- MAE (Mean Absolute Error): 2000
+- RMSE (Root Mean Squared Error): 2500
+- $R^2$ : 0.85
 
 
 
@@ -1377,6 +1442,11 @@ supervisado se basa en el siguiente concepto:
 - Una FDR de 0 indica que no hay falsos positivos en las predicciones positivas del modelo.
 - FDR cercana a 1 indica que la mayoría de las predicciones positivas son incorrectas.
 - Es útil en contextos donde los falsos positivos son más costosos y deben ser minimizados.
+
+
+
+
+
 
 
 

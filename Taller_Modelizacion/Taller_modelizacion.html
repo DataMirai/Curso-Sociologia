@@ -387,6 +387,9 @@
       margin-right: 0; 
     }
   </style>
+  <script src="Taller_modelizacion_files/libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="Taller_modelizacion_files/libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="Taller_modelizacion_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -404,18 +407,48 @@
 <h1>1. Bases de modelización</h1>
 
 </section>
-<section id="bases-de-modelización-1" class="slide level2 scrollable">
-<h2>Bases de modelización</h2>
+<section id="tener-las-cosas-claras-antes-de-empezar" class="slide level2 scrollable">
+<h2>Tener las cosas claras antes de empezar</h2>
 <ol type="1">
-<li class="fragment">Tener clara la pregunta</li>
-<li class="fragment">Tener más o menos claras las variables que interfieren en el proceso</li>
-<li class="fragment">Tener Una idea de la complejidad de la pregunta</li>
+<li>Tener clara la pregunta</li>
+<li>Tener una idea de la complejidad de la pregunta.</li>
+<li>Tener más o menos claras las variables que interfieren en el proceso.</li>
+<li>Tener claro <strong>las técnicas y el flujo de trabajo necesarios para responder</strong></li>
 </ol>
 </section>
-<section id="bases-de-modelización-2" class="slide level2">
+<section id="bases-de-modelización-1" class="slide level2">
 <h2>Bases de modelización</h2>
 
-<img data-src="Imagenes/60860fbc7d3ee.jpeg" class="r-stretch quarto-figure-center"><p class="caption">Machine learning: el sentimiento</p></section></section>
+<img data-src="Imagenes/60860fbc7d3ee.jpeg" class="r-stretch quarto-figure-center"><p class="caption">Machine learning: el sentimiento cuando te asomas por primera vez</p></section>
+<section id="flujo-completo-de-modelización" class="slide level2">
+<h2>Flujo completo de modelización</h2>
+<div class="cell" data-reveal="true" data-fig-width="6" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">
+flowchart TD
+    A[Pregunta / hipótesis] --&gt;|Conseguir Datos| B[Datos]
+    B --&gt; C[Datos: Entrenamiento]
+    B --&gt; F[Datos: Evaluación]
+    C --&gt; D[Datos: Aprendizaje]
+    C --&gt;|Conjunto de validación| E[Datos: Validación]
+    D --&gt;|Pre procesamiento| G[Entrenamiento del modelo]
+    E --&gt;|HiperParámetros| G
+    G --&gt;|Métricas Entrenamiento| H[Entrenamiento Seleccionado]
+    H --&gt; F
+    F --&gt;|Métricas Testing| I[Modelo Final]
+    I -.-&gt; |No satisfactorio| G
+    I --&gt;|Cloud Services| J[Modelo en producción]
+    H -.-&gt;|Re-procesamiento| G
+</pre>
+</div>
+<p></p><figcaption> Flujo completo de un proceso de modelización con machine learning. </figcaption> </figure><p></p>
+</div>
+</div>
+</div>
+</section></section>
 <section>
 <section id="tipos-de-modelos" class="title-slide slide level1 center">
 <h1>2. Tipos de modelos</h1>
@@ -423,6 +456,27 @@
 </section>
 <section id="tipos-de-modelos-1" class="slide level2">
 <h2>Tipos de modelos</h2>
+<ul>
+<li>Respecto a la utilidad:
+<ul>
+<li>Explicativo</li>
+<li>Predictivo</li>
+</ul></li>
+<li>Respecto a la escalabilidad:
+<ul>
+<li>Exploratorios</li>
+<li>En producción</li>
+</ul></li>
+<li>Respecto la necesidad:
+<ul>
+<li>Supervisado</li>
+<li>No supervisado</li>
+<li>Por refuerzo</li>
+</ul></li>
+</ul>
+</section>
+<section id="respecto-a-la-utilidad" class="slide level2">
+<h2>Respecto a la utilidad</h2>
 <table>
 <thead>
 <tr class="header">
@@ -455,8 +509,8 @@
 </tbody>
 </table>
 </section>
-<section id="tipos-de-modelos-2" class="slide level2">
-<h2>Tipos de modelos</h2>
+<section id="respecto-a-la-utilidad-1" class="slide level2">
+<h2>Respecto a la utilidad</h2>
 <table>
 <colgroup>
 <col style="width: 26%">
@@ -504,8 +558,8 @@
 </tbody>
 </table>
 </section>
-<section id="tipos-de-modelos-3" class="slide level2">
-<h2>Tipos de modelos</h2>
+<section id="respecto-a-la-utilidad-2" class="slide level2">
+<h2>Respecto a la utilidad</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Los investigadores con objetivos <strong>explicativos</strong> se desvían.</p>
@@ -516,20 +570,27 @@
 </div>
 </div>
 </section>
-<section id="tipos-de-modelos-4" class="slide level2">
-<h2>Tipos de modelos</h2>
+<section id="respecto-a-la-utilidad-3" class="slide level2">
+<h2>Respecto a la utilidad</h2>
 
 <img data-src="Imagenes/Dilema.jpg" class="r-stretch"></section>
-<section id="tipos-de-modelos-5" class="slide level2">
-<h2>Tipos de modelos</h2>
+<section id="respecto-a-la-utilidad-4" class="slide level2">
+<h2>Respecto a la utilidad</h2>
 <video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Both.mp4"></video>
 </section>
-<section id="tipos-de-modelos-6" class="slide level2 scrollable">
-<h2>Tipos de modelos</h2>
+<section id="respecto-a-la-escalabilidad" class="slide level2">
+<h2>Respecto a la escalabilidad:</h2>
+<ul>
+<li><p>Modelos Exploratorios: fases neofita. Utilizados a por el equipo de investigación. No tienen alcance, ni necesidad de mantenimiento o depuración.</p></li>
+<li><p>Modelo en producción: han sido aprobados y se requiere de que sean de uso abierto para su uso. <strong>require de poner el modelo en la nube</strong> y que otreos usuarios los utilicen.</p></li>
+</ul>
+</section>
+<section id="respecto-la-necesidad" class="slide level2 scrollable">
+<h2>Respecto la necesidad:</h2>
 <ol type="1">
-<li class="fragment">Aprendizaje <strong>supervisado</strong></li>
-<li class="fragment">Aprendizaje <strong>no supervisado</strong></li>
-<li class="fragment">Aprendizaje <strong>por refuerzo</strong></li>
+<li>Aprendizaje <strong>supervisado</strong></li>
+<li>Aprendizaje <strong>no supervisado</strong></li>
+<li>Aprendizaje <strong>por refuerzo</strong></li>
 </ol>
 </section></section>
 <section>
@@ -545,19 +606,19 @@
 <section id="aprendizaje-supervisado-2" class="slide level2">
 <h2>Aprendizaje supervisado</h2>
 <ul>
-<li class="fragment"><div style="color:#8ABF74;">
+<li><div style="color:#8ABF74;">
 <p>Relativamente, el tipo de modelo más fiable y conocido</p>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <p>Requiere de completa supervisión humana</p>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <p>Los datos pueden contener error humano, ergo los algoritmos aprendan incorrectamente</p>
 </div></li>
-<li class="fragment"><p>Tipos de modelos:</p>
+<li><p>Tipos de modelos:</p>
 <ul>
-<li class="fragment"><strong>clasificación</strong>: Variables factor.</li>
-<li class="fragment"><strong>regresion</strong>: Variables numericas.</li>
+<li><strong>clasificación</strong>: Variables factor.</li>
+<li><strong>regresion</strong>: Variables numericas.</li>
 </ul></li>
 </ul>
 </section>
@@ -575,61 +636,61 @@
 <section id="aprendizaje-supervisado-4" class="slide level2">
 <h2>Aprendizaje supervisado</h2>
 <ul>
-<li class="fragment">Educación: Despido de profesores en Washington DC y Chicago por dar demasiado peso en la fórmula las bajas calificaciones de los alumnos.</li>
-<li class="fragment">Justicia: Janet Collins y su esposo Malcolm a la cárcel por una probabilidad de 1 entre 12 millones.</li>
-<li class="fragment">Política: microtargeting político en redes para dirigir campañas.</li>
-<li class="fragment">Economía: sesgos en el crédito y trabajo de tipo espiral retroalimentativa.</li>
+<li>Educación: Despido de profesores en Washington DC y Chicago por dar demasiado peso en la fórmula las bajas calificaciones de los alumnos.</li>
+<li>Justicia: Janet Collins y su esposo Malcolm a la cárcel por una probabilidad de 1 entre 12 millones.</li>
+<li>Política: microtargeting político en redes para dirigir campañas.</li>
+<li>Economía: sesgos en el crédito y trabajo de tipo espiral retroalimentativa.</li>
 </ul>
 </section>
 <section id="aprendizaje-supervisado-5" class="slide level2 scrollable">
 <h2>Aprendizaje supervisado</h2>
 <ol type="1">
-<li class="fragment">Regresión</li>
-<li class="fragment">Árboles de decisión</li>
-<li class="fragment">Naïve Bayes</li>
-<li class="fragment">Técnicas de Supervivencia</li>
-<li class="fragment">Support Vector Machines (SVM)</li>
-<li class="fragment">SARIMA models</li>
-<li class="fragment">Redes neuronales</li>
+<li>Regresión</li>
+<li>Árboles de decisión</li>
+<li>Naïve Bayes</li>
+<li>Técnicas de Supervivencia</li>
+<li>Support Vector Machines (SVM)</li>
+<li>SARIMA models</li>
+<li>Redes neuronales</li>
 </ol>
 </section>
-<section id="aprendizaje-supervisado-regresión" class="slide level2">
-<h2>Aprendizaje supervisado (Regresión)</h2>
+<section id="regresión" class="slide level2">
+<h2>Regresión</h2>
 <ul>
-<li class="fragment"><p>Definición: Modelos que predicen una variable numérica continua.</p></li>
-<li class="fragment"><p>Forma básica (lineal):</p></li>
+<li><p>Definición: Modelos que predicen una variable numérica continua.</p></li>
+<li><p>Forma básica (lineal):</p></li>
 </ul>
 <p><span class="math inline">\(Y = \beta_0 + \beta X +\epsilon\)</span></p>
 <ul>
-<li class="fragment">Forma completa:</li>
+<li>Forma completa:</li>
 </ul>
 <p><span class="math inline">\(Y = f\left( \beta_0 + \beta X + \lambda \left( \frac{1 - \alpha}{2}\sum_{j=1}^{p}\beta_{j}^{2} + \alpha \sum_{j=1}^{p}|\beta_{j}| \right) + \epsilon \right)\)</span></p>
 </section>
-<section id="aprendizaje-supervisado-regresión-1" class="slide level2">
-<h2>Aprendizaje supervisado (Regresión)</h2>
+<section id="regresión-1" class="slide level2">
+<h2>Regresión</h2>
 <ul>
-<li class="fragment">Segun la funcion de enlace:
+<li>Segun la funcion de enlace:
 <ul>
-<li class="fragment">Regresión lineal.</li>
-<li class="fragment">Regresión múltiple.</li>
-<li class="fragment">Regresión polinómica.</li>
+<li>Regresión lineal.</li>
+<li>Regresión múltiple.</li>
+<li>Regresión polinómica.</li>
 </ul></li>
-<li class="fragment">Según la restricción:
+<li>Según la restricción:
 <ul>
-<li class="fragment">Regresión Lasso (elimina coeficientes)</li>
-<li class="fragment">Regresión Ridge (elimina colinealidad)</li>
-<li class="fragment">Regresión <em>elastic net</em> (ambos mundos, pero un poco más malos que su versión sola)</li>
+<li>Regresión Lasso (elimina coeficientes)</li>
+<li>Regresión Ridge (elimina colinealidad)</li>
+<li>Regresión <em>elastic net</em> (ambos mundos, pero un poco más malos que su versión sola)</li>
 </ul></li>
-<li class="fragment">Según el diseño experimental:
+<li>Según el diseño experimental:
 <ul>
-<li class="fragment">Efectos fijos</li>
-<li class="fragment">Efectos aleatorios</li>
-<li class="fragment">Efectos mixtos</li>
+<li>Efectos fijos</li>
+<li>Efectos aleatorios</li>
+<li>Efectos mixtos</li>
 </ul></li>
 </ul>
 </section>
-<section id="aprendizaje-supervisado-regresión-2" class="slide level2">
-<h2>Aprendizaje supervisado (Regresión)</h2>
+<section id="regresión-2" class="slide level2">
+<h2>Regresión</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -655,124 +716,315 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-2-2.png" width="960"></p>
+<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-3-2.png" width="960"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-2-3.png" width="960"></p>
+<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-3-3.png" width="960"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-2-4.png" width="960"></p>
+<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-3-4.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="aprendizaje-supervisado-regresión-3" class="slide level2">
-<h2>Aprendizaje supervisado (Regresión)</h2>
+<section id="regresión-3" class="slide level2">
+<h2>Regresión</h2>
 <p>Contras y Advertencias:</p>
 <ul>
-<li class="fragment">Sensibilidad a valores atípicos.</li>
-<li class="fragment">Multicolinealidad entre variables independientes.</li>
-<li class="fragment">Suposiciones estrictas deben ser verificadas.</li>
-<li class="fragment">Puede no capturar relaciones no lineales, incluso las simples.</li>
+<li>Sensibilidad a valores atípicos.</li>
+<li>Multicolinealidad entre variables independientes.</li>
+<li>Suposiciones estrictas deben ser verificadas.</li>
+<li>Puede no capturar relaciones no lineales, incluso las simples.</li>
 </ul>
 </section>
-<section id="aprendizaje-supervisado-árboles-de-decisión" class="slide level2">
-<h2>Aprendizaje supervisado (Árboles de decisión)</h2>
+<section id="árboles-de-decisión" class="slide level2">
+<h2>Árboles de decisión</h2>
 <p>Definición: Modelos que segmentan los datos en ramas según condiciones.</p>
 <p>Características:</p>
 <ul>
-<li class="fragment">Interpretabilidad fácil.</li>
-<li class="fragment">No necesita suposiciones sobre la distribución de datos.</li>
-<li class="fragment">Tipos:
+<li>Interpretabilidad fácil.</li>
+<li>No necesita suposiciones sobre la distribución de datos.</li>
+<li>Tipos:
 <ul>
-<li class="fragment">Clasificación</li>
-<li class="fragment">regresión (CART).</li>
+<li>Clasificación</li>
+<li>regresión (CART).</li>
 </ul></li>
 </ul>
 </section>
-<section id="aprendizaje-supervisado-árboles-de-decisión-1" class="slide level2">
-<h2>Aprendizaje supervisado (Árboles de decisión)</h2>
+<section id="árboles-de-decisión-1" class="slide level2">
+<h2>Árboles de decisión</h2>
 <p>Conceptos Clave:</p>
 <ul>
-<li class="fragment">Nodo raíz,</li>
-<li class="fragment">nodos internos</li>
-<li class="fragment">hojas.</li>
+<li>Nodo raíz,</li>
+<li>nodos internos</li>
+<li>hojas.</li>
 </ul>
 <p>Criterios de partición:</p>
 <ul>
-<li class="fragment">Gini,</li>
-<li class="fragment">entropía,</li>
-<li class="fragment">varianza.</li>
+<li>Gini,</li>
+<li>entropía,</li>
+<li>varianza.</li>
 </ul>
 </section>
-<section id="aprendizaje-supervisado-árboles-de-decisión-2" class="slide level2">
-<h2>Aprendizaje supervisado (Árboles de decisión)</h2>
+<section id="árboles-de-decisión-2" class="slide level2">
+<h2>Árboles de decisión</h2>
 
-<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
-<section id="aprendizaje-supervisado-árboles-de-decisión-3" class="slide level2">
-<h2>Aprendizaje supervisado (Árboles de decisión)</h2>
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<section id="árboles-de-decisión-3" class="slide level2">
+<h2>Árboles de decisión</h2>
 <p>Contras y Advertencias:</p>
 <ul>
-<li class="fragment">Tendencia a sobreajuste (overfitting). Sobre en algoritmos de árbol más complejos</li>
-<li class="fragment">Muy sensibles a pequeñas variaciones en los datos. (difíciles de tener en producción bien depurados)</li>
-<li class="fragment">Pueden generar árboles muy complejos si no se poda correctamente.</li>
+<li>Tendencia a sobreajuste (overfitting). Sobre en algoritmos de árbol más complejos</li>
+<li>Muy sensibles a pequeñas variaciones en los datos. (difíciles de tener en producción bien depurados)</li>
+<li>Pueden generar árboles muy complejos si no se poda correctamente.</li>
 </ul>
 </section>
-<section id="aprendizaje-supervisado-random-forest" class="slide level2">
-<h2>Aprendizaje supervisado (Random Forest)</h2>
+<section id="random-forest" class="slide level2">
+<h2>Random Forest</h2>
 <p>Definición: Conjunto de árboles de decisión que mejora la precisión y robustez.</p>
 <p>Características: - Utiliza el bagging (bootstrap aggregating). - Promedia los resultados de múltiples árboles. - Reduce la varianza del árbol de decisión y mejora la generalización.</p>
 </section>
-<section id="aprendizaje-supervisado-random-forest-1" class="slide level2">
-<h2>Aprendizaje supervisado (Random Forest)</h2>
+<section id="random-forest-1" class="slide level2">
+<h2>Random Forest</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>             MeanDecreaseGini
-Sepal.Length         8.997856
-Sepal.Width          2.205258
-Petal.Length        49.185497
-Petal.Width         38.860656</code></pre>
+Sepal.Length        11.044895
+Sepal.Width          2.006221
+Petal.Length        45.834324
+Petal.Width         40.314294</code></pre>
 </div>
 
 </div>
-<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
-<section id="aprendizaje-supervisado-random-forest-2" class="slide level2">
-<h2>Aprendizaje supervisado (Random Forest)</h2>
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<section id="random-forest-2" class="slide level2">
+<h2>Random Forest</h2>
 <p>Contras y Advertencias: - Requiere bastantes más recursos computacionales que un solo árbol. - Interpretación más compleja debido al conjunto de modelos. - No es ideal para datasets con un número muy alto de características debido al riesgo de sobreajuste.</p>
 </section>
-<section id="aprendizaje-supervisado-naïve-bayes" class="slide level2">
-<h2>Aprendizaje supervisado (Naïve Bayes)</h2>
+<section id="naïve-bayes" class="slide level2">
+<h2>Naïve Bayes</h2>
+<p>Definición: Clasificador basado en la probabilidad Bayesiana.</p>
+<p>Características: - Supone independencia entre predictores. - Muy eficiente en términos de tiempo. - Funciona bien con <em>datos pequeños y ruidosos</em>.</p>
 </section>
-<section id="aprendizaje-supervisado-técnicas-de-supervivencia" class="slide level2">
-<h2>Aprendizaje supervisado (Técnicas de Supervivencia)</h2>
+<section id="naïve-bayes-1" class="slide level2">
+<h2>Naïve Bayes</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>            
+predicciones setosa versicolor virginica
+  setosa         50          0         0
+  versicolor      0         47         3
+  virginica       0          3        47</code></pre>
+</div>
+</div>
 </section>
-<section id="aprendizaje-supervisado-técnicas-de-supervivencia-1" class="slide level2">
-<h2>Aprendizaje supervisado (Técnicas de Supervivencia)</h2>
+<section id="naïve-bayes-2" class="slide level2">
+<h2>Naïve Bayes</h2>
+<p>Contras y Advertencias:</p>
+<ul>
+<li>La suposición de independencia rara vez se cumple en la práctica.</li>
+<li>Suele ser superado por modelos más complejos.</li>
+<li>No maneja bien características continuas, requiere de discretización sin discretización.</li>
+</ul>
 </section>
-<section id="aprendizaje-supervisado-support-vector-machines" class="slide level2">
-<h2>Aprendizaje supervisado (Support Vector Machines)</h2>
+<section id="técnicas-de-supervivencia" class="slide level2">
+<h2>Técnicas de Supervivencia</h2>
+<p>Definición: Modelos que analizan el tiempo hasta que ocurre un evento.</p>
+<p>Conceptos Clave: - Función de supervivencia: Probabilidad de que el evento no ocurra hasta cierto tiempo. - Función de riesgo: Tasa instantánea de ocurrencia del evento en el tiempo t.</p>
+<p>Modelos Comunes: - <strong>Kaplan-Meier</strong>: Estimación no paramétrica de la función de supervivencia. - <strong>Modelo de Cox</strong>: Análisis de riesgos proporcionales para estudiar el efecto de variables explicativas. - <strong>Modelos de Vida Acelerada</strong>: Analiza el tiempo hasta el evento con supuestos diferentes a los riesgos proporcionales.</p>
 </section>
-<section id="aprendizaje-supervisado-sarima-models" class="slide level2">
-<h2>Aprendizaje supervisado (SARIMA models)</h2>
+<section id="técnicas-de-supervivencia-kaplan_meyer" class="slide level2">
+<h2>Técnicas de Supervivencia / Kaplan_Meyer</h2>
+
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<section id="técnicas-de-supervivencia-kaplan_meyer-1" class="slide level2">
+<h2>Técnicas de Supervivencia / Kaplan_Meyer</h2>
+<p>Contras y Advertencias:</p>
+<ul>
+<li>No ajusta para variables explicativas múltiples.</li>
+<li>Asume que censura es independiente del riesgo de evento.</li>
+<li>No permite modelar efectos de covariables en la supervivencia.</li>
+</ul>
 </section>
-<section id="aprendizaje-supervisado-redes-neuronales" class="slide level2">
-<h2>Aprendizaje supervisado (Redes neuronales)</h2>
+<section id="técnicas-de-supervivencia-cox" class="slide level2">
+<h2>Técnicas de Supervivencia / Cox</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+coxph(formula = Surv(time, status) ~ age + sex + ph.ecog, data = lung)
+
+  n= 227, number of events= 164 
+   (1 observation deleted due to missingness)
+
+             coef exp(coef)  se(coef)      z Pr(&gt;|z|)    
+age      0.011067  1.011128  0.009267  1.194 0.232416    
+sex     -0.552612  0.575445  0.167739 -3.294 0.000986 ***
+ph.ecog  0.463728  1.589991  0.113577  4.083 4.45e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+        exp(coef) exp(-coef) lower .95 upper .95
+age        1.0111     0.9890    0.9929    1.0297
+sex        0.5754     1.7378    0.4142    0.7994
+ph.ecog    1.5900     0.6289    1.2727    1.9864
+
+Concordance= 0.637  (se = 0.025 )
+Likelihood ratio test= 30.5  on 3 df,   p=1e-06
+Wald test            = 29.93  on 3 df,   p=1e-06
+Score (logrank) test = 30.5  on 3 df,   p=1e-06</code></pre>
+</div>
+
+</div>
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section id="técnicas-de-supervivencia-cox-1" class="slide level2">
+<h2>Técnicas de Supervivencia / Cox</h2>
+<p>Contras y Advertencias: - Supone riesgos proporcionales, lo cual puede no ser realista. - Requiere suficiente tamaño muestral para estimaciones confiables. - Interpretación de coeficientes requiere cuidado, especialmente con interacciones y variables categóricas.</p>
+</section>
+<section id="técnicas-de-supervivencia-aft" class="slide level2">
+<h2>Técnicas de Supervivencia / AFT</h2>
+<p>Definición: Modelos que asumen que el efecto de las covariables acelera o desacelera el tiempo hasta el evento.</p>
+<p>Características: - No supone riesgos proporcionales. - Modela directamente el tiempo hasta el evento. - Puede utilizar diversas distribuciones (Weibull, log-normal, log-logistic).</p>
+</section>
+<section id="técnicas-de-supervivencia-aft-1" class="slide level2">
+<h2>Técnicas de Supervivencia / AFT</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+survreg(formula = Surv(time, status) ~ age + sex + ph.ecog, data = lung, 
+    dist = "weibull")
+               Value Std. Error     z       p
+(Intercept)  6.27344    0.45358 13.83 &lt; 2e-16
+age         -0.00748    0.00676 -1.11  0.2690
+sex          0.40109    0.12373  3.24  0.0012
+ph.ecog     -0.33964    0.08348 -4.07 4.7e-05
+Log(scale)  -0.31319    0.06135 -5.11 3.3e-07
+
+Scale= 0.731 
+
+Weibull distribution
+Loglik(model)= -1132.4   Loglik(intercept only)= -1147.4
+    Chisq= 29.98 on 3 degrees of freedom, p= 1.4e-06 
+Number of Newton-Raphson Iterations: 5 
+n=227 (1 observation deleted due to missingness)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 324.3117 476.3705 521.0788 368.2594 505.7282 324.3117 360.6869 352.6880
+  [9] 379.4373 254.4865 368.2594 360.6869 506.5628 368.2594 341.7342 334.1557
+ [17] 250.7100 394.5380 368.2594 341.7342 820.0127 388.0428 513.3461 462.3370
+ [25] 499.0456 505.7282 169.4115 379.4373 230.9190 502.7902 232.6517 280.4593
+ [33] 382.9153 254.4865 377.2329 246.9896 514.1933 230.9190 521.9387 334.1557
+ [41] 347.4543 760.9483 382.9153 339.1891 339.7489 455.4761 352.1070 455.4761
+ [49] 579.5235 491.6399 494.5128 476.3705 513.3461 362.7946 498.2234 727.5719
+ [57] 262.2110 545.8820 521.9387 342.2982 393.8880 326.7452 518.0515 336.6630
+ [65] 241.5121 363.3933 733.0312 476.3705 341.7342 494.5128 588.2530 230.9190
+ [73] 418.1625 566.6716 495.3289 807.8440 554.1047 432.2548 458.8938 509.5229
+ [81] 373.8066 411.9571 606.1084 405.8438 331.6670 529.8008 501.9618 606.1084
+ [89] 234.3974 494.5128 334.1557 344.2984 549.9780 706.1382 234.3974 336.6630
+ [97] 331.6670 349.4846 700.8792 766.6580 502.7902 371.0226 352.1070 258.3199
+[105] 344.2984 562.4513 341.7342 373.8066 342.2982 472.8227 405.8438 310.0869
+[113] 675.1659 562.4513 227.4923 278.3705 241.5121 245.1501 310.0869 452.0839
+[121] 382.9153 502.7902 234.3974 469.3013 344.2984 388.0428 349.4846 337.2186
+[129] 826.1656 541.8165 379.4373 557.3426 558.2624 479.9449 344.8666 545.8820
+[137] 264.1785 376.6114 521.0788 347.4543 324.3117 227.4923 518.0515 368.2594
+[145] 566.6716 465.8062 376.6114 429.0355 760.9483 334.1557 505.7282 744.0730
+[153] 566.6716 266.1607 239.7135 506.5628 252.5912 352.1070 554.1047 744.0730
+[161] 606.1084 239.7135 352.1070 349.4846 772.4106 537.7812 561.5246 357.4108
+[169] 487.1744 357.4108 766.6580 371.0226 857.6297 379.4373 541.8165 264.1785
+[177] 558.2624 566.6716 680.2319 505.7282 591.6905 722.1532 518.0515 807.8440
+[185] 844.9028 350.0614 513.3461 349.4846 532.8967 329.1969 272.1972 388.0428
+[193] 349.4846 331.6670 469.3013 525.8550 349.4846 801.8275 360.0926 521.9387
+[201] 326.7452 738.5314 813.9056 738.5314 252.5912 784.0456 412.6370 336.6630
+[209] 541.8165 755.2811 341.7342 336.6630 371.6349 346.8818 346.8818 619.8548
+[217] 227.4923 355.3344 772.4106 341.7342 495.3289 319.4990 317.1196 591.6905
+[225] 342.2982 344.2984 545.8820</code></pre>
+</div>
+</div>
+</section>
+<section id="técnicas-de-supervivencia-aft-2" class="slide level2">
+<h2>Técnicas de Supervivencia / AFT</h2>
+</section>
+<section id="support-vector-machines" class="slide level2">
+<h2>Support Vector Machines</h2>
+<p>Definición: Modelos que encuentran un hiperplano óptimo para la clasificación.</p>
+<p>Características: - Eficaz en espacios de alta dimensión. - Utiliza un subconjunto de puntos de entrenamiento (vectores de soporte). - Tipos de kernel: + lineal + polinomial + radial.</p>
+</section>
+<section id="support-vector-machines-1" class="slide level2">
+<h2>Support Vector Machines</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>            
+predicciones setosa versicolor virginica
+  setosa         50          0         0
+  versicolor      0         46         1
+  virginica       0          4        49</code></pre>
+</div>
+</div>
+</section>
+<section id="support-vector-machines-2" class="slide level2">
+<h2>Support Vector Machines</h2>
+<p>Contras y Advertencias:</p>
+<ul>
+<li>Muy sensible a su parametrización.</li>
+<li>Suele requerir de mucho tiempo de entrenamiento con grandes datasets.</li>
+<li>La interpretabildiad del modelo no es muy intuitiva cuando hay más de 2 casos.</li>
+</ul>
+</section>
+<section id="sarima" class="slide level2">
+<h2>SARIMA</h2>
+<p>Definición: Modelos de series temporales que combinan autorregresión y media móvil.</p>
+<p>Características:</p>
+<ul>
+<li>Captura estacionalidad y tendencias en los datos.</li>
+<li>Basado en diferencias para hacer la serie estacionaria.</li>
+<li>Parámetros: p, d, q (ARIMA); P, D, Q, s (SARIMA).</li>
+</ul>
+</section>
+<section id="sarima-1" class="slide level2">
+<h2>SARIMA</h2>
+
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<section id="sarima-2" class="slide level2">
+<h2>SARIMA</h2>
+<p>Contras y Advertencias:</p>
+<ul>
+<li>Requiere series temporales <strong>estacionarias</strong>.</li>
+<li>La selección de parámetros puede ser compleja.</li>
+<li>Sensible a datos faltantes o anomalías.</li>
+</ul>
+</section>
+<section id="redes-neuronales" class="slide level2">
+<h2>Redes neuronales</h2>
+<p>Definición: Modelos inspirados en la estructura del cerebro humano para el aprendizaje. Características: - Capacidad de aprender relaciones no lineales complejas. - Compuesto de capas (entrada, ocultas, salida). - Utiliza Algoritmo de retropropagación para el aprendizaje.</p>
+</section>
+<section id="redes-neuronales-1" class="slide level2">
+<h2>Redes neuronales</h2>
+</section>
+<section id="redes-neuronales-2" class="slide level2">
+<h2>Redes neuronales</h2>
+<p>Contras y Advertencias:</p>
+<ul>
+<li>Requiere gran cantidad de datos para buen rendimiento.</li>
+<li>el tiempo de entrenamiento puede ser largo.</li>
+<li>El más complicado de interpretar y explicar resultados.</li>
+</ul>
+<p>Riesgo de sobreajuste sin regularización adecuada.</p>
 </section></section>
 <section>
 <section id="aprendizaje-no-supervisado" class="title-slide slide level1 center">
@@ -782,15 +1034,15 @@ Petal.Width         38.860656</code></pre>
 <section id="aprendizaje-no-supervisado-1" class="slide level2">
 <h2>Aprendizaje no supervisado</h2>
 <ul>
-<li class="fragment"><p>Analiza y agrupa conjuntos de datos sin etiquetar.</p></li>
-<li class="fragment"><p>Se basan en distancias. (Euclídeas o mahalanobis)</p></li>
-<li class="fragment"><div style="color:#8ABF74;">
+<li><p>Analiza y agrupa conjuntos de datos sin etiquetar.</p></li>
+<li><p>Se basan en distancias. (Euclídeas o mahalanobis)</p></li>
+<li><div style="color:#8ABF74;">
 <p>Solución ideal para el análisis de datos exploratorios.</p>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <p>Computacionalmente duros</p>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <p>La interpretación puede ser un infierno</p>
 </div></li>
 </ul>
@@ -801,9 +1053,9 @@ Petal.Width         38.860656</code></pre>
 <section id="aprendizaje-no-supervisado-agrupación-en-clústeres" class="slide level2">
 <h2>Aprendizaje no supervisado: Agrupación en clústeres</h2>
 <ul>
-<li class="fragment">La agrupación en clústeres de k-medias</li>
-<li class="fragment">Agrupación en clústeres jerárquica (HCA)</li>
-<li class="fragment">Agrupación en clústeres probabilística (GMM)</li>
+<li>La agrupación en clústeres de k-medias</li>
+<li>Agrupación en clústeres jerárquica (HCA)</li>
+<li>Agrupación en clústeres probabilística (GMM)</li>
 </ul>
 </section>
 <section id="aprendizaje-no-supervisado-reglas-de-asociación" class="slide level2">
@@ -813,11 +1065,11 @@ Petal.Width         38.860656</code></pre>
 <section id="aprendizaje-no-supervisado-reducción-de-dimensionalidad" class="slide level2">
 <h2>Aprendizaje no supervisado: Reducción de dimensionalidad</h2>
 <ul>
-<li class="fragment">Análisis de componentes principales (PCA)</li>
+<li>Análisis de componentes principales (PCA)</li>
 </ul>
 <p>Este método utiliza una transformación lineal para crear una nueva representación de datos</p>
 <ul>
-<li class="fragment">Descomposición en valores singulares</li>
+<li>Descomposición en valores singulares</li>
 </ul>
 <p>factoriza una matriz, A, en tres matrices de rango inferior.</p>
 </section>
@@ -828,9 +1080,9 @@ Petal.Width         38.860656</code></pre>
 <p><img data-src="Imagenes/target.png" width="359"></p>
 </div><div class="column" style="width:50%;">
 <ol type="1">
-<li class="fragment">Fundada en 1962</li>
-<li class="fragment">Es la sexta empresa de venta al por menor más grande de Estados Unidos.</li>
-<li class="fragment">351.000 empleados</li>
+<li>Fundada en 1962</li>
+<li>Es la sexta empresa de venta al por menor más grande de Estados Unidos.</li>
+<li>351.000 empleados</li>
 </ol>
 </div>
 </div>
@@ -931,14 +1183,14 @@ Petal.Width         38.860656</code></pre>
 <section id="aprendizaje-no-supervisado-caso-target-4" class="slide level2">
 <h2>Aprendizaje no supervisado, caso Target</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Aplicar K-means</span></span>
-<span id="cb3-2"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reproducibilidad</span></span>
-<span id="cb3-3"><a href=""></a>kmeans_result <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">kmeans</span>(Target_ejemplo[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">centers =</span> <span class="dv">3</span>)</span>
-<span id="cb3-4"><a href=""></a></span>
-<span id="cb3-5"><a href=""></a><span class="co"># Añadir los resultados del cluster al dataframe</span></span>
-<span id="cb3-6"><a href=""></a>Target_ejemplo <span class="ot">&lt;-</span> Target_ejemplo <span class="sc">%&gt;%</span>  </span>
-<span id="cb3-7"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">Cluster =</span> <span class="fu">as_factor</span>(kmeans_result<span class="sc">$</span>cluster) ) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-8"><a href=""></a>  <span class="fu">select</span>(ClienteID, Cluster, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co"># Aplicar K-means</span></span>
+<span id="cb8-2"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reproducibilidad</span></span>
+<span id="cb8-3"><a href=""></a>kmeans_result <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">kmeans</span>(Target_ejemplo[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">centers =</span> <span class="dv">3</span>)</span>
+<span id="cb8-4"><a href=""></a></span>
+<span id="cb8-5"><a href=""></a><span class="co"># Añadir los resultados del cluster al dataframe</span></span>
+<span id="cb8-6"><a href=""></a>Target_ejemplo <span class="ot">&lt;-</span> Target_ejemplo <span class="sc">%&gt;%</span>  </span>
+<span id="cb8-7"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">Cluster =</span> <span class="fu">as_factor</span>(kmeans_result<span class="sc">$</span>cluster) ) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-8"><a href=""></a>  <span class="fu">select</span>(ClienteID, Cluster, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="aprendizaje-no-supervisado-caso-target-5" class="slide level2">
@@ -1037,7 +1289,7 @@ Petal.Width         38.860656</code></pre>
 <section id="aprendizaje-no-supervisado-caso-target-6" class="slide level2">
 <h2>Aprendizaje no supervisado, caso Target</h2>
 
-<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section></section>
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section></section>
 <section>
 <section id="aprendizaje-por-refuerzo" class="title-slide slide level1 center">
 <h1>5. Aprendizaje por refuerzo</h1>
@@ -1046,16 +1298,16 @@ Petal.Width         38.860656</code></pre>
 <section id="aprendizaje-por-refuerzo-1" class="slide level2">
 <h2>5 Aprendizaje por refuerzo</h2>
 <ul>
-<li class="fragment"><p>Entrena al software para que tome decisiones a fin de lograr los mejores resultados.</p></li>
-<li class="fragment"><p>Ensayo y error (Supervisado y no supervisado al mismo tiempo)</p></li>
+<li><p>Entrena al software para que tome decisiones a fin de lograr los mejores resultados.</p></li>
+<li><p>Ensayo y error (Supervisado y no supervisado al mismo tiempo)</p></li>
 </ul>
 </section>
 <section id="aprendizaje-por-refuerzo-2" class="slide level2 scrollable">
 <h2>Aprendizaje por refuerzo</h2>
 <ol type="1">
-<li class="fragment"><p>Sobresale en entornos complejos</p></li>
-<li class="fragment"><p>Optimiza de acuerdo con objetivos a largo plazo</p></li>
-<li class="fragment"><p>Requiere menos interacción humana</p></li>
+<li><p>Sobresale en entornos complejos</p></li>
+<li><p>Optimiza de acuerdo con objetivos a largo plazo</p></li>
+<li><p>Requiere menos interacción humana</p></li>
 </ol>
 </section>
 <section id="aprendizaje-por-refuerzo-mario" class="slide level2">
@@ -1082,8 +1334,8 @@ Petal.Width         38.860656</code></pre>
 <h2>Aprendizaje por refuerzo (Casos famosos)</h2>
 <p><strong>AlphaGo y AlphaZero</strong>: Desarrollados por DeepMind, estos sistemas lograron hitos significativos en juegos complejos como el Go, el ajedrez y el shogi.</p>
 <ul>
-<li class="fragment"><em>AlphaGo</em> derrotó al campeón mundial de Go, Lee Sedol, en 2016</li>
-<li class="fragment"><em>AlphaZero</em> superó a los mejores programas de ajedrez y shogi tras solo unas pocas horas de autoentrenamiento, aprendiendo desde cero sin datos previos.</li>
+<li><em>AlphaGo</em> derrotó al campeón mundial de Go, Lee Sedol, en 2016</li>
+<li><em>AlphaZero</em> superó a los mejores programas de ajedrez y shogi tras solo unas pocas horas de autoentrenamiento, aprendiendo desde cero sin datos previos.</li>
 </ul>
 </section>
 <section id="aprendizaje-por-refuerzo-casos-famosos-1" class="slide level2">
@@ -1111,30 +1363,30 @@ e_{i} = f(y_{i} - \hat{y_{i}})
 <section id="métricas-mae" class="slide level2">
 <h2>Métricas: MAE</h2>
 <ul>
-<li class="fragment"><p>El <strong>Error Absoluto Medio</strong> (MAE por sus siglas en inglés <em>Mean Absolute Error</em>)</p></li>
-<li class="fragment"><p>Medida de la magnitud promedio de los errores en un conjunto de predicciones, sin considerar su dirección. <span class="math display">\[
+<li><p>El <strong>Error Absoluto Medio</strong> (MAE por sus siglas en inglés <em>Mean Absolute Error</em>)</p></li>
+<li><p>Medida de la magnitud promedio de los errores en un conjunto de predicciones, sin considerar su dirección. <span class="math display">\[
   MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
   \]</span> Donde:</p>
 <ul>
-<li class="fragment"><em>n</em> es el número de observaciones.</li>
-<li class="fragment"><em>y</em><sub>i</sub> es el valor observado.</li>
-<li class="fragment">*_{i}* es el valor predicho por el modelo.</li>
+<li><em>n</em> es el número de observaciones.</li>
+<li><em>y</em><sub>i</sub> es el valor observado.</li>
+<li>*_{i}* es el valor predicho por el modelo.</li>
 </ul></li>
 </ul>
 </section>
 <section id="métricas-mae-1" class="slide level2">
 <h2>Métricas: MAE</h2>
 <ul>
-<li class="fragment"><p>Métrica que evalua el rendimiento del modelo en términos de la magnitud del error. Basada en la <strong>diferencia absoluta promedio</strong>.</p></li>
-<li class="fragment"><div style="color:#8ABF74;">
+<li><p>Métrica que evalua el rendimiento del modelo en términos de la magnitud del error. Basada en la <strong>diferencia absoluta promedio</strong>.</p></li>
+<li><div style="color:#8ABF74;">
 <p>Fácil de interpretar ya que se encuentra en la misma escala que los datos originales.</p>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <ul>
-<li class="fragment">No penaliza en exceso los valores atípicos (outliers) o errores extremos.</li>
+<li>No penaliza en exceso los valores atípicos (outliers) o errores extremos.</li>
 </ul>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <p><strong>No considera la dirección de los errores</strong>.</p>
 </div>
 <p>Trata todos los errores por igual, independientemente de si son positivos o negativos.</p></li>
@@ -1143,38 +1395,38 @@ e_{i} = f(y_{i} - \hat{y_{i}})
 <section id="métricas-mae-2" class="slide level2">
 <h2>Métricas: MAE</h2>
 <ul>
-<li class="fragment">Un MAE de 0 indica que el modelo predice exactamente los valores reales.</li>
-<li class="fragment"><span class="math inline">\(MAE  &gt; 0\)</span> indica que el modelo tiene un mayor error promedio.</li>
-<li class="fragment">No penaliza ni discrimina entre errores grande o pequeños, es un promedio directo.</li>
+<li>Un MAE de 0 indica que el modelo predice exactamente los valores reales.</li>
+<li><span class="math inline">\(MAE  &gt; 0\)</span> indica que el modelo tiene un mayor error promedio.</li>
+<li>No penaliza ni discrimina entre errores grande o pequeños, es un promedio directo.</li>
 </ul>
 </section>
 <section id="métricas-mape" class="slide level2">
 <h2>Métricas: MAPE</h2>
 <ul>
-<li class="fragment"><p>El <strong>Error Absoluto Medio Porcentual</strong> (MAPE por sus siglas en inglés <em>Mean Absolute Percentage Error</em>).</p></li>
-<li class="fragment"><p>Medida de la magnitud promedio de los errores en un conjunto de predicciones, expresada como un porcentaje. <span class="math display">\[
+<li><p>El <strong>Error Absoluto Medio Porcentual</strong> (MAPE por sus siglas en inglés <em>Mean Absolute Percentage Error</em>).</p></li>
+<li><p>Medida de la magnitud promedio de los errores en un conjunto de predicciones, expresada como un porcentaje. <span class="math display">\[
   MAPE = \frac{100}{n} \sum_{i=1}^{n} \left| \frac{y_i - \hat{y}_i}{y_i} \right|
   \]</span> Donde:</p>
 <ul>
-<li class="fragment"><em>n</em> es el número de observaciones.</li>
-<li class="fragment"><em>y</em><sub>i</sub> es el valor observado.</li>
-<li class="fragment">*(_i)* es el valor predicho por el modelo.</li>
+<li><em>n</em> es el número de observaciones.</li>
+<li><em>y</em><sub>i</sub> es el valor observado.</li>
+<li>*(_i)* es el valor predicho por el modelo.</li>
 </ul></li>
 </ul>
 </section>
 <section id="métricas-mape-1" class="slide level2">
 <h2>Métricas: MAPE</h2>
 <ul>
-<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de la magnitud del error relativo. Basada en la <strong>diferencia porcentual promedio absoluta</strong>.</p></li>
-<li class="fragment"><div style="color:#8ABF74;">
+<li><p>Métrica que evalúa el rendimiento del modelo en términos de la magnitud del error relativo. Basada en la <strong>diferencia porcentual promedio absoluta</strong>.</p></li>
+<li><div style="color:#8ABF74;">
 <p>Expresa el error como un porcentaje, lo cual facilita la interpretación y comparación entre diferentes modelos y escalas.</p>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <ul>
-<li class="fragment">Puede ser muy grande o indefinida si los valores observados son cercanos a cero.</li>
+<li>Puede ser muy grande o indefinida si los valores observados son cercanos a cero.</li>
 </ul>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <p><strong>No considera la dirección de los errores</strong>.</p>
 </div>
 <p>Trata todos los errores por igual, independientemente de si son positivos o negativos.</p></li>
@@ -1183,41 +1435,41 @@ e_{i} = f(y_{i} - \hat{y_{i}})
 <section id="métricas-mape-2" class="slide level2">
 <h2>Métricas: MAPE</h2>
 <ul>
-<li class="fragment">Un MAPE de 0% indica que el modelo predice exactamente los valores reales.</li>
-<li class="fragment">MAPE &gt; 0% indica que el modelo tiene un mayor error porcentual promedio.</li>
-<li class="fragment">Es útil para comparar la precisión de modelos en diferentes escalas y unidades, pero puede ser problemático con valores observados cercanos a cero.</li>
+<li>Un MAPE de 0% indica que el modelo predice exactamente los valores reales.</li>
+<li>MAPE &gt; 0% indica que el modelo tiene un mayor error porcentual promedio.</li>
+<li>Es útil para comparar la precisión de modelos en diferentes escalas y unidades, pero puede ser problemático con valores observados cercanos a cero.</li>
 </ul>
 </section>
 <section id="métricas-mse" class="slide level2">
 <h2>Métricas: MSE</h2>
 <ul>
-<li class="fragment"><p>El <strong>Error Cuadrático Medio</strong> (MSE por sus siglas en inglés <em>Mean Squared Error</em>).</p></li>
-<li class="fragment"><p>Medida de la magnitud promedio de los errores en un conjunto de predicciones, considerando la dirección y penalizando los errores grandes más que los pequeños. <span class="math display">\[
+<li><p>El <strong>Error Cuadrático Medio</strong> (MSE por sus siglas en inglés <em>Mean Squared Error</em>).</p></li>
+<li><p>Medida de la magnitud promedio de los errores en un conjunto de predicciones, considerando la dirección y penalizando los errores grandes más que los pequeños. <span class="math display">\[
   MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
   \]</span> Donde:</p>
 <ul>
-<li class="fragment"><em>n</em> es el número de observaciones.</li>
-<li class="fragment"><em>y</em><sub>i</sub> es el valor observado.</li>
-<li class="fragment">*(_i)* es el valor predicho por el modelo.</li>
+<li><em>n</em> es el número de observaciones.</li>
+<li><em>y</em><sub>i</sub> es el valor observado.</li>
+<li>*(_i)* es el valor predicho por el modelo.</li>
 </ul></li>
 </ul>
 </section>
 <section id="métricas-mse-1" class="slide level2">
 <h2>Métricas: MSE</h2>
 <ul>
-<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de la magnitud del error. Basada en la <strong>diferencia cuadrática promedio</strong>.</p></li>
-<li class="fragment"><div style="color:#8ABF74;">
+<li><p>Métrica que evalúa el rendimiento del modelo en términos de la magnitud del error. Basada en la <strong>diferencia cuadrática promedio</strong>.</p></li>
+<li><div style="color:#8ABF74;">
 <ul>
-<li class="fragment">Penaliza los errores grandes más que los pequeños debido a la elevación al cuadrado de las diferencias.</li>
+<li>Penaliza los errores grandes más que los pequeños debido a la elevación al cuadrado de las diferencias.</li>
 </ul>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <p>Se utiliza principalmente en análisis teóricos y en optimización de modelos de alta complejidad.</p>
 </div>
 <ul>
-<li class="fragment">las unidades del error son al cuadrado, puede ser difícil de interpretar directamente en términos de la escala original de los datos.</li>
+<li>las unidades del error son al cuadrado, puede ser difícil de interpretar directamente en términos de la escala original de los datos.</li>
 </ul></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <p><strong>Es sensible a los valores atípicos</strong>.</p>
 </div>
 <p>Unos pocos valores atípicos pueden incrementar significativamente el MSE.</p></li>
@@ -1226,34 +1478,34 @@ e_{i} = f(y_{i} - \hat{y_{i}})
 <section id="métricas-mse-2" class="slide level2">
 <h2>Métricas: MSE</h2>
 <ul>
-<li class="fragment">Un MSE de 0 indica que el modelo predice exactamente los valores reales.</li>
-<li class="fragment">MSE &gt; 0 indica que el modelo tiene un mayor error promedio.</li>
-<li class="fragment">Penaliza más los errores grandes que los pequeños. Útil en contextos donde los errores grandes son especialmente perjudiciales.</li>
+<li>Un MSE de 0 indica que el modelo predice exactamente los valores reales.</li>
+<li>MSE &gt; 0 indica que el modelo tiene un mayor error promedio.</li>
+<li>Penaliza más los errores grandes que los pequeños. Útil en contextos donde los errores grandes son especialmente perjudiciales.</li>
 </ul>
 </section>
 <section id="métricas-rmse" class="slide level2">
 <h2>Métricas: RMSE</h2>
 <ul>
-<li class="fragment"><p>El <strong>Error Cuadrático Medio Raiz</strong> (RMSE por sus siglas en inglés <em>Root Mean Squared Error</em>).</p></li>
-<li class="fragment"><p>Medida de la magnitud promedio de los errores en un conjunto de predicciones, considerando su dirección. <span class="math display">\[
+<li><p>El <strong>Error Cuadrático Medio Raiz</strong> (RMSE por sus siglas en inglés <em>Root Mean Squared Error</em>).</p></li>
+<li><p>Medida de la magnitud promedio de los errores en un conjunto de predicciones, considerando su dirección. <span class="math display">\[
   RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}
   \]</span> Donde:</p>
 <ul>
-<li class="fragment"><em>n</em> es el número de observaciones.</li>
-<li class="fragment"><em>y</em><sub>i</sub> es el valor observado.</li>
-<li class="fragment">*(_i)* es el valor predicho por el modelo.</li>
+<li><em>n</em> es el número de observaciones.</li>
+<li><em>y</em><sub>i</sub> es el valor observado.</li>
+<li>*(_i)* es el valor predicho por el modelo.</li>
 </ul></li>
 </ul>
 </section>
 <section id="métricas-rmse-1" class="slide level2">
 <h2>Métricas: RMSE</h2>
 <ul>
-<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de la magnitud del error. Basada en la <strong>diferencia cuadrática promedio</strong>.</p></li>
-<li class="fragment"><div style="color:#8ABF74;">
+<li><p>Métrica que evalúa el rendimiento del modelo en términos de la magnitud del error. Basada en la <strong>diferencia cuadrática promedio</strong>.</p></li>
+<li><div style="color:#8ABF74;">
 <p>Fácil de interpretar ya que se encuentra en la misma escala que los datos originales.</p>
 </div></li>
-<li class="fragment"><p>Penaliza altamente los valores atípicos (outliers) o errores extremos debido a la elevación al cuadrado de las diferencias y luego devolverlos a la escala original.</p></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><p>Penaliza altamente los valores atípicos (outliers) o errores extremos debido a la elevación al cuadrado de las diferencias y luego devolverlos a la escala original.</p></li>
+<li><div style="color:#BF1E1A;">
 <p>Es <strong>muy</strong> sensible a los valores atípicos.</p>
 </div></li>
 </ul>
@@ -1261,39 +1513,39 @@ e_{i} = f(y_{i} - \hat{y_{i}})
 <section id="métricas-rmse-2" class="slide level2">
 <h2>Métricas: RMSE</h2>
 <ul>
-<li class="fragment">Un RMSE de 0 indica que el modelo predice exactamente los valores reales.</li>
-<li class="fragment">RMSE &gt; 0 indica que el modelo tiene un mayor error promedio.</li>
-<li class="fragment">Penaliza los errores grandes más que los pequeños, por lo tanto, es útil en contextos donde los errores grandes son especialmente perjudiciales.</li>
+<li>Un RMSE de 0 indica que el modelo predice exactamente los valores reales.</li>
+<li>RMSE &gt; 0 indica que el modelo tiene un mayor error promedio.</li>
+<li>Penaliza los errores grandes más que los pequeños, por lo tanto, es útil en contextos donde los errores grandes son especialmente perjudiciales.</li>
 </ul>
 </section>
 <section id="métricas-r2" class="slide level2">
 <h2>Métricas: <span class="math inline">\(R^2\)</span></h2>
 <ul>
-<li class="fragment"><p>El <strong>Coeficiente de Determinación</strong> <span class="math inline">\(R^2\)</span>.</p></li>
-<li class="fragment"><p>Medida que indica la proporción de la variabilidad de la variable dependiente que es explicada por el modelo. <span class="math display">\[
+<li><p>El <strong>Coeficiente de Determinación</strong> <span class="math inline">\(R^2\)</span>.</p></li>
+<li><p>Medida que indica la proporción de la variabilidad de la variable dependiente que es explicada por el modelo. <span class="math display">\[
   R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
   \]</span> Donde:</p>
 <ul>
-<li class="fragment"><em>n</em> es el número de observaciones.</li>
-<li class="fragment"><em>y</em><sub>i</sub> es el valor observado.</li>
-<li class="fragment"><span class="math inline">\(\hat{y}_{i}\)</span> es el valor predicho por el modelo.</li>
-<li class="fragment"><span class="math inline">\(\bar{y}\)</span> es la media de los valores observados.</li>
+<li><em>n</em> es el número de observaciones.</li>
+<li><em>y</em><sub>i</sub> es el valor observado.</li>
+<li><span class="math inline">\(\hat{y}_{i}\)</span> es el valor predicho por el modelo.</li>
+<li><span class="math inline">\(\bar{y}\)</span> es la media de los valores observados.</li>
 </ul></li>
 </ul>
 </section>
 <section id="métricas-r2-1" class="slide level2">
 <h2>Métricas: <span class="math inline">\(R^2\)</span></h2>
 <ul>
-<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de la proporción de variabilidad explicada. Basada en la <strong>relación entre la suma de los errores residuales y la suma total de los cuadrados</strong>.</p></li>
-<li class="fragment"><div style="color:#8ABF74;">
+<li><p>Métrica que evalúa el rendimiento del modelo en términos de la proporción de variabilidad explicada. Basada en la <strong>relación entre la suma de los errores residuales y la suma total de los cuadrados</strong>.</p></li>
+<li><div style="color:#8ABF74;">
 <p>Facilita la interpretación de la efectividad del modelo, ya que varía entre 0 y 1.</p>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <ul>
-<li class="fragment">Puede ser engañoso en modelos no lineales o con muchos parámetros(atención modelos predictivos)</li>
+<li>Puede ser engañoso en modelos no lineales o con muchos parámetros(atención modelos predictivos)</li>
 </ul>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <p><strong>No informa sobre el sesgo o la varianza del modelo</strong>.</p>
 </div>
 <p>Solo indica la proporción de la varianza explicada.</p></li>
@@ -1302,16 +1554,16 @@ e_{i} = f(y_{i} - \hat{y_{i}})
 <section id="métricas-r2-2" class="slide level2">
 <h2>Métricas: <span class="math inline">\(R^2\)</span></h2>
 <ul>
-<li class="fragment">Un <span class="math inline">\(R^2\)</span> de 1 indica que el modelo explica toda la variabilidad de los datos.</li>
-<li class="fragment"><span class="math inline">\(R^2 = 0\)</span> indica que el modelo no explica ninguna variabilidad de los datos.</li>
-<li class="fragment">Valores negativos de <span class="math inline">\(R^2\)</span> pueden ocurrir y indican que el modelo es peor que uno que simplemente predice la media de los datos.</li>
+<li>Un <span class="math inline">\(R^2\)</span> de 1 indica que el modelo explica toda la variabilidad de los datos.</li>
+<li><span class="math inline">\(R^2 = 0\)</span> indica que el modelo no explica ninguna variabilidad de los datos.</li>
+<li>Valores negativos de <span class="math inline">\(R^2\)</span> pueden ocurrir y indican que el modelo es peor que uno que simplemente predice la media de los datos.</li>
 </ul>
 </section>
 <section id="métricas-huber-loss" class="slide level2">
 <h2>Métricas: Huber Loss</h2>
 <ul>
-<li class="fragment"><p>también conocida como <strong>error cuadrático medio suavizado</strong></p></li>
-<li class="fragment"><p>Ccombina el MAE con MSE, siendo menos sensible a los valores atípicos que el MSE y más robusta que el MAE. <span class="math display">\[
+<li><p>también conocida como <strong>error cuadrático medio suavizado</strong></p></li>
+<li><p>Ccombina el MAE con MSE, siendo menos sensible a los valores atípicos que el MSE y más robusta que el MAE. <span class="math display">\[
   L_\delta(y, \hat{y}) =
   \begin{cases}
   \frac{1}{2}(y - \hat{y})^2 &amp; \text{si } |y - \hat{y}| \le \delta \\
@@ -1319,57 +1571,57 @@ e_{i} = f(y_{i} - \hat{y_{i}})
   \end{cases}
   \]</span> Donde:</p>
 <ul>
-<li class="fragment"><em>y</em> es el valor observado.</li>
-<li class="fragment"><span class="math inline">\(\hat{y}\)</span> es el valor predicho por el modelo.</li>
-<li class="fragment"><span class="math inline">\(\delta\)</span> es un umbral positivo que determina la transición entre el MAE y el MSE.</li>
+<li><em>y</em> es el valor observado.</li>
+<li><span class="math inline">\(\hat{y}\)</span> es el valor predicho por el modelo.</li>
+<li><span class="math inline">\(\delta\)</span> es un umbral positivo que determina la transición entre el MAE y el MSE.</li>
 </ul></li>
 </ul>
 </section>
 <section id="métricas-huber-loss-1" class="slide level2">
 <h2>Métricas: Huber Loss</h2>
 <ul>
-<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de la magnitud del error, combinando <strong>propiedades del MAE y el MSE</strong>.</p></li>
-<li class="fragment"><p>La elección de <span class="math inline">\(\delta\)</span> es crucial y puede influir en la sensibilidad del modelo a los valores atípicos.</p></li>
-<li class="fragment"><p>Muy utlizado en técnicas de optimización basadas en gradientes. (XGBoost)</p></li>
+<li><p>Métrica que evalúa el rendimiento del modelo en términos de la magnitud del error, combinando <strong>propiedades del MAE y el MSE</strong>.</p></li>
+<li><p>La elección de <span class="math inline">\(\delta\)</span> es crucial y puede influir en la sensibilidad del modelo a los valores atípicos.</p></li>
+<li><p>Muy utlizado en técnicas de optimización basadas en gradientes. (XGBoost)</p></li>
 </ul>
 </section>
 <section id="métricas-huber-loss-2" class="slide level2">
 <h2>Métricas: Huber Loss</h2>
 <ul>
-<li class="fragment">Un valor de Huber Loss cercano a 0 indica que el modelo predice con alta precisión.</li>
-<li class="fragment">La Huber Loss se ajusta dependiendo de la elección de <span class="math inline">\(\delta\)</span>, lo que permite controlar el equilibrio entre penalización de errores grandes y pequeños.</li>
-<li class="fragment">Resumen información del MAE i el MSE, de modo que vale la pena computar ambos para tener un contexto amplio de la situación.</li>
+<li>Un valor de Huber Loss cercano a 0 indica que el modelo predice con alta precisión.</li>
+<li>La Huber Loss se ajusta dependiendo de la elección de <span class="math inline">\(\delta\)</span>, lo que permite controlar el equilibrio entre penalización de errores grandes y pequeños.</li>
+<li>Resumen información del MAE i el MSE, de modo que vale la pena computar ambos para tener un contexto amplio de la situación.</li>
 </ul>
 </section>
 <section id="métricas-icc" class="slide level2">
 <h2>Métricas: ICC</h2>
 <ul>
-<li class="fragment"><p>El <strong>Índice de Ideabilidad de Correlación</strong> (ICC por sus siglas en inglés <em>Index of Ideality of Correlation</em>).</p></li>
-<li class="fragment"><p>Medida que evalúa la precisión predictiva de un modelo al comparar los valores predichos con los valores observados. <span class="math display">\[
+<li><p>El <strong>Índice de Ideabilidad de Correlación</strong> (ICC por sus siglas en inglés <em>Index of Ideality of Correlation</em>).</p></li>
+<li><p>Medida que evalúa la precisión predictiva de un modelo al comparar los valores predichos con los valores observados. <span class="math display">\[
   ICC = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \overline{y})^2 + \sum_{i=1}^{n} (\hat{y}_i - \overline{\hat{y}})^2}
   \]</span> Donde:</p>
 <ul>
-<li class="fragment"><em>n</em> es el número de observaciones.</li>
-<li class="fragment"><em>y</em><sub>i</sub> es el valor observado.</li>
-<li class="fragment">*(_i)* es el valor predicho por el modelo.</li>
-<li class="fragment"><em>(</em>) es la media de los valores observados.</li>
-<li class="fragment"><em>(</em>) es la media de los valores predichos.</li>
+<li><em>n</em> es el número de observaciones.</li>
+<li><em>y</em><sub>i</sub> es el valor observado.</li>
+<li>*(_i)* es el valor predicho por el modelo.</li>
+<li><em>(</em>) es la media de los valores observados.</li>
+<li><em>(</em>) es la media de los valores predichos.</li>
 </ul></li>
 </ul>
 </section>
 <section id="métricas-icc-1" class="slide level2">
 <h2>Métricas: ICC</h2>
 <ul>
-<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de precisión predictiva. Basada en la <strong>relación entre la suma de los errores residuales y las sumas de las desviaciones totales y predichas</strong>.</p></li>
-<li class="fragment"><div style="color:#8ABF74;">
+<li><p>Métrica que evalúa el rendimiento del modelo en términos de precisión predictiva. Basada en la <strong>relación entre la suma de los errores residuales y las sumas de las desviaciones totales y predichas</strong>.</p></li>
+<li><div style="color:#8ABF74;">
 <p>Proporciona una medida comprensible de la precisión predictiva del modelo.</p>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <ul>
-<li class="fragment">Puede ser sensible a la distribución de los valores observados y predichos.</li>
+<li>Puede ser sensible a la distribución de los valores observados y predichos.</li>
 </ul>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <p><strong>Puede ser influenciado por la escala de los datos</strong>.</p>
 </div>
 <p>Los resultados pueden variar dependiendo de la escala de los valores observados y predichos.</p></li>
@@ -1378,33 +1630,33 @@ e_{i} = f(y_{i} - \hat{y_{i}})
 <section id="métricas-icc-2" class="slide level2">
 <h2>Métricas: ICC</h2>
 <ul>
-<li class="fragment">Un ICC de 1 indica que el modelo predice exactamente los valores reales.</li>
-<li class="fragment">ICC cercano a 0 indica que el modelo no tiene una buena precisión predictiva.</li>
-<li class="fragment">ICC puede ser negativo si el modelo tiene un rendimiento peor que el promedio.</li>
+<li>Un ICC de 1 indica que el modelo predice exactamente los valores reales.</li>
+<li>ICC cercano a 0 indica que el modelo no tiene una buena precisión predictiva.</li>
+<li>ICC puede ser negativo si el modelo tiene un rendimiento peor que el promedio.</li>
 </ul>
 </section>
 <section id="métricas-aic" class="slide level2">
 <h2>Métricas: AIC</h2>
 <ul>
-<li class="fragment"><p>El Criterio de Información de Akaike (Akaike 1974), AIC por sus siglas en inglés <em>Akaike Information Criterion</em>.</p>
+<li><p>El Criterio de Información de Akaike (Akaike 1974), AIC por sus siglas en inglés <em>Akaike Information Criterion</em>.</p>
 <p><span class="math display">\[
 AIC = 2{k} - \ln(\mathcal{L})
 \]</span></p>
 <p>Donde:</p>
 <ul>
-<li class="fragment"><em>k</em> es el numero de parametros</li>
-<li class="fragment"><span class="math inline">\(\mathcal{L}\)</span> es la verosimilitud del modelo.</li>
+<li><em>k</em> es el numero de parametros</li>
+<li><span class="math inline">\(\mathcal{L}\)</span> es la verosimilitud del modelo.</li>
 </ul></li>
 </ul>
 </section>
 <section id="métricas-aic-1" class="slide level2">
 <h2>Métricas: AIC</h2>
 <ul>
-<li class="fragment"><p>Métrica basada en <strong>teoría de información</strong>, la cual balancea los poderes explicativos y predictivos del modelo</p></li>
-<li class="fragment"><div style="color:#8ABF74;">
+<li><p>Métrica basada en <strong>teoría de información</strong>, la cual balancea los poderes explicativos y predictivos del modelo</p></li>
+<li><div style="color:#8ABF74;">
 <p>Castiga el uso de muchas variables.</p>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <p><strong>Un AIC por si solo no tiene ningún valor</strong>.</p>
 </div>
 <p>Se necesitan de otras métricas o compararse con el AIC de otro modelo2 para darle contexto.</p></li>
@@ -1442,31 +1694,31 @@ AIC = 2{k} - \ln(\mathcal{L})
 <section id="métricas-accuracy" class="slide level2">
 <h2>Métricas: Accuracy</h2>
 <ul>
-<li class="fragment"><p>La <strong>Precisión</strong> (Accuracy).</p></li>
-<li class="fragment"><p>Medida que evalúa la proporción de predicciones correctas sobre el total de predicciones realizadas. <span class="math display">\[
+<li><p>La <strong>Precisión</strong> (Accuracy).</p></li>
+<li><p>Medida que evalúa la proporción de predicciones correctas sobre el total de predicciones realizadas. <span class="math display">\[
   Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
   \]</span> Donde:</p>
 <ul>
-<li class="fragment"><em>TP</em> es el número de verdaderos positivos.</li>
-<li class="fragment"><em>TN</em> es el número de verdaderos negativos.</li>
-<li class="fragment"><em>FP</em> es el número de falsos positivos.</li>
-<li class="fragment"><em>FN</em> es el número de falsos negativos.</li>
+<li><em>TP</em> es el número de verdaderos positivos.</li>
+<li><em>TN</em> es el número de verdaderos negativos.</li>
+<li><em>FP</em> es el número de falsos positivos.</li>
+<li><em>FN</em> es el número de falsos negativos.</li>
 </ul></li>
 </ul>
 </section>
 <section id="métricas-accuracy-1" class="slide level2">
 <h2>Métricas: Accuracy</h2>
 <ul>
-<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>predicciones correctas</strong>.</p></li>
-<li class="fragment"><div style="color:#8ABF74;">
+<li><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>predicciones correctas</strong>.</p></li>
+<li><div style="color:#8ABF74;">
 <p>Fácil de interpretar y calcular.</p>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <ul>
-<li class="fragment">Puede ser engañosa en conjuntos de datos desbalanceados.</li>
+<li>Puede ser engañosa en conjuntos de datos desbalanceados.</li>
 </ul>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <p><strong>No distingue entre tipos de errores</strong>.</p>
 </div>
 <p>Trata todos los errores por igual, independientemente de si son falsos positivos o falsos negativos.</p></li>
@@ -1475,37 +1727,37 @@ AIC = 2{k} - \ln(\mathcal{L})
 <section id="métricas-accuracy-2" class="slide level2">
 <h2>Métricas: Accuracy</h2>
 <ul>
-<li class="fragment">Una Accuracy de 1 indica que el modelo predice todas las clases correctamente.</li>
-<li class="fragment">Accuracy cercana a 0 indica un bajo rendimiento del modelo.</li>
-<li class="fragment">En contextos con clases desbalanceadas, otras métricas suelen ser más informativas.</li>
+<li>Una Accuracy de 1 indica que el modelo predice todas las clases correctamente.</li>
+<li>Accuracy cercana a 0 indica un bajo rendimiento del modelo.</li>
+<li>En contextos con clases desbalanceadas, otras métricas suelen ser más informativas.</li>
 </ul>
 </section>
 <section id="métricas-precision" class="slide level2">
 <h2>Métricas: Precision</h2>
 <ul>
-<li class="fragment"><p>La <strong>Precisión</strong> (Precision), también conocida como <strong>Valor Predictivo Positivo</strong>.</p></li>
-<li class="fragment"><p>Medida que evalúa la proporción de verdaderos positivos sobre el total de predicciones positivas realizadas por el modelo. <span class="math display">\[
+<li><p>La <strong>Precisión</strong> (Precision), también conocida como <strong>Valor Predictivo Positivo</strong>.</p></li>
+<li><p>Medida que evalúa la proporción de verdaderos positivos sobre el total de predicciones positivas realizadas por el modelo. <span class="math display">\[
   Precision = \frac{TP}{TP + FP}
   \]</span> Donde:</p>
 <ul>
-<li class="fragment"><em>TP</em> es el número de verdaderos positivos.</li>
-<li class="fragment"><em>FP</em> es el número de falsos positivos.</li>
+<li><em>TP</em> es el número de verdaderos positivos.</li>
+<li><em>FP</em> es el número de falsos positivos.</li>
 </ul></li>
 </ul>
 </section>
 <section id="métricas-precision-1" class="slide level2">
 <h2>Métricas: Precision</h2>
 <ul>
-<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>exactitud de las predicciones positivas</strong>.</p></li>
-<li class="fragment"><div style="color:#8ABF74;">
+<li><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>exactitud de las predicciones positivas</strong>.</p></li>
+<li><div style="color:#8ABF74;">
 <p>Importante en contextos donde es crucial minimizar los falsos positivos.</p>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <ul>
-<li class="fragment">Puede ser alta a costa de reducir la sensibilidad.</li>
+<li>Puede ser alta a costa de reducir la sensibilidad.</li>
 </ul>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <p><strong>No considera los falsos negativos</strong>.</p>
 </div>
 <p>Puede no ser suficiente por sí sola para evaluar el rendimiento global del modelo.</p></li>
@@ -1514,37 +1766,37 @@ AIC = 2{k} - \ln(\mathcal{L})
 <section id="métricas-precision-2" class="slide level2">
 <h2>Métricas: Precision</h2>
 <ul>
-<li class="fragment">Una Precisión de 1 indica que todas las predicciones positivas del modelo son correctas.</li>
-<li class="fragment">Precisión cercana a 0 indica un alto número de falsos positivos.</li>
-<li class="fragment">Es útil en contextos donde los falsos positivos son más costosos que los falsos negativos.</li>
+<li>Una Precisión de 1 indica que todas las predicciones positivas del modelo son correctas.</li>
+<li>Precisión cercana a 0 indica un alto número de falsos positivos.</li>
+<li>Es útil en contextos donde los falsos positivos son más costosos que los falsos negativos.</li>
 </ul>
 </section>
 <section id="métricas-sensibilidad" class="slide level2">
 <h2>Métricas: Sensibilidad</h2>
 <ul>
-<li class="fragment"><p>La <strong>Sensibilidad</strong> (también conocida como <strong>Recall</strong> o <strong>Tasa de Verdaderos Positivos</strong>).</p></li>
-<li class="fragment"><p>Medida que evalúa la proporción de verdaderos positivos sobre el total de positivos. <span class="math display">\[
+<li><p>La <strong>Sensibilidad</strong> (también conocida como <strong>Recall</strong> o <strong>Tasa de Verdaderos Positivos</strong>).</p></li>
+<li><p>Medida que evalúa la proporción de verdaderos positivos sobre el total de positivos. <span class="math display">\[
   Sensibilidad = \frac{TP}{TP + FN}
   \]</span> Donde:</p>
 <ul>
-<li class="fragment"><em>TP</em> es el número de verdaderos positivos.</li>
-<li class="fragment"><em>FN</em> es el número de falsos negativos.</li>
+<li><em>TP</em> es el número de verdaderos positivos.</li>
+<li><em>FN</em> es el número de falsos negativos.</li>
 </ul></li>
 </ul>
 </section>
 <section id="métricas-sensibilidad-1" class="slide level2">
 <h2>Métricas: Sensibilidad</h2>
 <ul>
-<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>capacidad para identificar correctamente los positivos</strong>.</p></li>
-<li class="fragment"><div style="color:#8ABF74;">
+<li><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>capacidad para identificar correctamente los positivos</strong>.</p></li>
+<li><div style="color:#8ABF74;">
 <p>Importante en contextos donde es crucial identificar correctamente todos los casos positivos. (enfermedad)</p>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <ul>
-<li class="fragment">Puede ser alta a costa de aumentar los falsos positivos.</li>
+<li>Puede ser alta a costa de aumentar los falsos positivos.</li>
 </ul>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <p><strong>No considera la tasa de falsos positivos</strong>.</p>
 </div>
 <p>Puede no ser suficiente por sí sola para evaluar el rendimiento global del modelo.</p></li>
@@ -1553,37 +1805,37 @@ AIC = 2{k} - \ln(\mathcal{L})
 <section id="métricas-sensibilidad-2" class="slide level2">
 <h2>Métricas: Sensibilidad</h2>
 <ul>
-<li class="fragment">Una Sensibilidad de 1 indica que el modelo identifica correctamente todos los positivos reales.</li>
-<li class="fragment">Sensibilidad cercana a 0 indica que el modelo identifica incorrectamente la mayoría de los positivos reales.</li>
-<li class="fragment">Es útil en contextos donde los falsos negativos son más costosos que los falsos positivos.</li>
+<li>Una Sensibilidad de 1 indica que el modelo identifica correctamente todos los positivos reales.</li>
+<li>Sensibilidad cercana a 0 indica que el modelo identifica incorrectamente la mayoría de los positivos reales.</li>
+<li>Es útil en contextos donde los falsos negativos son más costosos que los falsos positivos.</li>
 </ul>
 </section>
 <section id="métricas-especificidad" class="slide level2">
 <h2>Métricas: Especificidad</h2>
 <ul>
-<li class="fragment"><p>La <strong>Especificidad</strong> (también conocida como <strong>Tasa de Verdaderos Negativos</strong>).</p></li>
-<li class="fragment"><p>Medida que evalúa la proporción de verdaderos negativos sobre el total de negativos. <span class="math display">\[
+<li><p>La <strong>Especificidad</strong> (también conocida como <strong>Tasa de Verdaderos Negativos</strong>).</p></li>
+<li><p>Medida que evalúa la proporción de verdaderos negativos sobre el total de negativos. <span class="math display">\[
   Especificidad = \frac{TN}{TN + FP}
   \]</span> Donde:</p>
 <ul>
-<li class="fragment"><em>TN</em> es el número de verdaderos negativos.</li>
-<li class="fragment"><em>FP</em> es el número de falsos positivos.</li>
+<li><em>TN</em> es el número de verdaderos negativos.</li>
+<li><em>FP</em> es el número de falsos positivos.</li>
 </ul></li>
 </ul>
 </section>
 <section id="métricas-especificidad-1" class="slide level2">
 <h2>Métricas: Especificidad</h2>
 <ul>
-<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>capacidad para identificar correctamente los negativos</strong>.</p></li>
-<li class="fragment"><div style="color:#8ABF74;">
+<li><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>capacidad para identificar correctamente los negativos</strong>.</p></li>
+<li><div style="color:#8ABF74;">
 <p>Importante en contextos donde es crucial identificar correctamente todos los casos negativos. (Inclusión)</p>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <ul>
-<li class="fragment">Puede ser alta a costa de aumentar los falsos negativos.</li>
+<li>Puede ser alta a costa de aumentar los falsos negativos.</li>
 </ul>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <p><strong>No considera la tasa de falsos negativos</strong>.</p>
 </div>
 <p>Insuficiente por sí sola para evaluar el rendimiento global del modelo.</p></li>
@@ -1592,37 +1844,37 @@ AIC = 2{k} - \ln(\mathcal{L})
 <section id="métricas-especificidad-2" class="slide level2">
 <h2>Métricas: Especificidad</h2>
 <ul>
-<li class="fragment">Una Especificidad de 1 indica que el modelo identifica correctamente todos los negativos reales.</li>
-<li class="fragment">Especificidad cercana a 0 indica que el modelo identifica incorrectamente la mayoría de los negativos reales.</li>
-<li class="fragment">Es útil en contextos donde los falsos positivos son más costosos que los falsos negativos.</li>
+<li>Una Especificidad de 1 indica que el modelo identifica correctamente todos los negativos reales.</li>
+<li>Especificidad cercana a 0 indica que el modelo identifica incorrectamente la mayoría de los negativos reales.</li>
+<li>Es útil en contextos donde los falsos positivos son más costosos que los falsos negativos.</li>
 </ul>
 </section>
 <section id="métricas-j-index" class="slide level2">
 <h2>Métricas: J-Index</h2>
 <ul>
-<li class="fragment"><p>El <strong>Índice de Youden</strong> (J-Index por sus siglas en inglés).</p></li>
-<li class="fragment"><p>Medida que combina la sensibilidad y la especificidad para evaluar el rendimiento general del modelo. <span class="math display">\[
+<li><p>El <strong>Índice de Youden</strong> (J-Index por sus siglas en inglés).</p></li>
+<li><p>Medida que combina la sensibilidad y la especificidad para evaluar el rendimiento general del modelo. <span class="math display">\[
   J = Sensibilidad + Especificidad - 1
   \]</span> Donde:</p>
 <ul>
-<li class="fragment"><em>Sensibilidad</em> es la tasa de verdaderos positivos.</li>
-<li class="fragment"><em>Especificidad</em> es la tasa de verdaderos negativos.</li>
+<li><em>Sensibilidad</em> es la tasa de verdaderos positivos.</li>
+<li><em>Especificidad</em> es la tasa de verdaderos negativos.</li>
 </ul></li>
 </ul>
 </section>
 <section id="métricas-j-index-1" class="slide level2">
 <h2>Métricas: J-Index</h2>
 <ul>
-<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>balance entre sensibilidad y especificidad</strong>.</p></li>
-<li class="fragment"><div style="color:#8ABF74;">
+<li><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>balance entre sensibilidad y especificidad</strong>.</p></li>
+<li><div style="color:#8ABF74;">
 <p>Proporciona una medida equilibrada del rendimiento del modelo considerando tanto los verdaderos positivos como los verdaderos negativos.</p>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <ul>
-<li class="fragment">No pondera la importancia relativa de sensibilidad y especificidad, no distingue entre tipos de errores.</li>
+<li>No pondera la importancia relativa de sensibilidad y especificidad, no distingue entre tipos de errores.</li>
 </ul>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <p><strong>Puede no ser suficiente por sí solo</strong>.</p>
 </div>
 <p>Es útil en combinación con otras métricas para una evaluación más completa.</p></li>
@@ -1631,37 +1883,37 @@ AIC = 2{k} - \ln(\mathcal{L})
 <section id="métricas-j-index-2" class="slide level2">
 <h2>Métricas: J-Index</h2>
 <ul>
-<li class="fragment">Un J-Index de 1 indica que el modelo predice perfectamente tanto los positivos como los negativos reales.</li>
-<li class="fragment">J-Index cercano a 0 indica un bajo rendimiento del modelo.</li>
-<li class="fragment">Es útil para comparar modelos en términos de su capacidad global para diferenciar entre clases.</li>
+<li>Un J-Index de 1 indica que el modelo predice perfectamente tanto los positivos como los negativos reales.</li>
+<li>J-Index cercano a 0 indica un bajo rendimiento del modelo.</li>
+<li>Es útil para comparar modelos en términos de su capacidad global para diferenciar entre clases.</li>
 </ul>
 </section>
 <section id="métricas-f1-score" class="slide level2">
 <h2>Métricas: F1 Score</h2>
 <ul>
-<li class="fragment"><p>El <strong>F1 Score</strong>.</p></li>
-<li class="fragment"><p>Medida que combina la precisión y la sensibilidad en una única métrica armonizada. <span class="math display">\[
+<li><p>El <strong>F1 Score</strong>.</p></li>
+<li><p>Medida que combina la precisión y la sensibilidad en una única métrica armonizada. <span class="math display">\[
   F1\ Score = 2 \times \frac{Precision \times Sensibilidad}{Precision + Sensibilidad}
   \]</span> Donde:</p>
 <ul>
-<li class="fragment"><em>Precision</em> es la precisión.</li>
-<li class="fragment"><em>Sensibilidad</em> es la sensibilidad (también conocida como recall).</li>
+<li><em>Precision</em> es la precisión.</li>
+<li><em>Sensibilidad</em> es la sensibilidad (también conocida como recall).</li>
 </ul></li>
 </ul>
 </section>
 <section id="métricas-f1-score-1" class="slide level2">
 <h2>Métricas: F1 Score</h2>
 <ul>
-<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>balance entre precisión y sensibilidad</strong>.</p></li>
-<li class="fragment"><div style="color:#8ABF74;">
+<li><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>balance entre precisión y sensibilidad</strong>.</p></li>
+<li><div style="color:#8ABF74;">
 <p>Proporciona una medida equilibrada del rendimiento del modelo cuando hay una distribución desigual de clases.</p>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <ul>
-<li class="fragment">Puede no ser suficiente por sí sola en todos los contextos.</li>
+<li>Puede no ser suficiente por sí sola en todos los contextos.</li>
 </ul>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <p><strong>Puede ser influenciada por clases desbalanceadas</strong>.</p>
 </div>
 <p>Es útil en combinación con otras métricas para una evaluación más completa.</p></li>
@@ -1670,37 +1922,37 @@ AIC = 2{k} - \ln(\mathcal{L})
 <section id="métricas-f1-score-2" class="slide level2">
 <h2>Métricas: F1 Score</h2>
 <ul>
-<li class="fragment">Un F1 Score de 1 indica que el modelo tiene perfecta precisión y sensibilidad.</li>
-<li class="fragment">F1 Score cercano a 0 indica un bajo rendimiento del modelo.</li>
-<li class="fragment">Es útil cuando se busca un equilibrio entre precisión y sensibilidad, especialmente en conjuntos de datos desbalanceados.</li>
+<li>Un F1 Score de 1 indica que el modelo tiene perfecta precisión y sensibilidad.</li>
+<li>F1 Score cercano a 0 indica un bajo rendimiento del modelo.</li>
+<li>Es útil cuando se busca un equilibrio entre precisión y sensibilidad, especialmente en conjuntos de datos desbalanceados.</li>
 </ul>
 </section>
 <section id="métricas-false-discovery-rate" class="slide level2">
 <h2>Métricas: False Discovery Rate</h2>
 <ul>
-<li class="fragment"><p>La <strong>Tasa de Falsos Descubrimientos</strong> (False Discovery Rate, FDR).</p></li>
-<li class="fragment"><p>Medida que evalúa la proporción de falsos positivos sobre el total de predicciones positivas realizadas por el modelo. <span class="math display">\[
+<li><p>La <strong>Tasa de Falsos Descubrimientos</strong> (False Discovery Rate, FDR).</p></li>
+<li><p>Medida que evalúa la proporción de falsos positivos sobre el total de predicciones positivas realizadas por el modelo. <span class="math display">\[
   FDR = \frac{FP}{TP + FP}
   \]</span> Donde:</p>
 <ul>
-<li class="fragment"><em>FP</em> es el número de falsos positivos.</li>
-<li class="fragment"><em>TP</em> es el número de verdaderos positivos.</li>
+<li><em>FP</em> es el número de falsos positivos.</li>
+<li><em>TP</em> es el número de verdaderos positivos.</li>
 </ul></li>
 </ul>
 </section>
 <section id="métricas-false-discovery-rate-1" class="slide level2">
 <h2>Métricas: False Discovery Rate</h2>
 <ul>
-<li class="fragment"><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>proporción de falsos positivos</strong> en las predicciones positivas.</p></li>
-<li class="fragment"><div style="color:#8ABF74;">
+<li><p>Métrica que evalúa el rendimiento del modelo en términos de <strong>proporción de falsos positivos</strong> en las predicciones positivas.</p></li>
+<li><div style="color:#8ABF74;">
 <p>Útil en contextos donde es crucial controlar el número de falsos positivos.</p>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <ul>
-<li class="fragment">Puede ser alta si el modelo tiene baja precisión.</li>
+<li>Puede ser alta si el modelo tiene baja precisión.</li>
 </ul>
 </div></li>
-<li class="fragment"><div style="color:#BF1E1A;">
+<li><div style="color:#BF1E1A;">
 <p><strong>No considera los verdaderos negativos ni los falsos negativos</strong>.</p>
 </div>
 <p>Se enfoca solo en las predicciones positivas.</p></li>
@@ -1709,16 +1961,19 @@ AIC = 2{k} - \ln(\mathcal{L})
 <section id="métricas-false-discovery-rate-2" class="slide level2">
 <h2>Métricas: False Discovery Rate</h2>
 <ul>
-<li class="fragment">Una FDR de 0 indica que no hay falsos positivos en las predicciones positivas del modelo.</li>
-<li class="fragment">FDR cercana a 1 indica que la mayoría de las predicciones positivas son incorrectas.</li>
-<li class="fragment">Es útil en contextos donde los falsos positivos son más costosos y deben ser minimizados.</li>
+<li>Una FDR de 0 indica que no hay falsos positivos en las predicciones positivas del modelo.</li>
+<li>FDR cercana a 1 indica que la mayoría de las predicciones positivas son incorrectas.</li>
+<li>Es útil en contextos donde los falsos positivos son más costosos y deben ser minimizados.</li>
 </ul>
+</section></section>
+<section id="validación-cruzada" class="title-slide slide level1 center">
+<h1>7. Validación cruzada</h1>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
