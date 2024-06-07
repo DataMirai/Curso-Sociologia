@@ -9,7 +9,7 @@ format:
     transition: slide
 ---
 
-# 1. ¿Porqué Tidymodels?
+# 1. ¿Por qué Tidymodels?
 
 ## 1.1. Un poquito de historia {auto-animate="true"}
 
@@ -616,7 +616,7 @@ Imputacion_multiple <- Training_datos %>%
     data = . , 
     strata = Var_respuesta )  %>% 
   # 🔴 2. Step (haz la transformación que requieras) 
-  # 🟡 Este step será la imputación por regresiópn lineal con otras covariables
+  # 🟡 Este step será la imputación por regresión lineal con otras covariables
   step_impute_linear( Cognicion_02, impute_with = imp_vars(Cognicion_01, Escala_02) ) %>%
   # 🔴 3. Prep (asienta la receta y generalízala) 
   prep() %>%

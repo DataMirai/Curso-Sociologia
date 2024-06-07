@@ -1,5 +1,5 @@
 ---
-title: "Ejemplos prácticos Tidymodels 2"
+title: "Ejemplos prácticos con Tidymodels"
 format: 
   revealjs:
     #incremental: true  
