@@ -45,8 +45,8 @@ Yo apenas puedo explicar *contexto de datos*... pero si puedo ayudar en
 
     -   La **Regresión logística**, por ejemplo, es deseable cuando
         funciona porque los parámetros son muy interpretables.
-    -   Los **Random Forest** son geniales porque pueden lidiar con
-        patrones muy difíciles, pero olvídate de
+    -   <span style="color:red"> Los **Random Forest** son geniales porque pueden lidiar con
+        patrones muy difíciles, pero olvídate de </span>
 
 
 ## 1. Modelizar es un arte {auto-animate="true"}
@@ -285,7 +285,7 @@ PIB_datos <- read.csv(
   file = 'data/evolucion_del_pib_per_capita_en_españa_desde_1975_2.csv', 
   sep=';', header=T)
 
-# Lo que punga hizo:
+# Lo que el experto hizo:
 PIB_datos %>% 
   mutate(Desviacion_Experto = sqrt((PIBxC - mean(PIBxC))^2)/n() )
 
@@ -308,7 +308,7 @@ PIB_datos %>%
 
 ::: {style="font-size:30px; text-align:center;"}
 
-**Media PIBxC:** *8.64*
+**Media Desviación_experto:** *0.0455*
 
 :::
 :::
@@ -569,7 +569,7 @@ x<0.05
 ## 4.2.2. Dependencias de los *P valores*? {auto-animate="true"}
 
 ::: {style="font-size:30px; margin-top:20px;"}
-- Proporcion de desviaciones significativas:
+- Proporción de desviaciones significativas:
 :::
 
 ::: {style="margin-top:0px; text-align:center;"}
@@ -595,7 +595,7 @@ El test apunta tener datos perfectos sobre una normal. Eso no pasa.
 :::
 
 ::: {style="font-size:40px; text-align:left;"}
-# Si los p valores no son buenos indicativos <br> Entonces, ¿Qué se debe usar en estos casos?
+# Si los *P valores* no son buenos indicativos <br> Entonces, ¿Qué se debe usar en estos casos?
 :::
 
 # 5. Standarized mean deviation *(SMD)*
@@ -605,7 +605,7 @@ El test apunta tener datos perfectos sobre una normal. Eso no pasa.
 ## 5. Standarized mean deviation *(SMD)* {auto-animate="true"}
 
 -   La **standarized mean deviation** *(SMD)* o diferencias de medias
-    estandarizadas son básicamente la diferencia de entre las medias o
+    estandarizadas son básicamente la diferencia entre las medias o
     proporciones de una variable, estratificando por otra.
 
 ## 5. Standarized mean deviation *(SMD)* {auto-animate="true"}
@@ -629,8 +629,8 @@ Donde :
 
 -   $M_1$ es la media o proporción del grupo 1
 -   $M_2$ es la media o proporción del grupo 2
--   $S_1$ es desviación estándard de grupo 1
--   $S_2$ es desviación estándard de grupo 2
+-   $S_1$ es desviación estándar del grupo 1
+-   $S_2$ es desviación estándar del grupo 2
 
 :::
 
@@ -660,7 +660,7 @@ Donde :
 ![](Imagenes/efectos_externos.png){fig-align="center"}
 
 ::: {style="text-align:center; font-size:28px"}
-*"La gripe se elimina con paracetamol en 7 días pero si no, se cura sola en una semana."*
+*"La gripe se elimina con paracetamol en 7 días. Si no, se cura sola en una semana."*
 :::
 
 # ¿Cómo lidiamos con los factores externos?
