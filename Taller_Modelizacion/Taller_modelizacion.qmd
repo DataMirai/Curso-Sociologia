@@ -168,7 +168,45 @@ Repites este proceso varias veces, dividiendo tus datos de diferentes maneras. E
 - La elección de la semilla puede influir en cómo se dividen los datos en conjuntos de entrenamiento y prueba, lo que a su vez puede afectar la evaluación del rendimiento del modelo. Es importante ser consistente con la semilla utilizada para garantizar la reproducibilidad de los resultados.
 
 
-# 3. Tipos de modelos
+# 3. Pre-procesamiento
+
+## Fases
+
+La fase más artesanal dentro del machine learning. Ayuda a preparar los datos para ser usados con mayor eficiencia, mejorando la calidad del aprendizaje.
+
+1. Limpieza de datos (Data Cleaning)
+2. Transformación de datos (Data Transformation)
+3. Codificación de datos categóricos (Categorical Data Encoding)
+4. Reducción de dimensionalidad (Dimensionality Reduction)
+5. Selección de características (Feature Selection)
+6. Creación de características (Feature Engineering)
+7. Muestreo equilibrador (Sampling)
+
+## Limpieza de datos (Data Cleaning)
+
+- **Descarte de variables**: Descartar variables con alta presencia de valores nulos o de variables altísimamente correlacionadas. 
+- **Tratamiento de valores nulos**: Técnica de Imputación o "relleno de valores faltantes"; se puede usar métodos como imputar por algún estadístico resumen, como la media, o utilizando métodos más sofisticados como la imputación por algoritmos predictores
+- **Eliminación de duplicados**: Remover filas duplicadas para evitar sesgos en el modelo.
+- **Corrección de errores tipográficos**: Identificación y corrección de errores tipográficos o inconsistencias en los datos.
+
+## Limpieza de datos (Data Cleaning) (Imputación)
+
+- Missing Completely at Random (MCAR): Los datos se consideran MCAR cuando la probabilidad de que un dato esté perdido es completamente independiente de cualquier variable. 
+  + (ej: datos perdidos por errores técnicos)
+
+- Missing at Random (MAR): Los datos se consideran MAR cuando la probabilidad de que un dato esté perdido depende de otras variables observadas en el dataset, pero no del valor de la variable en sí misma que falta. **Los datos faltantes pueden ser predichos por otras variables observadas.**
+  + (ej: las personas con educación más baja son menos propensas a declarar su ingreso))
+
+- Missing Not at Random (MNAR): Los datos se consideran MNAR cuando la probabilidad de que un dato esté perdido depende del valor de la variable que falta. Aquí, los datos faltantes no son aleatorios y están relacionados con las propias observaciones faltantes. 
+  + (ej: las personas con niveles más altos de depresión pueden ser menos propensas a responder preguntas sobre su estado mental)
+
+
+En la práctica se asume que $CAR = MCAR$
+
+
+
+
+# 4. Tipos de modelos
 
 ## Tipos de modelos 
 
