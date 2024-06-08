@@ -18,22 +18,26 @@ pacman::p_load(tidyverse)
 
 ## 1.1. Tener las cosas claras antes de empezar
 
-1.  Tener clara la pregunta
-2.  Tener una idea de la complejidad de la pregunta
-3.  Tener más o menos claras las variables que interfieren en el proceso
+1.  Tener clara la pregunta.
+2.  Tener una idea de la complejidad de la pregunta.
+3.  Tener más o menos claras las variables que interfieren en el
+    proceso.
 4.  Tener claros **las técnicas y el flujo de trabajo necesarios para
-    responder**
+    responder**.
 
 ## 1.2. Bases de modelización
 
-![Machine learning: el sentimiento cuando te asomas por primera vez](Imagenes/60860fbc7d3ee.jpeg)
+![](Imagenes/60860fbc7d3ee.jpeg){fig-align="center"}
+
+::: {style="text-align:center; font-size:30px;"}
+*Machine learning:* el sentimiento cuando te asomas por primera vez.
+:::
 
 ## 1.3. Flujo completo de modelización
 
 ```{mermaid, height=800, width=800}
 %%| fig-width: 6
-%%| fig-cap: |
-%%|   Flujo completo de un proceso de modelización con machine learning. 
+%%| fig-cap: | 
 
 
 flowchart TD
@@ -54,14 +58,38 @@ flowchart TD
 
 # 2. Validación cruzada
 
-## Diagrama
+## 2. Validación cruzada
 
-- Datos: entrenamiento
-- Datos: evaluacion
-- Datos: validacion
-- Datos: Datos aprendizaje
+```{mermaid, height=800, width=800}
+%%| fig-width: 6
+%%| fig-cap: | 
 
 
+flowchart TD
+    A[Pregunta / hipótesis] -->|Conseguir Datos| B[Datos]
+    B --> C[Datos: Entrenamiento]
+    B --> F[Datos: Evaluación]
+    C --> D[Datos: Aprendizaje]
+    C -->|Conjunto de validación| E[Datos: Validación]
+    D -->|Pre procesamiento| G[Entrenamiento del modelo]
+    E -->|HiperParámetros| G
+    G -->|Métricas Entrenamiento| H[Entrenamiento Seleccionado]
+    H --> F
+    F -->|Métricas Testing| I[Modelo Final]
+    I -.-> |No satisfactorio| G
+    I -->|Cloud Services| J[Modelo en producción]
+    H -.->|Re-procesamiento| G
+    
+    style C fill:#004d99
+    style C color:#FFFFFF
+    style D fill:#004d99
+    style D color:#FFFFFF
+    style E fill:#004d99
+    style E color:#FFFFFF
+    style F fill:#004d99
+    style F color:#FFFFFF
+    
+```
 
 
 ## 2.1. Concepto
@@ -75,8 +103,9 @@ Repites este proceso varias veces, dividiendo tus datos de diferentes
 maneras. Esto ayuda a asegurar que tu evaluación del modelo no dependa
 de una sola división de datos.
 
-## Leave-One-Out Cross-Validation (LOOCV)
+## 2.2. Leave-One-Out Cross-Validation (LOOCV)
 
+<div style="font-size:34px;">
 -   **Descripción**: Cada observación se usa como conjunto de validación
     una vez, y el resto como conjunto de entrenamiento.
 -   **Ventajas**:
@@ -84,14 +113,15 @@ de una sola división de datos.
     -   Minimiza el sesgo de estimación.
 -   **Desventajas**:
     -   Extremadamente costosa computacionalmente.
-    -   Alta variabilidad en las estimaciones. (necesario plotear la
-        distribición)
+    -   Alta variabilidad en las estimaciones (necesario plotear la
+        distribución).
+</div>
 
-## Leave-One-Out Cross-Validation (LOOCV)
+## 2.2. Leave-One-Out Cross-Validation (LOOCV)
 
 ![](Imagenes/LOOCV.png)
 
-## K-Fold Cross-Validation
+## 2.3. K-Fold Cross-Validation
 
 -   **Descripción**: Divide los datos en K particiones. Realiza K
     iteraciones, cada vez usando una partición diferente como conjunto
@@ -102,12 +132,13 @@ de una sola división de datos.
 -   **Desventajas**:
     -   Computacionalmente costosa si K es grande.
 
-## K-Fold Cross-Validation
+## 2.3. K-Fold Cross-Validation
 
 ![](Imagenes/kfold_cross_validation.png)
 
-## Bootstrap
+## 2.4. Bootstrap
 
+<div style="font-size:34px;">
 -   **Descripción**: Genera múltiples muestras aleatorias con reemplazo
     a partir del conjunto de datos original.
 
@@ -123,40 +154,43 @@ de una sola división de datos.
     -   No es una técnica de validación cruzada en sí misma, sino más
         bien una técnica de remuestreo que se usa en conjunto con otras
         técnicas de validación cruzada.
+</div>
 
-## Bootstrap
+## 2.4. Bootstrap
 
 ![](Imagenes/bootstraps.jpg)
 
-## Shuffle-Split (Monte Carlo)
+## 2.5. Shuffle-Split (Monte Carlo)
 
+<div style="font-size:36px;">
 -   **Descripción**: Se realizan múltiples divisiones aleatorias del
     conjunto de datos. En cada iteración, una fracción aleatoria de los
     datos se usa para entrenamiento y la fracción complementaria para
     validación.
 
--   Ventajas:
+-   **Ventajas**:
 
     -   Más flexibilidad en la proporción de entrenamiento/validación.
     -   Menor sesgo debido a la aleatorización repetida.
 
--   Desventajas:
+-   **Desventajas**:
 
     -   No garantiza que todas las observaciones se utilicen en las
         validaciones.
+</div>
 
-## Advertencias sobre Validación Cruzada 1
+## 2.6. Advertencias sobre Validación Cruzada *1*
 
 **1. La elección del número de divisiones no debe ser aleatoria**
 
 -   Elegir un número adecuado de divisiones para evitar sesgos en la
     evaluación del modelo.
--   Por ejemplo, en la validación cruzada de K-fold, es común utilizar
-    valores típicos como 5 o 10 para K. Sin embargo, la elección de K
+-   Por ejemplo, en la validación cruzada de *K-fold*, es común utilizar
+    valores típicos como 5 o 10 para *K*. Sin embargo, la elección de *K*
     debe considerar el tamaño del conjunto de datos y el equilibrio
     entre la varianza y el sesgo.
 
-## Advertencias sobre Validación Cruzada 2
+## 2.6. Advertencias sobre Validación Cruzada *2*
 
 **2. Siempre estratifica en problemas de clasificación**
 
@@ -164,33 +198,32 @@ de una sola división de datos.
     cada división.
 -   En problemas de clasificación, es esencial estratificar las
     divisiones para garantizar que todas las clases estén representadas
-    en cada conjunto de entrenamiento y prueba. Esto ayuda a evitar
-    sesgos y garantiza una evaluación más precisa del rendimiento del
+    en cada conjunto de entrenamiento y prueba. Esto ayuda a **evitar sesgos** y garantiza una **evaluación más precisa** del rendimiento del
     modelo.
 
-## Advertencias sobre Validación Cruzada 3
+## 2.6. Advertencias sobre Validación Cruzada *3*
 
 **3. Elección de validación cruzada adecuada para un problema de
 regresión**
 
--   Aunque la validación cruzada de K-fold es comúnmente utilizada en
+-   Aunque la validación cruzada de *K-fold* es comúnmente utilizada en
     problemas de regresión, también es importante considerar otras
     técnicas, como la validación cruzada estratificada, especialmente
     cuando hay una distribución desigual de los datos o se necesita una
     evaluación más precisa del rendimiento del modelo.
 
-## Advertencias sobre Validación Cruzada 4
+## 2.6. Advertencias sobre Validación Cruzada *4*
 
-**4. Nunca Sobremuestrear antes de la validación cruzada.**
+**4. Nunca sobremuestrear antes de la validación cruzada.**
 
--   La sobremuestreo antes de la validación cruzada puede llevar a una
-    evaluación sesgada del modelo.
+-   El **sobremuestreo** antes de la validación cruzada puede llevar a una
+    **evaluación sesgada** del modelo.
 -   Conlleva al sobreajuste con los datos de entrenamiento, lo que
     resulta en una estimación errónea del rendimiento del modelo. Es
-    importante realizar la sobremuestreo dentro de cadapartición de la
+    importante realizar el sobremuestreo dentro de cada partición de la
     validación cruzada para evitar este sesgo.
 
-## Advertencias sobre Validación Cruzada 5
+## 2.6. Advertencias sobre Validación Cruzada *5*
 
 **5. Fuga de conocimientos**
 
@@ -198,26 +231,26 @@ regresión**
     validación cruzada.
 -   Es fundamental preprocesar los datos antes de la validación cruzada
     para evitar la fuga de conocimientos. Esto incluye la
-    estandarización de características, la imputación de valores
-    perdidos y cualquier otra transformación de datos que se realice en
+    **estandarización de características**, la **imputación de valores perdidos** 
+    y cualquier otra transformación de datos que se realice en
     función de la información del conjunto de datos completo y no solo
     del conjunto de entrenamiento.
 
-## Advertencias sobre Validación Cruzada 6
+## 2.6. Advertencias sobre Validación Cruzada *6*
 
-**6. No hagas Validación cruzada aleatorizadas para datos de series
-temporales.**
+**6. No hagas Validación cruzada aleatorizada para datos de series
+temporales**
 
 -   La validación cruzada aleatorizada puede introducir sesgos en la
     evaluación del modelo con datos de series temporales.
 -   En lugar de utilizar validación cruzada aleatorizada, es preferible
     utilizar técnicas específicas para datos de series temporales, como
-    la validación cruzada basada en el tiempo o la validación cruzada de
-    bloques, que preservan la estructura temporal de los datos.
+    la **validación cruzada basada en el tiempo** o la **validación cruzada de bloques**, 
+    que preservan la estructura temporal de los datos.
 
-## Advertencias sobre Validación Cruzada 7
+## 2.6. Advertencias sobre Validación Cruzada *7*
 
-**7. Cuidado con la semilla a la hora de partir los datos.**
+**7. Cuidado con la semilla a la hora de partir los datos**
 
 -   La semilla utilizada para partir los datos puede afectar
     significativamente los resultados de la validación cruzada.
@@ -231,8 +264,8 @@ temporales.**
 
 # Diagrama:
 
-- Línea de Datos: aprendizaje a Entrenamiento del modelo : Pre procesamiento
-
+-   Línea de Datos: aprendizaje a Entrenamiento del modelo : Pre
+    procesamiento
 
 ## Fases
 
@@ -244,8 +277,8 @@ aprendizaje.
 2.  *Transformación de datos* (Data Transformation)
 3.  *Codificación de datos categóricos* (Categorical Data Encoding)
 4.  *Reducción de dimensionalidad* (Dimensionality Reduction)
-5.  *Selección de características *(Feature Selection)
-6.  *Creación de características *(Feature Engineering)
+5.  *Selección de características* (Feature Selection)
+6.  *Creación de características* (Feature Engineering)
 7.  *Muestreo equilibrador* (Sampling)
 
 ## Limpieza de datos (Data Cleaning)
@@ -266,19 +299,19 @@ aprendizaje.
 -   *Missing Completely at Random (MCAR)*: Los datos se consideran MCAR
     cuando la probabilidad de que un dato esté perdido es completamente
     independiente de cualquier variable.
-    +   (ej: datos perdidos por errores técnicos)
+    -   (ej: datos perdidos por errores técnicos)
 -   *Missing at Random (MAR)*: Los datos se consideran MAR cuando la
     probabilidad de que un dato esté perdido depende de otras variables
     observadas en el dataset, pero no del valor de la variable en sí
     misma que falta. **Los datos faltantes pueden ser predichos por
     otras variables observadas.**
-    +   (ej: las personas con educación más baja son menos propensas a
+    -   (ej: las personas con educación más baja son menos propensas a
         declarar su ingreso))
--   *Missing Not at Random (MNAR)*: Los datos se consideran MNAR cuando la
-    probabilidad de que un dato esté perdido depende del valor de la
+-   *Missing Not at Random (MNAR)*: Los datos se consideran MNAR cuando
+    la probabilidad de que un dato esté perdido depende del valor de la
     variable que falta. Aquí, los datos faltantes no son aleatorios y
     están relacionados con las propias observaciones faltantes.
-    +   (ej: las personas con niveles más altos de depresión pueden ser
+    -   (ej: las personas con niveles más altos de depresión pueden ser
         menos propensas a responder preguntas sobre su estado mental)
 
 En la práctica se asume que $CAR = MCAR$
@@ -289,9 +322,9 @@ En la práctica se asume que $CAR = MCAR$
     (por ejemplo, entre 0 y 1). Comúnmente utilizada para algoritmos
     como redes neuronales.
 
--   *Estandarización*: Escalado de características para que tengan
-    media 0 y desviación estándar 1. Usada frecuentemente en algoritmos
-    como SVM y regresión logística.
+-   *Estandarización*: Escalado de características para que tengan media
+    0 y desviación estándar 1. Usada frecuentemente en algoritmos como
+    SVM y regresión logística.
 
 -   *Transformaciones* logarítmicas o de Box-Cox: Aplicación de
     funciones matemáticas para transformar datos sesgados a una
@@ -357,25 +390,29 @@ Coeficiente de Años de Experiencia
 -   *Dummy Encoding*: Transformación de variables categóricas en
     variables binarias, dejando una categoría implícita en la
     referencia.
-    
+
 ![](Imagenes/dummy_encoding.png)
-    
+
 -   *One-Hot Encoding*: Transformación de variables categóricas en
     variables binarias, sin categoría de referencia.
 
 ![](Imagenes/onehot_encoding.png)
-    
+
 -   *Label Encoding*: Asignación de un número entero único a cada
     categoría.
--   *Target Encoding*: Sustitución de categorías por la un estadístico del
-    target, como al media o los cuartiles. 
+-   *Target Encoding*: Sustitución de categorías por la un estadístico
+    del target, como al media o los cuartiles.
 
 ## Selección de características (Feature Selection):
 
-- *Métodos de filtro*: Selección de características basadas en estadísticas univariadas (por ejemplo, chi-cuadrado, ANOVA).
-- *Métodos de envoltura (Wrapper)*: Selección de características usando algoritmos de búsqueda (por ejemplo, secuencial hacia adelante o hacia atrás).
-- *Métodos basados en importancia de modelos*: Uso de algoritmos de aprendizaje (como árboles de decisión) para evaluar la importancia de cada característica.
-
+-   *Métodos de filtro*: Selección de características basadas en
+    estadísticas univariadas (por ejemplo, chi-cuadrado, ANOVA).
+-   *Métodos de envoltura (Wrapper)*: Selección de características
+    usando algoritmos de búsqueda (por ejemplo, secuencial hacia
+    adelante o hacia atrás).
+-   *Métodos basados en importancia de modelos*: Uso de algoritmos de
+    aprendizaje (como árboles de decisión) para evaluar la importancia
+    de cada característica.
 
 ## Reducción de dimensionalidad (Dimensionality Reduction):
 
@@ -385,28 +422,33 @@ Coeficiente de Años de Experiencia
 -   *Linear Discriminant Analysis (LDA)*: Similar al PCA pero también
     considera la clase del target, útil en problemas de clasificación.
 
-
 ## Creación de características (Feature Engineering):
 
-- *Combinación de características*: Creación de nuevas características a partir de las existentes (por ejemplo, suma, producto).
-- *Extracción de características temporales*: Creación de nuevas características basadas en datos de series temporales, como día de la semana, mes, etc.
-- *Transformaciones polinómicas*: Generación de nuevas características combinando las existentes de manera no lineal.
+-   *Combinación de características*: Creación de nuevas características
+    a partir de las existentes (por ejemplo, suma, producto).
+-   *Extracción de características temporales*: Creación de nuevas
+    características basadas en datos de series temporales, como día de
+    la semana, mes, etc.
+-   *Transformaciones polinómicas*: Generación de nuevas características
+    combinando las existentes de manera no lineal.
 
 ## Muestreo (Sampling):
 
 **Objetivo**: balancear el dataset.
 
-- *Submuestreo (Undersampling)*: Reducción de la cantidad de muestras en la clase mayoritaria 
-- *Sobremuestreo (Oversampling)*: Incremento de la cantidad de muestras en la clase minoritaria, utilizando técnicas como SMOTE (Synthetic Minority Over-sampling Technique).
-
+-   *Submuestreo (Undersampling)*: Reducción de la cantidad de muestras
+    en la clase mayoritaria
+-   *Sobremuestreo (Oversampling)*: Incremento de la cantidad de
+    muestras en la clase minoritaria, utilizando técnicas como SMOTE
+    (Synthetic Minority Over-sampling Technique).
 
 # 4. Tipos de modelos
 
 # Diagrama:
 
-- Entrenamiento del modelo 
+-   Entrenamiento del modelo
 
-- linea: Métriocas entrenamiento
+-   linea: Métriocas entrenamiento
 
 ## Tipos de modelos
 
@@ -433,7 +475,7 @@ Coeficiente de Años de Experiencia
 ## Respecto a la utilidad
 
 |                              | Modelos explicativos                                                             | Modelos predictivos                                                                                                                  |
-|----------------|---------------------|------------------------------------|
+|------------------|--------------------|----------------------------------|
 | Objetivos                    | Establecer relaciones causales                                                   | Predecir diagnósticos actuales o resultados futuros                                                                                  |
 | Precaución                   | Las posibilidades de hallazgos (Error tipo I)                                    | No ajuste: falta de generalizabilidad a nuevas poblaciones                                                                           |
 | Variables candidatas         | Un conjunto limitado de factores de riesgo y factores de confusión               | Muchos predictores potenciales; algunos pueden no tener relación causal con el resultado.                                            |
@@ -1154,9 +1196,8 @@ jugador profesional promedio hacía**.
 
 ## diagrama
 
-- Datos Evaluacion
-- Linea: metricas testing
-
+-   Datos Evaluacion
+-   Linea: metricas testing
 
 ## 7.1 Métricas para modelos de regresión
 
@@ -1213,7 +1254,7 @@ $$
 
 -   Un MAE de 0 indica que el modelo predice exactamente los valores
     reales.
--   $MAE  > 0$ indica que el modelo tiene un mayor error promedio.
+-   $MAE > 0$ indica que el modelo tiene un mayor error promedio.
 -   No penaliza ni discrimina entre errores grande o pequeños, es un
     promedio directo.
 
