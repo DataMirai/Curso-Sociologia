@@ -26,8 +26,7 @@ pacman::p_load(tidyverse)
 
 ## 1.2. Bases de modelización
 
-![Machine learning: el sentimiento cuando te asomas por primera
-vez](Imagenes/60860fbc7d3ee.jpeg)
+![Machine learning: el sentimiento cuando te asomas por primera vez](Imagenes/60860fbc7d3ee.jpeg)
 
 ## 1.3. Flujo completo de modelización
 
@@ -54,6 +53,16 @@ flowchart TD
 ```
 
 # 2. Validación cruzada
+
+## Diagrama
+
+- Datos: entrenamiento
+- Datos: evaluacion
+- Datos: validacion
+- Datos: Datos aprendizaje
+
+
+
 
 ## 2.1. Concepto
 
@@ -219,6 +228,11 @@ temporales.**
     reproducibilidad de los resultados.
 
 # 3. Pre-procesamiento
+
+# Diagrama:
+
+- Línea de Datos: aprendizaje a Entrenamiento del modelo : Pre procesamiento
+
 
 ## Fases
 
@@ -387,6 +401,12 @@ Coeficiente de Años de Experiencia
 
 
 # 4. Tipos de modelos
+
+# Diagrama:
+
+- Entrenamiento del modelo 
+
+- linea: Métriocas entrenamiento
 
 ## Tipos de modelos
 
@@ -1131,6 +1151,12 @@ de decisiones y **sin superar el número de comandos por minuto que un
 jugador profesional promedio hacía**.
 
 # 7 Métricas
+
+## diagrama
+
+- Datos Evaluacion
+- Linea: metricas testing
+
 
 ## 7.1 Métricas para modelos de regresión
 

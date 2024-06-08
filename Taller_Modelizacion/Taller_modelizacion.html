@@ -599,13 +599,13 @@ flowchart TD
 <h2>Fases</h2>
 <p>La fase más artesanal dentro del machine learning. Ayuda a preparar los datos para ser usados con mayor eficiencia, mejorando la calidad del aprendizaje.</p>
 <ol type="1">
-<li>Limpieza de datos (Data Cleaning)</li>
-<li>Transformación de datos (Data Transformation)</li>
-<li>Codificación de datos categóricos (Categorical Data Encoding)</li>
-<li>Reducción de dimensionalidad (Dimensionality Reduction)</li>
-<li>Selección de características (Feature Selection)</li>
-<li>Creación de características (Feature Engineering)</li>
-<li>Muestreo equilibrador (Sampling)</li>
+<li><em>Limpieza de datos</em> (Data Cleaning)</li>
+<li><em>Transformación de datos</em> (Data Transformation)</li>
+<li><em>Codificación de datos categóricos</em> (Categorical Data Encoding)</li>
+<li><em>Reducción de dimensionalidad</em> (Dimensionality Reduction)</li>
+<li><em>Selección de características </em>(Feature Selection)</li>
+<li><em>Creación de características </em>(Feature Engineering)</li>
+<li><em>Muestreo equilibrador</em> (Sampling)</li>
 </ol>
 </section>
 <section id="limpieza-de-datos-data-cleaning" class="slide level2">
@@ -620,15 +620,15 @@ flowchart TD
 <section id="limpieza-de-datos-data-cleaning-imputación" class="slide level2">
 <h2>Limpieza de datos (Data Cleaning) (Imputación)</h2>
 <ul>
-<li>Missing Completely at Random (MCAR): Los datos se consideran MCAR cuando la probabilidad de que un dato esté perdido es completamente independiente de cualquier variable.
+<li><em>Missing Completely at Random (MCAR)</em>: Los datos se consideran MCAR cuando la probabilidad de que un dato esté perdido es completamente independiente de cualquier variable.
 <ul>
 <li>(ej: datos perdidos por errores técnicos)</li>
 </ul></li>
-<li>Missing at Random (MAR): Los datos se consideran MAR cuando la probabilidad de que un dato esté perdido depende de otras variables observadas en el dataset, pero no del valor de la variable en sí misma que falta. <strong>Los datos faltantes pueden ser predichos por otras variables observadas.</strong>
+<li><em>Missing at Random (MAR)</em>: Los datos se consideran MAR cuando la probabilidad de que un dato esté perdido depende de otras variables observadas en el dataset, pero no del valor de la variable en sí misma que falta. <strong>Los datos faltantes pueden ser predichos por otras variables observadas.</strong>
 <ul>
 <li>(ej: las personas con educación más baja son menos propensas a declarar su ingreso))</li>
 </ul></li>
-<li>Missing Not at Random (MNAR): Los datos se consideran MNAR cuando la probabilidad de que un dato esté perdido depende del valor de la variable que falta. Aquí, los datos faltantes no son aleatorios y están relacionados con las propias observaciones faltantes.
+<li><em>Missing Not at Random (MNAR)</em>: Los datos se consideran MNAR cuando la probabilidad de que un dato esté perdido depende del valor de la variable que falta. Aquí, los datos faltantes no son aleatorios y están relacionados con las propias observaciones faltantes.
 <ul>
 <li>(ej: las personas con niveles más altos de depresión pueden ser menos propensas a responder preguntas sobre su estado mental)</li>
 </ul></li>
@@ -638,14 +638,20 @@ flowchart TD
 <section id="transformación-de-datos-data-transformation" class="slide level2">
 <h2>Transformación de datos (Data Transformation)</h2>
 <ul>
-<li><p><strong>Normalización</strong>: Escalado de características a un rango específico (por ejemplo, entre 0 y 1). Comúnmente utilizada para algoritmos como redes neuronales.</p></li>
-<li><p><strong>Estandarización</strong>: Escalado de características para que tengan media 0 y desviación estándar 1. Usada frecuentemente en algoritmos como SVM y regresión logística.</p></li>
-<li><p><strong>Transformaciones</strong> logarítmicas o de Box-Cox: Aplicación de funciones matemáticas para transformar datos sesgados a una distribución más normal.</p></li>
+<li><p><em>Normalización</em>: Escalado de características a un rango específico (por ejemplo, entre 0 y 1). Comúnmente utilizada para algoritmos como redes neuronales.</p></li>
+<li><p><em>Estandarización</em>: Escalado de características para que tengan media 0 y desviación estándar 1. Usada frecuentemente en algoritmos como SVM y regresión logística.</p></li>
+<li><p><em>Transformaciones</em> logarítmicas o de Box-Cox: Aplicación de funciones matemáticas para transformar datos sesgados a una distribución más normal.</p></li>
 </ul>
 </section>
 <section id="transformación-de-datos-logaritmos" class="slide level2">
 <h2>Transformación de datos: logaritmos</h2>
-<p>Al usar la escala logarítmica, los coeficientes de un modelo de regresión se interpretan en términos de cambios porcentuales.</p>
+<p>Al usar la escala logarítmica, los coeficientes de un modelo de regresión se interpretan en términos de cambios porcentuales. <strong>El modelo se vuelve interpretable desde el punto de vista relativo y no absoluto</strong>. Esto es vital para tratar temas como el salario donde los incremnetos relativos son mucho más válidos que los absolutos.</p>
+<ul>
+<li>No es lo mismo incremenetar el salario 100€ a alguien que cobra 1.000€ al mes que a alguien con 10.000€ al mes.</li>
+</ul>
+</section>
+<section id="transformación-de-datos-logaritmos-ejemplo" class="slide level2">
+<h2>Transformación de datos: logaritmos (ejemplo)</h2>
 <p>Asumamos 2 modelos:</p>
 <p><span class="math display">\[
 Salario=2000+500(AñosExperiencia) + 1000(AñosEducación)
@@ -654,8 +660,8 @@ Salario=2000+500(AñosExperiencia) + 1000(AñosEducación)
 log(Salario)=2.5+0.04(AñosExperiencia)+0.08(AñosEducación)
 \]</span> Son el mismo modelo, la única diferencia es la escala de la variable respuesta <em>salario</em></p>
 </section>
-<section id="transformación-de-datos-logaritmos-1" class="slide level2">
-<h2>Transformación de datos: logaritmos</h2>
+<section id="transformación-de-datos-logaritmos-ejemplo-1" class="slide level2">
+<h2>Transformación de datos: logaritmos (ejemplo</h2>
 <p><span class="math display">\[
 Salario=2000+500(AñosExperiencia) + 1000(AñosEducación)
 \]</span> Los coeficientes indicarían incrementos <strong>absolutos</strong> en el salario:</p>
@@ -664,8 +670,8 @@ Salario=2000+500(AñosExperiencia) + 1000(AñosEducación)
 <li>Coeficiente de Años de Educación <span class="math inline">\(\beta_{AñosEducación} = 1000\)</span>: Cada año de experiencia aumentaría el salario en 1000.</li>
 </ul>
 </section>
-<section id="transformación-de-datos-logaritmos-2" class="slide level2">
-<h2>Transformación de datos: logaritmos</h2>
+<section id="transformación-de-datos-logaritmos-ejemplo-2" class="slide level2">
+<h2>Transformación de datos: logaritmos (ejemplo</h2>
 <p><span class="math display">\[
 log(Salario)=2.5+0.04(AñosExperiencia)+0.08(AñosEducación)
 \]</span></p>
@@ -681,6 +687,52 @@ log(Salario)=2.5+0.04(AñosExperiencia)+0.08(AñosEducación)
 <li>Cada año adicional de Educacion, <strong>el logaritmo del salario</strong> aumenta en 0.08 unidades.</li>
 <li>En términos porcentuales, esto se interpreta <span class="math inline">\((e^{0.08}−1)×100 ≈ (1.0408−1)×100=0.083×100 = 8.3\%\)</span></li>
 </ul></li>
+</ul>
+</section>
+<section id="codificación-de-datos-categóricos-categorical-data-encoding" class="slide level2">
+<h2>Codificación de datos categóricos (Categorical Data Encoding):</h2>
+<ul>
+<li><em>Dummy Encoding</em>: Transformación de variables categóricas en variables binarias, dejando una categoría implícita en la referencia.</li>
+</ul>
+<p><img data-src="Imagenes/dummy_encoding.png"></p>
+<ul>
+<li><em>One-Hot Encoding</em>: Transformación de variables categóricas en variables binarias, sin categoría de referencia.</li>
+</ul>
+<p><img data-src="Imagenes/onehot_encoding.png"></p>
+<ul>
+<li><em>Label Encoding</em>: Asignación de un número entero único a cada categoría.</li>
+<li><em>Target Encoding</em>: Sustitución de categorías por la un estadístico del target, como al media o los cuartiles.</li>
+</ul>
+</section>
+<section id="selección-de-características-feature-selection" class="slide level2">
+<h2>Selección de características (Feature Selection):</h2>
+<ul>
+<li><em>Métodos de filtro</em>: Selección de características basadas en estadísticas univariadas (por ejemplo, chi-cuadrado, ANOVA).</li>
+<li><em>Métodos de envoltura (Wrapper)</em>: Selección de características usando algoritmos de búsqueda (por ejemplo, secuencial hacia adelante o hacia atrás).</li>
+<li><em>Métodos basados en importancia de modelos</em>: Uso de algoritmos de aprendizaje (como árboles de decisión) para evaluar la importancia de cada característica.</li>
+</ul>
+</section>
+<section id="reducción-de-dimensionalidad-dimensionality-reduction" class="slide level2">
+<h2>Reducción de dimensionalidad (Dimensionality Reduction):</h2>
+<ul>
+<li><p><em>Principal Component Analysis (PCA)</em>: Reducción del número de variables manteniendo la mayor cantidad de variabilidad posible.</p></li>
+<li><p><em>Linear Discriminant Analysis (LDA)</em>: Similar al PCA pero también considera la clase del target, útil en problemas de clasificación.</p></li>
+</ul>
+</section>
+<section id="creación-de-características-feature-engineering" class="slide level2">
+<h2>Creación de características (Feature Engineering):</h2>
+<ul>
+<li><em>Combinación de características</em>: Creación de nuevas características a partir de las existentes (por ejemplo, suma, producto).</li>
+<li><em>Extracción de características temporales</em>: Creación de nuevas características basadas en datos de series temporales, como día de la semana, mes, etc.</li>
+<li><em>Transformaciones polinómicas</em>: Generación de nuevas características combinando las existentes de manera no lineal.</li>
+</ul>
+</section>
+<section id="muestreo-sampling" class="slide level2">
+<h2>Muestreo (Sampling):</h2>
+<p><strong>Objetivo</strong>: balancear el dataset.</p>
+<ul>
+<li><em>Submuestreo (Undersampling)</em>: Reducción de la cantidad de muestras en la clase mayoritaria</li>
+<li><em>Sobremuestreo (Oversampling)</em>: Incremento de la cantidad de muestras en la clase minoritaria, utilizando técnicas como SMOTE (Synthetic Minority Over-sampling Technique).</li>
 </ul>
 </section></section>
 <section>
@@ -747,9 +799,9 @@ log(Salario)=2.5+0.04(AñosExperiencia)+0.08(AñosEducación)
 <h2>Respecto a la utilidad</h2>
 <table>
 <colgroup>
-<col style="width: 26%">
-<col style="width: 37%">
-<col style="width: 36%">
+<col style="width: 21%">
+<col style="width: 28%">
+<col style="width: 49%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1051,10 +1103,10 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>             MeanDecreaseGini
-Sepal.Length         7.807488
-Sepal.Width          2.216256
-Petal.Length        44.532119
-Petal.Width         44.760604</code></pre>
+Sepal.Length        10.162955
+Sepal.Width          2.896324
+Petal.Length        42.239383
+Petal.Width         44.044671</code></pre>
 </div>
 
 </div>
