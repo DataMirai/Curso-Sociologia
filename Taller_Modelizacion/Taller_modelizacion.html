@@ -10,7 +10,7 @@
 <link href="Taller_modelizacion_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="Taller_modelizacion_files/libs/quarto-contrib/videojs/video.min.js"></script>
 <link href="Taller_modelizacion_files/libs/quarto-contrib/videojs/video-js.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.4.553">
 
   <title>Que comience el periplo de la Modelización</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -222,7 +222,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -406,7 +407,7 @@
 <h1>1. Bases de modelización</h1>
 
 </section>
-<section id="tener-las-cosas-claras-antes-de-empezar" class="slide level2">
+<section id="tener-las-cosas-claras-antes-de-empezar" class="slide level2 scrollable">
 <h2>1.1. Tener las cosas claras antes de empezar</h2>
 <ol type="1">
 <li>Tener clara la pregunta</li>
@@ -421,9 +422,10 @@
 <img data-src="Imagenes/60860fbc7d3ee.jpeg" class="r-stretch quarto-figure-center"><p class="caption">Machine learning: el sentimiento cuando te asomas por primera vez</p></section>
 <section id="flujo-completo-de-modelización" class="slide level2">
 <h2>1.3. Flujo completo de modelización</h2>
-<div class="cell" data-reveal="true" data-fig-width="6">
+<div class="cell" data-reveal="true" data-fig-width="6" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">
 flowchart TD
@@ -442,7 +444,7 @@ flowchart TD
     H -.-&gt;|Re-procesamiento| G
 </pre>
 </div>
-<p>Flujo completo de un proceso de modelización con machine learning.</p>
+<p></p><figcaption> Flujo completo de un proceso de modelización con machine learning. </figcaption> </figure><p></p>
 </div>
 </div>
 </div>
@@ -533,55 +535,55 @@ flowchart TD
 </ul></li>
 </ul>
 </section>
-<section id="advertencias-sobre-validación-cruzada" class="slide level2">
-<h2>Advertencias sobre Validación Cruzada</h2>
+<section id="advertencias-sobre-validación-cruzada-1" class="slide level2">
+<h2>Advertencias sobre Validación Cruzada 1</h2>
 <p><strong>1. La elección del número de divisiones no debe ser aleatoria</strong></p>
 <ul>
 <li>Elegir un número adecuado de divisiones para evitar sesgos en la evaluación del modelo.</li>
 <li>Por ejemplo, en la validación cruzada de K-fold, es común utilizar valores típicos como 5 o 10 para K. Sin embargo, la elección de K debe considerar el tamaño del conjunto de datos y el equilibrio entre la varianza y el sesgo.</li>
 </ul>
 </section>
-<section id="advertencias-sobre-validación-cruzada-1" class="slide level2">
-<h2>Advertencias sobre Validación Cruzada</h2>
+<section id="advertencias-sobre-validación-cruzada-2" class="slide level2">
+<h2>Advertencias sobre Validación Cruzada 2</h2>
 <p><strong>2. Siempre estratifica en problemas de clasificación</strong></p>
 <ul>
 <li>Estratificar asegura una distribución equitativa de las clases en cada división.</li>
 <li>En problemas de clasificación, es esencial estratificar las divisiones para garantizar que todas las clases estén representadas en cada conjunto de entrenamiento y prueba. Esto ayuda a evitar sesgos y garantiza una evaluación más precisa del rendimiento del modelo.</li>
 </ul>
 </section>
-<section id="advertencias-sobre-validación-cruzada-2" class="slide level2">
-<h2>Advertencias sobre Validación Cruzada</h2>
+<section id="advertencias-sobre-validación-cruzada-3" class="slide level2">
+<h2>Advertencias sobre Validación Cruzada 3</h2>
 <p><strong>3. Elección de validación cruzada adecuada para un problema de regresión</strong></p>
 <ul>
 <li>Aunque la validación cruzada de K-fold es comúnmente utilizada en problemas de regresión, también es importante considerar otras técnicas, como la validación cruzada estratificada, especialmente cuando hay una distribución desigual de los datos o se necesita una evaluación más precisa del rendimiento del modelo.</li>
 </ul>
 </section>
-<section id="advertencias-sobre-validación-cruzada-3" class="slide level2">
-<h2>Advertencias sobre Validación Cruzada</h2>
+<section id="advertencias-sobre-validación-cruzada-4" class="slide level2">
+<h2>Advertencias sobre Validación Cruzada 4</h2>
 <p><strong>4. Nunca Sobremuestrear antes de la validación cruzada.</strong></p>
 <ul>
 <li>La sobremuestreo antes de la validación cruzada puede llevar a una evaluación sesgada del modelo.</li>
 <li>Conlleva al sobreajuste con los datos de entrenamiento, lo que resulta en una estimación errónea del rendimiento del modelo. Es importante realizar la sobremuestreo dentro de cadapartición de la validación cruzada para evitar este sesgo.</li>
 </ul>
 </section>
-<section id="advertencias-sobre-validación-cruzada-4" class="slide level2">
-<h2>Advertencias sobre Validación Cruzada</h2>
+<section id="advertencias-sobre-validación-cruzada-5" class="slide level2">
+<h2>Advertencias sobre Validación Cruzada 5</h2>
 <p><strong>5. Fuga de conocimientos</strong></p>
 <ul>
 <li>Evitar la fuga de conocimientos al preprocesar los datos antes de la validación cruzada.</li>
 <li>Es fundamental preprocesar los datos antes de la validación cruzada para evitar la fuga de conocimientos. Esto incluye la estandarización de características, la imputación de valores perdidos y cualquier otra transformación de datos que se realice en función de la información del conjunto de datos completo y no solo del conjunto de entrenamiento.</li>
 </ul>
 </section>
-<section id="advertencias-sobre-validación-cruzada-5" class="slide level2">
-<h2>Advertencias sobre Validación Cruzada</h2>
+<section id="advertencias-sobre-validación-cruzada-6" class="slide level2">
+<h2>Advertencias sobre Validación Cruzada 6</h2>
 <p><strong>6. No hagas Validación cruzada aleatorizadas para datos de series temporales.</strong></p>
 <ul>
 <li>La validación cruzada aleatorizada puede introducir sesgos en la evaluación del modelo con datos de series temporales.</li>
 <li>En lugar de utilizar validación cruzada aleatorizada, es preferible utilizar técnicas específicas para datos de series temporales, como la validación cruzada basada en el tiempo o la validación cruzada de bloques, que preservan la estructura temporal de los datos.</li>
 </ul>
 </section>
-<section id="advertencias-sobre-validación-cruzada-6" class="slide level2">
-<h2>Advertencias sobre Validación Cruzada</h2>
+<section id="advertencias-sobre-validación-cruzada-7" class="slide level2">
+<h2>Advertencias sobre Validación Cruzada 7</h2>
 <p><strong>7. Cuidado con la semilla a la hora de partir los datos.</strong></p>
 <ul>
 <li>La semilla utilizada para partir los datos puede afectar significativamente los resultados de la validación cruzada.</li>
@@ -589,8 +591,101 @@ flowchart TD
 </ul>
 </section></section>
 <section>
+<section id="pre-procesamiento" class="title-slide slide level1 center">
+<h1>3. Pre-procesamiento</h1>
+
+</section>
+<section id="fases" class="slide level2 scrollable">
+<h2>Fases</h2>
+<p>La fase más artesanal dentro del machine learning. Ayuda a preparar los datos para ser usados con mayor eficiencia, mejorando la calidad del aprendizaje.</p>
+<ol type="1">
+<li>Limpieza de datos (Data Cleaning)</li>
+<li>Transformación de datos (Data Transformation)</li>
+<li>Codificación de datos categóricos (Categorical Data Encoding)</li>
+<li>Reducción de dimensionalidad (Dimensionality Reduction)</li>
+<li>Selección de características (Feature Selection)</li>
+<li>Creación de características (Feature Engineering)</li>
+<li>Muestreo equilibrador (Sampling)</li>
+</ol>
+</section>
+<section id="limpieza-de-datos-data-cleaning" class="slide level2">
+<h2>Limpieza de datos (Data Cleaning)</h2>
+<ul>
+<li><strong>Descarte de variables</strong>: Descartar variables con alta presencia de valores nulos o de variables altísimamente correlacionadas.</li>
+<li><strong>Tratamiento de valores nulos</strong>: Técnica de Imputación o “relleno de valores faltantes”; se puede usar métodos como imputar por algún estadístico resumen, como la media, o utilizando métodos más sofisticados como la imputación por algoritmos predictores</li>
+<li><strong>Eliminación de duplicados</strong>: Remover filas duplicadas para evitar sesgos en el modelo.</li>
+<li><strong>Corrección de errores tipográficos</strong>: Identificación y corrección de errores tipográficos o inconsistencias en los datos.</li>
+</ul>
+</section>
+<section id="limpieza-de-datos-data-cleaning-imputación" class="slide level2">
+<h2>Limpieza de datos (Data Cleaning) (Imputación)</h2>
+<ul>
+<li>Missing Completely at Random (MCAR): Los datos se consideran MCAR cuando la probabilidad de que un dato esté perdido es completamente independiente de cualquier variable.
+<ul>
+<li>(ej: datos perdidos por errores técnicos)</li>
+</ul></li>
+<li>Missing at Random (MAR): Los datos se consideran MAR cuando la probabilidad de que un dato esté perdido depende de otras variables observadas en el dataset, pero no del valor de la variable en sí misma que falta. <strong>Los datos faltantes pueden ser predichos por otras variables observadas.</strong>
+<ul>
+<li>(ej: las personas con educación más baja son menos propensas a declarar su ingreso))</li>
+</ul></li>
+<li>Missing Not at Random (MNAR): Los datos se consideran MNAR cuando la probabilidad de que un dato esté perdido depende del valor de la variable que falta. Aquí, los datos faltantes no son aleatorios y están relacionados con las propias observaciones faltantes.
+<ul>
+<li>(ej: las personas con niveles más altos de depresión pueden ser menos propensas a responder preguntas sobre su estado mental)</li>
+</ul></li>
+</ul>
+<p>En la práctica se asume que <span class="math inline">\(CAR = MCAR\)</span></p>
+</section>
+<section id="transformación-de-datos-data-transformation" class="slide level2">
+<h2>Transformación de datos (Data Transformation)</h2>
+<ul>
+<li><p><strong>Normalización</strong>: Escalado de características a un rango específico (por ejemplo, entre 0 y 1). Comúnmente utilizada para algoritmos como redes neuronales.</p></li>
+<li><p><strong>Estandarización</strong>: Escalado de características para que tengan media 0 y desviación estándar 1. Usada frecuentemente en algoritmos como SVM y regresión logística.</p></li>
+<li><p><strong>Transformaciones</strong> logarítmicas o de Box-Cox: Aplicación de funciones matemáticas para transformar datos sesgados a una distribución más normal.</p></li>
+</ul>
+</section>
+<section id="transformación-de-datos-logaritmos" class="slide level2">
+<h2>Transformación de datos: logaritmos</h2>
+<p>Al usar la escala logarítmica, los coeficientes de un modelo de regresión se interpretan en términos de cambios porcentuales.</p>
+<p>Asumamos 2 modelos:</p>
+<p><span class="math display">\[
+Salario=2000+500(AñosExperiencia) + 1000(AñosEducación)
+\]</span></p>
+<p><span class="math display">\[
+log(Salario)=2.5+0.04(AñosExperiencia)+0.08(AñosEducación)
+\]</span> Son el mismo modelo, la única diferencia es la escala de la variable respuesta <em>salario</em></p>
+</section>
+<section id="transformación-de-datos-logaritmos-1" class="slide level2">
+<h2>Transformación de datos: logaritmos</h2>
+<p><span class="math display">\[
+Salario=2000+500(AñosExperiencia) + 1000(AñosEducación)
+\]</span> Los coeficientes indicarían incrementos <strong>absolutos</strong> en el salario:</p>
+<ul>
+<li>Coeficiente de Años de Experiencia <span class="math inline">\(\beta_{AñosExperiencia} = 500\)</span>: Cada año de experiencia aumentaría el salario en 500.</li>
+<li>Coeficiente de Años de Educación <span class="math inline">\(\beta_{AñosEducación} = 1000\)</span>: Cada año de experiencia aumentaría el salario en 1000.</li>
+</ul>
+</section>
+<section id="transformación-de-datos-logaritmos-2" class="slide level2">
+<h2>Transformación de datos: logaritmos</h2>
+<p><span class="math display">\[
+log(Salario)=2.5+0.04(AñosExperiencia)+0.08(AñosEducación)
+\]</span></p>
+<p>Coeficiente de Años de Experiencia</p>
+<ul>
+<li>Coeficiente de Años de Experiencia <span class="math inline">\(\beta_{AñosExperiencia} = 0.04\)</span>:
+<ul>
+<li>Cada año adicional de experiencia, <strong>el logaritmo del salario</strong> aumenta en 0.04 unidades.</li>
+<li>En términos porcentuales, esto se interpreta <span class="math inline">\((e^{0.04}−1)×100 ≈ (1.0408−1)×100=0.0408×100 = 4.08\%\)</span></li>
+</ul></li>
+<li>Coeficiente de Años de Educación <span class="math inline">\(\beta_{AñosEducación} = 1000\)</span>: Cada año de experiencia aumentaría el salario en 1000.
+<ul>
+<li>Cada año adicional de Educacion, <strong>el logaritmo del salario</strong> aumenta en 0.08 unidades.</li>
+<li>En términos porcentuales, esto se interpreta <span class="math inline">\((e^{0.08}−1)×100 ≈ (1.0408−1)×100=0.083×100 = 8.3\%\)</span></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
 <section id="tipos-de-modelos" class="title-slide slide level1 center">
-<h1>3. Tipos de modelos</h1>
+<h1>4. Tipos de modelos</h1>
 
 </section>
 <section id="tipos-de-modelos-1" class="slide level2">
@@ -724,7 +819,7 @@ flowchart TD
 <li><p>Modelo en producción: han sido aprobados y se requiere de que sean de uso abierto para su uso. <strong>require de poner el modelo en la nube</strong> y que otreos usuarios los utilicen.</p></li>
 </ul>
 </section>
-<section id="respecto-la-necesidad" class="slide level2">
+<section id="respecto-la-necesidad" class="slide level2 scrollable">
 <h2>Respecto la necesidad:</h2>
 <ol type="1">
 <li>Aprendizaje <strong>supervisado</strong></li>
@@ -781,7 +876,7 @@ flowchart TD
 <li>Economía: sesgos en el crédito y trabajo de tipo espiral retroalimentativa.</li>
 </ul>
 </section>
-<section id="aprendizaje-supervisado-5" class="slide level2">
+<section id="aprendizaje-supervisado-5" class="slide level2 scrollable">
 <h2>Aprendizaje supervisado</h2>
 <ol type="1">
 <li>Regresión</li>
@@ -861,16 +956,32 @@ Multiple R-squared:  0.8268,    Adjusted R-squared:  0.8148
 F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 </div>
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-3-2.png" width="960"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-3-3.png" width="960"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-3-4.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -940,10 +1051,10 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>             MeanDecreaseGini
-Sepal.Length        11.182360
-Sepal.Width          2.282999
-Petal.Length        44.047845
-Petal.Width         41.645130</code></pre>
+Sepal.Length         7.807488
+Sepal.Width          2.216256
+Petal.Length        44.532119
+Petal.Width         44.760604</code></pre>
 </div>
 
 </div>
@@ -1042,6 +1153,10 @@ Score (logrank) test = 30.5  on 3 df,   p=1e-06</code></pre>
 </section>
 <section id="técnicas-de-supervivencia-aft-1" class="slide level2">
 <h2>Técnicas de Supervivencia / AFT</h2>
+
+<img data-src="Imagenes/AFT.png" class="r-stretch"></section>
+<section id="técnicas-de-supervivencia-aft-2" class="slide level2">
+<h2>Técnicas de Supervivencia / AFT</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1096,7 +1211,7 @@ n=227 (1 observation deleted due to missingness)</code></pre>
 </div>
 </div>
 </section>
-<section id="técnicas-de-supervivencia-aft-2" class="slide level2">
+<section id="técnicas-de-supervivencia-aft-3" class="slide level2">
 <h2>Técnicas de Supervivencia / AFT</h2>
 </section>
 <section id="support-vector-machines" class="slide level2">
@@ -1105,6 +1220,10 @@ n=227 (1 observation deleted due to missingness)</code></pre>
 <p>Características: - Eficaz en espacios de alta dimensión. - Utiliza un subconjunto de puntos de entrenamiento (vectores de soporte). - Tipos de kernel: + lineal + polinomial + radial.</p>
 </section>
 <section id="support-vector-machines-1" class="slide level2">
+<h2>Support Vector Machines</h2>
+
+<img data-src="Imagenes/support-vector.png" class="r-stretch"></section>
+<section id="support-vector-machines-2" class="slide level2">
 <h2>Support Vector Machines</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -1116,7 +1235,7 @@ predicciones setosa versicolor virginica
 </div>
 </div>
 </section>
-<section id="support-vector-machines-2" class="slide level2">
+<section id="support-vector-machines-3" class="slide level2">
 <h2>Support Vector Machines</h2>
 <p>Contras y Advertencias:</p>
 <ul>
@@ -1138,8 +1257,12 @@ predicciones setosa versicolor virginica
 <section id="sarima-1" class="slide level2">
 <h2>SARIMA</h2>
 
-<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<img data-src="Imagenes/SARIMA.png" class="r-stretch"></section>
 <section id="sarima-2" class="slide level2">
+<h2>SARIMA</h2>
+
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<section id="sarima-3" class="slide level2">
 <h2>SARIMA</h2>
 <p>Contras y Advertencias:</p>
 <ul>
@@ -1154,8 +1277,12 @@ predicciones setosa versicolor virginica
 </section>
 <section id="redes-neuronales-1" class="slide level2">
 <h2>Redes neuronales</h2>
-</section>
+
+<img data-src="Imagenes/neural-network.jpeg" class="r-stretch"></section>
 <section id="redes-neuronales-2" class="slide level2">
+<h2>Redes neuronales</h2>
+</section>
+<section id="redes-neuronales-3" class="slide level2">
 <h2>Redes neuronales</h2>
 <p>Contras y Advertencias:</p>
 <ul>
@@ -1209,7 +1336,7 @@ predicciones setosa versicolor virginica
 </ul>
 <p>factoriza una matriz, A, en tres matrices de rango inferior.</p>
 </section>
-<section id="aprendizaje-no-supervisado-caso-target" class="slide level2">
+<section id="aprendizaje-no-supervisado-caso-target" class="slide level2 scrollable">
 <h2>Aprendizaje no supervisado, caso Target</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -1319,14 +1446,14 @@ predicciones setosa versicolor virginica
 <section id="aprendizaje-no-supervisado-caso-target-4" class="slide level2">
 <h2>Aprendizaje no supervisado, caso Target</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Aplicar K-means</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reproducibilidad</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>kmeans_result <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">kmeans</span>(Target_ejemplo[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">centers =</span> <span class="dv">3</span>)</span>
-<span id="cb8-4"><a href="#cb8-4"></a></span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="co"># Añadir los resultados del cluster al dataframe</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a>Target_ejemplo <span class="ot">&lt;-</span> Target_ejemplo <span class="sc">%&gt;%</span>  </span>
-<span id="cb8-7"><a href="#cb8-7"></a>  <span class="fu">mutate</span>(<span class="at">Cluster =</span> <span class="fu">as_factor</span>(kmeans_result<span class="sc">$</span>cluster) ) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-8"><a href="#cb8-8"></a>  <span class="fu">select</span>(ClienteID, Cluster, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co"># Aplicar K-means</span></span>
+<span id="cb8-2"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reproducibilidad</span></span>
+<span id="cb8-3"><a href=""></a>kmeans_result <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">kmeans</span>(Target_ejemplo[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">centers =</span> <span class="dv">3</span>)</span>
+<span id="cb8-4"><a href=""></a></span>
+<span id="cb8-5"><a href=""></a><span class="co"># Añadir los resultados del cluster al dataframe</span></span>
+<span id="cb8-6"><a href=""></a>Target_ejemplo <span class="ot">&lt;-</span> Target_ejemplo <span class="sc">%&gt;%</span>  </span>
+<span id="cb8-7"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">Cluster =</span> <span class="fu">as_factor</span>(kmeans_result<span class="sc">$</span>cluster) ) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-8"><a href=""></a>  <span class="fu">select</span>(ClienteID, Cluster, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="aprendizaje-no-supervisado-caso-target-5" class="slide level2">
@@ -1438,7 +1565,7 @@ predicciones setosa versicolor virginica
 <li><p>Ensayo y error (Supervisado y no supervisado al mismo tiempo)</p></li>
 </ul>
 </section>
-<section id="aprendizaje-por-refuerzo-1" class="slide level2">
+<section id="aprendizaje-por-refuerzo-1" class="slide level2 scrollable">
 <h2>Aprendizaje por refuerzo</h2>
 <ol type="1">
 <li><p>Sobresale en entornos complejos</p></li>
@@ -1532,7 +1659,7 @@ e_{i} = f(y_{i} - \hat{y_{i}})
 <h2>Métricas: MAE</h2>
 <ul>
 <li>Un MAE de 0 indica que el modelo predice exactamente los valores reales.</li>
-<li><span class="math inline">\(MAE &gt; 0\)</span> indica que el modelo tiene un mayor error promedio.</li>
+<li><span class="math inline">\(MAE  &gt; 0\)</span> indica que el modelo tiene un mayor error promedio.</li>
 <li>No penaliza ni discrimina entre errores grande o pequeños, es un promedio directo.</li>
 </ul>
 </section>
@@ -2156,8 +2283,10 @@ AIC = 2{k} - \ln(\mathcal{L})
 <li>Specificity (Especificidad): 0.90 [9 de 10 identificará estudiantes que no tienen riesgo de desertar. Mr.&nbsp;evidencias]</li>
 <li>False Discovery Rate (FDR): 0.8 [4 de cada 5 intervenciones podrían ser innecesarias, administración ineficiente]</li>
 </ul>
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section></section>
     </div>
@@ -2186,7 +2315,6 @@ AIC = 2{k} - \ln(\mathcal{L})
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -2372,42 +2500,80 @@ AIC = 2{k} - \ln(\mathcal{L})
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -2485,10 +2651,27 @@ AIC = 2{k} - \ln(\mathcal{L})
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -2498,8 +2681,17 @@ AIC = 2{k} - \ln(\mathcal{L})
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -2513,7 +2705,11 @@ AIC = 2{k} - \ln(\mathcal{L})
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
@@ -2555,12 +2751,12 @@ AIC = 2{k} - \ln(\mathcal{L})
       }
     });
     </script>
-    
-    
-    
-    
-    
-    
+    <script>videojs(video_shortcode_videojs_video1);</script>
+    <script>videojs(video_shortcode_videojs_video2);</script>
+    <script>videojs(video_shortcode_videojs_video3);</script>
+    <script>videojs(video_shortcode_videojs_video4);</script>
+    <script>videojs(video_shortcode_videojs_video5);</script>
+    <script>videojs(video_shortcode_videojs_video6);</script>
     
 
 </body></html>

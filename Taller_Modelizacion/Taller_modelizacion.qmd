@@ -21,12 +21,13 @@ pacman::p_load(tidyverse)
 1.  Tener clara la pregunta
 2.  Tener una idea de la complejidad de la pregunta
 3.  Tener más o menos claras las variables que interfieren en el proceso
-4.  Tener claros **las técnicas y el flujo de trabajo necesarios para responder**
-
+4.  Tener claros **las técnicas y el flujo de trabajo necesarios para
+    responder**
 
 ## 1.2. Bases de modelización
 
-![Machine learning: el sentimiento cuando te asomas por primera vez](Imagenes/60860fbc7d3ee.jpeg)
+![Machine learning: el sentimiento cuando te asomas por primera
+vez](Imagenes/60860fbc7d3ee.jpeg)
 
 ## 1.3. Flujo completo de modelización
 
@@ -52,177 +53,353 @@ flowchart TD
     H -.->|Re-procesamiento| G
 ```
 
-
 # 2. Validación cruzada
 
 ## 2.1. Concepto
 
-- **Objetivo**: Evaluar la capacidad de generalización de un modelo a datos no vistos.
-- **Técnica**: Dividir el conjunto de datos en subconjuntos para entrenamiento y validación.
+-   **Objetivo**: Evaluar la capacidad de generalización de un modelo a
+    datos no vistos.
+-   **Técnica**: Dividir el conjunto de datos en subconjuntos para
+    entrenamiento y validación.
 
-Repites este proceso varias veces, dividiendo tus datos de diferentes maneras. Esto ayuda a asegurar que tu evaluación del modelo no dependa de una sola división de datos.
+Repites este proceso varias veces, dividiendo tus datos de diferentes
+maneras. Esto ayuda a asegurar que tu evaluación del modelo no dependa
+de una sola división de datos.
 
 ## Leave-One-Out Cross-Validation (LOOCV)
 
-- **Descripción**: Cada observación se usa como conjunto de validación una vez, y el resto como conjunto de entrenamiento.
-- **Ventajas**:
-  + Utiliza al máximo los datos para el entrenamiento.
-  + Minimiza el sesgo de estimación.
-- **Desventajas**:
-  + Extremadamente costosa computacionalmente.
-  + Alta variabilidad en las estimaciones. (necesario plotear la distribición)
+-   **Descripción**: Cada observación se usa como conjunto de validación
+    una vez, y el resto como conjunto de entrenamiento.
+-   **Ventajas**:
+    -   Utiliza al máximo los datos para el entrenamiento.
+    -   Minimiza el sesgo de estimación.
+-   **Desventajas**:
+    -   Extremadamente costosa computacionalmente.
+    -   Alta variabilidad en las estimaciones. (necesario plotear la
+        distribición)
 
 ## Leave-One-Out Cross-Validation (LOOCV)
 
 ![](Imagenes/LOOCV.png)
 
-
 ## K-Fold Cross-Validation
 
-- **Descripción**: Divide los datos en K particiones. Realiza K iteraciones, cada vez usando una partición diferente como conjunto de validación.
-- **Ventajas**:
-  + Utiliza todos los datos para entrenamiento y validación.
-  + Proporciona una estimación robusta del rendimiento del modelo.
-- **Desventajas**:
-  + Computacionalmente costosa si K es grande.
+-   **Descripción**: Divide los datos en K particiones. Realiza K
+    iteraciones, cada vez usando una partición diferente como conjunto
+    de validación.
+-   **Ventajas**:
+    -   Utiliza todos los datos para entrenamiento y validación.
+    -   Proporciona una estimación robusta del rendimiento del modelo.
+-   **Desventajas**:
+    -   Computacionalmente costosa si K es grande.
 
 ## K-Fold Cross-Validation
 
 ![](Imagenes/kfold_cross_validation.png)
 
+## Bootstrap
 
-## Bootstrap 
+-   **Descripción**: Genera múltiples muestras aleatorias con reemplazo
+    a partir del conjunto de datos original.
 
-- **Descripción**: Genera múltiples muestras aleatorias con reemplazo a partir del conjunto de datos original. 
+-   **Ventajas**:
 
-- **Ventajas**:
-  + Proporciona una medida de la incertidumbre en la evaluación del modelo.
-  + Útil para construir intervalos de confianza alrededor de las métricas de evaluación.
-- **Desventajas**:
-  + No es una técnica de validación cruzada en sí misma, sino más bien una técnica de remuestreo que se usa en conjunto con otras técnicas de validación cruzada.
+    -   Proporciona una medida de la incertidumbre en la evaluación del
+        modelo.
+    -   Útil para construir intervalos de confianza alrededor de las
+        métricas de evaluación.
 
-## Bootstrap 
+-   **Desventajas**:
+
+    -   No es una técnica de validación cruzada en sí misma, sino más
+        bien una técnica de remuestreo que se usa en conjunto con otras
+        técnicas de validación cruzada.
+
+## Bootstrap
 
 ![](Imagenes/bootstraps.jpg)
 
-
 ## Shuffle-Split (Monte Carlo)
 
+-   **Descripción**: Se realizan múltiples divisiones aleatorias del
+    conjunto de datos. En cada iteración, una fracción aleatoria de los
+    datos se usa para entrenamiento y la fracción complementaria para
+    validación.
 
-- **Descripción**: Se realizan múltiples divisiones aleatorias del conjunto de datos. En cada iteración, una fracción aleatoria de los datos se usa para entrenamiento y la fracción complementaria para validación.
+-   Ventajas:
 
-- Ventajas:
-  + Más flexibilidad en la proporción de entrenamiento/validación.
-  + Menor sesgo debido a la aleatorización repetida.
-- Desventajas:
-  + No garantiza que todas las observaciones se utilicen en las validaciones.
+    -   Más flexibilidad en la proporción de entrenamiento/validación.
+    -   Menor sesgo debido a la aleatorización repetida.
 
+-   Desventajas:
 
-## Advertencias sobre Validación Cruzada
+    -   No garantiza que todas las observaciones se utilicen en las
+        validaciones.
+
+## Advertencias sobre Validación Cruzada 1
 
 **1. La elección del número de divisiones no debe ser aleatoria**
 
-- Elegir un número adecuado de divisiones para evitar sesgos en la evaluación del modelo.
-- Por ejemplo, en la validación cruzada de K-fold, es común utilizar valores típicos como 5 o 10 para K. Sin embargo, la elección de K debe considerar el tamaño del conjunto de datos y el equilibrio entre la varianza y el sesgo.
+-   Elegir un número adecuado de divisiones para evitar sesgos en la
+    evaluación del modelo.
+-   Por ejemplo, en la validación cruzada de K-fold, es común utilizar
+    valores típicos como 5 o 10 para K. Sin embargo, la elección de K
+    debe considerar el tamaño del conjunto de datos y el equilibrio
+    entre la varianza y el sesgo.
 
-## Advertencias sobre Validación Cruzada
+## Advertencias sobre Validación Cruzada 2
 
 **2. Siempre estratifica en problemas de clasificación**
 
-- Estratificar asegura una distribución equitativa de las clases en cada división.
-- En problemas de clasificación, es esencial estratificar las divisiones para garantizar que todas las clases estén representadas en cada conjunto de entrenamiento y prueba. Esto ayuda a evitar sesgos y garantiza una evaluación más precisa del rendimiento del modelo.
+-   Estratificar asegura una distribución equitativa de las clases en
+    cada división.
+-   En problemas de clasificación, es esencial estratificar las
+    divisiones para garantizar que todas las clases estén representadas
+    en cada conjunto de entrenamiento y prueba. Esto ayuda a evitar
+    sesgos y garantiza una evaluación más precisa del rendimiento del
+    modelo.
 
+## Advertencias sobre Validación Cruzada 3
 
-## Advertencias sobre Validación Cruzada
+**3. Elección de validación cruzada adecuada para un problema de
+regresión**
 
-**3. Elección de validación cruzada adecuada para un problema de regresión**
+-   Aunque la validación cruzada de K-fold es comúnmente utilizada en
+    problemas de regresión, también es importante considerar otras
+    técnicas, como la validación cruzada estratificada, especialmente
+    cuando hay una distribución desigual de los datos o se necesita una
+    evaluación más precisa del rendimiento del modelo.
 
-- Aunque la validación cruzada de K-fold es comúnmente utilizada en problemas de regresión, también es importante considerar otras técnicas, como la validación cruzada estratificada, especialmente cuando hay una distribución desigual de los datos o se necesita una evaluación más precisa del rendimiento del modelo.
-
-## Advertencias sobre Validación Cruzada
+## Advertencias sobre Validación Cruzada 4
 
 **4. Nunca Sobremuestrear antes de la validación cruzada.**
 
-- La sobremuestreo antes de la validación cruzada puede llevar a una evaluación sesgada del modelo.
-- Conlleva al sobreajuste con los datos de entrenamiento, lo que resulta en una estimación errónea del rendimiento del modelo. Es importante realizar la sobremuestreo dentro de cadapartición de la validación cruzada para evitar este sesgo.
+-   La sobremuestreo antes de la validación cruzada puede llevar a una
+    evaluación sesgada del modelo.
+-   Conlleva al sobreajuste con los datos de entrenamiento, lo que
+    resulta en una estimación errónea del rendimiento del modelo. Es
+    importante realizar la sobremuestreo dentro de cadapartición de la
+    validación cruzada para evitar este sesgo.
 
-## Advertencias sobre Validación Cruzada
+## Advertencias sobre Validación Cruzada 5
 
 **5. Fuga de conocimientos**
 
-- Evitar la fuga de conocimientos al preprocesar los datos antes de la validación cruzada.
-- Es fundamental preprocesar los datos antes de la validación cruzada para evitar la fuga de conocimientos. Esto incluye la estandarización de características, la imputación de valores perdidos y cualquier otra transformación de datos que se realice en función de la información del conjunto de datos completo y no solo del conjunto de entrenamiento.
+-   Evitar la fuga de conocimientos al preprocesar los datos antes de la
+    validación cruzada.
+-   Es fundamental preprocesar los datos antes de la validación cruzada
+    para evitar la fuga de conocimientos. Esto incluye la
+    estandarización de características, la imputación de valores
+    perdidos y cualquier otra transformación de datos que se realice en
+    función de la información del conjunto de datos completo y no solo
+    del conjunto de entrenamiento.
 
-## Advertencias sobre Validación Cruzada
+## Advertencias sobre Validación Cruzada 6
 
-**6. No hagas Validación cruzada aleatorizadas para datos de series temporales.**
+**6. No hagas Validación cruzada aleatorizadas para datos de series
+temporales.**
 
-- La validación cruzada aleatorizada puede introducir sesgos en la evaluación del modelo con datos de series temporales.
-- En lugar de utilizar validación cruzada aleatorizada, es preferible utilizar técnicas específicas para datos de series temporales, como la validación cruzada basada en el tiempo o la validación cruzada de bloques, que preservan la estructura temporal de los datos.
+-   La validación cruzada aleatorizada puede introducir sesgos en la
+    evaluación del modelo con datos de series temporales.
+-   En lugar de utilizar validación cruzada aleatorizada, es preferible
+    utilizar técnicas específicas para datos de series temporales, como
+    la validación cruzada basada en el tiempo o la validación cruzada de
+    bloques, que preservan la estructura temporal de los datos.
 
-## Advertencias sobre Validación Cruzada
+## Advertencias sobre Validación Cruzada 7
 
 **7. Cuidado con la semilla a la hora de partir los datos.**
 
-- La semilla utilizada para partir los datos puede afectar significativamente los resultados de la validación cruzada.
-- La elección de la semilla puede influir en cómo se dividen los datos en conjuntos de entrenamiento y prueba, lo que a su vez puede afectar la evaluación del rendimiento del modelo. Es importante ser consistente con la semilla utilizada para garantizar la reproducibilidad de los resultados.
-
+-   La semilla utilizada para partir los datos puede afectar
+    significativamente los resultados de la validación cruzada.
+-   La elección de la semilla puede influir en cómo se dividen los datos
+    en conjuntos de entrenamiento y prueba, lo que a su vez puede
+    afectar la evaluación del rendimiento del modelo. Es importante ser
+    consistente con la semilla utilizada para garantizar la
+    reproducibilidad de los resultados.
 
 # 3. Pre-procesamiento
 
 ## Fases
 
-La fase más artesanal dentro del machine learning. Ayuda a preparar los datos para ser usados con mayor eficiencia, mejorando la calidad del aprendizaje.
+La fase más artesanal dentro del machine learning. Ayuda a preparar los
+datos para ser usados con mayor eficiencia, mejorando la calidad del
+aprendizaje.
 
-1. Limpieza de datos (Data Cleaning)
-2. Transformación de datos (Data Transformation)
-3. Codificación de datos categóricos (Categorical Data Encoding)
-4. Reducción de dimensionalidad (Dimensionality Reduction)
-5. Selección de características (Feature Selection)
-6. Creación de características (Feature Engineering)
-7. Muestreo equilibrador (Sampling)
+1.  *Limpieza de datos* (Data Cleaning)
+2.  *Transformación de datos* (Data Transformation)
+3.  *Codificación de datos categóricos* (Categorical Data Encoding)
+4.  *Reducción de dimensionalidad* (Dimensionality Reduction)
+5.  *Selección de características *(Feature Selection)
+6.  *Creación de características *(Feature Engineering)
+7.  *Muestreo equilibrador* (Sampling)
 
 ## Limpieza de datos (Data Cleaning)
 
-- **Descarte de variables**: Descartar variables con alta presencia de valores nulos o de variables altísimamente correlacionadas. 
-- **Tratamiento de valores nulos**: Técnica de Imputación o "relleno de valores faltantes"; se puede usar métodos como imputar por algún estadístico resumen, como la media, o utilizando métodos más sofisticados como la imputación por algoritmos predictores
-- **Eliminación de duplicados**: Remover filas duplicadas para evitar sesgos en el modelo.
-- **Corrección de errores tipográficos**: Identificación y corrección de errores tipográficos o inconsistencias en los datos.
+-   **Descarte de variables**: Descartar variables con alta presencia de
+    valores nulos o de variables altísimamente correlacionadas.
+-   **Tratamiento de valores nulos**: Técnica de Imputación o "relleno
+    de valores faltantes"; se puede usar métodos como imputar por algún
+    estadístico resumen, como la media, o utilizando métodos más
+    sofisticados como la imputación por algoritmos predictores
+-   **Eliminación de duplicados**: Remover filas duplicadas para evitar
+    sesgos en el modelo.
+-   **Corrección de errores tipográficos**: Identificación y corrección
+    de errores tipográficos o inconsistencias en los datos.
 
 ## Limpieza de datos (Data Cleaning) (Imputación)
 
-- Missing Completely at Random (MCAR): Los datos se consideran MCAR cuando la probabilidad de que un dato esté perdido es completamente independiente de cualquier variable. 
-  + (ej: datos perdidos por errores técnicos)
-
-- Missing at Random (MAR): Los datos se consideran MAR cuando la probabilidad de que un dato esté perdido depende de otras variables observadas en el dataset, pero no del valor de la variable en sí misma que falta. **Los datos faltantes pueden ser predichos por otras variables observadas.**
-  + (ej: las personas con educación más baja son menos propensas a declarar su ingreso))
-
-- Missing Not at Random (MNAR): Los datos se consideran MNAR cuando la probabilidad de que un dato esté perdido depende del valor de la variable que falta. Aquí, los datos faltantes no son aleatorios y están relacionados con las propias observaciones faltantes. 
-  + (ej: las personas con niveles más altos de depresión pueden ser menos propensas a responder preguntas sobre su estado mental)
-
+-   *Missing Completely at Random (MCAR)*: Los datos se consideran MCAR
+    cuando la probabilidad de que un dato esté perdido es completamente
+    independiente de cualquier variable.
+    +   (ej: datos perdidos por errores técnicos)
+-   *Missing at Random (MAR)*: Los datos se consideran MAR cuando la
+    probabilidad de que un dato esté perdido depende de otras variables
+    observadas en el dataset, pero no del valor de la variable en sí
+    misma que falta. **Los datos faltantes pueden ser predichos por
+    otras variables observadas.**
+    +   (ej: las personas con educación más baja son menos propensas a
+        declarar su ingreso))
+-   *Missing Not at Random (MNAR)*: Los datos se consideran MNAR cuando la
+    probabilidad de que un dato esté perdido depende del valor de la
+    variable que falta. Aquí, los datos faltantes no son aleatorios y
+    están relacionados con las propias observaciones faltantes.
+    +   (ej: las personas con niveles más altos de depresión pueden ser
+        menos propensas a responder preguntas sobre su estado mental)
 
 En la práctica se asume que $CAR = MCAR$
 
+## Transformación de datos (Data Transformation)
 
+-   *Normalización*: Escalado de características a un rango específico
+    (por ejemplo, entre 0 y 1). Comúnmente utilizada para algoritmos
+    como redes neuronales.
+
+-   *Estandarización*: Escalado de características para que tengan
+    media 0 y desviación estándar 1. Usada frecuentemente en algoritmos
+    como SVM y regresión logística.
+
+-   *Transformaciones* logarítmicas o de Box-Cox: Aplicación de
+    funciones matemáticas para transformar datos sesgados a una
+    distribución más normal.
+
+## Transformación de datos: logaritmos
+
+Al usar la escala logarítmica, los coeficientes de un modelo de
+regresión se interpretan en términos de cambios porcentuales. **El
+modelo se vuelve interpretable desde el punto de vista relativo y no
+absoluto**. Esto es vital para tratar temas como el salario donde los
+incremnetos relativos son mucho más válidos que los absolutos.
+
+-   No es lo mismo incremenetar el salario 100€ a alguien que cobra
+    1.000€ al mes que a alguien con 10.000€ al mes.
+
+## Transformación de datos: logaritmos (ejemplo)
+
+Asumamos 2 modelos:
+
+$$
+Salario=2000+500(AñosExperiencia) + 1000(AñosEducación)
+$$
+
+$$
+log(Salario)=2.5+0.04(AñosExperiencia)+0.08(AñosEducación)
+$$ Son el mismo modelo, la única diferencia es la escala de la variable
+respuesta *salario*
+
+## Transformación de datos: logaritmos (ejemplo
+
+$$
+Salario=2000+500(AñosExperiencia) + 1000(AñosEducación)
+$$ Los coeficientes indicarían incrementos **absolutos** en el salario:
+
+-   Coeficiente de Años de Experiencia $\beta_{AñosExperiencia} = 500$:
+    Cada año de experiencia aumentaría el salario en 500.
+-   Coeficiente de Años de Educación $\beta_{AñosEducación} = 1000$:
+    Cada año de experiencia aumentaría el salario en 1000.
+
+## Transformación de datos: logaritmos (ejemplo
+
+$$
+log(Salario)=2.5+0.04(AñosExperiencia)+0.08(AñosEducación)
+$$
+
+Coeficiente de Años de Experiencia
+
+-   Coeficiente de Años de Experiencia $\beta_{AñosExperiencia} = 0.04$:
+    -   Cada año adicional de experiencia, **el logaritmo del salario**
+        aumenta en 0.04 unidades.
+    -   En términos porcentuales, esto se interpreta
+        $(e^{0.04}−1)×100 ≈ (1.0408−1)×100=0.0408×100 = 4.08\%$
+-   Coeficiente de Años de Educación $\beta_{AñosEducación} = 1000$:
+    Cada año de experiencia aumentaría el salario en 1000.
+    -   Cada año adicional de Educacion, **el logaritmo del salario**
+        aumenta en 0.08 unidades.
+    -   En términos porcentuales, esto se interpreta
+        $(e^{0.08}−1)×100 ≈ (1.0408−1)×100=0.083×100 = 8.3\%$
+
+## Codificación de datos categóricos (Categorical Data Encoding):
+
+-   *Dummy Encoding*: Transformación de variables categóricas en
+    variables binarias, dejando una categoría implícita en la
+    referencia.
+    
+![](Imagenes/dummy_encoding.png)
+    
+-   *One-Hot Encoding*: Transformación de variables categóricas en
+    variables binarias, sin categoría de referencia.
+
+![](Imagenes/onehot_encoding.png)
+    
+-   *Label Encoding*: Asignación de un número entero único a cada
+    categoría.
+-   *Target Encoding*: Sustitución de categorías por la un estadístico del
+    target, como al media o los cuartiles. 
+
+## Selección de características (Feature Selection):
+
+- *Métodos de filtro*: Selección de características basadas en estadísticas univariadas (por ejemplo, chi-cuadrado, ANOVA).
+- *Métodos de envoltura (Wrapper)*: Selección de características usando algoritmos de búsqueda (por ejemplo, secuencial hacia adelante o hacia atrás).
+- *Métodos basados en importancia de modelos*: Uso de algoritmos de aprendizaje (como árboles de decisión) para evaluar la importancia de cada característica.
+
+
+## Reducción de dimensionalidad (Dimensionality Reduction):
+
+-   *Principal Component Analysis (PCA)*: Reducción del número de
+    variables manteniendo la mayor cantidad de variabilidad posible.
+
+-   *Linear Discriminant Analysis (LDA)*: Similar al PCA pero también
+    considera la clase del target, útil en problemas de clasificación.
+
+
+## Creación de características (Feature Engineering):
+
+- *Combinación de características*: Creación de nuevas características a partir de las existentes (por ejemplo, suma, producto).
+- *Extracción de características temporales*: Creación de nuevas características basadas en datos de series temporales, como día de la semana, mes, etc.
+- *Transformaciones polinómicas*: Generación de nuevas características combinando las existentes de manera no lineal.
+
+## Muestreo (Sampling):
+
+**Objetivo**: balancear el dataset.
+
+- *Submuestreo (Undersampling)*: Reducción de la cantidad de muestras en la clase mayoritaria 
+- *Sobremuestreo (Oversampling)*: Incremento de la cantidad de muestras en la clase minoritaria, utilizando técnicas como SMOTE (Synthetic Minority Over-sampling Technique).
 
 
 # 4. Tipos de modelos
 
-## Tipos de modelos 
+## Tipos de modelos
 
-- Respecto a la utilidad:
-  + Explicativo 
-  + Predictivo
-  
-- Respecto a la escalabilidad:
-  + Exploratorios
-  + En producción
-
-- Respecto la necesidad:
-  + Supervisado
-  + No supervisado
-  + Por refuerzo
-
+-   Respecto a la utilidad:
+    -   Explicativo
+    -   Predictivo
+-   Respecto a la escalabilidad:
+    -   Exploratorios
+    -   En producción
+-   Respecto la necesidad:
+    -   Supervisado
+    -   No supervisado
+    -   Por refuerzo
 
 ## Respecto a la utilidad
 
@@ -236,7 +413,7 @@ En la práctica se asume que $CAR = MCAR$
 ## Respecto a la utilidad
 
 |                              | Modelos explicativos                                                             | Modelos predictivos                                                                                                                  |
-|-------------------|---------------------------|--------------------------|
+|----------------|---------------------|------------------------------------|
 | Objetivos                    | Establecer relaciones causales                                                   | Predecir diagnósticos actuales o resultados futuros                                                                                  |
 | Precaución                   | Las posibilidades de hallazgos (Error tipo I)                                    | No ajuste: falta de generalizabilidad a nuevas poblaciones                                                                           |
 | Variables candidatas         | Un conjunto limitado de factores de riesgo y factores de confusión               | Muchos predictores potenciales; algunos pueden no tener relación causal con el resultado.                                            |
@@ -270,20 +447,21 @@ pasos críticos como la calibración o la validación.
 
 {{< video /Imagenes/Both.mp4 >}}
 
-
 ## Respecto a la escalabilidad:
-  
-  - Modelos Exploratorios: fases neofita. Utilizados a por el equipo de investigación.  No tienen alcance, ni necesidad de mantenimiento o depuración.
-  
-  - Modelo en producción: han sido aprobados y se requiere de que sean de uso abierto para su uso. **require de poner el modelo en la nube** y que otreos usuarios los utilicen.
+
+-   Modelos Exploratorios: fases neofita. Utilizados a por el equipo de
+    investigación. No tienen alcance, ni necesidad de mantenimiento o
+    depuración.
+
+-   Modelo en producción: han sido aprobados y se requiere de que sean
+    de uso abierto para su uso. **require de poner el modelo en la
+    nube** y que otreos usuarios los utilicen.
 
 ## Respecto la necesidad:
 
 1.  Aprendizaje **supervisado**
 2.  Aprendizaje **no supervisado**
 3.  Aprendizaje **por refuerzo**
-
-
 
 # 4. Aprendizaje supervisado
 
@@ -314,10 +492,6 @@ Kevin P. Murphy, *Machine Learning: A Probabilistic Perspective*
 
     -   **clasificación**: Variables factor.
     -   **regresion**: Variables numericas.
-
-
-
-
 
 ## Aprendizaje supervisado
 
@@ -355,46 +529,44 @@ máquinas."*
 6)  SARIMA models
 7)  Redes neuronales
 
-##  Regresión
+## Regresión
 
-- Definición: Modelos que predicen una variable numérica continua.
+-   Definición: Modelos que predicen una variable numérica continua.
 
-- Forma básica (lineal): 
+-   Forma básica (lineal):
 
 $Y = \beta_0 + \beta X +\epsilon$
 
-- Forma completa:
+-   Forma completa:
 
 $Y = f\left( \beta_0 + \beta X + \lambda \left( \frac{1 - \alpha}{2}\sum_{j=1}^{p}\beta_{j}^{2} + \alpha \sum_{j=1}^{p}|\beta_{j}| \right) + \epsilon \right)$
 
-##  Regresión
+## Regresión
 
-- Segun la funcion de enlace:
-  + Regresión lineal.
-  + Regresión múltiple.
-  + Regresión polinómica.
+-   Segun la funcion de enlace:
+    -   Regresión lineal.
+    -   Regresión múltiple.
+    -   Regresión polinómica.
+-   Según la restricción:
+    -   Regresión Lasso (elimina coeficientes)
+    -   Regresión Ridge (elimina colinealidad)
+    -   Regresión *elastic net* (ambos mundos, pero un poco más malos
+        que su versión sola)
+-   Según el diseño experimental:
+    -   Efectos fijos
+    -   Efectos aleatorios
+    -   Efectos mixtos
 
-- Según la restricción:
-  + Regresión Lasso (elimina coeficientes)
-  + Regresión Ridge (elimina colinealidad)
-  + Regresión *elastic net* (ambos mundos, pero un poco más malos que su versión sola)
-  
-- Según el diseño experimental:
-  + Efectos fijos
-  + Efectos aleatorios
-  + Efectos mixtos
+## Regresión: según la funcion de enlace
 
-##  Regresión: según la funcion de enlace
+![](Imagenes/regresion-lineal.png) ![](Imagenes/regresion-multiple.png)
+![](Imagenes/regresion-polinomica.png)
 
-![](Imagenes/regresion-lineal.png)
-![](Imagenes/regresion-multiple.png) 
-![](Imagenes/regresion-polinomica.png) 
+## Regresión: según la restriccion
 
-##  Regresión: según la restriccion
+![](Imagenes/lasso-ridge.png)
 
-![](Imagenes/lasso-ridge.png)  
-
-##  Regresión
+## Regresión
 
 ```{r}
 # Cargar librerías
@@ -412,45 +584,45 @@ summary(modelo)
 # Visualización
 plot(modelo)
 ```
-##  Regresión
+
+## Regresión
 
 Contras y Advertencias:
 
-- Sensibilidad a valores atípicos. 
-- Multicolinealidad entre variables independientes.
-- Suposiciones estrictas deben ser verificadas.
-- Puede no capturar relaciones no lineales, incluso las simples.
+-   Sensibilidad a valores atípicos.
+-   Multicolinealidad entre variables independientes.
+-   Suposiciones estrictas deben ser verificadas.
+-   Puede no capturar relaciones no lineales, incluso las simples.
 
-
-##  Árboles de decisión
+## Árboles de decisión
 
 Definición: Modelos que segmentan los datos en ramas según condiciones.
 
 Características:
 
-- Interpretabilidad fácil.
-- No necesita suposiciones sobre la distribución de datos.
-- Tipos: 
-  * Clasificación 
-  * regresión (CART).
-  
-##  Árboles de decisión
+-   Interpretabilidad fácil.
+-   No necesita suposiciones sobre la distribución de datos.
+-   Tipos:
+    -   Clasificación
+    -   regresión (CART).
+
+## Árboles de decisión
 
 Conceptos Clave:
 
-- Nodo raíz, 
-- nodos internos
-- hojas.
+-   Nodo raíz,
+-   nodos internos
+-   hojas.
 
-Criterios de partición: 
+Criterios de partición:
 
-- Gini, 
-- entropía, 
-- varianza.
+-   Gini,
+-   entropía,
+-   varianza.
 
 ## Árboles de decisión
-![](Imagenes/randomforest.jpg) 
-![](Imagenes/random-forest.png) 
+
+![](Imagenes/randomforest.jpg) ![](Imagenes/random-forest.png)
 
 ## Árboles de decisión
 
@@ -473,17 +645,20 @@ rpart.plot(modelo)
 
 Contras y Advertencias:
 
-- Tendencia a sobreajuste (overfitting). Sobre en algoritmos de árbol más complejos
-- Muy sensibles a pequeñas variaciones en los datos. (difíciles de tener en producción bien depurados)
-- Pueden generar árboles muy complejos si no se poda correctamente.
+-   Tendencia a sobreajuste (overfitting). Sobre en algoritmos de árbol
+    más complejos
+-   Muy sensibles a pequeñas variaciones en los datos. (difíciles de
+    tener en producción bien depurados)
+-   Pueden generar árboles muy complejos si no se poda correctamente.
 
 ## Random Forest
-Definición: Conjunto de árboles de decisión que mejora la precisión y robustez.
 
-Características:
-- Utiliza el bagging (bootstrap aggregating).
-- Promedia los resultados de múltiples árboles.
-- Reduce la varianza del árbol de decisión y mejora la generalización.
+Definición: Conjunto de árboles de decisión que mejora la precisión y
+robustez.
+
+Características: - Utiliza el bagging (bootstrap aggregating). -
+Promedia los resultados de múltiples árboles. - Reduce la varianza del
+árbol de decisión y mejora la generalización.
 
 ## Random Forest
 
@@ -507,25 +682,22 @@ plot(modelo)
 
 ## Random Forest
 
-Contras y Advertencias:
-- Requiere bastantes más recursos computacionales que un solo árbol.
-- Interpretación más compleja debido al conjunto de modelos. 
-- No es ideal para datasets con un número muy alto de características debido al riesgo de sobreajuste.
-
-
+Contras y Advertencias: - Requiere bastantes más recursos
+computacionales que un solo árbol. - Interpretación más compleja debido
+al conjunto de modelos. - No es ideal para datasets con un número muy
+alto de características debido al riesgo de sobreajuste.
 
 ## Naïve Bayes
 
 Definición: Clasificador basado en la probabilidad Bayesiana.
 
-Características:
-- Supone independencia entre predictores.
-- Muy eficiente en términos de tiempo.
-- Funciona bien con *datos pequeños y ruidosos*.
+Características: - Supone independencia entre predictores. - Muy
+eficiente en términos de tiempo. - Funciona bien con *datos pequeños y
+ruidosos*.
 
 ## Naïve Bayes
 
-![](Imagenes/naive-bayes.webp)  
+![](Imagenes/naive-bayes.webp)
 
 ## Naïve Bayes
 
@@ -551,22 +723,24 @@ table(predicciones, iris$Species)
 
 Contras y Advertencias:
 
-- La suposición de independencia rara vez se cumple en la práctica.
-- Suele ser superado por modelos más complejos.
-- No maneja bien características continuas, requiere de discretización sin discretización.
+-   La suposición de independencia rara vez se cumple en la práctica.
+-   Suele ser superado por modelos más complejos.
+-   No maneja bien características continuas, requiere de discretización
+    sin discretización.
 
 ## Técnicas de Supervivencia
 
 Definición: Modelos que analizan el tiempo hasta que ocurre un evento.
 
-Conceptos Clave:
-- Función de supervivencia: Probabilidad de que el evento no ocurra hasta cierto tiempo.
-- Función de riesgo: Tasa instantánea de ocurrencia del evento en el tiempo t.
+Conceptos Clave: - Función de supervivencia: Probabilidad de que el
+evento no ocurra hasta cierto tiempo. - Función de riesgo: Tasa
+instantánea de ocurrencia del evento en el tiempo t.
 
-Modelos Comunes:
-- **Kaplan-Meier**: Estimación no paramétrica de la función de supervivencia.
-- **Modelo de Cox**: Análisis de riesgos proporcionales para estudiar el efecto de variables explicativas.
-- **Modelos de Vida Acelerada**: Analiza el tiempo hasta el evento con supuestos diferentes a los riesgos proporcionales.
+Modelos Comunes: - **Kaplan-Meier**: Estimación no paramétrica de la
+función de supervivencia. - **Modelo de Cox**: Análisis de riesgos
+proporcionales para estudiar el efecto de variables explicativas. -
+**Modelos de Vida Acelerada**: Analiza el tiempo hasta el evento con
+supuestos diferentes a los riesgos proporcionales.
 
 ## Técnicas de Supervivencia / Kaplan_Meyer
 
@@ -589,12 +763,11 @@ plot(modelo, col = c("red", "blue"))
 
 Contras y Advertencias:
 
-- No ajusta para variables explicativas múltiples.
-- Asume que censura es independiente del riesgo de evento.
-- No permite modelar efectos de covariables en la supervivencia.
+-   No ajusta para variables explicativas múltiples.
+-   Asume que censura es independiente del riesgo de evento.
+-   No permite modelar efectos de covariables en la supervivencia.
 
-
-##  Técnicas de Supervivencia / Cox
+## Técnicas de Supervivencia / Cox
 
 ```{r}
 # Cargar librerías
@@ -615,26 +788,25 @@ ggcoxzph(cox.zph(cox_fit))
 
 ```
 
+## Técnicas de Supervivencia / Cox
 
-##  Técnicas de Supervivencia / Cox
-
-Contras y Advertencias:
-- Supone riesgos proporcionales, lo cual puede no ser realista.
-- Requiere suficiente tamaño muestral para estimaciones confiables.
-- Interpretación de coeficientes requiere cuidado, especialmente con interacciones y variables categóricas.
-
-## Técnicas de Supervivencia / AFT
-
-Definición: Modelos que asumen que el efecto de las covariables acelera o desacelera el tiempo hasta el evento.
-
-Características:
-- No supone riesgos proporcionales.
-- Modela directamente el tiempo hasta el evento.
-- Puede utilizar diversas distribuciones (Weibull, log-normal, log-logistic).
+Contras y Advertencias: - Supone riesgos proporcionales, lo cual puede
+no ser realista. - Requiere suficiente tamaño muestral para estimaciones
+confiables. - Interpretación de coeficientes requiere cuidado,
+especialmente con interacciones y variables categóricas.
 
 ## Técnicas de Supervivencia / AFT
 
-![](Imagenes/AFT.png) 
+Definición: Modelos que asumen que el efecto de las covariables acelera
+o desacelera el tiempo hasta el evento.
+
+Características: - No supone riesgos proporcionales. - Modela
+directamente el tiempo hasta el evento. - Puede utilizar diversas
+distribuciones (Weibull, log-normal, log-logistic).
+
+## Técnicas de Supervivencia / AFT
+
+![](Imagenes/AFT.png)
 
 ## Técnicas de Supervivencia / AFT
 
@@ -658,26 +830,20 @@ predict(aft_fit, type = "response")
 
 ## Técnicas de Supervivencia / AFT
 
+## Support Vector Machines
 
+Definición: Modelos que encuentran un hiperplano óptimo para la
+clasificación.
 
+Características: - Eficaz en espacios de alta dimensión. - Utiliza un
+subconjunto de puntos de entrenamiento (vectores de soporte). - Tipos de
+kernel: + lineal + polinomial + radial.
 
-##  Support Vector Machines
+## Support Vector Machines
 
-Definición: Modelos que encuentran un hiperplano óptimo para la clasificación.
+![](Imagenes/support-vector.png)
 
-Características:
-- Eficaz en espacios de alta dimensión.
-- Utiliza un subconjunto de puntos de entrenamiento (vectores de soporte).
-- Tipos de kernel:
-  + lineal
-  + polinomial
-  + radial.
-
-##  Support Vector Machines
-
-![](Imagenes/support-vector.png)  
-
-##  Support Vector Machines
+## Support Vector Machines
 
 ```{r}
 # Cargar librerías
@@ -697,30 +863,32 @@ table(predicciones, iris$Species)
 
 ```
 
-##  Support Vector Machines
+## Support Vector Machines
 
 Contras y Advertencias:
 
-- Muy sensible a su parametrización. 
-- Suele requerir de mucho tiempo de entrenamiento con grandes datasets.
-- La interpretabildiad del modelo no es muy intuitiva cuando hay más de 2 casos.
+-   Muy sensible a su parametrización.
+-   Suele requerir de mucho tiempo de entrenamiento con grandes
+    datasets.
+-   La interpretabildiad del modelo no es muy intuitiva cuando hay más
+    de 2 casos.
 
+## SARIMA
 
-##  SARIMA
-
-Definición: Modelos de series temporales que combinan autorregresión y media móvil.
+Definición: Modelos de series temporales que combinan autorregresión y
+media móvil.
 
 Características:
 
-- Captura estacionalidad y tendencias en los datos.
-- Basado en diferencias para hacer la serie estacionaria.
-- Parámetros: p, d, q (ARIMA); P, D, Q, s (SARIMA).
+-   Captura estacionalidad y tendencias en los datos.
+-   Basado en diferencias para hacer la serie estacionaria.
+-   Parámetros: p, d, q (ARIMA); P, D, Q, s (SARIMA).
 
-##  SARIMA
+## SARIMA
 
-![](Imagenes/SARIMA.png) 
+![](Imagenes/SARIMA.png)
 
-##  SARIMA
+## SARIMA
 
 ```{r}
 # Cargar librerías
@@ -740,28 +908,26 @@ plot(predicciones)
 
 ```
 
-
-##  SARIMA
+## SARIMA
 
 Contras y Advertencias:
 
-- Requiere series temporales **estacionarias**.
-- La selección de parámetros puede ser compleja.
-- Sensible a datos faltantes o anomalías.
+-   Requiere series temporales **estacionarias**.
+-   La selección de parámetros puede ser compleja.
+-   Sensible a datos faltantes o anomalías.
 
-##  Redes neuronales
+## Redes neuronales
 
-Definición: Modelos inspirados en la estructura del cerebro humano para el aprendizaje.
-Características:
-- Capacidad de aprender relaciones no lineales complejas.
-- Compuesto de capas (entrada, ocultas, salida).
-- Utiliza Algoritmo de retropropagación para el aprendizaje.
+Definición: Modelos inspirados en la estructura del cerebro humano para
+el aprendizaje. Características: - Capacidad de aprender relaciones no
+lineales complejas. - Compuesto de capas (entrada, ocultas, salida). -
+Utiliza Algoritmo de retropropagación para el aprendizaje.
 
-##  Redes neuronales
+## Redes neuronales
 
-![](Imagenes/neural-network.jpeg)  
+![](Imagenes/neural-network.jpeg)
 
-##  Redes neuronales
+## Redes neuronales
 
 ```{r}
 # Cargar librerías
@@ -781,17 +947,15 @@ plot(modelo)
 
 ```
 
-##  Redes neuronales
+## Redes neuronales
 
 Contras y Advertencias:
 
-- Requiere gran cantidad de datos para buen rendimiento.
-- el tiempo de entrenamiento puede ser largo.
-- El más complicado de interpretar y explicar resultados.
-
+-   Requiere gran cantidad de datos para buen rendimiento.
+-   el tiempo de entrenamiento puede ser largo.
+-   El más complicado de interpretar y explicar resultados.
 
 Riesgo de sobreajuste sin regularización adecuada.
-
 
 # 5. Aprendizaje no supervisado
 
@@ -812,7 +976,6 @@ Riesgo de sobreajuste sin regularización adecuada.
 -   ::: {style="color:#BF1E1A;"}
     La interpretación puede ser un infierno
     :::
-
 
 ## Agrupación en clústeres
 
@@ -947,23 +1110,25 @@ Target_ejemplo %>%
 
 ## Aprendizaje por refuerzo (Casos famosos)
 
-**AlphaGo y AlphaZero**: Desarrollados por DeepMind, estos sistemas lograron hitos significativos en juegos complejos como el Go, el ajedrez y el shogi. 
+**AlphaGo y AlphaZero**: Desarrollados por DeepMind, estos sistemas
+lograron hitos significativos en juegos complejos como el Go, el ajedrez
+y el shogi.
 
-- *AlphaGo* derrotó al campeón mundial de Go, Lee Sedol, en 2016 
-- *AlphaZero* superó a los mejores programas de ajedrez y shogi tras solo unas pocas horas de autoentrenamiento, aprendiendo desde cero sin datos previos.
+-   *AlphaGo* derrotó al campeón mundial de Go, Lee Sedol, en 2016
+-   *AlphaZero* superó a los mejores programas de ajedrez y shogi tras
+    solo unas pocas horas de autoentrenamiento, aprendiendo desde cero
+    sin datos previos.
 
 ## Aprendizaje por refuerzo (Casos famosos)
 
-**StarCraft II**: AlphaStar, también de DeepMind, logró un desempeño notable en StarCraft II, otro juego de estrategia en tiempo real muy complejo. 
+**StarCraft II**: AlphaStar, también de DeepMind, logró un desempeño
+notable en StarCraft II, otro juego de estrategia en tiempo real muy
+complejo.
 
-En 2019, **AlphaStar compitió y venció a jugadores profesionales**, demostrando habilidades avanzadas de planificación, microgestión y toma de decisiones y **sin superar el número de comandos por minuto que un jugador profesional promedio hacía**.
-
-
-
-
-
-
-
+En 2019, **AlphaStar compitió y venció a jugadores profesionales**,
+demostrando habilidades avanzadas de planificación, microgestión y toma
+de decisiones y **sin superar el número de comandos por minuto que un
+jugador profesional promedio hacía**.
 
 # 7 Métricas
 
@@ -974,8 +1139,7 @@ supervisado se basa en el siguiente concepto:
 
 $$
 e_{i} = original_{i} - prediccion_{i}
-$$
-$$
+$$ $$
 e_{i} = y_{i} - \hat{y_{i}}
 $$
 
@@ -1334,48 +1498,59 @@ $$
 
 ## Casos de interpretación 1
 
-- Supongamos que hemos construido un modelo de tipo regresión para 
-- **Objetivo**: redecir los ingresos anuales de individuos basándonos en su nivel educativo (en años de educación formal). 
-- Nuestro pre-estudio de la población sugiere que el promedio de ingresos está alrededor de 25.000€. 
+-   Supongamos que hemos construido un modelo de tipo regresión para
+-   **Objetivo**: redecir los ingresos anuales de individuos basándonos
+    en su nivel educativo (en años de educación formal).
+-   Nuestro pre-estudio de la población sugiere que el promedio de
+    ingresos está alrededor de 25.000€.
 
-Se evalua el modelo con el conjunto de entrenamiento. Las métricas son las siguientes:
+Se evalua el modelo con el conjunto de entrenamiento. Las métricas son
+las siguientes:
 
-- MAE (Mean Absolute Error): 2000
-- RMSE (Root Mean Squared Error): 2500 
-- $R^2$ : 0.85. 
+-   MAE (Mean Absolute Error): 2000
+-   RMSE (Root Mean Squared Error): 2500
+-   $R^2$ : 0.85.
 
 ## Casos de interpretación 1
 
 Evaluación del Rendimiento Global:
 
-- $RMSE >\sim MAE$ los errores grandes no son significativamente predominantes. La pequeña diferencia entre RMSE y MAE sugiere que no hay muchos outliers importantes afectando el modelo. El modelo está capturando de manera **robusta** la relación principal sin verse afectado por valores extremos.
+-   $RMSE >\sim MAE$ los errores grandes no son significativamente
+    predominantes. La pequeña diferencia entre RMSE y MAE sugiere que no
+    hay muchos outliers importantes afectando el modelo. El modelo está
+    capturando de manera **robusta** la relación principal sin verse
+    afectado por valores extremos.
 
-- El 85% de la variabilidad en los ingresos puede ser explicada por el nivel educativo. $R^2$
-
+-   El 85% de la variabilidad en los ingresos puede ser explicada por el
+    nivel educativo. $R^2$
 
 ## Casos de interpretación 2
 
-- Supongamos que hemos construido un modelo de tipo regresión para 
-- **Objetivo**: redecir los ingresos anuales de individuos basándonos en su nivel educativo (en años de educación formal). 
-- Nuestro pre-estudio de la población sugiere que el promedio de ingresos está alrededor de 25.000€. 
+-   Supongamos que hemos construido un modelo de tipo regresión para
+-   **Objetivo**: redecir los ingresos anuales de individuos basándonos
+    en su nivel educativo (en años de educación formal).
+-   Nuestro pre-estudio de la población sugiere que el promedio de
+    ingresos está alrededor de 25.000€.
 
-Se evalua el modelo con el conjunto de entrenamiento. Las métricas son las siguientes:
+Se evalua el modelo con el conjunto de entrenamiento. Las métricas son
+las siguientes:
 
-- MAE (Mean Absolute Error): 20000
-- RMSE (Root Mean Squared Error): 45000 
+-   MAE (Mean Absolute Error): 20000
+-   RMSE (Root Mean Squared Error): 45000
 
 ## Casos de interpretación 2
 
 Evaluación del Rendimiento Global:
 
-- La escala de los errores de demasiado grande respecto al promedio poblacional. No son resultados admisibles. 
+-   La escala de los errores de demasiado grande respecto al promedio
+    poblacional. No son resultados admisibles.
 
-- $RMSE >> MAE$ los errores grandes son significativamente predominantes. La gran diferencia entre RMSE y MAE sugiere que hay muchos outliers importantes afectando el modelo. 
+-   $RMSE >> MAE$ los errores grandes son significativamente
+    predominantes. La gran diferencia entre RMSE y MAE sugiere que hay
+    muchos outliers importantes afectando el modelo.
 
-- Es muy posible que haya outliers tan fuera de escala que hayan desasjustado el modelo. 
-
-
-
+-   Es muy posible que haya outliers tan fuera de escala que hayan
+    desasjustado el modelo.
 
 ## 7.2 Métricas para modelos clasifiación
 
@@ -1387,275 +1562,301 @@ supervisado se basa en el siguiente concepto:
 | **Dato original TRUE**  | TRUE Positivo (TP)  | FALSE Positive (FP) |
 | **Dato original FALSE** | Falso Negativo (FN) | True Negativo (TN)  |
 
-
-
 ## Métricas: Accuracy
 
-- La **Precisión** (Accuracy).
+-   La **Precisión** (Accuracy).
 
-- Medida que evalúa la proporción de predicciones correctas sobre el total de predicciones realizadas.
-    $$
-    Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
-    $$
-    Donde:
+-   Medida que evalúa la proporción de predicciones correctas sobre el
+    total de predicciones realizadas. $$
+      Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
+      $$ Donde:
+
     -   *TP* es el número de verdaderos positivos.
     -   *TN* es el número de verdaderos negativos.
     -   *FP* es el número de falsos positivos.
     -   *FN* es el número de falsos negativos.
-    
+
 ## Métricas: Accuracy
 
-- Métrica que evalúa el rendimiento del modelo en términos de **predicciones correctas**.
+-   Métrica que evalúa el rendimiento del modelo en términos de
+    **predicciones correctas**.
 
 -   ::: {style="color:#8ABF74;"}
     Fácil de interpretar y calcular.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
-    - Puede ser engañosa en conjuntos de datos desbalanceados.
+    -   Puede ser engañosa en conjuntos de datos desbalanceados.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
     **No distingue entre tipos de errores**.
     :::
-    Trata todos los errores por igual, independientemente de si son falsos positivos o falsos negativos.
+
+    Trata todos los errores por igual, independientemente de si son
+    falsos positivos o falsos negativos.
 
 ## Métricas: Accuracy
 
-- Una Accuracy de 1 indica que el modelo predice todas las clases correctamente.
-- Accuracy cercana a 0 indica un bajo rendimiento del modelo.
-- En contextos con clases desbalanceadas, otras métricas suelen ser más informativas.
-
-
-
+-   Una Accuracy de 1 indica que el modelo predice todas las clases
+    correctamente.
+-   Accuracy cercana a 0 indica un bajo rendimiento del modelo.
+-   En contextos con clases desbalanceadas, otras métricas suelen ser
+    más informativas.
 
 ## Métricas: Precision
 
-- La **Precisión** (Precision), también conocida como **Valor Predictivo Positivo**.
+-   La **Precisión** (Precision), también conocida como **Valor
+    Predictivo Positivo**.
 
-- Medida que evalúa la proporción de verdaderos positivos sobre el total de predicciones positivas realizadas por el modelo.
-    $$
-    Precision = \frac{TP}{TP + FP}
-    $$
-    Donde:
+-   Medida que evalúa la proporción de verdaderos positivos sobre el
+    total de predicciones positivas realizadas por el modelo. $$
+      Precision = \frac{TP}{TP + FP}
+      $$ Donde:
+
     -   *TP* es el número de verdaderos positivos.
     -   *FP* es el número de falsos positivos.
-    
+
 ## Métricas: Precision
 
-- Métrica que evalúa el rendimiento del modelo en términos de **exactitud de las predicciones positivas**.
+-   Métrica que evalúa el rendimiento del modelo en términos de
+    **exactitud de las predicciones positivas**.
 
 -   ::: {style="color:#8ABF74;"}
-    Importante en contextos donde es crucial minimizar los falsos positivos.
+    Importante en contextos donde es crucial minimizar los falsos
+    positivos.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
-    - Puede ser alta a costa de reducir la sensibilidad.
+    -   Puede ser alta a costa de reducir la sensibilidad.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
     **No considera los falsos negativos**.
     :::
-    Puede no ser suficiente por sí sola para evaluar el rendimiento global del modelo.
+
+    Puede no ser suficiente por sí sola para evaluar el rendimiento
+    global del modelo.
 
 ## Métricas: Precision
 
-- Una Precisión de 1 indica que todas las predicciones positivas del modelo son correctas.
-- Precisión cercana a 0 indica un alto número de falsos positivos.
-- Es útil en contextos donde los falsos positivos son más costosos que los falsos negativos.
-
-
-
-
+-   Una Precisión de 1 indica que todas las predicciones positivas del
+    modelo son correctas.
+-   Precisión cercana a 0 indica un alto número de falsos positivos.
+-   Es útil en contextos donde los falsos positivos son más costosos que
+    los falsos negativos.
 
 ## Métricas: Sensibilidad
 
-- La **Sensibilidad** (también conocida como **Recall** o **Tasa de Verdaderos Positivos**).
+-   La **Sensibilidad** (también conocida como **Recall** o **Tasa de
+    Verdaderos Positivos**).
 
-- Medida que evalúa la proporción de verdaderos positivos sobre el total de positivos.
-    $$
-    Sensibilidad = \frac{TP}{TP + FN}
-    $$
-    Donde:
+-   Medida que evalúa la proporción de verdaderos positivos sobre el
+    total de positivos. $$
+      Sensibilidad = \frac{TP}{TP + FN}
+      $$ Donde:
+
     -   *TP* es el número de verdaderos positivos.
     -   *FN* es el número de falsos negativos.
-    
 
-
-
-    
 ## Métricas: Sensibilidad
 
-- Métrica que evalúa el rendimiento del modelo en términos de **capacidad para identificar correctamente los positivos**.
+-   Métrica que evalúa el rendimiento del modelo en términos de
+    **capacidad para identificar correctamente los positivos**.
 
 -   ::: {style="color:#8ABF74;"}
-    Importante en contextos donde es crucial identificar correctamente todos los casos positivos. (enfermedad)
+    Importante en contextos donde es crucial identificar correctamente
+    todos los casos positivos. (enfermedad)
     :::
 
 -   ::: {style="color:#BF1E1A;"}
-    - Puede ser alta a costa de aumentar los falsos positivos.
+    -   Puede ser alta a costa de aumentar los falsos positivos.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
     **No considera la tasa de falsos positivos**.
     :::
-    Puede no ser suficiente por sí sola para evaluar el rendimiento global del modelo.
+
+    Puede no ser suficiente por sí sola para evaluar el rendimiento
+    global del modelo.
 
 ## Métricas: Sensibilidad
 
-- Una Sensibilidad de 1 indica que el modelo identifica correctamente todos los positivos reales.
-- Sensibilidad cercana a 0 indica que el modelo identifica incorrectamente la mayoría de los positivos reales.
-- Es útil en contextos donde los falsos negativos son más costosos que los falsos positivos.
-
-
+-   Una Sensibilidad de 1 indica que el modelo identifica correctamente
+    todos los positivos reales.
+-   Sensibilidad cercana a 0 indica que el modelo identifica
+    incorrectamente la mayoría de los positivos reales.
+-   Es útil en contextos donde los falsos negativos son más costosos que
+    los falsos positivos.
 
 ## Métricas: Especificidad
 
-- La **Especificidad** (también conocida como **Tasa de Verdaderos Negativos**).
+-   La **Especificidad** (también conocida como **Tasa de Verdaderos
+    Negativos**).
 
-- Medida que evalúa la proporción de verdaderos negativos sobre el total de negativos.
-    $$
-    Especificidad = \frac{TN}{TN + FP}
-    $$
-    Donde:
+-   Medida que evalúa la proporción de verdaderos negativos sobre el
+    total de negativos. $$
+      Especificidad = \frac{TN}{TN + FP}
+      $$ Donde:
+
     -   *TN* es el número de verdaderos negativos.
     -   *FP* es el número de falsos positivos.
-    
+
 ## Métricas: Especificidad
 
-- Métrica que evalúa el rendimiento del modelo en términos de **capacidad para identificar correctamente los negativos**.
+-   Métrica que evalúa el rendimiento del modelo en términos de
+    **capacidad para identificar correctamente los negativos**.
 
 -   ::: {style="color:#8ABF74;"}
-    Importante en contextos donde es crucial identificar correctamente todos los casos negativos. (Inclusión)
+    Importante en contextos donde es crucial identificar correctamente
+    todos los casos negativos. (Inclusión)
     :::
 
 -   ::: {style="color:#BF1E1A;"}
-    - Puede ser alta a costa de aumentar los falsos negativos.
+    -   Puede ser alta a costa de aumentar los falsos negativos.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
     **No considera la tasa de falsos negativos**.
     :::
-    Insuficiente por sí sola para evaluar el rendimiento global del modelo.
+
+    Insuficiente por sí sola para evaluar el rendimiento global del
+    modelo.
 
 ## Métricas: Especificidad
 
-- Una Especificidad de 1 indica que el modelo identifica correctamente todos los negativos reales.
-- Especificidad cercana a 0 indica que el modelo identifica incorrectamente la mayoría de los negativos reales.
-- Es útil en contextos donde los falsos positivos son más costosos que los falsos negativos.
-
-
+-   Una Especificidad de 1 indica que el modelo identifica correctamente
+    todos los negativos reales.
+-   Especificidad cercana a 0 indica que el modelo identifica
+    incorrectamente la mayoría de los negativos reales.
+-   Es útil en contextos donde los falsos positivos son más costosos que
+    los falsos negativos.
 
 ## Métricas: J-Index
 
-- El **Índice de Youden** (J-Index por sus siglas en inglés).
+-   El **Índice de Youden** (J-Index por sus siglas en inglés).
 
-- Medida que combina la sensibilidad y la especificidad para evaluar el rendimiento general del modelo.
-    $$
-    J = Sensibilidad + Especificidad - 1
-    $$
-    Donde:
+-   Medida que combina la sensibilidad y la especificidad para evaluar
+    el rendimiento general del modelo. $$
+      J = Sensibilidad + Especificidad - 1
+      $$ Donde:
+
     -   *Sensibilidad* es la tasa de verdaderos positivos.
     -   *Especificidad* es la tasa de verdaderos negativos.
-    
+
 ## Métricas: J-Index
 
-- Métrica que evalúa el rendimiento del modelo en términos de **balance entre sensibilidad y especificidad**.
+-   Métrica que evalúa el rendimiento del modelo en términos de
+    **balance entre sensibilidad y especificidad**.
 
 -   ::: {style="color:#8ABF74;"}
-    Proporciona una medida equilibrada del rendimiento del modelo considerando tanto los verdaderos positivos como los verdaderos negativos.
+    Proporciona una medida equilibrada del rendimiento del modelo
+    considerando tanto los verdaderos positivos como los verdaderos
+    negativos.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
-    - No pondera la importancia relativa de sensibilidad y especificidad, no distingue entre tipos de errores.
+    -   No pondera la importancia relativa de sensibilidad y
+        especificidad, no distingue entre tipos de errores.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
     **Puede no ser suficiente por sí solo**.
     :::
-    Es útil en combinación con otras métricas para una evaluación más completa.
+
+    Es útil en combinación con otras métricas para una evaluación más
+    completa.
 
 ## Métricas: J-Index
 
-- Un J-Index de 1 indica que el modelo predice perfectamente tanto los positivos como los negativos reales.
-- J-Index cercano a 0 indica un bajo rendimiento del modelo.
-- Es útil para comparar modelos en términos de su capacidad global para diferenciar entre clases.
+-   Un J-Index de 1 indica que el modelo predice perfectamente tanto los
+    positivos como los negativos reales.
+-   J-Index cercano a 0 indica un bajo rendimiento del modelo.
+-   Es útil para comparar modelos en términos de su capacidad global
+    para diferenciar entre clases.
 
 ## Métricas: F1 Score
 
-- El **F1 Score**.
+-   El **F1 Score**.
 
-- Medida que combina la precisión y la sensibilidad en una única métrica armonizada.
-    $$
-    F1\ Score = 2 \times \frac{Precision \times Sensibilidad}{Precision + Sensibilidad}
-    $$
-    Donde:
+-   Medida que combina la precisión y la sensibilidad en una única
+    métrica armonizada. $$
+      F1\ Score = 2 \times \frac{Precision \times Sensibilidad}{Precision + Sensibilidad}
+      $$ Donde:
+
     -   *Precision* es la precisión.
-    -   *Sensibilidad* es la sensibilidad (también conocida como recall).
-    
+    -   *Sensibilidad* es la sensibilidad (también conocida como
+        recall).
+
 ## Métricas: F1 Score
 
-- Métrica que evalúa el rendimiento del modelo en términos de **balance entre precisión y sensibilidad**.
+-   Métrica que evalúa el rendimiento del modelo en términos de
+    **balance entre precisión y sensibilidad**.
 
 -   ::: {style="color:#8ABF74;"}
-    Proporciona una medida equilibrada del rendimiento del modelo cuando hay una distribución desigual de clases.
+    Proporciona una medida equilibrada del rendimiento del modelo cuando
+    hay una distribución desigual de clases.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
-    - Puede no ser suficiente por sí sola en todos los contextos.
+    -   Puede no ser suficiente por sí sola en todos los contextos.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
     **Puede ser influenciada por clases desbalanceadas**.
     :::
-    Es útil en combinación con otras métricas para una evaluación más completa.
+
+    Es útil en combinación con otras métricas para una evaluación más
+    completa.
 
 ## Métricas: F1 Score
 
-- Un F1 Score de 1 indica que el modelo tiene perfecta precisión y sensibilidad.
-- F1 Score cercano a 0 indica un bajo rendimiento del modelo.
-- Es útil cuando se busca un equilibrio entre precisión y sensibilidad, especialmente en conjuntos de datos desbalanceados.
-
-
-
+-   Un F1 Score de 1 indica que el modelo tiene perfecta precisión y
+    sensibilidad.
+-   F1 Score cercano a 0 indica un bajo rendimiento del modelo.
+-   Es útil cuando se busca un equilibrio entre precisión y
+    sensibilidad, especialmente en conjuntos de datos desbalanceados.
 
 ## Métricas: False Discovery Rate
 
-- La **Tasa de Falsos Descubrimientos** (False Discovery Rate, FDR).
+-   La **Tasa de Falsos Descubrimientos** (False Discovery Rate, FDR).
 
-- Medida que evalúa la proporción de falsos positivos sobre el total de predicciones positivas realizadas por el modelo.
-    $$
-    FDR = \frac{FP}{TP + FP}
-    $$
-    Donde:
+-   Medida que evalúa la proporción de falsos positivos sobre el total
+    de predicciones positivas realizadas por el modelo. $$
+      FDR = \frac{FP}{TP + FP}
+      $$ Donde:
+
     -   *FP* es el número de falsos positivos.
     -   *TP* es el número de verdaderos positivos.
-    
+
 ## Métricas: False Discovery Rate
 
-- Métrica que evalúa el rendimiento del modelo en términos de **proporción de falsos positivos** en las predicciones positivas.
+-   Métrica que evalúa el rendimiento del modelo en términos de
+    **proporción de falsos positivos** en las predicciones positivas.
 
 -   ::: {style="color:#8ABF74;"}
-    Útil en contextos donde es crucial controlar el número de falsos positivos.
+    Útil en contextos donde es crucial controlar el número de falsos
+    positivos.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
-    - Puede ser alta si el modelo tiene baja precisión.
+    -   Puede ser alta si el modelo tiene baja precisión.
     :::
 
 -   ::: {style="color:#BF1E1A;"}
     **No considera los verdaderos negativos ni los falsos negativos**.
     :::
+
     Se enfoca solo en las predicciones positivas.
 
 ## Métricas: False Discovery Rate
 
-- Una FDR de 0 indica que no hay falsos positivos en las predicciones positivas del modelo.
-- FDR cercana a 1 indica que la mayoría de las predicciones positivas son incorrectas.
-- Es útil en contextos donde los falsos positivos son más costosos y deben ser minimizados.
-
-
-
+-   Una FDR de 0 indica que no hay falsos positivos en las predicciones
+    positivas del modelo.
+-   FDR cercana a 1 indica que la mayoría de las predicciones positivas
+    son incorrectas.
+-   Es útil en contextos donde los falsos positivos son más costosos y
+    deben ser minimizados.
 
 ## Casos de interpretación 4
 
@@ -1663,15 +1864,11 @@ supervisado se basa en el siguiente concepto:
 
 Las métricas son las siguientes:
 
-- Accuracy (Exactitud): 0.5 [precisión general de una moneda al aire]
-- Sensitivity (Sensibilidad o Recall): 0.1 [acierta 1 de cada 10 a los estudiantes en riesgo de abandono escolar ]
-- Specificity (Especificidad): 0.90 [9 de 10 identificará estudiantes que no tienen riesgo de desertar. Mr. evidencias]
-- False Discovery Rate (FDR): 0.8 [4 de cada 5 intervenciones podrían ser innecesarias, administración ineficiente]
-
-
-
-
-
-
-
-
+-   Accuracy (Exactitud): 0.5 \[precisión general de una moneda al
+    aire\]
+-   Sensitivity (Sensibilidad o Recall): 0.1 \[acierta 1 de cada 10 a
+    los estudiantes en riesgo de abandono escolar \]
+-   Specificity (Especificidad): 0.90 \[9 de 10 identificará estudiantes
+    que no tienen riesgo de desertar. Mr. evidencias\]
+-   False Discovery Rate (FDR): 0.8 \[4 de cada 5 intervenciones podrían
+    ser innecesarias, administración ineficiente\]
