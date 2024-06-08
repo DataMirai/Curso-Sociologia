@@ -8,7 +8,7 @@
 <link href="Presentacion_PropensityScore_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="Presentacion_PropensityScore_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="Presentacion_PropensityScore_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.4.553">
 
   <title>Antes de modelizar, diseña</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -155,7 +155,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -362,7 +363,7 @@
 <li><p><strong>No hay un modelo mejor que otro</strong>: cada situación requerirá de diferentes herramientas.</p>
 <ul>
 <li>La <strong>Regresión logística</strong>, por ejemplo, es deseable cuando funciona porque los parámetros son muy interpretables.</li>
-<li><span style="color:red"> Los <strong>Random Forest</strong> son geniales porque pueden lidiar con patrones muy difíciles, pero olvídate de </span></li>
+<li><span style="color:red">Los <strong>Random Forest</strong> son geniales porque pueden lidiar con patrones muy difíciles, pero olvídate de su interpretación</span></li>
 </ul></li>
 </ul>
 </section>
@@ -379,7 +380,11 @@
 <li><p>Ten un buen diseño y minimiza la confusión.</p></li>
 <li><p>Sin esto, <strong>los modelos fallarán a la hora de inferenciar.</strong></p></li>
 </ul>
-</section></section>
+</section>
+<section id="modelizar-es-un-arte-7" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">1. Modelizar es un arte</h2>
+
+<img data-src="Imagenes/extrapolating.png" class="r-stretch"></section></section>
 <section>
 <section id="todos-los-modelos-están-equivocados" class="title-slide slide level1 center" data-auto-animate="true">
 <h1 data-id="quarto-animate-title">2. Todos los modelos están equivocados</h1>
@@ -392,7 +397,7 @@
 <div style="margin-top:10px;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Imagenes/GeorgeEPBox.jpg" width="300"></p>
+<p><img data-src="Imagenes/GeorgeEPBox.jpg" class="quarto-figure quarto-figure-center" width="300"></p>
 </figure>
 </div>
 </div>
@@ -413,7 +418,7 @@
 <div style="margin-top:10px;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Imagenes/GeorgeEPBox.jpg" width="300"></p>
+<p><img data-src="Imagenes/GeorgeEPBox.jpg" class="quarto-figure quarto-figure-center" width="300"></p>
 </figure>
 </div>
 </div>
@@ -433,7 +438,7 @@
 <h2 data-id="quarto-animate-title">2. Todos los modelos están equivocados</h2>
 <div style="font-size:35px;">
 <ul>
-<li>Criterios para la elección de modelos:</li>
+<li>Criterios para la elección de modelos, segñun Box:</li>
 </ul>
 </div>
 <div style="margin-left:50px; font-size:35px;">
@@ -459,7 +464,7 @@
 <div style="margin-top:30px;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Imagenes/hznah1jzh8fa1111111.png" width="850"></p>
+<p><img data-src="Imagenes/hznah1jzh8fa1111111.png" class="quarto-figure quarto-figure-center" width="850"></p>
 </figure>
 </div>
 </div>
@@ -467,27 +472,23 @@
 <section id="diseño-experimental-2" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">3. Diseño experimental</h2>
 <div style="margin-top:180px; text-align:center;">
-<p>Permite identificar y cuantificar las causas de un efecto dentro de un estudio experimental.</p>
+<p><strong>Diseño experimental</strong>: rama de la estadística que permite identificar y cuantificar el tamaño de un efecto dentro de un estudio, miniminzando la confusión y permitiendo causalidad.</p>
 </div>
 </section>
 <section id="diseño-experimental-3" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">3. Diseño experimental</h2>
 
-<img data-src="Imagenes/u9uxysfx4l1c1.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="Imagenes/u9uxysfx4l1c1.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="tipos-de-diseño-experimental" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">3.1. Tipos de diseño experimental</h2>
 <div style="margin-top:50px;">
-<ul>
-<li>Para poder hacer cualquier estudio, es necesario tener un objetivo, normalmente algo con lo que comparar.</li>
-</ul>
+<p>Para poder hacer cualquier estudio, es necesario tener un objetivo, normalmente algo con lo que comparar.</p>
 </div>
 </section>
 <section id="tipos-de-diseño-experimental-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">3.1. Tipos de diseño experimental</h2>
 <div style="margin-top:50px;">
-<ul>
-<li>Para poder hacer cualquier estudio, es necesario tener un objetivo, normalmente algo con lo que comparar.</li>
-</ul>
+<p>Para poder hacer cualquier estudio, es necesario tener un objetivo, normalmente algo con lo que comparar.</p>
 </div>
 <div style="font-size:55px; margin-top:70px; text-align:center;">
 <p><strong>¿Pero qué son cosas comparables?</strong></p>
@@ -506,7 +507,7 @@
 <section id="tipos-de-diseño-experimental-3" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">3.1. Tipos de diseño experimental</h2>
 
-<img data-src="Imagenes/Piramide_tipos_diseñoExperimental.png" width="300" class="r-stretch quarto-figure-center"></section>
+<img data-src="Imagenes/Piramide_tipos_diseñoExperimental.png" class="quarto-figure quarto-figure-center r-stretch" width="300"></section>
 <section id="relevancia-y-aplicación" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">3.2. Relevancia y Aplicación</h2>
 <ul>
@@ -548,17 +549,47 @@
 </section>
 
 <section>
-<section id="cómo-sé-que-existe-una-diferencia-entre-ambos-grupos" class="title-slide slide level1 center">
-<h1>4. ¿Cómo sé que existe una diferencia entre ambos grupos ?</h1>
+<section id="cómo-sabemos-que-existe-una-diferencia-entre-2-grupos" class="title-slide slide level1 center">
+<h1>4. ¿Cómo sabemos que existe una diferencia entre 2 grupos ?</h1>
 
 </section>
 <section id="conocimiento-previoexperto" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.1. Conocimiento previo/experto</h2>
+</section>
+<section id="conocimiento-previoexperto-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">4.1. Conocimiento previo/experto</h2>
 <div style="text-align:center; margin-top:180px; font-size:45px">
 <p><strong>Nada supera el conocimiento del experto.</strong></p>
 </div>
 </section>
+<section id="conocimiento-previoexperto-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.1. Conocimiento previo/experto</h2>
+<div style="text-align:center; margin-top:180px; font-size:45px">
+<p><strong>Nada supera el conocimiento del experto. Pero…</strong></p>
+</div>
+</section>
+<section id="conocimiento-previoexperto-3" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.1. Conocimiento previo/experto</h2>
+
+<img data-src="Imagenes/pelea_variables.jpg" class="r-stretch"></section>
+<section id="conocimiento-previoexperto-4" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.1. Conocimiento previo/experto</h2>
+<div style="text-align:center; margin-top:130px; font-size:45px">
+<p><strong>Nada supera el conocimiento del experto.</strong></p>
+</div>
+<div style="text-align:center; margin-top:130px; font-size:45px">
+<p><strong>pero hay que ayudarle a que tome la dirección correcta</strong></p>
+</div>
+</section>
 <section id="conocimiento-previoexperto-caso-práctico" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.1.1. Conocimiento previo/experto: Caso práctico</h2>
+<p>Un economista tiene una hipótesis. Los periodos históricos con baja varianza en la taa del PIBxC han sido periodos democráticamnete estables.</p>
+<p>Para poder estimar esa variabilidad utilizo la varianza:</p>
+<p><span class="math display">\[
+varianza = \frac{\sum\sqrt{(PIBxC - \overline{PIBxC})^2}}{n}
+\]</span></p>
+</section>
+<section id="conocimiento-previoexperto-caso-práctico-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">4.1.1. Conocimiento previo/experto: Caso práctico</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
@@ -747,7 +778,11 @@
 <div style="margin-top:60px;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="Presentacion_PropensityScore_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -757,7 +792,13 @@
 </div>
 </div>
 </section>
-<section id="conocimiento-previoexperto-caso-práctico-1" class="slide level2" data-auto-animate="true">
+<section id="conocimiento-previoexperto-caso-práctico-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.1.1. Conocimiento previo/experto: Caso práctico</h2>
+<div style="text-align:center; margin-top:180px; font-size:45px">
+<p><strong>¿0.0455 qué?</strong></p>
+</div>
+</section>
+<section id="conocimiento-previoexperto-caso-práctico-3" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">4.1.1. Conocimiento previo/experto: Caso práctico</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
@@ -1116,14 +1157,18 @@
 <div style="margin-top:60px;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="Presentacion_PropensityScore_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="conocimiento-previoexperto-caso-práctico-2" class="slide level2" data-auto-animate="true">
+<section id="conocimiento-previoexperto-caso-práctico-4" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">4.1.1. Conocimiento previo/experto: Caso práctico</h2>
 <div style="font-size:28px;">
 <div class="cell">
@@ -1165,39 +1210,47 @@
 </div>
 </div>
 </section>
-<section id="conocimiento-previoexperto-caso-práctico-3" class="slide level2" data-auto-animate="true">
+<section id="conocimiento-previoexperto-caso-práctico-5" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">4.1.1. Conocimiento previo/experto: Caso práctico</h2>
-<div style="text-align:center; margin-top:130px; font-size:45px">
-<p>El conocimiento del experto tiene que ser reforzado, pero en muchas ocasiones es mejor reforzarlo usando un modelo bien fundamentado.</p>
+<div style="text-align:center; margin-top:100px; font-size:45px">
+<p>El conocimiento del experto tiene una buena intuición, pero por si acaso, reforzarlo usando un modelo bien fundamentado.</p>
+</div>
+<div style="text-align:center; margin-top:50px; font-size:45px">
+<p>Debemos estar en mismas unidades para poder comparar dos fenómenos.</p>
 </div>
 </section>
-<section id="conocimiento-previoexperto-caso-práctico-4" class="slide level2" data-auto-animate="true">
+<section id="conocimiento-previoexperto-caso-práctico-6" class="slide level2 scrollable" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">4.1.1. Conocimiento previo/experto: Caso práctico</h2>
 <div style="font-size:35px">
 <ol type="1">
-<li>No se tuvo en cuenta el factor de inflación, demasiada poca desviación.</li>
-<li>Desviación no necesariamente tiene que ser negativo, puede deberse al crecimiento económico.</li>
-<li>Incluso dentro de un periodo, los subperiodos contienen información.</li>
+<li>No se tuvo en cuenta la tendencia en la serie de tiempo, sea debida a la inflación o por revolución tecnológica.</li>
+<li>Desviación no necesariamente significa negativo, existe la desviación positiva por crecimiento económico.</li>
+<li>Dentro de un periodo, hay subperiodos. Estos contienen información. No desperdiciarla.</li>
 </ol>
 </div>
 </section>
-<section id="conocimiento-previoexperto-caso-práctico-5" class="slide level2" data-auto-animate="true">
+<section id="conocimiento-previoexperto-caso-práctico-7" class="slide level2 scrollable" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">4.1.1. Conocimiento previo/experto: Caso práctico</h2>
 <div style="font-size:35px">
 <ol type="1">
-<li>No se tuvo en cuenta el factor de inflación, demasiada poca desviación.</li>
-<li>Desviación no necesariamente tiene que ser negativo, puede deberse al crecimiento económico.</li>
-<li>Incluso dentro de un periodo, los subperiodos contienen información.</li>
+<li>No se tuvo en cuenta la tendencia en la serie de tiempo, sea debida a la inflación o por revolución tecnológica.</li>
+<li>Desviación no necesariamente significa negativo, existe la desviación positiva por crecimiento económico.</li>
+<li>Dentro de un periodo, hay subperiodos. Estos contienen información. No desperdiciarla.</li>
 </ol>
 </div>
 <div style="font-size:40px; margin-top:30px; text-align:center;">
-<p><strong>NUNCA JAMÁS ignorar la descriptiva, jugar con ella es demasiado valioso</strong></p>
+<p><strong>NUNCA NUNCA NUNCA ignorar la descriptiva</strong></p>
 </div>
+</section></section>
+<section id="qué-criterio-usar-para-comparar-dos-grupos" class="title-slide slide level1 center" style="font-size:40px; text-align:left;">
+<h1>¿Qué criterio usar para comparar dos grupos?</h1>
+
 </section>
+
 <section id="el-p-valor" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">4.2. El <em>P valor</em></h2>
 <ul>
-<li><p><em>P valor</em> es la probabilidad de que lo que hayas observado sea no aleatorio, asumiendo que la hipótesis nula de la cual se parte es cierta.</p></li>
+<li><p><strong>P valor</strong> es la <em>probabilidad de que lo que hayas observado sea no aleatorio, asumiendo que la hipótesis nula de la cual se parte es cierta.</em></p></li>
 <li><p>Tener un <em>P valor</em> de 0.05 viene a significar que la probabilidad de que lo que se está observando NO es aleatorio es de un 5%.</p></li>
 </ul>
 </section>
@@ -1226,21 +1279,21 @@
 <li>Diferencias de medias:</li>
 </ul>
 
-<img data-src="Imagenes/diferencias_medias.png" width="300" class="r-stretch quarto-figure-center"></section>
+<img data-src="Imagenes/diferencias_medias.png" class="quarto-figure quarto-figure-center r-stretch" width="300"></section>
 <section id="dependencias-de-los-p-valores-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">4.2.2. Dependencias de los <em>P valores</em>?</h2>
 <ul>
 <li>Dispersión:</li>
 </ul>
 
-<img data-src="Imagenes/Dispersión.png" width="300" class="r-stretch quarto-figure-center"></section>
+<img data-src="Imagenes/Dispersión.png" class="quarto-figure quarto-figure-center r-stretch" width="300"></section>
 <section id="dependencias-de-los-p-valores-2" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">4.2.2. Dependencias de los <em>P valores</em>?</h2>
 <ul>
 <li>Tamaño de muestra:</li>
 </ul>
 
-<img data-src="Imagenes/Tamaño%20de%20muestra.png" width="300" class="r-stretch quarto-figure-center"></section>
+<img data-src="Imagenes/Tamaño%20de%20muestra.png" class="quarto-figure quarto-figure-center r-stretch" width="300"></section>
 <section id="dependencias-de-los-p-valores-3" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">4.2.2. Dependencias de los <em>P valores</em>?</h2>
 <div style="margin-top:20px">
@@ -1248,146 +1301,297 @@
 <li>En la era de la memoria barata, los grandes volúmenes de datos y los procesadores rápidos, las pruebas de normalidad deberían rechazar siempre la nulidad de la distribución normal para muestras grandes (aunque no increíblemente grandes).</li>
 </ul>
 </div>
+<ul>
+<li>Hagamos un ejemplo con test de normalidad para diversas cantidades de datos (10,100,1000,5000)</li>
+</ul>
 </section>
 <section id="dependencias-de-los-p-valores-4" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">4.2.2. Dependencias de los <em>P valores</em>?</h2>
 <div style="font-size:35px; margin-top:30px;">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>            [,1]      [,2]       [,3]      [,4]      [,5]      [,6]        [,7]
-n10   0.68584615 0.2685541 0.65681047 0.3432498 0.2470645 0.2092771 0.007867512
-n100  0.07781401 0.5514505 0.01527718 0.4869926 0.8509182 0.3257254 0.569392122
-n1000 0.16302360 0.2626021 0.77551265 0.3173251 0.8303497 0.2867828 0.118431464
-n5000 0.21858446 0.7996875 0.77248618 0.5232714 0.6983693 0.7935484 0.022806650
+<pre><code>           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]       [,7]
+n10   0.2205796 0.4907443 0.5178366 0.2560279 0.6271590 0.3386037 0.04365954
+n100  0.8741789 0.9648235 0.1280970 0.8959059 0.9296187 0.1691254 0.31672355
+n1000 0.6655675 0.8924222 0.2262955 0.5906148 0.4835737 0.3486662 0.06540754
+n5000 0.2065836 0.8349047 0.5093372 0.3950797 0.3996095 0.1834010 0.49666517
            [,8]      [,9]     [,10]     [,11]      [,12]     [,13]     [,14]
-n10   0.4600987 0.8445972 0.5664093 0.2905051 0.04285795 0.1488881 0.2701561
-n100  0.4476178 0.7120452 0.1860236 0.9086662 0.37423744 0.2343233 0.6096831
-n1000 0.3148046 0.6608280 0.4594213 0.2051099 0.58339038 0.9881488 0.7454085
-n5000 0.9760853 0.6383753 0.1255232 0.3937015 0.09426421 0.2867576 0.1933511
-          [,15]      [,16]      [,17]     [,18]     [,19]     [,20]     [,21]
-n10   0.7059094 0.44983153 0.19624128 0.3838876 0.6202633 0.2107249 0.2833854
-n100  0.9062065 0.01127152 0.03460443 0.7460138 0.3534225 0.8310919 0.7331293
-n1000 0.3575461 0.41213204 0.94045119 0.2325497 0.2325079 0.2714154 0.9065055
-n5000 0.9097220 0.84370986 0.21464994 0.1093123 0.7040002 0.6069191 0.7097158
-          [,22]      [,23]     [,24]      [,25]     [,26]     [,27]     [,28]
-n10   0.7281108 0.09185794 0.9111428 0.45705353 0.1694198 0.5427336 0.5360728
-n100  0.1631286 0.29264935 0.1511125 0.01848848 0.4976184 0.3737898 0.9661877
-n1000 0.6461340 0.43347549 0.9240146 0.66972268 0.8893373 0.9078653 0.5404295
-n5000 0.1375365 0.94713850 0.8338314 0.95657875 0.1493080 0.3958176 0.7573878
-           [,29]     [,30]     [,31]     [,32]     [,33]     [,34]     [,35]
-n10   0.06130899 0.9694377 0.1481085 0.3734177 0.2204867 0.4130359 0.6952071
-n100  0.01695513 0.7440725 0.5821118 0.3355939 0.5420450 0.2211133 0.6900589
-n1000 0.40790184 0.7516837 0.1060159 0.4131555 0.4486833 0.6709688 0.7337090
-n5000 0.57815564 0.2239486 0.2013894 0.8815032 0.4068812 0.7845616 0.4312236
-          [,36]     [,37]     [,38]     [,39]     [,40]      [,41]     [,42]
-n10   0.5270341 0.7897268 0.4142791 0.1788801 0.1300075 0.03739323 0.3612595
-n100  0.2956982 0.5671402 0.3765939 0.7726917 0.4823786 0.65902944 0.2022652
-n1000 0.6995994 0.9211415 0.2295311 0.2800671 0.9149430 0.27790942 0.5954189
-n5000 0.0963153 0.8759867 0.3683510 0.1782915 0.9836418 0.63085110 0.6156778
-          [,43]     [,44]     [,45]      [,46]     [,47]     [,48]      [,49]
-n10   0.6542953 0.4947156 0.3943775 0.80631659 0.2053966 0.4712369 0.01583063
-n100  0.4918002 0.9006810 0.5609867 0.46718668 0.1766829 0.8634922 0.71887300
-n1000 0.1562370 0.7910446 0.7929770 0.37972632 0.2342147 0.6952445 0.33052501
-n5000 0.8659636 0.1219080 0.6698541 0.01080425 0.7197640 0.5839481 0.60684426
-          [,50]     [,51]     [,52]     [,53]     [,54]      [,55]     [,56]
-n10   0.1049020 0.6948159 0.6564337 0.6124504 0.2905081 0.09640131 0.4679584
-n100  0.5615103 0.2985520 0.5469349 0.5890831 0.9270304 0.07885243 0.2513812
-n1000 0.8064433 0.3119589 0.9864799 0.7207776 0.8194934 0.43151552 0.6027408
-n5000 0.1757338 0.2842845 0.9701644 0.1749561 0.5500150 0.12530752 0.3487068
-          [,57]       [,58]     [,59]     [,60]     [,61]     [,62]      [,63]
-n10   0.3018986 0.529029369 0.1520999 0.9593389 0.7184686 0.7115852 0.68319540
-n100  0.3251120 0.137208374 0.6989219 0.6265911 0.1774186 0.8959694 0.54578520
-n1000 0.4752560 0.009595115 0.9875794 0.2596811 0.9970224 0.2345083 0.08124265
-n5000 0.8655255 0.295040941 0.5319285 0.4597683 0.8806791 0.7895529 0.78729552
-          [,64]     [,65]      [,66]     [,67]      [,68]     [,69]     [,70]
-n10   0.3977393 0.8292519 0.29405681 0.6795224 0.69278579 0.8683653 0.8998386
-n100  0.0282666 0.3027024 0.32140222 0.4897640 0.72666179 0.2835592 0.9716400
-n1000 0.2102479 0.5738892 0.09203117 0.2978231 0.21350697 0.3429129 0.6322408
-n5000 0.3457129 0.7950137 0.87572947 0.5792726 0.07169773 0.8991540 0.9752803
-          [,71]     [,72]      [,73]     [,74]        [,75]      [,76]
-n10   0.5727212 0.2044742 0.75664855 0.9821597 3.453634e-05 0.06566884
-n100  0.4871562 0.2696944 0.71138698 0.1114265 1.067352e-01 0.93672849
-n1000 0.8619452 0.1647924 0.13038848 0.6269696 6.909851e-01 0.86902698
-n5000 0.8214455 0.6170931 0.07589267 0.7495891 1.981301e-02 0.10471378
-            [,77]      [,78]      [,79]      [,80]     [,81]      [,82]
-n10   0.122586230 0.20234267 0.80994262 0.90886386 0.9879152 0.01800394
-n100  0.789951656 0.02979197 0.08153983 0.46550076 0.9018028 0.22677246
-n1000 0.758572290 0.40766463 0.97957472 0.03422248 0.8533401 0.51536177
-n5000 0.004164777 0.61438666 0.99355865 0.92343345 0.1447404 0.13303076
-          [,83]     [,84]     [,85]      [,86]       [,87]     [,88]     [,89]
-n10   0.9116919 0.5555349 0.6283706 0.08752509 0.961912722 0.8682330 0.4910884
-n100  0.9507304 0.1286078 0.9873565 0.02870742 0.012970014 0.7255585 0.5996619
-n1000 0.9167805 0.3903770 0.1514001 0.88125925 0.603055341 0.6213744 0.8799574
-n5000 0.7262966 0.4266205 0.1560140 0.92141258 0.005915914 0.1704487 0.2134787
-          [,90]      [,91]     [,92]      [,93]     [,94]       [,95]     [,96]
-n10   0.4352427 0.71606727 0.3248152 0.11327317 0.5601598 0.429278442 0.9685565
-n100  0.7914162 0.03011592 0.8397966 0.09531062 0.8122976 0.742079069 0.5642471
-n1000 0.8037493 0.37939763 0.4546636 0.13650365 0.9961645 0.607167757 0.2275361
-n5000 0.5046845 0.06287765 0.5584376 0.31147728 0.8476341 0.003133168 0.3477639
-          [,97]     [,98]     [,99]    [,100]
-n10   0.3293126 0.6734888 0.5755242 0.4667610
-n100  0.8298125 0.8744092 0.5296804 0.3980426
-n1000 0.2858228 0.7226667 0.8449036 0.6493048
-n5000 0.2303554 0.8278414 0.8956745 0.9838352</code></pre>
+n10   0.9116966 0.9680889 0.2420321 0.2868116 0.40880658 0.5119053 0.2584815
+n100  0.7122811 0.9596662 0.7442532 0.7812358 0.37541277 0.9793719 0.6088070
+n1000 0.1493155 0.9795232 0.5597501 0.9323988 0.06488327 0.7066221 0.3160363
+n5000 0.6791680 0.1778871 0.3354372 0.3277129 0.96629408 0.9050889 0.2212743
+           [,15]     [,16]      [,17]     [,18]      [,19]     [,20]     [,21]
+n10   0.31898478 0.7065253 0.04881919 0.8769570 0.29309677 0.3727608 0.8490753
+n100  0.43224250 0.6602395 0.48569408 0.5549466 0.34990636 0.9678486 0.5827536
+n1000 0.18188018 0.6734511 0.58728148 0.6276806 0.08568866 0.2181719 0.0275554
+n5000 0.07780196 0.2682453 0.75730532 0.3799684 0.71449076 0.1531333 0.5262313
+          [,22]      [,23]     [,24]     [,25]      [,26]      [,27]
+n10   0.9114203 0.26881592 0.2942144 0.7488051 0.08299572 0.85351786
+n100  0.1692427 0.61143196 0.1189103 0.1714081 0.91362820 0.06590195
+n1000 0.4651644 0.07460933 0.3076141 0.8559413 0.63499911 0.90413440
+n5000 0.1879241 0.62613940 0.5644707 0.1823851 0.50112053 0.81788230
+            [,28]      [,29]      [,30]      [,31]     [,32]     [,33]
+n10   0.765471985 0.05750779 0.34327675 0.52544434 0.5457262 0.7698839
+n100  0.540459515 0.50206218 0.66212754 0.74660688 0.4321752 0.4948241
+n1000 0.009369463 0.79013189 0.07492395 0.05459309 0.4817041 0.2077705
+n5000 0.876570829 0.67708645 0.87731469 0.54828431 0.2837465 0.3185343
+           [,34]     [,35]        [,36]      [,37]     [,38]     [,39]
+n10   0.40773430 0.9479944 0.0002171777 0.02831366 0.9892071 0.5078976
+n100  0.98482505 0.8262254 0.7217545328 0.01298914 0.8872118 0.9753952
+n1000 0.55672489 0.3716212 0.4186766044 0.44143013 0.7081446 0.7118736
+n5000 0.07588419 0.9003050 0.6969466479 0.80606803 0.6431571 0.3298568
+          [,40]      [,41]     [,42]     [,43]     [,44]     [,45]     [,46]
+n10   0.7335613 0.43128049 0.5026861 0.9306662 0.1730322 0.8276191 0.7248222
+n100  0.4069450 0.29127563 0.2063608 0.1036835 0.9908582 0.4011274 0.3160084
+n1000 0.6588295 0.54433603 0.5115946 0.7344236 0.8971617 0.3285380 0.9130387
+n5000 0.5138671 0.05714629 0.7126900 0.4611224 0.8731791 0.4032465 0.3548839
+          [,47]     [,48]       [,49]     [,50]     [,51]     [,52]     [,53]
+n10   0.9127640 0.2879823 0.998711385 0.7525949 0.9626459 0.5029463 0.0735597
+n100  0.3462904 0.4991380 0.006147117 0.5516888 0.4652724 0.8866391 0.6805305
+n1000 0.3289812 0.3997266 0.144762812 0.8363832 0.1242296 0.7470052 0.5410904
+n5000 0.5456494 0.5032473 0.270062735 0.9554649 0.3376105 0.2964524 0.2935077
+          [,54]        [,55]     [,56]      [,57]     [,58]     [,59]     [,60]
+n10   0.4657772 0.4462147180 0.3593180 0.31805705 0.4951332 0.4600349 0.2591956
+n100  0.5046168 0.0534141858 0.6049409 0.41395750 0.4509304 0.9859940 0.7980131
+n1000 0.6410955 0.0005672985 0.1101942 0.13317071 0.1315456 0.8846332 0.2421657
+n5000 0.5984490 0.3686372748 0.4437311 0.02836812 0.2957797 0.6165054 0.4299267
+           [,61]     [,62]     [,63]     [,64]     [,65]     [,66]     [,67]
+n10   0.53022797 0.4009526 0.8141404 0.5591455 0.7972972 0.2326907 0.3154537
+n100  0.26998367 0.5595865 0.4126662 0.8033886 0.3606831 0.5999821 0.4061547
+n1000 0.58557808 0.6815270 0.7608333 0.2979825 0.8952887 0.9231670 0.5821436
+n5000 0.07253671 0.7924659 0.6711697 0.9718877 0.1658246 0.7376912 0.3104217
+           [,68]     [,69]       [,70]      [,71]      [,72]     [,73]
+n10   0.80361805 0.6170257 0.709734465 0.48396366 0.73914718 0.9991199
+n100  0.19532563 0.5844094 0.002117392 0.90273436 0.54419523 0.5944268
+n1000 0.91109188 0.2822105 0.601380530 0.01538939 0.06370672 0.3112260
+n5000 0.04878254 0.5774124 0.542904577 0.34690237 0.51180500 0.7837619
+          [,74]     [,75]      [,76]     [,77]     [,78]     [,79]     [,80]
+n10   0.2605114 0.4333702 0.79375238 0.2491732 0.5812670 0.2007934 0.4817665
+n100  0.9792145 0.2264378 0.03493837 0.4938586 0.7601153 0.2568192 0.8209769
+n1000 0.4911783 0.3688709 0.89384345 0.7266588 0.8427349 0.6169070 0.9548962
+n5000 0.3809230 0.2703183 0.03205748 0.9037955 0.2924484 0.3403087 0.7298401
+          [,81]      [,82]      [,83]      [,84]      [,85]     [,86]     [,87]
+n10   0.8040269 0.69996582 0.23314474 0.10690339 0.20549302 0.6241181 0.8886257
+n100  0.8725058 0.06090593 0.02974428 0.19338155 0.90231732 0.5213720 0.5130049
+n1000 0.3143239 0.38449051 0.94740241 0.38937514 0.03068472 0.3342765 0.4034793
+n5000 0.6850692 0.11896962 0.30554433 0.02031703 0.85020266 0.0108528 0.9771153
+          [,88]      [,89]      [,90]     [,91]     [,92]      [,93]     [,94]
+n10   0.5633855 0.01815796 0.08735824 0.4057201 0.9541021 0.79139044 0.2696723
+n100  0.3044819 0.24493534 0.61389423 0.6294319 0.2111145 0.72944909 0.3036564
+n1000 0.9278625 0.83099823 0.44723770 0.7051688 0.7100648 0.05602962 0.8470884
+n5000 0.4979228 0.31180457 0.27935150 0.9928110 0.6427983 0.59183378 0.1992757
+          [,95]      [,96]     [,97]      [,98]     [,99]    [,100]
+n10   0.6065845 0.08985585 0.3789541 0.31104577 0.5566415 0.3206995
+n100  0.4900736 0.50835919 0.2584418 0.51802781 0.6610784 0.7506087
+n1000 0.9469976 0.75374612 0.2804984 0.02204097 0.5864565 0.3743563
+n5000 0.5264686 0.87519125 0.1592315 0.55194180 0.8464533 0.4094210</code></pre>
 </div>
 </div>
 </div>
 </section>
 <section id="dependencias-de-los-p-valores-5" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">4.2.2. Dependencias de los <em>P valores</em>?</h2>
-<div style="font-size:35px; margin-top:30px;">
+<p>::: {style=“font-size:35px; margin-top:30px;”}</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>       [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]  [,9] [,10] [,11] [,12]
-n10   FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE
-n100  FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n10   FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+n100  FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 n1000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-n5000 FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+n5000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
       [,13] [,14] [,15] [,16] [,17] [,18] [,19] [,20] [,21] [,22] [,23] [,24]
-n10   FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-n100  FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-n1000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-n5000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-      [,25] [,26] [,27] [,28] [,29] [,30] [,31] [,32] [,33] [,34] [,35] [,36]
-n10   FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-n100   TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-n1000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-n5000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-      [,37] [,38] [,39] [,40] [,41] [,42] [,43] [,44] [,45] [,46] [,47] [,48]
 n10   FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 n100  FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-n1000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-n5000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
-      [,49] [,50] [,51] [,52] [,53] [,54] [,55] [,56] [,57] [,58] [,59] [,60]
-n10    TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-n100  FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-n1000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
+n1000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
 n5000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+      [,25] [,26] [,27] [,28] [,29] [,30] [,31] [,32] [,33] [,34] [,35] [,36]
+n10   FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+n100  FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n1000 FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n5000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+      [,37] [,38] [,39] [,40] [,41] [,42] [,43] [,44] [,45] [,46] [,47] [,48]
+n10    TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n100   TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n1000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n5000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+      [,49] [,50] [,51] [,52] [,53] [,54] [,55] [,56] [,57] [,58] [,59] [,60]
+n10   FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n100   TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n1000 FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+n5000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
       [,61] [,62] [,63] [,64] [,65] [,66] [,67] [,68] [,69] [,70] [,71] [,72]
 n10   FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-n100  FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-n1000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-n5000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n100  FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
+n1000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+n5000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE
       [,73] [,74] [,75] [,76] [,77] [,78] [,79] [,80] [,81] [,82] [,83] [,84]
-n10   FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
-n100  FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
-n1000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE
-n5000 FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-      [,85] [,86] [,87] [,88] [,89] [,90] [,91] [,92] [,93] [,94] [,95] [,96]
 n10   FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-n100  FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+n100  FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
 n1000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-n5000 FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+n5000 FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+      [,85] [,86] [,87] [,88] [,89] [,90] [,91] [,92] [,93] [,94] [,95] [,96]
+n10   FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n100  FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n1000  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n5000 FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
       [,97] [,98] [,99] [,100]
 n10   FALSE FALSE FALSE  FALSE
 n100  FALSE FALSE FALSE  FALSE
-n1000 FALSE FALSE FALSE  FALSE
+n1000 FALSE  TRUE FALSE  FALSE
 n5000 FALSE FALSE FALSE  FALSE</code></pre>
-</div>
 </div>
 </div>
 </section>
 <section id="dependencias-de-los-p-valores-6" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.2.2. Dependencias de los <em>P valores</em>?</h2>
+<div style="font-size:35px; margin-top:30px;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>            [,1]       [,2]        [,3]       [,4]       [,5]       [,6]
+n10   0.83110294 0.25539279 0.117612939 0.50549128 0.81722145 0.73673438
+n100  0.25964100 0.15155666 0.007510539 0.88104071 0.38383662 0.05887488
+n1000 0.05658109 0.31028598 0.079401947 0.04534262 0.04065097 0.01437109
+n5000 0.05447432 0.02437084 0.031107893 0.00154444 0.02383445 0.01211667
+           [,7]        [,8]         [,9]      [,10]       [,11]       [,12]
+n10   0.2292075 0.600037810 0.2940135548 0.88936622 0.670111606 0.428671177
+n100  0.5177751 0.562008874 0.1821533878 0.61934322 0.125470244 0.640983752
+n1000 0.2169882 0.059218815 0.2313066267 0.75977799 0.067023876 0.042822711
+n5000 0.5327494 0.003523456 0.0006662827 0.03234772 0.002860296 0.002092306
+             [,13]     [,14]       [,15]      [,16]      [,17]      [,18]
+n10   0.0701020973 0.3691482 0.061080443 0.31378645 0.56648878 0.98645058
+n100  0.1223675268 0.4101507 0.503807224 0.68415468 0.97437723 0.49870062
+n1000 0.3464017875 0.3175673 0.131562786 0.87553997 0.59708432 0.22663144
+n5000 0.0009230398 0.1572677 0.003893328 0.01015375 0.01148237 0.07004681
+             [,19]       [,20]       [,21]       [,22]        [,23]       [,24]
+n10   0.0953517491 0.800819468 0.474857982 0.026901277 0.7581362566 0.187410667
+n100  0.9274470459 0.016541601 0.030722097 0.907592962 0.9136508813 0.035900733
+n1000 0.0031984099 0.564111965 0.015173563 0.737678132 0.2191060511 0.718998915
+n5000 0.0005192649 0.001523366 0.003379384 0.002407212 0.0007031966 0.002369543
+          [,25]        [,26]        [,27]       [,28]      [,29]      [,30]
+n10   0.7962877 0.2119343015 0.1266970875 0.150486565 0.17300334 0.36813667
+n100  0.7984631 0.2023754213 0.9220081082 0.764316569 0.80491236 0.67616361
+n1000 0.0416821 0.6901680528 0.7274585335 0.181524584 0.14968707 0.40002831
+n5000 0.1841477 0.0001294954 0.0002132231 0.001016905 0.02099264 0.04141282
+          [,31]     [,32]     [,33]      [,34]      [,35]        [,36]
+n10   0.3322116 0.4676050 0.9465494 0.39425403 0.37873752 0.2397763403
+n100  0.4876244 0.2976598 0.7894189 0.15031556 0.28356489 0.3953054977
+n1000 0.1906817 0.5892609 0.7556326 0.01519442 0.56403617 0.0060774082
+n5000 0.0029816 0.0541447 0.0440136 0.33619960 0.02019223 0.0002267001
+             [,37]       [,38]     [,39]      [,40]      [,41]        [,42]
+n10   0.6559625192 0.065039198 0.5985636 0.38183996 0.49021171 9.917125e-01
+n100  0.2663830752 0.516666053 0.8468785 0.08142105 0.43444646 7.340104e-02
+n1000 0.0155958232 0.106045747 0.1378987 0.22387858 0.46634030 2.332271e-01
+n5000 0.0001751316 0.002649053 0.1041754 0.06065442 0.02325433 6.262378e-05
+           [,43]     [,44]       [,45]      [,46]      [,47]      [,48]
+n10   0.97753463 0.1450922 0.028699303 0.16050300 0.53717033 0.99282194
+n100  0.46798224 0.2189889 0.931291757 0.16147658 0.86145095 0.03605844
+n1000 0.43779503 0.4041509 0.516113773 0.42530107 0.41042967 0.86657983
+n5000 0.02159947 0.0204782 0.002095952 0.01387993 0.03432924 0.01173683
+             [,49]        [,50]       [,51]        [,52]       [,53]      [,54]
+n10   0.5070198699 1.022526e-01 0.333328828 0.6122641892 0.123052929 0.10822944
+n100  0.5608970338 8.646238e-01 0.133953743 0.2862313702 0.404292739 0.23159834
+n1000 0.3736108835 2.369726e-03 0.407889666 0.8859213690 0.346397535 0.02478617
+n5000 0.0002509508 1.972943e-05 0.009504183 0.0003636083 0.007283969 0.29559285
+          [,55]      [,56]        [,57]        [,58]     [,59]      [,60]
+n10   0.8336450 0.32532940 0.4455173960 2.122272e-01 0.5616653 0.59269108
+n100  0.5559251 0.12882177 0.8193911800 8.420736e-01 0.5082090 0.08132655
+n1000 0.1202408 0.77888929 0.2828307421 5.725821e-02 0.1185276 0.47239322
+n5000 0.0832658 0.04523161 0.0002682593 4.310425e-05 0.8501990 0.21128725
+           [,61]        [,62]       [,63]      [,64]      [,65]      [,66]
+n10   0.96519928 0.7717754546 0.107438193 0.94352465 0.71695289 0.64720431
+n100  0.59936849 0.2249526951 0.277239906 0.90199595 0.46546598 0.15379313
+n1000 0.08091320 0.5413978014 0.222316096 0.55540616 0.84145821 0.60796876
+n5000 0.02250715 0.0005024018 0.003699051 0.03237738 0.00340427 0.08824852
+             [,67]      [,68]      [,69]     [,70]        [,71]        [,72]
+n10   0.9949339061 0.70015528 0.85219512 0.9789345 2.639617e-01 4.460427e-01
+n100  0.4646014638 0.43282932 0.15455929 0.5605664 8.077466e-01 1.673288e-01
+n1000 0.3457946362 0.11354531 0.94361985 0.9226441 1.544886e-01 6.107427e-01
+n5000 0.0003183092 0.02990785 0.01257038 0.2117352 2.062958e-05 6.805433e-05
+             [,73]      [,74]        [,75]      [,76]       [,77]      [,78]
+n10   4.561910e-02 0.50203557 6.023461e-01 0.06577669 0.158942567 0.68987277
+n100  5.980804e-01 0.86103976 3.120507e-01 0.95290125 0.168913733 0.31102568
+n1000 2.792170e-01 0.45624339 1.854930e-01 0.04487640 0.518867838 0.09224582
+n5000 1.568204e-05 0.02276223 6.452169e-05 0.21768492 0.008286423 0.28926867
+             [,79]       [,80]        [,81]       [,82]       [,83]      [,84]
+n10   0.4673141703 0.807544417 0.7903316210 0.207519722 0.231307035 0.94562954
+n100  0.4153943815 0.676563870 0.6242156883 0.187144236 0.200409338 0.09602062
+n1000 0.7227224937 0.298518611 0.4485417461 0.114381924 0.201446370 0.24024760
+n5000 0.0002523407 0.001249445 0.0008450429 0.003743916 0.004545932 0.01827197
+            [,85]       [,86]     [,87]       [,88]       [,89]        [,90]
+n10   0.848474996 0.392863533 0.1347880 0.744983874 0.432449555 0.4069391242
+n100  0.092317976 0.358273461 0.4142245 0.086623701 0.705759205 0.4474069407
+n1000 0.052527023 0.346417317 0.2962592 0.104764140 0.069163617 0.3757330117
+n5000 0.004270919 0.002941148 0.7525154 0.008502438 0.001630331 0.0003133641
+          [,91]      [,92]        [,93]     [,94]        [,95]       [,96]
+n10   0.6690596 0.17972821 0.8215997943 0.6679992 4.823618e-02 0.850791699
+n100  0.6841850 0.86390574 0.5866553471 0.7279383 5.424523e-03 0.641200772
+n1000 0.2080933 0.42247285 0.1409777053 0.6583253 9.171586e-01 0.330759445
+n5000 0.4441548 0.01861752 0.0003617143 0.4658645 6.901419e-05 0.009388329
+             [,97]     [,98]      [,99]     [,100]
+n10   9.838215e-01 0.7128961 0.83903810 0.98648576
+n100  2.361149e-02 0.4295110 0.86798001 0.99730000
+n1000 7.403730e-01 0.3686584 0.75684070 0.56272067
+n5000 4.024371e-05 0.0357800 0.00742166 0.03888096</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="dependencias-de-los-p-valores-7" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.2.2. Dependencias de los <em>P valores</em>?</h2>
+<div style="font-size:35px; margin-top:30px;">
+<p>¿Se rechaza la hipotesis nula?</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>       [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]  [,9] [,10] [,11] [,12]
+n10   FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n100  FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n1000 FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE
+n5000 FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+      [,13] [,14] [,15] [,16] [,17] [,18] [,19] [,20] [,21] [,22] [,23] [,24]
+n10   FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
+n100  FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE
+n1000 FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE
+n5000  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+      [,25] [,26] [,27] [,28] [,29] [,30] [,31] [,32] [,33] [,34] [,35] [,36]
+n10   FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n100  FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n1000  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE
+n5000 FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE FALSE  TRUE  TRUE
+      [,37] [,38] [,39] [,40] [,41] [,42] [,43] [,44] [,45] [,46] [,47] [,48]
+n10   FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
+n100  FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+n1000  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n5000  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+      [,49] [,50] [,51] [,52] [,53] [,54] [,55] [,56] [,57] [,58] [,59] [,60]
+n10   FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n100  FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n1000 FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+n5000  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE
+      [,61] [,62] [,63] [,64] [,65] [,66] [,67] [,68] [,69] [,70] [,71] [,72]
+n10   FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n100  FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n1000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n5000  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE
+      [,73] [,74] [,75] [,76] [,77] [,78] [,79] [,80] [,81] [,82] [,83] [,84]
+n10    TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n100  FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n1000 FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n5000  TRUE  TRUE  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+      [,85] [,86] [,87] [,88] [,89] [,90] [,91] [,92] [,93] [,94] [,95] [,96]
+n10   FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+n100  FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+n1000 FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n5000  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE
+      [,97] [,98] [,99] [,100]
+n10   FALSE FALSE FALSE  FALSE
+n100   TRUE FALSE FALSE  FALSE
+n1000 FALSE FALSE FALSE  FALSE
+n5000  TRUE  TRUE  TRUE   TRUE</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="dependencias-de-los-p-valores-8" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">4.2.2. Dependencias de los <em>P valores</em>?</h2>
 <div style="font-size:30px; margin-top:20px;">
 <ul>
@@ -1398,23 +1602,203 @@ n5000 FALSE FALSE FALSE  FALSE</code></pre>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>  n10  n100 n1000 n5000 
- 0.06  0.10  0.02  0.06 </code></pre>
+ 0.04  0.07  0.13  0.80 </code></pre>
 </div>
 </div>
 </div>
 </section>
-<section id="dependencias-de-los-p-valores-7" class="slide level2" data-auto-animate="true">
+<section id="dependencias-de-los-p-valores-9" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.2.2. Dependencias de los <em>P valores</em>?</h2>
+<div style="font-size:35px; margin-top:30px;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>              [,1]         [,2]         [,3]         [,4]         [,5]
+n10   2.813938e-01 2.205418e-01 6.618494e-02 4.947911e-02 6.414823e-03
+n100  6.713360e-04 1.742813e-01 2.115176e-04 5.468897e-04 5.034478e-02
+n1000 1.203301e-16 1.576836e-14 4.936801e-16 4.132317e-15 1.765182e-16
+n5000 4.835873e-36 7.852772e-36 2.490668e-35 4.669805e-36 6.461434e-36
+              [,6]         [,7]         [,8]         [,9]        [,10]
+n10   1.236717e-01 8.171782e-01 4.834014e-01 9.945899e-01 5.089292e-01
+n100  3.730627e-02 7.043485e-03 9.604225e-03 3.494164e-04 5.178199e-03
+n1000 5.137746e-17 2.068008e-16 4.225384e-17 4.027117e-16 3.931763e-17
+n5000 2.084955e-35 1.089908e-35 4.354986e-35 1.456507e-35 8.000782e-37
+             [,11]        [,12]        [,13]        [,14]        [,15]
+n10   3.734221e-01 9.197800e-01 3.606689e-01 5.478647e-02 5.162620e-01
+n100  2.106814e-02 5.756139e-03 6.941154e-05 1.996620e-03 4.938121e-04
+n1000 8.508356e-18 1.451628e-15 1.984767e-17 9.083180e-16 4.039598e-16
+n5000 1.167872e-34 1.381333e-34 6.889074e-35 3.643050e-34 3.908644e-35
+             [,16]        [,17]        [,18]        [,19]        [,20]
+n10   4.748838e-01 2.319101e-01 1.815485e-02 7.786828e-01 5.917185e-01
+n100  3.920877e-04 1.447211e-04 9.131765e-02 2.220295e-01 6.978134e-04
+n1000 3.839772e-15 2.852578e-15 4.387398e-17 8.688563e-15 5.248017e-16
+n5000 3.039519e-34 4.357078e-34 3.415504e-34 4.025439e-35 3.854379e-37
+             [,21]        [,22]        [,23]        [,24]        [,25]
+n10   1.018996e-01 1.174060e-01 1.950041e-03 3.454423e-01 6.263852e-01
+n100  1.641446e-04 1.394952e-03 6.212827e-04 3.017222e-06 9.262931e-04
+n1000 2.034516e-17 3.393480e-15 1.968261e-17 2.778308e-16 2.631625e-15
+n5000 5.110096e-34 6.728604e-36 5.211894e-35 7.719247e-35 2.690086e-37
+             [,26]        [,27]        [,28]        [,29]        [,30]
+n10   4.889174e-01 1.713007e-01 8.368502e-01 5.484146e-01 6.833041e-01
+n100  3.712917e-04 1.042979e-01 3.742061e-04 6.176078e-04 6.025647e-05
+n1000 8.748466e-17 1.313512e-17 2.816278e-17 1.259061e-14 2.402794e-16
+n5000 2.411955e-36 8.358531e-36 1.404304e-34 1.260895e-33 8.090380e-37
+             [,31]        [,32]        [,33]        [,34]        [,35]
+n10   1.266293e-01 1.430998e-02 5.722938e-02 4.176788e-01 5.724047e-01
+n100  2.703784e-03 8.873404e-04 2.470534e-05 1.099229e-04 1.431515e-02
+n1000 9.092571e-18 2.281179e-19 4.027390e-17 4.807434e-15 2.618273e-17
+n5000 1.074575e-34 5.575579e-35 1.908458e-36 3.075178e-35 1.581644e-35
+             [,36]        [,37]        [,38]        [,39]        [,40]
+n10   6.409907e-02 5.813124e-01 4.922232e-01 4.681822e-01 8.436972e-01
+n100  6.961571e-03 1.493808e-02 3.805122e-06 6.910486e-02 8.121632e-04
+n1000 1.461394e-16 1.464539e-16 8.071747e-15 7.679063e-17 2.339013e-17
+n5000 1.443842e-35 3.150281e-35 5.537567e-36 4.164889e-35 8.355202e-36
+             [,41]        [,42]        [,43]        [,44]        [,45]
+n10   5.545564e-01 3.887226e-01 4.649441e-01 5.630140e-01 1.605860e-01
+n100  2.426824e-05 3.185864e-07 2.344502e-01 8.545428e-03 7.529230e-04
+n1000 9.488285e-18 4.979094e-16 2.104969e-16 1.625066e-16 3.102978e-17
+n5000 8.047885e-34 5.519369e-35 2.140702e-34 1.005665e-35 3.544848e-34
+             [,46]        [,47]        [,48]        [,49]        [,50]
+n10   4.546569e-01 6.070873e-01 4.923441e-01 6.784987e-02 8.192398e-01
+n100  1.213210e-05 4.008428e-04 1.078796e-02 3.702765e-04 1.070029e-03
+n1000 9.226315e-17 2.947824e-15 1.400397e-14 1.807499e-16 1.145985e-16
+n5000 1.177335e-35 1.064107e-35 4.778397e-36 5.729257e-34 2.356205e-34
+             [,51]        [,52]        [,53]        [,54]        [,55]
+n10   4.007861e-01 3.962212e-01 3.525399e-01 4.040254e-01 1.911193e-01
+n100  9.264919e-04 1.257410e-03 1.411236e-03 5.678248e-05 4.349866e-03
+n1000 1.849818e-17 3.034464e-17 3.182505e-16 1.686185e-15 6.538483e-15
+n5000 1.027445e-34 1.147917e-35 8.177124e-35 1.708105e-36 6.773308e-35
+             [,56]        [,57]        [,58]        [,59]        [,60]
+n10   5.422328e-01 1.447842e-03 1.458579e-01 6.667948e-01 6.823421e-01
+n100  6.967936e-04 4.932405e-04 1.403093e-04 4.926568e-03 9.150872e-04
+n1000 2.356486e-14 2.566229e-16 1.719475e-16 1.337068e-15 3.011821e-17
+n5000 1.016037e-33 2.735078e-35 1.960181e-34 2.032244e-35 3.634507e-34
+             [,61]        [,62]        [,63]        [,64]        [,65]
+n10   8.435565e-02 3.347603e-03 8.958203e-01 4.834163e-02 5.133758e-02
+n100  1.401224e-02 1.051241e-02 4.935672e-04 1.716748e-04 3.325588e-04
+n1000 1.036629e-18 7.142661e-16 3.530695e-15 4.782553e-17 1.306276e-15
+n5000 1.100209e-35 9.580617e-36 9.806939e-36 4.719532e-36 1.409576e-35
+             [,66]        [,67]        [,68]        [,69]        [,70]
+n10   1.732864e-01 7.133981e-01 2.882463e-01 1.269081e-02 2.480849e-01
+n100  4.458957e-06 6.835751e-05 3.974905e-03 5.831898e-04 2.067447e-03
+n1000 5.493523e-16 6.276384e-16 1.295916e-16 7.535508e-16 1.086671e-14
+n5000 1.003009e-35 2.571912e-35 1.329360e-34 5.580475e-36 3.856052e-36
+             [,71]        [,72]        [,73]        [,74]        [,75]
+n10   3.295355e-01 7.424951e-01 4.157101e-01 2.147861e-03 3.611209e-02
+n100  1.471448e-02 1.331167e-02 2.575658e-05 1.565476e-05 5.690033e-02
+n1000 4.152532e-15 6.768891e-16 2.747773e-17 1.811822e-16 7.794852e-17
+n5000 5.340040e-36 6.724851e-36 5.984129e-35 1.636305e-36 1.428149e-34
+             [,76]        [,77]        [,78]        [,79]        [,80]
+n10   2.791748e-01 8.660401e-03 3.665535e-01 4.767434e-02 1.794601e-01
+n100  3.574471e-04 4.642632e-02 5.061091e-03 3.055422e-02 1.638164e-01
+n1000 2.029928e-15 1.277082e-17 5.592743e-16 1.301415e-17 2.372196e-16
+n5000 1.458759e-35 1.542353e-34 4.745034e-36 5.930174e-36 1.034896e-35
+             [,81]        [,82]        [,83]        [,84]        [,85]
+n10   4.215398e-02 4.385776e-01 4.418275e-02 3.230211e-01 1.773808e-01
+n100  8.401604e-05 7.385354e-04 4.390153e-03 2.620658e-03 7.105068e-04
+n1000 3.116247e-15 1.771942e-14 7.222638e-14 4.226868e-17 1.274741e-18
+n5000 1.251494e-36 3.511771e-35 2.569186e-34 1.837155e-34 2.917184e-37
+             [,86]        [,87]        [,88]        [,89]        [,90]
+n10   3.698075e-01 5.520104e-01 8.383162e-01 1.662301e-01 8.723617e-02
+n100  1.248756e-04 3.280044e-03 1.081202e-05 4.892981e-05 5.320735e-03
+n1000 5.651951e-14 4.731965e-16 9.406119e-18 1.199404e-16 2.196444e-15
+n5000 1.241222e-35 1.031537e-35 5.472376e-36 1.193677e-33 8.323065e-36
+             [,91]        [,92]        [,93]        [,94]        [,95]
+n10   4.251995e-01 8.518048e-01 1.697584e-01 2.976238e-02 1.567396e-01
+n100  1.293027e-03 2.402854e-04 1.124520e-02 9.280821e-06 2.166282e-03
+n1000 1.307895e-15 1.909615e-17 9.749796e-18 2.807629e-16 2.221424e-17
+n5000 2.069686e-34 8.470711e-37 4.737267e-35 3.244570e-35 3.628491e-36
+             [,96]        [,97]        [,98]        [,99]       [,100]
+n10   8.398831e-01 2.209214e-01 1.853998e-01 1.156391e-01 1.817279e-01
+n100  8.456419e-04 2.173292e-01 2.567283e-04 4.050345e-03 7.023040e-03
+n1000 3.429741e-17 3.522312e-14 2.202328e-16 1.257079e-16 4.109512e-16
+n5000 3.183933e-35 1.237241e-35 5.114730e-36 1.347123e-34 1.701314e-35</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="dependencias-de-los-p-valores-10" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.2.2. Dependencias de los <em>P valores</em>?</h2>
+<div style="font-size:35px; margin-top:30px;">
+<p>¿Se rechaza la hipotesis nula?</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>       [,1]  [,2]  [,3] [,4]  [,5]  [,6]  [,7]  [,8]  [,9] [,10] [,11] [,12]
+n10   FALSE FALSE FALSE TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n100   TRUE FALSE  TRUE TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+n1000  TRUE  TRUE  TRUE TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+n5000  TRUE  TRUE  TRUE TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+      [,13] [,14] [,15] [,16] [,17] [,18] [,19] [,20] [,21] [,22] [,23] [,24]
+n10   FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE
+n100   TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+n1000  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+n5000  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+      [,25] [,26] [,27] [,28] [,29] [,30] [,31] [,32] [,33] [,34] [,35] [,36]
+n10   FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE
+n100   TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+n1000  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+n5000  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+      [,37] [,38] [,39] [,40] [,41] [,42] [,43] [,44] [,45] [,46] [,47] [,48]
+n10   FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+n100   TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+n1000  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+n5000  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+      [,49] [,50] [,51] [,52] [,53] [,54] [,55] [,56] [,57] [,58] [,59] [,60]
+n10   FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
+n100   TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+n1000  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+n5000  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+      [,61] [,62] [,63] [,64] [,65] [,66] [,67] [,68] [,69] [,70] [,71] [,72]
+n10   FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
+n100   TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+n1000  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+n5000  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+      [,73] [,74] [,75] [,76] [,77] [,78] [,79] [,80] [,81] [,82] [,83] [,84]
+n10   FALSE  TRUE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE
+n100   TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE
+n1000  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+n5000  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+      [,85] [,86] [,87] [,88] [,89] [,90] [,91] [,92] [,93] [,94] [,95] [,96]
+n10   FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
+n100   TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+n1000  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+n5000  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+      [,97] [,98] [,99] [,100]
+n10   FALSE FALSE FALSE  FALSE
+n100  FALSE  TRUE  TRUE   TRUE
+n1000  TRUE  TRUE  TRUE   TRUE
+n5000  TRUE  TRUE  TRUE   TRUE</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="dependencias-de-los-p-valores-11" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">4.2.2. Dependencias de los <em>P valores</em>?</h2>
+<div style="font-size:30px; margin-top:20px;">
+<ul>
+<li>Proporción de desviaciones significativas:</li>
+</ul>
+</div>
+<div style="margin-top:0px; text-align:center;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  n10  n100 n1000 n5000 
+ 0.16  0.90  1.00  1.00 </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="dependencias-de-los-p-valores-12" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">4.2.2. Dependencias de los <em>P valores</em>?</h2>
 <div style="text-align:center; margin-top:130px; font-size:50px">
 <p>¿Existen pruebas convincentes de alguna desviación del ideal gaussiano?</p>
 </div>
 </section>
-<section id="dependencias-de-los-p-valores-8" class="slide level2" data-auto-animate="true">
+<section id="dependencias-de-los-p-valores-13" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">4.2.2. Dependencias de los <em>P valores</em>?</h2>
 <div style="text-align:center; margin-top:130px; font-size:50px">
 <p>El test apunta tener datos perfectos sobre una normal. Eso no pasa.</p>
 </div>
-</section></section>
+</section>
 <section id="si-los-p-valores-no-son-buenos-indicativos-entonces-qué-se-debe-usar-en-estos-casos" class="title-slide slide level1 center" style="font-size:40px; text-align:left;">
 <h1>Si los <em>P valores</em> no son buenos indicativos <br> Entonces, ¿Qué se debe usar en estos casos?</h1>
 
@@ -1465,35 +1849,95 @@ SMD = \frac{M_1 - M_2}{\sqrt{\frac{SD_1 + SD_2}{2}}}
 </ul>
 </div>
 
-<img data-src="Imagenes/tipos_muestras.png" width="1000" class="r-stretch quarto-figure-center"></section></section>
+<img data-src="Imagenes/tipos_muestras.png" class="quarto-figure quarto-figure-center r-stretch" width="1000"></section></section>
+<section>
 <section id="y-por-qué-son-mejores-que-el-p-valor" class="title-slide slide level1 center">
 <h1>¿y por qué son mejores que el <em>P valor</em>?</h1>
 
 </section>
-
+<section id="standarized-mean-deviation-smd-5" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">5. Standarized mean deviation <em>(SMD)</em></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>SMD</strong></p>
+<ul>
+<li><p>proporciona una medida de la magnitud del efecto.</p></li>
+<li><p>La SMD son una medida estandarizada.</p></li>
+<li><p>Consistencia<strong>:</strong> menos sensible al tamaño de la muestra</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>P.valor</strong></p>
+<ul>
+<li><p>Significación Binaria: o son diferentes o no lo son. SImplista</p></li>
+<li><p>Dependencia del Tamaño de Muestra</p></li>
+<li><p><strong>No Indica Tamaño del Efecto</strong></p></li>
+</ul>
+</div>
+</div>
+</section></section>
 <section id="bienvenidos-a-las-bases-de-inferencia-causal" class="title-slide slide level1 center">
 <h1>Bienvenidos a las bases de inferencia causal</h1>
 
 </section>
 
 <section>
-<section id="confusión" class="title-slide slide level1 center">
-<h1>6. Confusión</h1>
+<section id="inferencia-causal" class="title-slide slide level1 center">
+<h1>6. Inferencia causal</h1>
+
+</section>
+<section id="inferencia-causal-1" class="slide level2">
+<h2>6. Inferencia causal</h2>
+<div style="margin-top:50px;font-size:65px">
+<p><strong>Predecir la exposición</strong></p>
+<ul>
+<li>Richard McElreath, <em>Statistical Rethinking</em> -</li>
+</ul>
+</div>
+</section>
+<section id="inferencia-causal-2" class="slide level2">
+<h2>6. Inferencia causal</h2>
+<div style="margin-top:50px;font-size:65px">
+<p><strong>Simular la exposición</strong></p>
+<ul>
+<li>Richard McElreath, <em>Statistical Rethinking</em> -</li>
+</ul>
+</div>
+</section>
+<section id="inferencia-causal-3" class="slide level2">
+<h2>6. Inferencia causal</h2>
+<ul>
+<li>¿Qué hubiera pasado si todo los individuos hubieran tenido exposición?</li>
+<li>¿Qué hubiera pasado si todo los individuos No hubieran tenido exposición?</li>
+</ul>
+</section>
+<section id="inferencia-causal-4" class="slide level2">
+<h2>6. Inferencia causal</h2>
+<p>Mete en un modelo todas las variables que se te ocurren e interpreta entonces todos los coeficientes como efectos causales. a qver qué sale</p>
+<p>Aitor Gonzalez, tu estadístico de confianza. Y cada día el de menos gente</p>
+</section>
+<section id="inferencia-causal-5" class="slide level2">
+<h2>6. Inferencia causal</h2>
+<p><strong>Ciencia antes que estadística</strong></p>
+<p>Supongamos que tenemos un DAG. Y que el DAG es correcto. Esto que acabo de escribir, de que el DAG es correcto es la principal asunción de toda la inferencia causal. No hay inferencia causal sin una descripción explícita de tu modelo causal</p>
+</section></section>
+<section>
+<section id="ajustando-la-confusión" class="title-slide slide level1 center">
+<h1>6. Ajustando la confusión</h1>
 
 </section>
 <section id="la-paradoja-de-simpson" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">6.1. La paradoja de Simpson</h2>
 
-<img data-src="Imagenes/paradoja_simpson.jpg" class="r-stretch quarto-figure-center"></section>
+<img data-src="Imagenes/paradoja_simpson.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="las-variables-externas" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">6.2. Las variables externas</h2>
 
-<img data-src="Imagenes/efectos_externos.png" class="r-stretch quarto-figure-center"><div style="text-align:center; font-size:28px">
+<img data-src="Imagenes/efectos_externos.png" class="quarto-figure quarto-figure-center r-stretch"><div style="text-align:center; font-size:28px">
 <p><em>“La gripe se elimina con paracetamol en 7 días. Si no, se cura sola en una semana.”</em></p>
 </div>
 </section></section>
-<section id="cómo-lidiamos-con-los-factores-externos" class="title-slide slide level1 center">
-<h1>¿Cómo lidiamos con los factores externos?</h1>
+<section id="cómo-lidiamos-con-la-confusión" class="title-slide slide level1 center">
+<h1>¿Cómo lidiamos con la confusión?</h1>
 
 </section>
 
@@ -1504,9 +1948,25 @@ SMD = \frac{M_1 - M_2}{\sqrt{\frac{SD_1 + SD_2}{2}}}
 </section>
 <section id="propensity-score-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">7. Propensity score</h2>
-<div style="margin-top:15px;">
+<div style="margin-top:50px;font-size:65px">
+<p>El <em>Emparejamiento por Puntuación de Propensión (PSM)</em> es una técnica estadística utilizada para estimar el efecto causal de un tratamiento o intervención <strong>cuando no es posible realizar un experimento aleatorio.</strong></p>
+</div>
+</section>
+<section id="propensity-score-objetivo" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">7. Propensity score: Objetivo</h2>
+<div style="margin-top:50px;font-size:50px">
+<ul>
+<li><em>Reducir el sesgo de confusión</em>: Controla por variables observadas que podrían influir en la asignación del tratamiento y en el resultado.</li>
+<li><em>Simular un ensayo aleatorio</em>: trata de igualar el grupo de control al grupo experiemntal.</li>
+</ul>
+</div>
+</section>
+<section id="propensity-score-técnica" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">7. Propensity score: técnica</h2>
+<div style="margin-top:50px;font-size:55px">
 <ul>
 <li>Para cada sujeto, calcular la probabilidad (puntuación de propensión) de recibir la exposición en función de unas covariables observadas, mediante un modelo de clasificación.</li>
+<li><del>Respuesta</del> <span class="math inline">\(exposición \sim covariables\)</span></li>
 </ul>
 </div>
 </section>
@@ -1525,7 +1985,7 @@ SMD = \frac{M_1 - M_2}{\sqrt{\frac{SD_1 + SD_2}{2}}}
 <h2 data-id="quarto-animate-title">7.1. Criterios para seleccionar las covariables</h2>
 <p>Además se debe considerar que:</p>
 <ul>
-<li>No todas las covariables tienen la misma importancia.</li>
+<li>Algunas variables <strong>no deben equilibrarse</strong> (características innatas de los grupos)</li>
 <li>Se seleccionarán únicamente aquellas que probablemente afecten al resultado.</li>
 <li>No se deben utilizar los datos de resultados en el proceso de Propensity Score.</li>
 </ul>
@@ -1533,19 +1993,41 @@ SMD = \frac{M_1 - M_2}{\sqrt{\frac{SD_1 + SD_2}{2}}}
 <section id="análisis-de-ps-paso-a-paso" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">7.2. Análisis de <em>PS</em> paso a paso</h2>
 
-<img data-src="Imagenes/Propensity_pasos.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="emparejamiento-por-puntuación-de-propensión" class="slide level2" data-auto-animate="true">
+<img data-src="Imagenes/Propensity_pasos.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="emparejamiento-por-puntuación-de-propensión" class="slide level2 scrollable" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">8. Emparejamiento por puntuación de propensión</h2>
+<ol type="1">
+<li><p><strong>Estimación de la Puntuación de Propensión</strong>: Se calcula la probabilidad de cada sujeto de recibir el tratamiento basado en las covariables.</p></li>
+<li><p><strong>Emparejamiento</strong>: Cada sujeto tratado se empareja con uno o más sujetos de control con puntuaciones de propensión similares.</p></li>
+<li><p><strong>Análisis</strong>: Se compara el resultado entre los grupos emparejados.</p></li>
+</ol>
 </section>
 <section id="ipwra" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">9. IPWRA</h2>
+<p>El <strong>IPTW (Inverse Probability of Treatment Weighting)</strong> es una técnica que utiliza las puntuaciones de propensión para asignar pesos a los sujetos, permitiendo estimar el efecto causal del tratamiento en una población equilibrada.</p>
+</section>
+<section id="ipwra-1" class="slide level2 scrollable" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">9. IPWRA</h2>
+<ol type="1">
+<li><p><strong>Cálculo de las Puntuaciones de Propensión</strong>: Al igual que en el PSM, se calculan las probabilidades de la exposición para cada sujeto.</p></li>
+<li><p><strong>Asignación de Pesos</strong>:</p>
+<ul>
+<li>Sujeto tratado: Peso = 1 / Puntuación de Propensión</li>
+<li>Sujeto no tratado: Peso = 1 / (1 - Puntuación de Propensión)</li>
+</ul></li>
+<li><p><strong>Análisis Ponderado</strong>: Se realiza el análisis del efecto del tratamiento usando los pesos asignados para ajustar las diferencias entre los grupos.</p></li>
+</ol>
+</section>
+<section id="ipwra-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">9. IPWRA</h2>
+<p>El Emparejamiento por Puntuación de Propensión y la Ponderación por Inverso de la Probabilidad de Tratamiento son herramientas poderosas para realizar análisis causales en estudios observacionales, permitiendo controlar el sesgo de confusión y aproximar los efectos de un experimento aleatorio.</p>
 </section></section>
 <section>
 <section id="ejercicio-práctico-programar-un-propensity-score" class="title-slide slide level1 center">
 <h1>10. Ejercicio práctico: programar un propensity score</h1>
 
 </section>
-<section id="ejercicio-práctico-programar-un-propensity-score-1" class="slide level2" data-auto-animate="true">
+<section id="ejercicio-práctico-programar-un-propensity-score-1" class="slide level2 scrollable" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">10. Ejercicio práctico: programar un propensity score</h2>
 <div style="font-size:28px;">
 <ol type="1">
@@ -1559,8 +2041,10 @@ SMD = \frac{M_1 - M_2}{\sqrt{\frac{SD_1 + SD_2}{2}}}
 <li>Visualizar los IPWT e individuos extrañamente alejados.</li>
 </ol>
 </div>
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section></section>
     </div>
@@ -1589,7 +2073,6 @@ SMD = \frac{M_1 - M_2}{\sqrt{\frac{SD_1 + SD_2}{2}}}
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1775,42 +2258,80 @@ SMD = \frac{M_1 - M_2}{\sqrt{\frac{SD_1 + SD_2}{2}}}
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1888,10 +2409,27 @@ SMD = \frac{M_1 - M_2}{\sqrt{\frac{SD_1 + SD_2}{2}}}
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1901,8 +2439,17 @@ SMD = \frac{M_1 - M_2}{\sqrt{\frac{SD_1 + SD_2}{2}}}
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1916,7 +2463,11 @@ SMD = \frac{M_1 - M_2}{\sqrt{\frac{SD_1 + SD_2}{2}}}
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

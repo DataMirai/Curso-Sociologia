@@ -20,15 +20,13 @@ editor:
     **conocimientos en** **técnicas, expresividad herramientas y
     referencias/inspiración.**
 
-
 ## 1. Modelizar es un arte {auto-animate="true"}
-
 
 -   Cualquiera puede hacer *modelos.*
 
 -   Pero una buena carrera en el mundo de al modelización de datos
-    requiere de **conocimientos en modelos, contexto de datos y diseño experimental.**
-
+    requiere de **conocimientos en modelos, contexto de datos y diseño
+    experimental.**
 
 ## 1. Modelizar es un arte {auto-animate="true"}
 
@@ -41,13 +39,12 @@ Yo apenas puedo explicar *contexto de datos*... pero si puedo ayudar en
 
 -   **No hay un modelo mejor que otro**: cada situación requerirá de
     diferentes herramientas.
-    
 
     -   La **Regresión logística**, por ejemplo, es deseable cuando
         funciona porque los parámetros son muy interpretables.
-    -   <span style="color:red"> Los **Random Forest** son geniales porque pueden lidiar con
-        patrones muy difíciles, pero olvídate de </span>
-
+    -   [Los **Random Forest** son geniales porque pueden lidiar con
+        patrones muy difíciles, pero olvídate de su
+        interpretación]{style="color:red"}
 
 ## 1. Modelizar es un arte {auto-animate="true"}
 
@@ -66,6 +63,9 @@ a lo largo de este curso.**
 
 -   Sin esto, **los modelos fallarán a la hora de inferenciar.**
 
+## 1. Modelizar es un arte {auto-animate="true"}
+
+![](Imagenes/extrapolating.png)
 
 # 2. Todos los modelos están equivocados {auto-animate="true"}
 
@@ -111,9 +111,8 @@ a lo largo de este curso.**
 ## 2. Todos los modelos están equivocados {auto-animate="true"}
 
 ::: {style="font-size:35px;"}
--   Criterios para la elección de modelos:
+-   Criterios para la elección de modelos, segñun Box:
 :::
-
 
 ::: {style="margin-left:50px; font-size:35px;"}
 -   **Parsimonia**
@@ -123,7 +122,6 @@ a lo largo de este curso.**
 -   **Preocupación selectiva**
     -   Hay que conocer el contexto para detectar en qué punto está el
         error.
-
 :::
 
 # 3. Diseño experimental {auto-animate="true"}
@@ -137,8 +135,9 @@ a lo largo de este curso.**
 ## 3. Diseño experimental {auto-animate="true"}
 
 ::: {style="margin-top:180px; text-align:center;"}
-Permite identificar y cuantificar las causas de un efecto dentro de un
-estudio experimental.
+**Diseño experimental**: rama de la estadística que permite identificar
+y cuantificar el tamaño de un efecto dentro de un estudio, miniminzando
+la confusión y permitiendo causalidad.
 :::
 
 ## 3. Diseño experimental {auto-animate="true"}
@@ -148,15 +147,15 @@ estudio experimental.
 ## 3.1. Tipos de diseño experimental {auto-animate="true"}
 
 ::: {style="margin-top:50px;"}
--   Para poder hacer cualquier estudio, es necesario tener un objetivo,
-    normalmente algo con lo que comparar.
+Para poder hacer cualquier estudio, es necesario tener un objetivo,
+normalmente algo con lo que comparar.
 :::
 
 ## 3.1. Tipos de diseño experimental {auto-animate="true"}
 
 ::: {style="margin-top:50px;"}
--   Para poder hacer cualquier estudio, es necesario tener un objetivo,
-    normalmente algo con lo que comparar.
+Para poder hacer cualquier estudio, es necesario tener un objetivo,
+normalmente algo con lo que comparar.
 :::
 
 ::: {style="font-size:55px; margin-top:70px; text-align:center;"}
@@ -165,7 +164,6 @@ estudio experimental.
 
 ## 3.1. Tipos de diseño experimental {auto-animate="true"}
 
-
 ::: {style="margin-top:70px;"}
 -   Todo estudio necesita un "**tratamiento** *vs* **control**" <br>
     <br>
@@ -173,7 +171,6 @@ estudio experimental.
     <br> <br>
 -   Todo estudio necesita un "**hace algo** *vs* **no hace algo**"
 :::
-
 
 ## 3.1. Tipos de diseño experimental {auto-animate="true"}
 
@@ -192,7 +189,6 @@ fig-align="center"}
     sociología cuando es posible implementarlos. Estos estudios
     proporcionan evidencia más sólida sobre las relaciones causales.
 
-
 ## 3.2.1. Ejemplos de Aplicación en Sociología {auto-animate="true"}
 
 -   **Estudios Observacionales:** Un estudio longitudinal que investiga
@@ -202,7 +198,6 @@ fig-align="center"}
 -   **Experimentos Aleatorizados:** Un experimento de campo que mide el
     impacto de un programa de intervención social (como tutoría escolar)
     en el rendimiento académico de los estudiantes.
-
 
 ## 3.3. Estudios observacionales {auto-animate="true"}
 
@@ -221,7 +216,6 @@ fig-align="center"}
 -   **Estudios ecológicos:** Involucran la observación participante y
     entrevistas para comprender las culturas y prácticas de grupos
     específicos.
-
 :::
 
 ## 3.4. Estudios experimentales aleatorizados {auto-animate="true"}
@@ -241,20 +235,53 @@ fig-align="center"}
     grupos experimentales y de control. En sociología se utilizan para
     estudiar el efecto de intervenciones específicas en la conducta
     social.
-    
 :::
 
 ::: {style="font-size:40px; text-align:left;"}
 # Para hacer un experimento/modelo hay que tener 2 grupos
 :::
 
-# 4. ¿Cómo sé que existe una diferencia entre ambos grupos ?
+# 4. ¿Cómo sabemos que existe una diferencia entre 2 grupos ?
+
+## 4.1. Conocimiento previo/experto {auto-animate="true"}
 
 ## 4.1. Conocimiento previo/experto {auto-animate="true"}
 
 ::: {style="text-align:center; margin-top:180px; font-size:45px"}
 **Nada supera el conocimiento del experto.**
 :::
+
+## 4.1. Conocimiento previo/experto {auto-animate="true"}
+
+::: {style="text-align:center; margin-top:180px; font-size:45px"}
+**Nada supera el conocimiento del experto. Pero...**
+:::
+
+## 4.1. Conocimiento previo/experto {auto-animate="true"}
+
+![](Imagenes/pelea_variables.jpg)
+
+## 4.1. Conocimiento previo/experto {auto-animate="true"}
+
+::: {style="text-align:center; margin-top:130px; font-size:45px"}
+**Nada supera el conocimiento del experto.**
+:::
+
+::: {style="text-align:center; margin-top:130px; font-size:45px"}
+**pero hay que ayudarle a que tome la dirección correcta**
+:::
+
+## 4.1.1. Conocimiento previo/experto: Caso práctico {auto-animate="true"}
+
+Un economista tiene una hipótesis. Los periodos históricos con baja
+varianza en la taa del PIBxC han sido periodos democráticamnete
+estables.
+
+Para poder estimar esa variabilidad utilizo la varianza:
+
+$$
+varianza = \frac{\sum\sqrt{(PIBxC - \overline{PIBxC})^2}}{n} 
+$$
 
 ## 4.1.1. Conocimiento previo/experto: Caso práctico {auto-animate="true"}
 
@@ -307,11 +334,15 @@ PIB_datos %>%
 :::
 
 ::: {style="font-size:30px; text-align:center;"}
-
 **Media Desviación_experto:** *0.0455*
+:::
+:::
+:::
 
-:::
-:::
+## 4.1.1. Conocimiento previo/experto: Caso práctico {auto-animate="true"}
+
+::: {style="text-align:center; margin-top:180px; font-size:45px"}
+**¿0.0455 qué?**
 :::
 
 ## 4.1.1. Conocimiento previo/experto: Caso práctico {auto-animate="true"}
@@ -415,7 +446,6 @@ PIB_periodos <-  PIB_2 %>%
   ungroup()
 
 PIB_periodos
-
 ```
 :::
 
@@ -438,48 +468,53 @@ PIB_periodos_subperiodos
 
 ## 4.1.1. Conocimiento previo/experto: Caso práctico {auto-animate="true"}
 
-::: {style="text-align:center; margin-top:130px; font-size:45px"}
-El conocimiento del experto tiene que ser reforzado, pero en muchas
-ocasiones es mejor reforzarlo usando un modelo bien fundamentado.
+::: {style="text-align:center; margin-top:100px; font-size:45px"}
+El conocimiento del experto tiene una buena intuición, pero por si
+acaso, reforzarlo usando un modelo bien fundamentado.
+:::
+
+::: {style="text-align:center; margin-top:50px; font-size:45px"}
+Debemos estar en mismas unidades para poder comparar dos fenómenos.
 :::
 
 ## 4.1.1. Conocimiento previo/experto: Caso práctico {auto-animate="true"}
 
 ::: {style="font-size:35px"}
-
-1.  No se tuvo en cuenta el factor de inflación, demasiada poca
-    desviación.
-2.  Desviación no necesariamente tiene que ser negativo, puede deberse
-    al crecimiento económico.
-3.  Incluso dentro de un periodo, los subperiodos contienen información.
-
+1.  No se tuvo en cuenta la tendencia en la serie de tiempo, sea debida
+    a la inflación o por revolución tecnológica.
+2.  Desviación no necesariamente significa negativo, existe la
+    desviación positiva por crecimiento económico.
+3.  Dentro de un periodo, hay subperiodos. Estos contienen información.
+    No desperdiciarla.
 :::
 
 ## 4.1.1. Conocimiento previo/experto: Caso práctico {auto-animate="true"}
 
 ::: {style="font-size:35px"}
-1.  No se tuvo en cuenta el factor de inflación, demasiada poca
-    desviación.
-2.  Desviación no necesariamente tiene que ser negativo, puede deberse
-    al crecimiento económico.
-3.  Incluso dentro de un periodo, los subperiodos contienen información.
+1.  No se tuvo en cuenta la tendencia en la serie de tiempo, sea debida
+    a la inflación o por revolución tecnológica.
+2.  Desviación no necesariamente significa negativo, existe la
+    desviación positiva por crecimiento económico.
+3.  Dentro de un periodo, hay subperiodos. Estos contienen información.
+    No desperdiciarla.
 :::
 
 ::: {style="font-size:40px; margin-top:30px; text-align:center;"}
-**NUNCA JAMÁS ignorar la descriptiva, jugar con ella es demasiado
-valioso**
+**NUNCA NUNCA NUNCA ignorar la descriptiva**
+:::
+
+::: {style="font-size:40px; text-align:left;"}
+# ¿Qué criterio usar para comparar dos grupos?
 :::
 
 ## 4.2. El *P valor* {auto-animate="true"}
 
-
--   *P valor* es la probabilidad de que lo que hayas observado sea no
+-   **P valor** es la *probabilidad de que lo que hayas observado sea no
     aleatorio, asumiendo que la hipótesis nula de la cual se parte es
-    cierta.
+    cierta.*
 
 -   Tener un *P valor* de 0.05 viene a significar que la probabilidad de
     que lo que se está observando NO es aleatorio es de un 5%.
-
 
 ## 4.2. El *P valor* {auto-animate="true"}
 
@@ -495,13 +530,11 @@ valioso**
 
 ## 4.2.1. Puntos débiles de los *P valores* {auto-animate="true"}
 
-
 -   Un *P valor* NO dice nada sobre la importancia clínica o científica.
 -   Un *P valor* NO tiene en cuenta el sesgo, sólo el error aleatorio.
 -   Un *P valor* «muy bajo» NO implica que la variable o magnitud del
     efecto del tratamiento tenga relevancia.
 -   NUNCA se deben comparar *P valores*.
-
 
 ## 4.2.2. Dependencias de los *P valores*? {auto-animate="true"}
 
@@ -530,11 +563,14 @@ valioso**
     (aunque no increíblemente grandes).
 :::
 
+-   Hagamos un ejemplo con test de normalidad para diversas cantidades
+    de datos (10,100,1000,5000)
+
 ## 4.2.2. Dependencias de los *P valores*? {auto-animate="true"}
 
 ```{r}
 x <- replicate(100, 
-  { # generates 100 different tests on each distribution
+  { # genera 100 pruebas diferentes para los 4 tamaños de muestra, cada una  en cada distribución
     c(
       shapiro.test(rnorm(10))$p.value,   #$
       shapiro.test(rnorm(100))$p.value,  #$
@@ -544,11 +580,9 @@ x <- replicate(100,
 )
 ```
 
-
 ```{r}
 rownames(x) <- c("n10","n100","n1000","n5000")
 ```
-
 
 ::: {style="font-size:35px; margin-top:30px;"}
 ```{r}
@@ -564,18 +598,98 @@ x
 x<0.05
 ```
 
+## 4.2.2. Dependencias de los *P valores*? {auto-animate="true"}
+
+```{r}
+x <- replicate(100, 
+  { # genera 100 pruebas diferentes para los 4 tamaños de muestra, cada una  en cada distribución
+    c(
+      shapiro.test(rnorm(10  ) + c(1,0,2,0,1))$p.value, #$
+      shapiro.test(rnorm(100 ) + c(1,0,2,0,1))$p.value, #$
+      shapiro.test(rnorm(1000) + c(1,0,2,0,1))$p.value, #$
+      shapiro.test(rnorm(5000) + c(1,0,2,0,1))$p.value)
+  }
+)
+```
+
+```{r}
+rownames(x) <- c("n10","n100","n1000","n5000")
+```
+
+::: {style="font-size:35px; margin-top:30px;"}
+```{r}
+x
+```
+:::
+
+## 4.2.2. Dependencias de los *P valores*? {auto-animate="true"}
+
+::: {style="font-size:35px; margin-top:30px;"}
+¿Se rechaza la hipotesis nula?
+
+```{r}
+x < 0.05
+```
 :::
 
 ## 4.2.2. Dependencias de los *P valores*? {auto-animate="true"}
 
 ::: {style="font-size:30px; margin-top:20px;"}
-- Proporción de desviaciones significativas:
+-   Proporción de desviaciones significativas:
 :::
 
 ::: {style="margin-top:0px; text-align:center;"}
+```{r}
+rowMeans( x < 0.05) # the proportion of significant deviations
+# Proporcion de desviaciones significativas
+# Proporción de veces que  que se rechaza la hipotesis nula
+
+```
+:::
+
+## 4.2.2. Dependencias de los *P valores*? {auto-animate="true"}
 
 ```{r}
-rowMeans(x<0.05) # the proportion of significant deviations
+x <- replicate(100, 
+  { # genera 100 pruebas diferentes para los 4 tamaños de muestra, cada una  en cada distribución
+    c(
+      shapiro.test(rnorm(10  ) + c(1,0,4,0,1))$p.value, #$
+      shapiro.test(rnorm(100 ) + c(1,0,4,0,1))$p.value, #$
+      shapiro.test(rnorm(1000) + c(1,0,4,0,1))$p.value, #$
+      shapiro.test(rnorm(5000) + c(1,0,4,0,1))$p.value)
+  }
+)
+```
+
+```{r}
+rownames(x) <- c("n10","n100","n1000","n5000")
+```
+
+::: {style="font-size:35px; margin-top:30px;"}
+```{r}
+x
+```
+:::
+
+## 4.2.2. Dependencias de los *P valores*? {auto-animate="true"}
+
+::: {style="font-size:35px; margin-top:30px;"}
+¿Se rechaza la hipotesis nula?
+
+```{r}
+x < 0.05
+```
+:::
+
+## 4.2.2. Dependencias de los *P valores*? {auto-animate="true"}
+
+::: {style="font-size:30px; margin-top:20px;"}
+-   Proporción de desviaciones significativas:
+:::
+
+::: {style="margin-top:0px; text-align:center;"}
+```{r}
+rowMeans( x < 0.05) # the proportion of significant deviations
 # Proporcion de desviaciones significativas
 # Proporción de veces que  que se rechaza la hipotesis nula
 
@@ -631,7 +745,6 @@ Donde :
 -   $M_2$ es la media o proporción del grupo 2
 -   $S_1$ es desviación estándar del grupo 1
 -   $S_2$ es desviación estándar del grupo 2
-
 :::
 
 ## 5. Standarized mean deviation *(SMD)* {auto-animate="true"}
@@ -647,9 +760,71 @@ Donde :
 
 # ¿y por qué son mejores que el *P valor*?
 
+## 5. Standarized mean deviation *(SMD)* {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+**SMD**
+
+-   proporciona una medida de la magnitud del efecto.
+
+-   La SMD son una medida estandarizada.
+
+-   Consistencia**:** menos sensible al tamaño de la muestra
+:::
+
+::: {.column width="50%"}
+**P.valor**
+
+-   Significación Binaria: o son diferentes o no lo son. SImplista
+
+-   Dependencia del Tamaño de Muestra
+
+-   **No Indica Tamaño del Efecto**
+:::
+:::
+
 # Bienvenidos a las bases de inferencia causal
 
-# 6. Confusión
+# 6. Inferencia causal
+
+## 6. Inferencia causal
+
+::: {style="margin-top:50px;font-size:65px"}
+
+**Predecir la exposición**
+
+- Richard McElreath, *Statistical Rethinking* -
+:::
+
+## 6. Inferencia causal
+
+::: {style="margin-top:50px;font-size:65px"}
+
+**Simular la exposición**
+
+- Richard McElreath, *Statistical Rethinking* -
+:::
+
+## 6. Inferencia causal
+
+- ¿Qué hubiera pasado si todo los individuos hubieran tenido exposición?
+- ¿Qué hubiera pasado si todo los individuos No hubieran tenido exposición?
+
+## 6. Inferencia causal
+
+Mete en un modelo todas las variables que se te ocurren e interpreta entonces todos los coeficientes como efectos causales. a qver qué sale
+
+Aitor Gonzalez, tu estadístico de confianza. Y cada día el de menos gente
+
+## 6. Inferencia causal
+
+**Ciencia antes que estadística**
+
+Supongamos que tenemos un DAG. Y que el DAG es correcto. Esto que acabo de escribir, de que el DAG es correcto es la principal asunción de toda la inferencia causal. No hay inferencia causal sin una descripción explícita de tu modelo causal 
+
+
+# 6. Ajustando la confusión
 
 ## 6.1. La paradoja de Simpson {auto-animate="true"}
 
@@ -660,19 +835,40 @@ Donde :
 ![](Imagenes/efectos_externos.png){fig-align="center"}
 
 ::: {style="text-align:center; font-size:28px"}
-*"La gripe se elimina con paracetamol en 7 días. Si no, se cura sola en una semana."*
+*"La gripe se elimina con paracetamol en 7 días. Si no, se cura sola en
+una semana."*
 :::
 
-# ¿Cómo lidiamos con los factores externos?
+# ¿Cómo lidiamos con la confusión?
 
 # 7. Propensity score
 
 ## 7. Propensity score {auto-animate="true"}
 
-::: {style="margin-top:15px;"}
+::: {style="margin-top:50px;font-size:65px"}
+
+El *Emparejamiento por Puntuación de Propensión (PSM)* es una técnica estadística utilizada para estimar el efecto causal de un tratamiento o intervención **cuando no es posible realizar un experimento aleatorio.**
+:::
+
+
+## 7. Propensity score: Objetivo {auto-animate="true"}
+
+::: {style="margin-top:50px;font-size:50px"}
+
+- *Reducir el sesgo de confusión*: Controla por variables observadas que podrían influir en la asignación del tratamiento y en el resultado.
+- *Simular un ensayo aleatorio*: trata de igualar el grupo de control al grupo experiemntal.
+
+:::
+
+
+
+## 7. Propensity score: técnica {auto-animate="true"}
+
+::: {style="margin-top:50px;font-size:55px"}
 -   Para cada sujeto, calcular la probabilidad (puntuación de
     propensión) de recibir la exposición en función de unas covariables
     observadas, mediante un modelo de clasificación.
+-   ~~Respuesta~~ $exposición \sim covariables$
 :::
 
 ## 7.1. Criterios para seleccionar las covariables {auto-animate="true"}
@@ -686,16 +882,14 @@ Donde :
     -   incluyan los **factores de riesgo** y los **términos de
         interacción** importantes entre los factores de confusión.
 
-
 ## 7.1. Criterios para seleccionar las covariables {auto-animate="true"}
 
 Además se debe considerar que:
 
--   No todas las covariables tienen la misma importancia.
+-   Algunas variables **no deben equilibrarse** (características innatas de los grupos)
 -   Se seleccionarán únicamente aquellas que probablemente afecten al
     resultado.
--   No se deben utilizar los datos de resultados en el proceso de
-    Propensity Score.
+-   No se deben utilizar los datos de resultados en el proceso de Propensity Score.
 
 ## 7.2. Análisis de *PS* paso a paso {auto-animate="true"}
 
@@ -703,7 +897,30 @@ Además se debe considerar que:
 
 ## 8. Emparejamiento por puntuación de propensión {auto-animate="true"}
 
+1. **Estimación de la Puntuación de Propensión**: Se calcula la probabilidad de cada sujeto de recibir el tratamiento basado en las covariables.
+
+2. **Emparejamiento**: Cada sujeto tratado se empareja con uno o más sujetos de control con puntuaciones de propensión similares.
+
+3. **Análisis**: Se compara el resultado entre los grupos emparejados.
+
 ## 9. IPWRA {auto-animate="true"}
+
+El **IPTW (Inverse Probability of Treatment Weighting)** es una técnica que utiliza las puntuaciones de propensión para asignar pesos a los sujetos, permitiendo estimar el efecto causal del tratamiento en una población equilibrada.
+
+## 9. IPWRA {auto-animate="true"}
+
+1. **Cálculo de las Puntuaciones de Propensión**: Al igual que en el PSM, se calculan las probabilidades de la exposición para cada sujeto.
+
+2. **Asignación de Pesos**:
+    - Sujeto tratado: Peso = 1 / Puntuación de Propensión
+    - Sujeto no tratado: Peso = 1 / (1 - Puntuación de Propensión)
+
+3. **Análisis Ponderado**: Se realiza el análisis del efecto del tratamiento usando los pesos asignados para ajustar las diferencias entre los grupos.
+
+## 9. IPWRA {auto-animate="true"}
+
+El Emparejamiento por Puntuación de Propensión y la Ponderación por Inverso de la Probabilidad de Tratamiento son herramientas poderosas para realizar análisis causales en estudios observacionales, permitiendo controlar el sesgo de confusión y aproximar los efectos de un experimento aleatorio.
+
 
 # 10. Ejercicio práctico: programar un propensity score
 
