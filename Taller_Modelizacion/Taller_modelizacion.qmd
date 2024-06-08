@@ -262,103 +262,166 @@ temporales**
 
 # 3. Pre-procesamiento
 
-# Diagrama:
+## 3. Pre-procesamiento
 
--   Línea de Datos: aprendizaje a Entrenamiento del modelo : Pre
-    procesamiento
+```{mermaid, height=800, width=800}
+%%| fig-width: 6
+%%| fig-cap: | 
 
-## Fases
 
+flowchart TD
+    A[Pregunta / hipótesis] -->|Conseguir Datos| B[Datos]
+    B --> C[Datos: Entrenamiento]
+    B --> F[Datos: Evaluación]
+    C --> D[Datos: Aprendizaje]
+    C -->|Conjunto de validación| E[Datos: Validación]
+    D -->|"<div style='color:#004d99; font-weight:bold; background-color:#FFFFFF;'>Pre procesamiento</div>"| G[Entrenamiento del modelo]
+    E -->|HiperParámetros| G
+    G -->|Métricas Entrenamiento| H[Entrenamiento Seleccionado]
+    H --> F
+    F -->|Métricas Testing| I[Modelo Final]
+    I -.-> |No satisfactorio| G
+    I -->|Cloud Services| J[Modelo en producción]
+    H -.->|Re-procesamiento| G
+    
+  
+    style D fill:#004d99
+    style D color:#FFFFFF
+    linkStyle 5 lineColor:#004d99, stroke:#004d99, stroke-width:4px;
+    
+```
+
+
+## 3.1. Fases
+
+<div style="font-size:34px;">
 La fase más artesanal dentro del machine learning. Ayuda a preparar los
 datos para ser usados con mayor eficiencia, mejorando la calidad del
 aprendizaje.
 
-1.  *Limpieza de datos* (Data Cleaning)
-2.  *Transformación de datos* (Data Transformation)
-3.  *Codificación de datos categóricos* (Categorical Data Encoding)
-4.  *Reducción de dimensionalidad* (Dimensionality Reduction)
-5.  *Selección de características* (Feature Selection)
-6.  *Creación de características* (Feature Engineering)
-7.  *Muestreo equilibrador* (Sampling)
+1.  **Limpieza de datos** *(Data Cleaning)*
+2.  **Transformación de datos** *(Data Transformation)*
+3.  **Codificación de datos categóricos** *(Categorical Data Encoding)*
+4.  **Reducción de dimensionalidad** *(Dimensionality Reduction)*
+5.  **Selección de características** *(Feature Selection)*
+6.  **Creación de características** *(Feature Engineering)*
+7.  **Muestreo equilibrador** *(Sampling)*
 
-## Limpieza de datos (Data Cleaning)
+</div>
 
+## 3.1.1. Limpieza de datos *(Data Cleaning)*
+
+<div style="font-size:34px;">
 -   **Descarte de variables**: Descartar variables con alta presencia de
     valores nulos o de variables altísimamente correlacionadas.
 -   **Tratamiento de valores nulos**: Técnica de Imputación o "relleno
     de valores faltantes"; se puede usar métodos como imputar por algún
     estadístico resumen, como la media, o utilizando métodos más
-    sofisticados como la imputación por algoritmos predictores
+    sofisticados como la imputación por algoritmos predictores.
 -   **Eliminación de duplicados**: Remover filas duplicadas para evitar
     sesgos en el modelo.
 -   **Corrección de errores tipográficos**: Identificación y corrección
     de errores tipográficos o inconsistencias en los datos.
+</div>
 
-## Limpieza de datos (Data Cleaning) (Imputación)
+## 3.1.1. Limpieza de datos *(Data Cleaning)* (Imputación)
 
--   *Missing Completely at Random (MCAR)*: Los datos se consideran MCAR
+-   **Missing Completely at Random (MCAR)**: Los datos se consideran *MCAR*
     cuando la probabilidad de que un dato esté perdido es completamente
     independiente de cualquier variable.
-    -   (ej: datos perdidos por errores técnicos)
--   *Missing at Random (MAR)*: Los datos se consideran MAR cuando la
+    -   Ej: Datos perdidos por errores técnicos.
+  
+## 3.1.1. Limpieza de datos *(Data Cleaning)* (Imputación)
+
+-   **Missing at Random (MAR)**: Los datos se consideran *MAR* cuando la
     probabilidad de que un dato esté perdido depende de otras variables
     observadas en el dataset, pero no del valor de la variable en sí
     misma que falta. **Los datos faltantes pueden ser predichos por
     otras variables observadas.**
-    -   (ej: las personas con educación más baja son menos propensas a
-        declarar su ingreso))
--   *Missing Not at Random (MNAR)*: Los datos se consideran MNAR cuando
+    -   Ej: Las personas con educación más baja son menos propensas a
+        declarar su ingreso).
+
+## 3.1.1. Limpieza de datos *(Data Cleaning)* (Imputación)
+
+-   **Missing Not at Random (MNAR)**: Los datos se consideran *MNAR* cuando
     la probabilidad de que un dato esté perdido depende del valor de la
     variable que falta. Aquí, los datos faltantes no son aleatorios y
     están relacionados con las propias observaciones faltantes.
-    -   (ej: las personas con niveles más altos de depresión pueden ser
-        menos propensas a responder preguntas sobre su estado mental)
+    -   Ej: Las personas con niveles más altos de depresión pueden ser
+        menos propensas a responder preguntas sobre su estado mental.
 
-En la práctica se asume que $CAR = MCAR$
+## 3.1.1. Limpieza de datos *(Data Cleaning)* (Imputación)
 
-## Transformación de datos (Data Transformation)
+<div style="text-align:center; margin-top:180px;">
 
--   *Normalización*: Escalado de características a un rango específico
+En la práctica se asume que $CAR = MCAR$.
+
+</div>
+
+## 3.1.2. Transformación de datos *(Data Transformation)*
+
+<div style="font-size:38px;">
+-   **Normalización**: Escalado de características a un rango específico
     (por ejemplo, entre 0 y 1). Comúnmente utilizada para algoritmos
     como redes neuronales.
 
--   *Estandarización*: Escalado de características para que tengan media
+-   **Estandarización**: Escalado de características para que tengan media
     0 y desviación estándar 1. Usada frecuentemente en algoritmos como
     SVM y regresión logística.
 
--   *Transformaciones* logarítmicas o de Box-Cox: Aplicación de
+-   **Transformaciones logarítmicas** o de Box-Cox: Aplicación de
     funciones matemáticas para transformar datos sesgados a una
     distribución más normal.
 
-## Transformación de datos: logaritmos
+</div>
 
-Al usar la escala logarítmica, los coeficientes de un modelo de
-regresión se interpretan en términos de cambios porcentuales. **El
-modelo se vuelve interpretable desde el punto de vista relativo y no
-absoluto**. Esto es vital para tratar temas como el salario donde los
-incremnetos relativos son mucho más válidos que los absolutos.
+## 3.1.2 Transformación de datos: logaritmos
 
--   No es lo mismo incremenetar el salario 100€ a alguien que cobra
-    1.000€ al mes que a alguien con 10.000€ al mes.
+<div style="font-size:38px;">
+- Al usar la escala logarítmica, los coeficientes de un modelo de
+regresión se interpretan en términos de cambios porcentuales. 
+- **El modelo se vuelve interpretable desde el punto de vista relativo y no absoluto**. 
+- Esto es vital para tratar temas como el salario donde los
+incremnetos relativos son mucho más válidos que los absolutos:
 
-## Transformación de datos: logaritmos (ejemplo)
+   + No es lo mismo incremenetar el salario 100€ a alguien que cobra 1.000€ al mes que a alguien con 10.000€ al mes.
+</div>
 
-Asumamos 2 modelos:
+## 3.1.2 Transformación de datos: logaritmos 
+
+**Ejemplo:**
+<br>
+
+- *Asumamos 2 modelos:*
+
+<div style="font-size:32px;">
 
 $$
 Salario=2000+500(AñosExperiencia) + 1000(AñosEducación)
 $$
+</div>
+
+<div style="font-size:32px;">
 
 $$
 log(Salario)=2.5+0.04(AñosExperiencia)+0.08(AñosEducación)
-$$ Son el mismo modelo, la única diferencia es la escala de la variable
-respuesta *salario*
+$$ 
 
-## Transformación de datos: logaritmos (ejemplo
+</div>
+<br>
+Son el mismo modelo, la única diferencia es la escala de la variable
+respuesta *salario*.
 
+## 3.1.2 Transformación de datos: logaritmos
+
+**Ejemplo:**
+<br>
+
+<div style="font-size:32px;">
 $$
 Salario=2000+500(AñosExperiencia) + 1000(AñosEducación)
 $$ Los coeficientes indicarían incrementos **absolutos** en el salario:
+</div>
 
 -   Coeficiente de Años de Experiencia $\beta_{AñosExperiencia} = 500$:
     Cada año de experiencia aumentaría el salario en 500.

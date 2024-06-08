@@ -633,94 +633,158 @@ flowchart TD
 <li>La elección de la semilla puede influir en cómo se dividen los datos en conjuntos de entrenamiento y prueba, lo que a su vez puede afectar la evaluación del rendimiento del modelo. Es importante ser consistente con la semilla utilizada para garantizar la reproducibilidad de los resultados.</li>
 </ul>
 </section></section>
+<section>
 <section id="pre-procesamiento" class="title-slide slide level1 center">
 <h1>3. Pre-procesamiento</h1>
 
 </section>
-
-<section>
-<section id="diagrama" class="title-slide slide level1 center">
-<h1>Diagrama:</h1>
-<ul>
-<li>Línea de Datos: aprendizaje a Entrenamiento del modelo : Pre procesamiento</li>
-</ul>
+<section id="pre-procesamiento-1" class="slide level2">
+<h2>3. Pre-procesamiento</h2>
+<div class="cell" data-reveal="true" data-fig-width="6">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">
+flowchart TD
+    A[Pregunta / hipótesis] --&gt;|Conseguir Datos| B[Datos]
+    B --&gt; C[Datos: Entrenamiento]
+    B --&gt; F[Datos: Evaluación]
+    C --&gt; D[Datos: Aprendizaje]
+    C --&gt;|Conjunto de validación| E[Datos: Validación]
+    D --&gt;|"&lt;div style='color:#004d99; font-weight:bold; background-color:#FFFFFF;'&gt;Pre procesamiento&lt;/div&gt;"| G[Entrenamiento del modelo]
+    E --&gt;|HiperParámetros| G
+    G --&gt;|Métricas Entrenamiento| H[Entrenamiento Seleccionado]
+    H --&gt; F
+    F --&gt;|Métricas Testing| I[Modelo Final]
+    I -.-&gt; |No satisfactorio| G
+    I --&gt;|Cloud Services| J[Modelo en producción]
+    H -.-&gt;|Re-procesamiento| G
+    
+  
+    style D fill:#004d99
+    style D color:#FFFFFF
+    linkStyle 5 lineColor:#004d99, stroke:#004d99, stroke-width:4px;
+    
+</pre>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="fases" class="slide level2">
-<h2>Fases</h2>
+<h2>3.1. Fases</h2>
+<div style="font-size:34px;">
 <p>La fase más artesanal dentro del machine learning. Ayuda a preparar los datos para ser usados con mayor eficiencia, mejorando la calidad del aprendizaje.</p>
 <ol type="1">
-<li><em>Limpieza de datos</em> (Data Cleaning)</li>
-<li><em>Transformación de datos</em> (Data Transformation)</li>
-<li><em>Codificación de datos categóricos</em> (Categorical Data Encoding)</li>
-<li><em>Reducción de dimensionalidad</em> (Dimensionality Reduction)</li>
-<li><em>Selección de características</em> (Feature Selection)</li>
-<li><em>Creación de características</em> (Feature Engineering)</li>
-<li><em>Muestreo equilibrador</em> (Sampling)</li>
+<li><strong>Limpieza de datos</strong> <em>(Data Cleaning)</em></li>
+<li><strong>Transformación de datos</strong> <em>(Data Transformation)</em></li>
+<li><strong>Codificación de datos categóricos</strong> <em>(Categorical Data Encoding)</em></li>
+<li><strong>Reducción de dimensionalidad</strong> <em>(Dimensionality Reduction)</em></li>
+<li><strong>Selección de características</strong> <em>(Feature Selection)</em></li>
+<li><strong>Creación de características</strong> <em>(Feature Engineering)</em></li>
+<li><strong>Muestreo equilibrador</strong> <em>(Sampling)</em></li>
 </ol>
+</div>
 </section>
 <section id="limpieza-de-datos-data-cleaning" class="slide level2">
-<h2>Limpieza de datos (Data Cleaning)</h2>
+<h2>3.1.1. Limpieza de datos <em>(Data Cleaning)</em></h2>
+<div style="font-size:34px;">
 <ul>
 <li><strong>Descarte de variables</strong>: Descartar variables con alta presencia de valores nulos o de variables altísimamente correlacionadas.</li>
-<li><strong>Tratamiento de valores nulos</strong>: Técnica de Imputación o “relleno de valores faltantes”; se puede usar métodos como imputar por algún estadístico resumen, como la media, o utilizando métodos más sofisticados como la imputación por algoritmos predictores</li>
+<li><strong>Tratamiento de valores nulos</strong>: Técnica de Imputación o “relleno de valores faltantes”; se puede usar métodos como imputar por algún estadístico resumen, como la media, o utilizando métodos más sofisticados como la imputación por algoritmos predictores.</li>
 <li><strong>Eliminación de duplicados</strong>: Remover filas duplicadas para evitar sesgos en el modelo.</li>
 <li><strong>Corrección de errores tipográficos</strong>: Identificación y corrección de errores tipográficos o inconsistencias en los datos.</li>
 </ul>
+</div>
 </section>
 <section id="limpieza-de-datos-data-cleaning-imputación" class="slide level2">
-<h2>Limpieza de datos (Data Cleaning) (Imputación)</h2>
+<h2>3.1.1. Limpieza de datos <em>(Data Cleaning)</em> (Imputación)</h2>
 <ul>
-<li><em>Missing Completely at Random (MCAR)</em>: Los datos se consideran MCAR cuando la probabilidad de que un dato esté perdido es completamente independiente de cualquier variable.
+<li><strong>Missing Completely at Random (MCAR)</strong>: Los datos se consideran <em>MCAR</em> cuando la probabilidad de que un dato esté perdido es completamente independiente de cualquier variable.
 <ul>
-<li>(ej: datos perdidos por errores técnicos)</li>
-</ul></li>
-<li><em>Missing at Random (MAR)</em>: Los datos se consideran MAR cuando la probabilidad de que un dato esté perdido depende de otras variables observadas en el dataset, pero no del valor de la variable en sí misma que falta. <strong>Los datos faltantes pueden ser predichos por otras variables observadas.</strong>
-<ul>
-<li>(ej: las personas con educación más baja son menos propensas a declarar su ingreso))</li>
-</ul></li>
-<li><em>Missing Not at Random (MNAR)</em>: Los datos se consideran MNAR cuando la probabilidad de que un dato esté perdido depende del valor de la variable que falta. Aquí, los datos faltantes no son aleatorios y están relacionados con las propias observaciones faltantes.
-<ul>
-<li>(ej: las personas con niveles más altos de depresión pueden ser menos propensas a responder preguntas sobre su estado mental)</li>
+<li>Ej: Datos perdidos por errores técnicos.</li>
 </ul></li>
 </ul>
-<p>En la práctica se asume que <span class="math inline">\(CAR = MCAR\)</span></p>
+</section>
+<section id="limpieza-de-datos-data-cleaning-imputación-1" class="slide level2">
+<h2>3.1.1. Limpieza de datos <em>(Data Cleaning)</em> (Imputación)</h2>
+<ul>
+<li><strong>Missing at Random (MAR)</strong>: Los datos se consideran <em>MAR</em> cuando la probabilidad de que un dato esté perdido depende de otras variables observadas en el dataset, pero no del valor de la variable en sí misma que falta. <strong>Los datos faltantes pueden ser predichos por otras variables observadas.</strong>
+<ul>
+<li>Ej: Las personas con educación más baja son menos propensas a declarar su ingreso).</li>
+</ul></li>
+</ul>
+</section>
+<section id="limpieza-de-datos-data-cleaning-imputación-2" class="slide level2">
+<h2>3.1.1. Limpieza de datos <em>(Data Cleaning)</em> (Imputación)</h2>
+<ul>
+<li><strong>Missing Not at Random (MNAR)</strong>: Los datos se consideran <em>MNAR</em> cuando la probabilidad de que un dato esté perdido depende del valor de la variable que falta. Aquí, los datos faltantes no son aleatorios y están relacionados con las propias observaciones faltantes.
+<ul>
+<li>Ej: Las personas con niveles más altos de depresión pueden ser menos propensas a responder preguntas sobre su estado mental.</li>
+</ul></li>
+</ul>
+</section>
+<section id="limpieza-de-datos-data-cleaning-imputación-3" class="slide level2">
+<h2>3.1.1. Limpieza de datos <em>(Data Cleaning)</em> (Imputación)</h2>
+<div style="text-align:center; margin-top:180px;">
+<p>En la práctica se asume que <span class="math inline">\(CAR = MCAR\)</span>.</p>
+</div>
 </section>
 <section id="transformación-de-datos-data-transformation" class="slide level2">
-<h2>Transformación de datos (Data Transformation)</h2>
+<h2>3.1.2. Transformación de datos <em>(Data Transformation)</em></h2>
+<div style="font-size:38px;">
 <ul>
-<li><p><em>Normalización</em>: Escalado de características a un rango específico (por ejemplo, entre 0 y 1). Comúnmente utilizada para algoritmos como redes neuronales.</p></li>
-<li><p><em>Estandarización</em>: Escalado de características para que tengan media 0 y desviación estándar 1. Usada frecuentemente en algoritmos como SVM y regresión logística.</p></li>
-<li><p><em>Transformaciones</em> logarítmicas o de Box-Cox: Aplicación de funciones matemáticas para transformar datos sesgados a una distribución más normal.</p></li>
+<li><p><strong>Normalización</strong>: Escalado de características a un rango específico (por ejemplo, entre 0 y 1). Comúnmente utilizada para algoritmos como redes neuronales.</p></li>
+<li><p><strong>Estandarización</strong>: Escalado de características para que tengan media 0 y desviación estándar 1. Usada frecuentemente en algoritmos como SVM y regresión logística.</p></li>
+<li><p><strong>Transformaciones logarítmicas</strong> o de Box-Cox: Aplicación de funciones matemáticas para transformar datos sesgados a una distribución más normal.</p></li>
 </ul>
+</div>
 </section>
 <section id="transformación-de-datos-logaritmos" class="slide level2">
-<h2>Transformación de datos: logaritmos</h2>
-<p>Al usar la escala logarítmica, los coeficientes de un modelo de regresión se interpretan en términos de cambios porcentuales. <strong>El modelo se vuelve interpretable desde el punto de vista relativo y no absoluto</strong>. Esto es vital para tratar temas como el salario donde los incremnetos relativos son mucho más válidos que los absolutos.</p>
+<h2>3.1.2 Transformación de datos: logaritmos</h2>
+<div style="font-size:38px;">
+<ul>
+<li><p>Al usar la escala logarítmica, los coeficientes de un modelo de regresión se interpretan en términos de cambios porcentuales.</p></li>
+<li><p><strong>El modelo se vuelve interpretable desde el punto de vista relativo y no absoluto</strong>.</p></li>
+<li><p>Esto es vital para tratar temas como el salario donde los incremnetos relativos son mucho más válidos que los absolutos:</p>
 <ul>
 <li>No es lo mismo incremenetar el salario 100€ a alguien que cobra 1.000€ al mes que a alguien con 10.000€ al mes.</li>
+</ul></li>
 </ul>
+</div>
 </section>
-<section id="transformación-de-datos-logaritmos-ejemplo" class="slide level2">
-<h2>Transformación de datos: logaritmos (ejemplo)</h2>
-<p>Asumamos 2 modelos:</p>
+<section id="transformación-de-datos-logaritmos-1" class="slide level2">
+<h2>3.1.2 Transformación de datos: logaritmos</h2>
+<p><strong>Ejemplo:</strong> <br></p>
+<ul>
+<li><em>Asumamos 2 modelos:</em></li>
+</ul>
+<div style="font-size:32px;">
 <p><span class="math display">\[
 Salario=2000+500(AñosExperiencia) + 1000(AñosEducación)
 \]</span></p>
+</div>
+<div style="font-size:32px;">
 <p><span class="math display">\[
 log(Salario)=2.5+0.04(AñosExperiencia)+0.08(AñosEducación)
-\]</span> Son el mismo modelo, la única diferencia es la escala de la variable respuesta <em>salario</em></p>
+\]</span></p>
+</div>
+<p><br> Son el mismo modelo, la única diferencia es la escala de la variable respuesta <em>salario</em>.</p>
 </section>
-<section id="transformación-de-datos-logaritmos-ejemplo-1" class="slide level2">
-<h2>Transformación de datos: logaritmos (ejemplo</h2>
+<section id="transformación-de-datos-logaritmos-2" class="slide level2">
+<h2>3.1.2 Transformación de datos: logaritmos</h2>
+<p><strong>Ejemplo:</strong> <br></p>
+<div style="font-size:32px;">
 <p><span class="math display">\[
 Salario=2000+500(AñosExperiencia) + 1000(AñosEducación)
 \]</span> Los coeficientes indicarían incrementos <strong>absolutos</strong> en el salario:</p>
+</div>
 <ul>
 <li>Coeficiente de Años de Experiencia <span class="math inline">\(\beta_{AñosExperiencia} = 500\)</span>: Cada año de experiencia aumentaría el salario en 500.</li>
 <li>Coeficiente de Años de Educación <span class="math inline">\(\beta_{AñosEducación} = 1000\)</span>: Cada año de experiencia aumentaría el salario en 1000.</li>
 </ul>
 </section>
-<section id="transformación-de-datos-logaritmos-ejemplo-2" class="slide level2">
+<section id="transformación-de-datos-logaritmos-ejemplo" class="slide level2">
 <h2>Transformación de datos: logaritmos (ejemplo</h2>
 <p><span class="math display">\[
 log(Salario)=2.5+0.04(AñosExperiencia)+0.08(AñosEducación)
@@ -791,7 +855,7 @@ log(Salario)=2.5+0.04(AñosExperiencia)+0.08(AñosEducación)
 </section>
 
 <section>
-<section id="diagrama-1" class="title-slide slide level1 center">
+<section id="diagrama" class="title-slide slide level1 center">
 <h1>Diagrama:</h1>
 <ul>
 <li><p>Entrenamiento del modelo</p></li>
@@ -1066,16 +1130,16 @@ Multiple R-squared:  0.8268,    Adjusted R-squared:  0.8148
 F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
 </div>
 <div class="cell-output-display">
-<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-4-2.png" width="960"></p>
+<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-5-2.png" width="960"></p>
 </div>
 <div class="cell-output-display">
-<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-4-3.png" width="960"></p>
+<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-5-3.png" width="960"></p>
 </div>
 <div class="cell-output-display">
-<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-4-4.png" width="960"></p>
+<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-5-4.png" width="960"></p>
 </div>
 </div>
 </section>
@@ -1125,7 +1189,7 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <section id="árboles-de-decisión-3" class="slide level2">
 <h2>Árboles de decisión</h2>
 
-<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
 <section id="árboles-de-decisión-4" class="slide level2">
 <h2>Árboles de decisión</h2>
 <p>Contras y Advertencias:</p>
@@ -1145,14 +1209,14 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>             MeanDecreaseGini
-Sepal.Length         9.438633
-Sepal.Width          2.092942
-Petal.Length        46.101406
-Petal.Width         41.503219</code></pre>
+Sepal.Length         7.371927
+Sepal.Width          1.782243
+Petal.Length        39.463160
+Petal.Width         50.704937</code></pre>
 </div>
 
 </div>
-<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
 <section id="random-forest-2" class="slide level2">
 <h2>Random Forest</h2>
 <p>Contras y Advertencias: - Requiere bastantes más recursos computacionales que un solo árbol. - Interpretación más compleja debido al conjunto de modelos. - No es ideal para datasets con un número muy alto de características debido al riesgo de sobreajuste.</p>
@@ -1196,7 +1260,7 @@ predicciones setosa versicolor virginica
 <section id="técnicas-de-supervivencia-kaplan_meyer" class="slide level2">
 <h2>Técnicas de Supervivencia / Kaplan_Meyer</h2>
 
-<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
 <section id="técnicas-de-supervivencia-kaplan_meyer-1" class="slide level2">
 <h2>Técnicas de Supervivencia / Kaplan_Meyer</h2>
 <p>Contras y Advertencias:</p>
@@ -1235,7 +1299,7 @@ Score (logrank) test = 30.5  on 3 df,   p=1e-06</code></pre>
 </div>
 
 </div>
-<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
 <section id="técnicas-de-supervivencia-cox-1" class="slide level2">
 <h2>Técnicas de Supervivencia / Cox</h2>
 <p>Contras y Advertencias: - Supone riesgos proporcionales, lo cual puede no ser realista. - Requiere suficiente tamaño muestral para estimaciones confiables. - Interpretación de coeficientes requiere cuidado, especialmente con interacciones y variables categóricas.</p>
@@ -1355,7 +1419,7 @@ predicciones setosa versicolor virginica
 <section id="sarima-2" class="slide level2">
 <h2>SARIMA</h2>
 
-<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
 <section id="sarima-3" class="slide level2">
 <h2>SARIMA</h2>
 <p>Contras y Advertencias:</p>
@@ -1646,7 +1710,7 @@ predicciones setosa versicolor virginica
 <section id="aprendizaje-no-supervisado-caso-target-6" class="slide level2">
 <h2>Aprendizaje no supervisado, caso Target</h2>
 
-<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section></section>
+<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section></section>
 <section>
 <section id="aprendizaje-por-refuerzo" class="title-slide slide level1 center">
 <h1>6. Aprendizaje por refuerzo</h1>
@@ -1705,7 +1769,7 @@ predicciones setosa versicolor virginica
 <h1>7 Métricas</h1>
 
 </section>
-<section id="diagrama-2" class="slide level2">
+<section id="diagrama-1" class="slide level2">
 <h2>diagrama</h2>
 <ul>
 <li>Datos Evaluacion</li>
