@@ -10,7 +10,7 @@
 <link href="Taller_modelizacion_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="Taller_modelizacion_files/libs/quarto-contrib/videojs/video.min.js"></script>
 <link href="Taller_modelizacion_files/libs/quarto-contrib/videojs/video-js.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.4.553">
 
   <title>Que comience el periplo de la Modelización</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -222,7 +222,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -406,13 +407,8 @@
 <h1>1. Bases de modelización</h1>
 
 </section>
-<<<<<<< HEAD
 <section id="tener-las-cosas-claras-antes-de-empezar" class="slide level2 scrollable">
 <h2>Tener las cosas claras antes de empezar</h2>
-=======
-<section id="bases-de-modelización-1" class="slide level2">
-<h2>Bases de modelización</h2>
->>>>>>> 8649b8e1da58947ea4f39a9b9f6ba7f0720660a8
 <ol type="1">
 <li>Tener clara la pregunta</li>
 <li>Tener una idea de la complejidad de la pregunta.</li>
@@ -454,8 +450,134 @@ flowchart TD
 </div>
 </section></section>
 <section>
+<section id="validación-cruzada" class="title-slide slide level1 center">
+<h1>2. Validación cruzada</h1>
+
+</section>
+<section id="concepto" class="slide level2">
+<h2>Concepto</h2>
+<ul>
+<li><strong>Objetivo</strong>: Evaluar la capacidad de generalización de un modelo a datos no vistos.</li>
+<li><strong>Técnica</strong>: Dividir el conjunto de datos en subconjuntos para entrenamiento y validación.</li>
+</ul>
+<p>Repites este proceso varias veces, dividiendo tus datos de diferentes maneras. Esto ayuda a asegurar que tu evaluación del modelo no dependa de una sola división de datos.</p>
+</section>
+<section id="leave-one-out-cross-validation-loocv" class="slide level2">
+<h2>Leave-One-Out Cross-Validation (LOOCV)</h2>
+<ul>
+<li><strong>Descripción</strong>: Cada observación se usa como conjunto de validación una vez, y el resto como conjunto de entrenamiento.</li>
+<li><strong>Ventajas</strong>:
+<ul>
+<li>Utiliza al máximo los datos para el entrenamiento.</li>
+<li>Minimiza el sesgo de estimación.</li>
+</ul></li>
+<li><strong>Desventajas</strong>:
+<ul>
+<li>Extremadamente costosa computacionalmente.</li>
+<li>Alta variabilidad en las estimaciones. (necesario plotear la distribición)</li>
+</ul></li>
+</ul>
+</section>
+<section id="leave-one-out-cross-validation-loocv-1" class="slide level2">
+<h2>Leave-One-Out Cross-Validation (LOOCV)</h2>
+
+<img data-src="Imagenes/LOOCV.png" class="r-stretch"></section>
+<section id="k-fold-cross-validation" class="slide level2">
+<h2>K-Fold Cross-Validation</h2>
+<ul>
+<li><strong>Descripción</strong>: Divide los datos en K particiones. Realiza K iteraciones, cada vez usando una partición diferente como conjunto de validación.</li>
+<li><strong>Ventajas</strong>:
+<ul>
+<li>Utiliza todos los datos para entrenamiento y validación.</li>
+<li>Proporciona una estimación robusta del rendimiento del modelo.</li>
+</ul></li>
+<li><strong>Desventajas</strong>:
+<ul>
+<li>Computacionalmente costosa si K es grande.</li>
+</ul></li>
+</ul>
+</section>
+<section id="k-fold-cross-validation-1" class="slide level2">
+<h2>K-Fold Cross-Validation</h2>
+
+<img data-src="Imagenes/kfold_cross_validation.png" class="r-stretch"></section>
+<section id="bootstrap" class="slide level2">
+<h2>Bootstrap</h2>
+<ul>
+<li><p><strong>Descripción</strong>: Genera múltiples muestras aleatorias con reemplazo a partir del conjunto de datos original.</p></li>
+<li><p><strong>Ventajas</strong>:</p>
+<ul>
+<li>Proporciona una medida de la incertidumbre en la evaluación del modelo.</li>
+<li>Útil para construir intervalos de confianza alrededor de las métricas de evaluación.</li>
+</ul></li>
+<li><p><strong>Desventajas</strong>:</p>
+<ul>
+<li>No es una técnica de validación cruzada en sí misma, sino más bien una técnica de remuestreo que se usa en conjunto con otras técnicas de validación cruzada.</li>
+</ul></li>
+</ul>
+</section>
+<section id="bootstrap-1" class="slide level2">
+<h2>Bootstrap</h2>
+
+<img data-src="Imagenes/bootstraps.jpg" class="r-stretch"></section>
+<section id="advertencias-sobre-validación-cruzada" class="slide level2">
+<h2>Advertencias sobre Validación Cruzada</h2>
+<p><strong>1. La elección del número de divisiones no debe ser aleatoria</strong></p>
+<ul>
+<li>Elegir un número adecuado de divisiones para evitar sesgos en la evaluación del modelo.</li>
+<li>Por ejemplo, en la validación cruzada de K-fold, es común utilizar valores típicos como 5 o 10 para K. Sin embargo, la elección de K debe considerar el tamaño del conjunto de datos y el equilibrio entre la varianza y el sesgo.</li>
+</ul>
+</section>
+<section id="advertencias-sobre-validación-cruzada-1" class="slide level2">
+<h2>Advertencias sobre Validación Cruzada</h2>
+<p><strong>2. Siempre estratifica en problemas de clasificación</strong></p>
+<ul>
+<li>Estratificar asegura una distribución equitativa de las clases en cada división.</li>
+<li>En problemas de clasificación, es esencial estratificar las divisiones para garantizar que todas las clases estén representadas en cada conjunto de entrenamiento y prueba. Esto ayuda a evitar sesgos y garantiza una evaluación más precisa del rendimiento del modelo.</li>
+</ul>
+</section>
+<section id="advertencias-sobre-validación-cruzada-2" class="slide level2">
+<h2>Advertencias sobre Validación Cruzada</h2>
+<p><strong>3. Elección de validación cruzada adecuada para un problema de regresión</strong></p>
+<ul>
+<li>Aunque la validación cruzada de K-fold es comúnmente utilizada en problemas de regresión, también es importante considerar otras técnicas, como la validación cruzada estratificada, especialmente cuando hay una distribución desigual de los datos o se necesita una evaluación más precisa del rendimiento del modelo.</li>
+</ul>
+</section>
+<section id="advertencias-sobre-validación-cruzada-3" class="slide level2">
+<h2>Advertencias sobre Validación Cruzada</h2>
+<p><strong>4. Nunca Sobremuestrear antes de la validación cruzada.</strong></p>
+<ul>
+<li>La sobremuestreo antes de la validación cruzada puede llevar a una evaluación sesgada del modelo.</li>
+<li>Conlleva al sobreajuste con los datos de entrenamiento, lo que resulta en una estimación errónea del rendimiento del modelo. Es importante realizar la sobremuestreo dentro de cadapartición de la validación cruzada para evitar este sesgo.</li>
+</ul>
+</section>
+<section id="advertencias-sobre-validación-cruzada-4" class="slide level2">
+<h2>Advertencias sobre Validación Cruzada</h2>
+<p><strong>5. Fuga de conocimientos</strong></p>
+<ul>
+<li>Evitar la fuga de conocimientos al preprocesar los datos antes de la validación cruzada.</li>
+<li>Es fundamental preprocesar los datos antes de la validación cruzada para evitar la fuga de conocimientos. Esto incluye la estandarización de características, la imputación de valores perdidos y cualquier otra transformación de datos que se realice en función de la información del conjunto de datos completo y no solo del conjunto de entrenamiento.</li>
+</ul>
+</section>
+<section id="advertencias-sobre-validación-cruzada-5" class="slide level2">
+<h2>Advertencias sobre Validación Cruzada</h2>
+<p><strong>6. No hagas Validación cruzada aleatorizadas para datos de series temporales.</strong></p>
+<ul>
+<li>La validación cruzada aleatorizada puede introducir sesgos en la evaluación del modelo con datos de series temporales.</li>
+<li>En lugar de utilizar validación cruzada aleatorizada, es preferible utilizar técnicas específicas para datos de series temporales, como la validación cruzada basada en el tiempo o la validación cruzada de bloques, que preservan la estructura temporal de los datos.</li>
+</ul>
+</section>
+<section id="advertencias-sobre-validación-cruzada-6" class="slide level2">
+<h2>Advertencias sobre Validación Cruzada</h2>
+<p><strong>7. Cuidado con la semilla a la hora de partir los datos.</strong></p>
+<ul>
+<li>La semilla utilizada para partir los datos puede afectar significativamente los resultados de la validación cruzada.</li>
+<li>La elección de la semilla puede influir en cómo se dividen los datos en conjuntos de entrenamiento y prueba, lo que a su vez puede afectar la evaluación del rendimiento del modelo. Es importante ser consistente con la semilla utilizada para garantizar la reproducibilidad de los resultados.</li>
+</ul>
+</section></section>
+<section>
 <section id="tipos-de-modelos" class="title-slide slide level1 center">
-<h1>2. Tipos de modelos</h1>
+<h1>3. Tipos de modelos</h1>
 
 </section>
 <section id="tipos-de-modelos-1" class="slide level2">
@@ -582,7 +704,6 @@ flowchart TD
 <h2>Respecto a la utilidad</h2>
 <video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="/Imagenes/Both.mp4"></video>
 </section>
-<<<<<<< HEAD
 <section id="respecto-a-la-escalabilidad" class="slide level2">
 <h2>Respecto a la escalabilidad:</h2>
 <ul>
@@ -592,10 +713,6 @@ flowchart TD
 </section>
 <section id="respecto-la-necesidad" class="slide level2 scrollable">
 <h2>Respecto la necesidad:</h2>
-=======
-<section id="tipos-de-modelos-6" class="slide level2">
-<h2>Tipos de modelos</h2>
->>>>>>> 8649b8e1da58947ea4f39a9b9f6ba7f0720660a8
 <ol type="1">
 <li>Aprendizaje <strong>supervisado</strong></li>
 <li>Aprendizaje <strong>no supervisado</strong></li>
@@ -604,7 +721,7 @@ flowchart TD
 </section></section>
 <section>
 <section id="aprendizaje-supervisado" class="title-slide slide level1 center">
-<h1>3. Aprendizaje supervisado</h1>
+<h1>4. Aprendizaje supervisado</h1>
 
 </section>
 <section id="aprendizaje-supervisado-1" class="slide level2">
@@ -651,7 +768,7 @@ flowchart TD
 <li>Economía: sesgos en el crédito y trabajo de tipo espiral retroalimentativa.</li>
 </ul>
 </section>
-<section id="aprendizaje-supervisado-5" class="slide level2">
+<section id="aprendizaje-supervisado-5" class="slide level2 scrollable">
 <h2>Aprendizaje supervisado</h2>
 <ol type="1">
 <li>Regresión</li>
@@ -723,7 +840,6 @@ Multiple R-squared:  0.8268,    Adjusted R-squared:  0.8148
 F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 </div>
 <div class="cell-output-display">
-<<<<<<< HEAD
 <div>
 <figure>
 <p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
@@ -750,18 +866,6 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-3-4.png" width="960"></p>
 </figure>
 </div>
-=======
-<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
-</div>
-<div class="cell-output-display">
-<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-2-2.png" width="960"></p>
-</div>
-<div class="cell-output-display">
-<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-2-3.png" width="960"></p>
-</div>
-<div class="cell-output-display">
-<p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-2-4.png" width="960"></p>
->>>>>>> 8649b8e1da58947ea4f39a9b9f6ba7f0720660a8
 </div>
 </div>
 </section>
@@ -807,11 +911,7 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <section id="árboles-de-decisión-2" class="slide level2">
 <h2>Árboles de decisión</h2>
 
-<<<<<<< HEAD
 <img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
-=======
-<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
->>>>>>> 8649b8e1da58947ea4f39a9b9f6ba7f0720660a8
 <section id="árboles-de-decisión-3" class="slide level2">
 <h2>Árboles de decisión</h2>
 <p>Contras y Advertencias:</p>
@@ -831,25 +931,14 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>             MeanDecreaseGini
-<<<<<<< HEAD
-Sepal.Length        11.044895
-Sepal.Width          2.006221
-Petal.Length        45.834324
-Petal.Width         40.314294</code></pre>
+Sepal.Length        12.139974
+Sepal.Width          2.216244
+Petal.Length        45.127067
+Petal.Width         39.757449</code></pre>
 </div>
 
 </div>
 <img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
-=======
-Sepal.Length         8.993741
-Sepal.Width          2.238831
-Petal.Length        41.680535
-Petal.Width         46.375628</code></pre>
-</div>
-
-</div>
-<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
->>>>>>> 8649b8e1da58947ea4f39a9b9f6ba7f0720660a8
 <section id="random-forest-2" class="slide level2">
 <h2>Random Forest</h2>
 <p>Contras y Advertencias: - Requiere bastantes más recursos computacionales que un solo árbol. - Interpretación más compleja debido al conjunto de modelos. - No es ideal para datasets con un número muy alto de características debido al riesgo de sobreajuste.</p>
@@ -875,15 +964,9 @@ predicciones setosa versicolor virginica
 <h2>Naïve Bayes</h2>
 <p>Contras y Advertencias:</p>
 <ul>
-<<<<<<< HEAD
 <li>La suposición de independencia rara vez se cumple en la práctica.</li>
 <li>Suele ser superado por modelos más complejos.</li>
 <li>No maneja bien características continuas, requiere de discretización sin discretización.</li>
-=======
-<li class="fragment">La suposición de independencia rara vez se cumple en la práctica.</li>
-<li class="fragment">Suele ser superado por modelos más complejos.</li>
-<li class="fragment">No maneja bien características continuas, requiere de discretización sin discretización.</li>
->>>>>>> 8649b8e1da58947ea4f39a9b9f6ba7f0720660a8
 </ul>
 </section>
 <section id="técnicas-de-supervivencia" class="slide level2">
@@ -895,24 +978,14 @@ predicciones setosa versicolor virginica
 <section id="técnicas-de-supervivencia-kaplan_meyer" class="slide level2">
 <h2>Técnicas de Supervivencia / Kaplan_Meyer</h2>
 
-<<<<<<< HEAD
 <img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
-=======
-<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
->>>>>>> 8649b8e1da58947ea4f39a9b9f6ba7f0720660a8
 <section id="técnicas-de-supervivencia-kaplan_meyer-1" class="slide level2">
 <h2>Técnicas de Supervivencia / Kaplan_Meyer</h2>
 <p>Contras y Advertencias:</p>
 <ul>
-<<<<<<< HEAD
 <li>No ajusta para variables explicativas múltiples.</li>
 <li>Asume que censura es independiente del riesgo de evento.</li>
 <li>No permite modelar efectos de covariables en la supervivencia.</li>
-=======
-<li class="fragment">No ajusta para variables explicativas múltiples.</li>
-<li class="fragment">Asume que censura es independiente del riesgo de evento.</li>
-<li class="fragment">No permite modelar efectos de covariables en la supervivencia.</li>
->>>>>>> 8649b8e1da58947ea4f39a9b9f6ba7f0720660a8
 </ul>
 </section>
 <section id="técnicas-de-supervivencia-cox" class="slide level2">
@@ -944,11 +1017,7 @@ Score (logrank) test = 30.5  on 3 df,   p=1e-06</code></pre>
 </div>
 
 </div>
-<<<<<<< HEAD
 <img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
-=======
-<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
->>>>>>> 8649b8e1da58947ea4f39a9b9f6ba7f0720660a8
 <section id="técnicas-de-supervivencia-cox-1" class="slide level2">
 <h2>Técnicas de Supervivencia / Cox</h2>
 <p>Contras y Advertencias: - Supone riesgos proporcionales, lo cual puede no ser realista. - Requiere suficiente tamaño muestral para estimaciones confiables. - Interpretación de coeficientes requiere cuidado, especialmente con interacciones y variables categóricas.</p>
@@ -1038,15 +1107,9 @@ predicciones setosa versicolor virginica
 <h2>Support Vector Machines</h2>
 <p>Contras y Advertencias:</p>
 <ul>
-<<<<<<< HEAD
 <li>Muy sensible a su parametrización.</li>
 <li>Suele requerir de mucho tiempo de entrenamiento con grandes datasets.</li>
 <li>La interpretabildiad del modelo no es muy intuitiva cuando hay más de 2 casos.</li>
-=======
-<li class="fragment">Muy sensible a su parametrización.</li>
-<li class="fragment">Suele requerir de mucho tiempo de entrenamiento con grandes datasets.</li>
-<li class="fragment">La interpretabildiad del modelo no es muy intuitiva cuando hay más de 2 casos.</li>
->>>>>>> 8649b8e1da58947ea4f39a9b9f6ba7f0720660a8
 </ul>
 </section>
 <section id="sarima" class="slide level2">
@@ -1054,38 +1117,22 @@ predicciones setosa versicolor virginica
 <p>Definición: Modelos de series temporales que combinan autorregresión y media móvil.</p>
 <p>Características:</p>
 <ul>
-<<<<<<< HEAD
 <li>Captura estacionalidad y tendencias en los datos.</li>
 <li>Basado en diferencias para hacer la serie estacionaria.</li>
 <li>Parámetros: p, d, q (ARIMA); P, D, Q, s (SARIMA).</li>
-=======
-<li class="fragment">Captura estacionalidad y tendencias en los datos.</li>
-<li class="fragment">Basado en diferencias para hacer la serie estacionaria.</li>
-<li class="fragment">Parámetros: p, d, q (ARIMA); P, D, Q, s (SARIMA).</li>
->>>>>>> 8649b8e1da58947ea4f39a9b9f6ba7f0720660a8
 </ul>
 </section>
 <section id="sarima-1" class="slide level2">
 <h2>SARIMA</h2>
 
-<<<<<<< HEAD
 <img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
-=======
-<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
->>>>>>> 8649b8e1da58947ea4f39a9b9f6ba7f0720660a8
 <section id="sarima-2" class="slide level2">
 <h2>SARIMA</h2>
 <p>Contras y Advertencias:</p>
 <ul>
-<<<<<<< HEAD
 <li>Requiere series temporales <strong>estacionarias</strong>.</li>
 <li>La selección de parámetros puede ser compleja.</li>
 <li>Sensible a datos faltantes o anomalías.</li>
-=======
-<li class="fragment">Requiere series temporales <strong>estacionarias</strong>.</li>
-<li class="fragment">La selección de parámetros puede ser compleja.</li>
-<li class="fragment">Sensible a datos faltantes o anomalías.</li>
->>>>>>> 8649b8e1da58947ea4f39a9b9f6ba7f0720660a8
 </ul>
 </section>
 <section id="redes-neuronales" class="slide level2">
@@ -1099,25 +1146,19 @@ predicciones setosa versicolor virginica
 <h2>Redes neuronales</h2>
 <p>Contras y Advertencias:</p>
 <ul>
-<<<<<<< HEAD
 <li>Requiere gran cantidad de datos para buen rendimiento.</li>
 <li>el tiempo de entrenamiento puede ser largo.</li>
 <li>El más complicado de interpretar y explicar resultados.</li>
-=======
-<li class="fragment">Requiere gran cantidad de datos para buen rendimiento.</li>
-<li class="fragment">el tiempo de entrenamiento puede ser largo.</li>
-<li class="fragment">El más complicado de interpretar y explicar resultados.</li>
->>>>>>> 8649b8e1da58947ea4f39a9b9f6ba7f0720660a8
 </ul>
 <p>Riesgo de sobreajuste sin regularización adecuada.</p>
 </section></section>
 <section>
 <section id="aprendizaje-no-supervisado" class="title-slide slide level1 center">
-<h1>4. Aprendizaje no supervisado</h1>
+<h1>5. Aprendizaje no supervisado</h1>
 
 </section>
-<section id="aprendizaje-no-supervisado-1" class="slide level2">
-<h2>Aprendizaje no supervisado</h2>
+<section id="caracteristicas-principales" class="slide level2">
+<h2>Caracteristicas principales</h2>
 <ul>
 <li><p>Analiza y agrupa conjuntos de datos sin etiquetar.</p></li>
 <li><p>Se basan en distancias. (Euclídeas o mahalanobis)</p></li>
@@ -1132,11 +1173,8 @@ predicciones setosa versicolor virginica
 </div></li>
 </ul>
 </section>
-<section id="aprendizaje-no-supervisado-2" class="slide level2">
-<h2>Aprendizaje no supervisado</h2>
-</section>
-<section id="aprendizaje-no-supervisado-agrupación-en-clústeres" class="slide level2">
-<h2>Aprendizaje no supervisado: Agrupación en clústeres</h2>
+<section id="agrupación-en-clústeres" class="slide level2">
+<h2>Agrupación en clústeres</h2>
 <ul>
 <li>La agrupación en clústeres de k-medias</li>
 <li>Agrupación en clústeres jerárquica (HCA)</li>
@@ -1158,7 +1196,7 @@ predicciones setosa versicolor virginica
 </ul>
 <p>factoriza una matriz, A, en tres matrices de rango inferior.</p>
 </section>
-<section id="aprendizaje-no-supervisado-caso-target" class="slide level2">
+<section id="aprendizaje-no-supervisado-caso-target" class="slide level2 scrollable">
 <h2>Aprendizaje no supervisado, caso Target</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -1268,7 +1306,6 @@ predicciones setosa versicolor virginica
 <section id="aprendizaje-no-supervisado-caso-target-4" class="slide level2">
 <h2>Aprendizaje no supervisado, caso Target</h2>
 <div class="cell">
-<<<<<<< HEAD
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co"># Aplicar K-means</span></span>
 <span id="cb8-2"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reproducibilidad</span></span>
 <span id="cb8-3"><a href=""></a>kmeans_result <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">kmeans</span>(Target_ejemplo[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">centers =</span> <span class="dv">3</span>)</span>
@@ -1277,16 +1314,6 @@ predicciones setosa versicolor virginica
 <span id="cb8-6"><a href=""></a>Target_ejemplo <span class="ot">&lt;-</span> Target_ejemplo <span class="sc">%&gt;%</span>  </span>
 <span id="cb8-7"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">Cluster =</span> <span class="fu">as_factor</span>(kmeans_result<span class="sc">$</span>cluster) ) <span class="sc">%&gt;%</span> </span>
 <span id="cb8-8"><a href=""></a>  <span class="fu">select</span>(ClienteID, Cluster, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-=======
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Aplicar K-means</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reproducibilidad</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>kmeans_result <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">kmeans</span>(Target_ejemplo[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">centers =</span> <span class="dv">3</span>)</span>
-<span id="cb8-4"><a href="#cb8-4"></a></span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="co"># Añadir los resultados del cluster al dataframe</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a>Target_ejemplo <span class="ot">&lt;-</span> Target_ejemplo <span class="sc">%&gt;%</span>  </span>
-<span id="cb8-7"><a href="#cb8-7"></a>  <span class="fu">mutate</span>(<span class="at">Cluster =</span> <span class="fu">as_factor</span>(kmeans_result<span class="sc">$</span>cluster) ) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-8"><a href="#cb8-8"></a>  <span class="fu">select</span>(ClienteID, Cluster, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
->>>>>>> 8649b8e1da58947ea4f39a9b9f6ba7f0720660a8
 </div>
 </section>
 <section id="aprendizaje-no-supervisado-caso-target-5" class="slide level2">
@@ -1385,24 +1412,20 @@ predicciones setosa versicolor virginica
 <section id="aprendizaje-no-supervisado-caso-target-6" class="slide level2">
 <h2>Aprendizaje no supervisado, caso Target</h2>
 
-<<<<<<< HEAD
 <img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section></section>
-=======
-<img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section></section>
->>>>>>> 8649b8e1da58947ea4f39a9b9f6ba7f0720660a8
 <section>
 <section id="aprendizaje-por-refuerzo" class="title-slide slide level1 center">
-<h1>5. Aprendizaje por refuerzo</h1>
+<h1>6. Aprendizaje por refuerzo</h1>
 
 </section>
-<section id="aprendizaje-por-refuerzo-1" class="slide level2">
-<h2>5 Aprendizaje por refuerzo</h2>
+<section id="funcion" class="slide level2">
+<h2>Funcion</h2>
 <ul>
 <li><p>Entrena al software para que tome decisiones a fin de lograr los mejores resultados.</p></li>
 <li><p>Ensayo y error (Supervisado y no supervisado al mismo tiempo)</p></li>
 </ul>
 </section>
-<section id="aprendizaje-por-refuerzo-2" class="slide level2">
+<section id="aprendizaje-por-refuerzo-1" class="slide level2 scrollable">
 <h2>Aprendizaje por refuerzo</h2>
 <ol type="1">
 <li><p>Sobresale en entornos complejos</p></li>
@@ -1445,11 +1468,11 @@ predicciones setosa versicolor virginica
 </section></section>
 <section>
 <section id="métricas" class="title-slide slide level1 center">
-<h1>6 Métricas</h1>
+<h1>7 Métricas</h1>
 
 </section>
 <section id="métricas-para-modelos-de-regresión" class="slide level2">
-<h2>6.1 Métricas para modelos de regresión</h2>
+<h2>7.1 Métricas para modelos de regresión</h2>
 <p>Toda métrica de evaluación para un modelo de machine learning supervisado se basa en el siguiente concepto:</p>
 <p><span class="math display">\[
 e_{i} = original_{i} - prediccion_{i}
@@ -1495,15 +1518,9 @@ e_{i} = f(y_{i} - \hat{y_{i}})
 <section id="métricas-mae-2" class="slide level2">
 <h2>Métricas: MAE</h2>
 <ul>
-<<<<<<< HEAD
 <li>Un MAE de 0 indica que el modelo predice exactamente los valores reales.</li>
 <li><span class="math inline">\(MAE  &gt; 0\)</span> indica que el modelo tiene un mayor error promedio.</li>
 <li>No penaliza ni discrimina entre errores grande o pequeños, es un promedio directo.</li>
-=======
-<li class="fragment">Un MAE de 0 indica que el modelo predice exactamente los valores reales.</li>
-<li class="fragment"><span class="math inline">\(MAE &gt; 0\)</span> indica que el modelo tiene un mayor error promedio.</li>
-<li class="fragment">No penaliza ni discrimina entre errores grande o pequeños, es un promedio directo.</li>
->>>>>>> 8649b8e1da58947ea4f39a9b9f6ba7f0720660a8
 </ul>
 </section>
 <section id="métricas-mape" class="slide level2">
@@ -1772,8 +1789,52 @@ AIC = 2{k} - \ln(\mathcal{L})
 <h2>Métricas: AIC</h2>
 <p><img data-src="Imagenes/AIC%20vs%20R2.png" width="711" height="469"></p>
 </section>
+<section id="casos-de-interpretación-1" class="slide level2">
+<h2>Casos de interpretación 1</h2>
+<ul>
+<li>Supongamos que hemos construido un modelo de tipo regresión para</li>
+<li><strong>Objetivo</strong>: redecir los ingresos anuales de individuos basándonos en su nivel educativo (en años de educación formal).</li>
+<li>Nuestro pre-estudio de la población sugiere que el promedio de ingresos está alrededor de 25.000€.</li>
+</ul>
+<p>Se evalua el modelo con el conjunto de entrenamiento. Las métricas son las siguientes:</p>
+<ul>
+<li>MAE (Mean Absolute Error): 2000</li>
+<li>RMSE (Root Mean Squared Error): 2500</li>
+<li><span class="math inline">\(R^2\)</span> : 0.85.</li>
+</ul>
+</section>
+<section id="casos-de-interpretación-1-1" class="slide level2">
+<h2>Casos de interpretación 1</h2>
+<p>Evaluación del Rendimiento Global:</p>
+<ul>
+<li><p><span class="math inline">\(RMSE &gt;\sim MAE\)</span> los errores grandes no son significativamente predominantes. La pequeña diferencia entre RMSE y MAE sugiere que no hay muchos outliers importantes afectando el modelo. El modelo está capturando de manera <strong>robusta</strong> la relación principal sin verse afectado por valores extremos.</p></li>
+<li><p>El 85% de la variabilidad en los ingresos puede ser explicada por el nivel educativo. <span class="math inline">\(R^2\)</span></p></li>
+</ul>
+</section>
+<section id="casos-de-interpretación-2" class="slide level2">
+<h2>Casos de interpretación 2</h2>
+<ul>
+<li>Supongamos que hemos construido un modelo de tipo regresión para</li>
+<li><strong>Objetivo</strong>: redecir los ingresos anuales de individuos basándonos en su nivel educativo (en años de educación formal).</li>
+<li>Nuestro pre-estudio de la población sugiere que el promedio de ingresos está alrededor de 25.000€.</li>
+</ul>
+<p>Se evalua el modelo con el conjunto de entrenamiento. Las métricas son las siguientes:</p>
+<ul>
+<li>MAE (Mean Absolute Error): 20000</li>
+<li>RMSE (Root Mean Squared Error): 45000</li>
+</ul>
+</section>
+<section id="casos-de-interpretación-2-1" class="slide level2">
+<h2>Casos de interpretación 2</h2>
+<p>Evaluación del Rendimiento Global:</p>
+<ul>
+<li><p>La escala de los errores de demasiado grande respecto al promedio poblacional. No son resultados admisibles.</p></li>
+<li><p><span class="math inline">\(RMSE &gt;&gt; MAE\)</span> los errores grandes son significativamente predominantes. La gran diferencia entre RMSE y MAE sugiere que hay muchos outliers importantes afectando el modelo.</p></li>
+<li><p>Es muy posible que haya outliers tan fuera de escala que hayan desasjustado el modelo.</p></li>
+</ul>
+</section>
 <section id="métricas-para-modelos-clasifiación" class="slide level2">
-<h2>6.2 Métricas para modelos clasifiación</h2>
+<h2>7.2 Métricas para modelos clasifiación</h2>
 <p>Toda métrica de evaluación para un modelo de machine learning supervisado se basa en el siguiente concepto:</p>
 <table>
 <thead>
@@ -2071,22 +2132,23 @@ AIC = 2{k} - \ln(\mathcal{L})
 <li>FDR cercana a 1 indica que la mayoría de las predicciones positivas son incorrectas.</li>
 <li>Es útil en contextos donde los falsos positivos son más costosos y deben ser minimizados.</li>
 </ul>
-<<<<<<< HEAD
-</section></section>
-<section id="validación-cruzada" class="title-slide slide level1 center">
-<h1>7. Validación cruzada</h1>
+</section>
+<section id="casos-de-interpretación-4" class="slide level2">
+<h2>Casos de interpretación 4</h2>
+<p><strong>GIRO DRAMÁTICO DE LOS ACONTECIMIENTOS</strong></p>
+<p>Las métricas son las siguientes:</p>
+<ul>
+<li>Accuracy (Exactitud): 0.5 [precisión general de una moneda al aire]</li>
+<li>Sensitivity (Sensibilidad o Recall): 0.1 [acierta 1 de cada 10 a los estudiantes en riesgo de abandono escolar ]</li>
+<li>Specificity (Especificidad): 0.90 [9 de 10 identificará estudiantes que no tienen riesgo de desertar. Mr.&nbsp;evidencias]</li>
+<li>False Discovery Rate (FDR): 0.8 [4 de cada 5 intervenciones podrían ser innecesarias, administración ineficiente]</li>
+</ul>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section>
-=======
-<div class="footer footer-default">
-
-</div>
 </section></section>
->>>>>>> 8649b8e1da58947ea4f39a9b9f6ba7f0720660a8
     </div>
   </div>
 
@@ -2113,7 +2175,6 @@ AIC = 2{k} - \ln(\mathcal{L})
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -2299,42 +2360,80 @@ AIC = 2{k} - \ln(\mathcal{L})
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -2412,10 +2511,27 @@ AIC = 2{k} - \ln(\mathcal{L})
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -2425,8 +2541,17 @@ AIC = 2{k} - \ln(\mathcal{L})
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -2440,7 +2565,11 @@ AIC = 2{k} - \ln(\mathcal{L})
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
@@ -2482,12 +2611,12 @@ AIC = 2{k} - \ln(\mathcal{L})
       }
     });
     </script>
-    
-    
-    
-    
-    
-    
+    <script>videojs(video_shortcode_videojs_video1);</script>
+    <script>videojs(video_shortcode_videojs_video2);</script>
+    <script>videojs(video_shortcode_videojs_video3);</script>
+    <script>videojs(video_shortcode_videojs_video4);</script>
+    <script>videojs(video_shortcode_videojs_video5);</script>
+    <script>videojs(video_shortcode_videojs_video6);</script>
     
 
 </body></html>

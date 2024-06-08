@@ -55,6 +55,118 @@ flowchart TD
 
 # 2. Validación cruzada
 
+## Concepto
+
+- **Objetivo**: Evaluar la capacidad de generalización de un modelo a datos no vistos.
+- **Técnica**: Dividir el conjunto de datos en subconjuntos para entrenamiento y validación.
+
+Repites este proceso varias veces, dividiendo tus datos de diferentes maneras. Esto ayuda a asegurar que tu evaluación del modelo no dependa de una sola división de datos.
+
+## Leave-One-Out Cross-Validation (LOOCV)
+
+- **Descripción**: Cada observación se usa como conjunto de validación una vez, y el resto como conjunto de entrenamiento.
+- **Ventajas**:
+  + Utiliza al máximo los datos para el entrenamiento.
+  + Minimiza el sesgo de estimación.
+- **Desventajas**:
+  + Extremadamente costosa computacionalmente.
+  + Alta variabilidad en las estimaciones. (necesario plotear la distribición)
+
+## Leave-One-Out Cross-Validation (LOOCV)
+
+![](Imagenes/LOOCV.png)
+
+
+## K-Fold Cross-Validation
+
+- **Descripción**: Divide los datos en K particiones. Realiza K iteraciones, cada vez usando una partición diferente como conjunto de validación.
+- **Ventajas**:
+  + Utiliza todos los datos para entrenamiento y validación.
+  + Proporciona una estimación robusta del rendimiento del modelo.
+- **Desventajas**:
+  + Computacionalmente costosa si K es grande.
+
+## K-Fold Cross-Validation
+
+![](Imagenes/kfold_cross_validation.png)
+
+
+## Bootstrap 
+
+- **Descripción**: Genera múltiples muestras aleatorias con reemplazo a partir del conjunto de datos original. 
+
+- **Ventajas**:
+  + Proporciona una medida de la incertidumbre en la evaluación del modelo.
+  + Útil para construir intervalos de confianza alrededor de las métricas de evaluación.
+- **Desventajas**:
+  + No es una técnica de validación cruzada en sí misma, sino más bien una técnica de remuestreo que se usa en conjunto con otras técnicas de validación cruzada.
+
+## Bootstrap 
+
+![](Imagenes/bootstraps.jpg)
+
+
+## Shuffle-Split (Monte Carlo)
+
+
+- **Descripción**: Se realizan múltiples divisiones aleatorias del conjunto de datos. En cada iteración, una fracción aleatoria de los datos se usa para entrenamiento y la fracción complementaria para validación.
+
+- Ventajas:
+  + Más flexibilidad en la proporción de entrenamiento/validación.
+  + Menor sesgo debido a la aleatorización repetida.
+- Desventajas:
+  + No garantiza que todas las observaciones se utilicen en las validaciones.
+
+
+## Advertencias sobre Validación Cruzada
+
+**1. La elección del número de divisiones no debe ser aleatoria**
+
+- Elegir un número adecuado de divisiones para evitar sesgos en la evaluación del modelo.
+- Por ejemplo, en la validación cruzada de K-fold, es común utilizar valores típicos como 5 o 10 para K. Sin embargo, la elección de K debe considerar el tamaño del conjunto de datos y el equilibrio entre la varianza y el sesgo.
+
+## Advertencias sobre Validación Cruzada
+
+**2. Siempre estratifica en problemas de clasificación**
+
+- Estratificar asegura una distribución equitativa de las clases en cada división.
+- En problemas de clasificación, es esencial estratificar las divisiones para garantizar que todas las clases estén representadas en cada conjunto de entrenamiento y prueba. Esto ayuda a evitar sesgos y garantiza una evaluación más precisa del rendimiento del modelo.
+
+
+## Advertencias sobre Validación Cruzada
+
+**3. Elección de validación cruzada adecuada para un problema de regresión**
+
+- Aunque la validación cruzada de K-fold es comúnmente utilizada en problemas de regresión, también es importante considerar otras técnicas, como la validación cruzada estratificada, especialmente cuando hay una distribución desigual de los datos o se necesita una evaluación más precisa del rendimiento del modelo.
+
+## Advertencias sobre Validación Cruzada
+
+**4. Nunca Sobremuestrear antes de la validación cruzada.**
+
+- La sobremuestreo antes de la validación cruzada puede llevar a una evaluación sesgada del modelo.
+- Conlleva al sobreajuste con los datos de entrenamiento, lo que resulta en una estimación errónea del rendimiento del modelo. Es importante realizar la sobremuestreo dentro de cadapartición de la validación cruzada para evitar este sesgo.
+
+## Advertencias sobre Validación Cruzada
+
+**5. Fuga de conocimientos**
+
+- Evitar la fuga de conocimientos al preprocesar los datos antes de la validación cruzada.
+- Es fundamental preprocesar los datos antes de la validación cruzada para evitar la fuga de conocimientos. Esto incluye la estandarización de características, la imputación de valores perdidos y cualquier otra transformación de datos que se realice en función de la información del conjunto de datos completo y no solo del conjunto de entrenamiento.
+
+## Advertencias sobre Validación Cruzada
+
+**6. No hagas Validación cruzada aleatorizadas para datos de series temporales.**
+
+- La validación cruzada aleatorizada puede introducir sesgos en la evaluación del modelo con datos de series temporales.
+- En lugar de utilizar validación cruzada aleatorizada, es preferible utilizar técnicas específicas para datos de series temporales, como la validación cruzada basada en el tiempo o la validación cruzada de bloques, que preservan la estructura temporal de los datos.
+
+## Advertencias sobre Validación Cruzada
+
+**7. Cuidado con la semilla a la hora de partir los datos.**
+
+- La semilla utilizada para partir los datos puede afectar significativamente los resultados de la validación cruzada.
+- La elección de la semilla puede influir en cómo se dividen los datos en conjuntos de entrenamiento y prueba, lo que a su vez puede afectar la evaluación del rendimiento del modelo. Es importante ser consistente con la semilla utilizada para garantizar la reproducibilidad de los resultados.
+
 
 # 3. Tipos de modelos
 
@@ -612,7 +724,7 @@ Riesgo de sobreajuste sin regularización adecuada.
 
 # 5. Aprendizaje no supervisado
 
-## Aprendizaje no supervisado
+## Caracteristicas principales
 
 -   Analiza y agrupa conjuntos de datos sin etiquetar.
 
@@ -630,9 +742,8 @@ Riesgo de sobreajuste sin regularización adecuada.
     La interpretación puede ser un infierno
     :::
 
-## Aprendizaje no supervisado
 
-## Aprendizaje no supervisado: Agrupación en clústeres
+## Agrupación en clústeres
 
 -   La agrupación en clústeres de k-medias
 -   Agrupación en clústeres jerárquica (HCA)
@@ -1150,6 +1261,47 @@ $$
 
 ![](Imagenes/AIC%20vs%20R2.png){width="711" height="469"}
 
+## Casos de interpretación 1
+
+- Supongamos que hemos construido un modelo de tipo regresión para 
+- **Objetivo**: redecir los ingresos anuales de individuos basándonos en su nivel educativo (en años de educación formal). 
+- Nuestro pre-estudio de la población sugiere que el promedio de ingresos está alrededor de 25.000€. 
+
+Se evalua el modelo con el conjunto de entrenamiento. Las métricas son las siguientes:
+
+- MAE (Mean Absolute Error): 2000
+- RMSE (Root Mean Squared Error): 2500 
+- $R^2$ : 0.85. 
+
+## Casos de interpretación 1
+
+Evaluación del Rendimiento Global:
+
+- $RMSE >\sim MAE$ los errores grandes no son significativamente predominantes. La pequeña diferencia entre RMSE y MAE sugiere que no hay muchos outliers importantes afectando el modelo. El modelo está capturando de manera **robusta** la relación principal sin verse afectado por valores extremos.
+
+- El 85% de la variabilidad en los ingresos puede ser explicada por el nivel educativo. $R^2$
+
+
+## Casos de interpretación 2
+
+- Supongamos que hemos construido un modelo de tipo regresión para 
+- **Objetivo**: redecir los ingresos anuales de individuos basándonos en su nivel educativo (en años de educación formal). 
+- Nuestro pre-estudio de la población sugiere que el promedio de ingresos está alrededor de 25.000€. 
+
+Se evalua el modelo con el conjunto de entrenamiento. Las métricas son las siguientes:
+
+- MAE (Mean Absolute Error): 20000
+- RMSE (Root Mean Squared Error): 45000 
+
+## Casos de interpretación 2
+
+Evaluación del Rendimiento Global:
+
+- La escala de los errores de demasiado grande respecto al promedio poblacional. No son resultados admisibles. 
+
+- $RMSE >> MAE$ los errores grandes son significativamente predominantes. La gran diferencia entre RMSE y MAE sugiere que hay muchos outliers importantes afectando el modelo. 
+
+- Es muy posible que haya outliers tan fuera de escala que hayan desasjustado el modelo. 
 
 
 
@@ -1163,18 +1315,6 @@ supervisado se basa en el siguiente concepto:
 |-------------------------|---------------------|---------------------|
 | **Dato original TRUE**  | TRUE Positivo (TP)  | FALSE Positive (FP) |
 | **Dato original FALSE** | Falso Negativo (FN) | True Negativo (TN)  |
-
-
-## Casos de interpretación. 
-
-Supongamos que hemos construido un modelo de tipo regresión para **predecir los ingresos anuales de individuos basándonos en su nivel educativo (en años de educación formal)**. 
-
-Se evalua el modelo con el conjunto de entrenamiento. Las métricas son las siguientes:
-
-- MAE (Mean Absolute Error): 2000
-- RMSE (Root Mean Squared Error): 2500
-- $R^2$ : 0.85
-
 
 
 
@@ -1443,6 +1583,19 @@ Se evalua el modelo con el conjunto de entrenamiento. Las métricas son las sigu
 - FDR cercana a 1 indica que la mayoría de las predicciones positivas son incorrectas.
 - Es útil en contextos donde los falsos positivos son más costosos y deben ser minimizados.
 
+
+
+
+## Casos de interpretación 4
+
+**GIRO DRAMÁTICO DE LOS ACONTECIMIENTOS**
+
+Las métricas son las siguientes:
+
+- Accuracy (Exactitud): 0.5 [precisión general de una moneda al aire]
+- Sensitivity (Sensibilidad o Recall): 0.1 [acierta 1 de cada 10 a los estudiantes en riesgo de abandono escolar ]
+- Specificity (Especificidad): 0.90 [9 de 10 identificará estudiantes que no tienen riesgo de desertar. Mr. evidencias]
+- False Discovery Rate (FDR): 0.8 [4 de cada 5 intervenciones podrían ser innecesarias, administración ineficiente]
 
 
 
