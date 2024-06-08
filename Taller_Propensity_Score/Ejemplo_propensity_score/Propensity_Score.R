@@ -1,6 +1,9 @@
-source('Scripts/Lectura_datos_basales.R')
+# source('Scripts/Lectura_datos_basales.R')
 
-datos_imputados <- readRDS('Datos/Imputados/Datos_imputados.rds') %>% 
+if(!require('pacman')){install.packages('pacman')}
+pacman::p_load(tidyverse,survey, tableone )
+
+datos_imputados <- readRDS('Taller_Propensity_Score/Ejemplo_propensity_score/Datos_imputados.rds') %>% 
   select(NHC, identificador, everything())
 
 datos_imputados_transformados <- datos_imputados %>% 

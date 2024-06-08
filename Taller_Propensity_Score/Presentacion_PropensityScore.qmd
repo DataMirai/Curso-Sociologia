@@ -801,43 +801,52 @@ Donde :
 
 ::: {style="margin-top:50px;font-size:65px"}
 
-**Simular la exposición**
+**Predecir la exposición implica qeu se puede simular la exposición**
 
 - Richard McElreath, *Statistical Rethinking* -
 :::
 
 ## 6. Inferencia causal
 
-- ¿Qué hubiera pasado si todo los individuos hubieran tenido exposición?
-- ¿Qué hubiera pasado si todo los individuos No hubieran tenido exposición?
+- ¿Qué hubiera pasado si todos los individuos hubieran estado expuestos?
+- ¿Qué hubiera pasado si ningún individuo hubiera estado expuesto?
 
 ## 6. Inferencia causal
 
-Mete en un modelo todas las variables que se te ocurren e interpreta entonces todos los coeficientes como efectos causales. a qver qué sale
+Mete en un modelo todas las variables que se te ocurren e interpreta entonces todos los coeficientes como efectos causales. a ver qué sale.
 
-Aitor Gonzalez, tu estadístico de confianza. Y cada día el de menos gente
+Aitor Gonzalez, tu estadístico de confianza. Y cada día el de menos gente.
 
 ## 6. Inferencia causal
 
 **Ciencia antes que estadística**
 
-Supongamos que tenemos un DAG. Y que el DAG es correcto. Esto que acabo de escribir, de que el DAG es correcto es la principal asunción de toda la inferencia causal. No hay inferencia causal sin una descripción explícita de tu modelo causal 
+Supongamos que tenemos un diagrama del modelo. Y que el diagrama es correcto. Esta es la principal asunción de toda la inferencia causal. 
+
+Las técnicas de inferencia causal son sólo herramientas técnicas que nos ayudarán a estimar el efecto. Pero si nuestras asunciones son incorrectas, no hay técnica que nos salve.
+
+**¿Qué nos lo impide?**
 
 
-# 6. Ajustando la confusión
+# 6. La confusión
+
+## 6. La confusión
+
+Situación en la que la relación entre una variable independiente y una variable dependiente se distorsiona por la influencia de una tercera variable, conocida como **variable de confusión** o confusora
 
 ## 6.1. La paradoja de Simpson {auto-animate="true"}
 
 ![](Imagenes/paradoja_simpson.jpg){fig-align="center"}
 
-## 6.2. Las variables externas {auto-animate="true"}
+## 6.2. Efecto placebo {auto-animate="true"}
 
 ![](Imagenes/efectos_externos.png){fig-align="center"}
 
-::: {style="text-align:center; font-size:28px"}
 *"La gripe se elimina con paracetamol en 7 días. Si no, se cura sola en
 una semana."*
-:::
+
+att: La confusión
+
 
 # ¿Cómo lidiamos con la confusión?
 
@@ -916,10 +925,6 @@ El **IPTW (Inverse Probability of Treatment Weighting)** es una técnica que uti
     - Sujeto no tratado: Peso = 1 / (1 - Puntuación de Propensión)
 
 3. **Análisis Ponderado**: Se realiza el análisis del efecto del tratamiento usando los pesos asignados para ajustar las diferencias entre los grupos.
-
-## 9. IPWRA {auto-animate="true"}
-
-El Emparejamiento por Puntuación de Propensión y la Ponderación por Inverso de la Probabilidad de Tratamiento son herramientas poderosas para realizar análisis causales en estudios observacionales, permitiendo controlar el sesgo de confusión y aproximar los efectos de un experimento aleatorio.
 
 
 # 10. Ejercicio práctico: programar un propensity score
