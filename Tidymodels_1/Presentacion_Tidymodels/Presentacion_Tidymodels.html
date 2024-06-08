@@ -1508,11 +1508,11 @@
 # A tibble: 5 × 2
   splits            id        
   &lt;list&gt;            &lt;chr&gt;     
-1 &lt;split [285/94]&gt;  Bootstrap1
-2 &lt;split [285/105]&gt; Bootstrap2
-3 &lt;split [285/100]&gt; Bootstrap3
-4 &lt;split [285/100]&gt; Bootstrap4
-5 &lt;split [285/104]&gt; Bootstrap5</code></pre>
+1 &lt;split [285/111]&gt; Bootstrap1
+2 &lt;split [285/106]&gt; Bootstrap2
+3 &lt;split [285/109]&gt; Bootstrap3
+4 &lt;split [285/93]&gt;  Bootstrap4
+5 &lt;split [285/110]&gt; Bootstrap5</code></pre>
 </div>
 </div>
 </section>
@@ -3445,9 +3445,9 @@ OOB prediction error (Brier s.):  0.1440296 </code></pre>
 <h2>13. SHAP values</h2>
 <div>
 <ul>
-<li class="fragment"><p>Los valores de Shapley son sencillamente las <strong>marginales de cada variable dentro del modelo.</strong></p></li>
+<li class="fragment"><p>Los <em>valores de Shapley</em> son sencillamente las <strong>marginales de cada variable dentro del modelo.</strong></p></li>
 <li class="fragment"><p>Compilarlos es computacionalmente extenso, ya que hay que hacer cada combinación de valores para una fila y evaluar de cuánto es su marginal.</p></li>
-<li class="fragment"><p>El valor final llamado Shap value es <strong>el promedio de todas las aportaciones de una variable marginal.</strong></p></li>
+<li class="fragment"><p>El valor final llamado <em>Shap value</em> es <strong>el promedio de todas las aportaciones de una variable marginal.</strong></p></li>
 </ul>
 </div>
 </section>
@@ -3462,19 +3462,9 @@ OOB prediction error (Brier s.):  0.1440296 </code></pre>
 </section>
 <section id="shap-values-4" class="slide level2">
 <h2>13. SHAP values</h2>
-<div>
-<ul>
-<li class="fragment"><p>Forma de ver la contribución de las variables utilizadas en las predicciones.</p></li>
-<li class="fragment"><p>Se pueden utilizar tanto como para el modelo general como en individuos.</p></li>
-<li class="fragment"><p>Algunos paquetes que se encargan de generar shap values son h2o y DALEXTRA.</p></li>
-</ul>
-</div>
-</section>
-<section id="shap-values-5" class="slide level2">
-<h2>13. SHAP values</h2>
 
 <img data-src="Presentacion_Tidymodels_files/figure-revealjs/shap-values-12-1.png" width="960" class="r-stretch"></section>
-<section id="shap-values-6" class="slide level2">
+<section id="shap-values-5" class="slide level2">
 <h2>13. SHAP values</h2>
 <div>
 <ul>
@@ -3482,10 +3472,13 @@ OOB prediction error (Brier s.):  0.1440296 </code></pre>
 <li class="fragment"><p>Si una predicción media es de 0.5, y el shap value es de 0.1, indicará que esa variable sola podría llegar a tener un impacto tal que haga que la predicción llege a 0.6.</p></li>
 </ul>
 </div>
+</section></section>
+<section id="gracias-por-vuestra-atención" class="title-slide slide level1 center">
+<h1>Gracias por vuestra atención</h1>
 <div class="footer footer-default">
 
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
