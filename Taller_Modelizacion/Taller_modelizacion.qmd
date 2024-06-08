@@ -16,19 +16,19 @@ pacman::p_load(tidyverse)
 
 # 1. Bases de modelización
 
-## Tener las cosas claras antes de empezar
+## 1.1. Tener las cosas claras antes de empezar
 
 1.  Tener clara la pregunta
-2.  Tener una idea de la complejidad de la pregunta.
-3.  Tener más o menos claras las variables que interfieren en el proceso.
-4.  Tener claro **las técnicas y el flujo de trabajo necesarios para responder**
+2.  Tener una idea de la complejidad de la pregunta
+3.  Tener más o menos claras las variables que interfieren en el proceso
+4.  Tener claros **las técnicas y el flujo de trabajo necesarios para responder**
 
 
-## Bases de modelización
+## 1.2. Bases de modelización
 
 ![Machine learning: el sentimiento cuando te asomas por primera vez](Imagenes/60860fbc7d3ee.jpeg)
 
-## Flujo completo de modelización
+## 1.3. Flujo completo de modelización
 
 ```{mermaid, height=800, width=800}
 %%| fig-width: 6
@@ -55,7 +55,7 @@ flowchart TD
 
 # 2. Validación cruzada
 
-## Concepto
+## 2.1. Concepto
 
 - **Objetivo**: Evaluar la capacidad de generalización de un modelo a datos no vistos.
 - **Técnica**: Dividir el conjunto de datos en subconjuntos para entrenamiento y validación.
@@ -346,6 +346,16 @@ $Y = f\left( \beta_0 + \beta X + \lambda \left( \frac{1 - \alpha}{2}\sum_{j=1}^{
   + Efectos aleatorios
   + Efectos mixtos
 
+##  Regresión: según la funcion de enlace
+
+![](Imagenes/regresion-lineal.png)
+![](Imagenes/regresion-multiple.png) 
+![](Imagenes/regresion-polinomica.png) 
+
+##  Regresión: según la restriccion
+
+![](Imagenes/lasso-ridge.png)  
+
 ##  Regresión
 
 ```{r}
@@ -399,6 +409,10 @@ Criterios de partición:
 - Gini, 
 - entropía, 
 - varianza.
+
+## Árboles de decisión
+![](Imagenes/randomforest.jpg) 
+![](Imagenes/random-forest.png) 
 
 ## Árboles de decisión
 
@@ -470,6 +484,10 @@ Características:
 - Supone independencia entre predictores.
 - Muy eficiente en términos de tiempo.
 - Funciona bien con *datos pequeños y ruidosos*.
+
+## Naïve Bayes
+
+![](Imagenes/naive-bayes.webp)  
 
 ## Naïve Bayes
 
@@ -578,6 +596,10 @@ Características:
 
 ## Técnicas de Supervivencia / AFT
 
+![](Imagenes/AFT.png) 
+
+## Técnicas de Supervivencia / AFT
+
 ```{r}
 # Cargar librerías
 library(survival)
@@ -613,6 +635,9 @@ Características:
   + polinomial
   + radial.
 
+##  Support Vector Machines
+
+![](Imagenes/support-vector.png)  
 
 ##  Support Vector Machines
 
@@ -655,6 +680,10 @@ Características:
 
 ##  SARIMA
 
+![](Imagenes/SARIMA.png) 
+
+##  SARIMA
+
 ```{r}
 # Cargar librerías
 library(forecast)
@@ -689,6 +718,10 @@ Características:
 - Capacidad de aprender relaciones no lineales complejas.
 - Compuesto de capas (entrada, ocultas, salida).
 - Utiliza Algoritmo de retropropagación para el aprendizaje.
+
+##  Redes neuronales
+
+![](Imagenes/neural-network.jpeg)  
 
 ##  Redes neuronales
 

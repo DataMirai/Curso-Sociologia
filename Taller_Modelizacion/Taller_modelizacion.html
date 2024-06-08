@@ -10,7 +10,7 @@
 <link href="Taller_modelizacion_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="Taller_modelizacion_files/libs/quarto-contrib/videojs/video.min.js"></script>
 <link href="Taller_modelizacion_files/libs/quarto-contrib/videojs/video-js.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.553">
+  <meta name="generator" content="quarto-1.3.450">
 
   <title>Que comience el periplo de la Modelización</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -222,8 +222,7 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -407,25 +406,21 @@
 <h1>1. Bases de modelización</h1>
 
 </section>
-<<<<<<< HEAD
-<section id="tener-las-cosas-claras-antes-de-empezar" class="slide level2 scrollable">
-=======
 <section id="tener-las-cosas-claras-antes-de-empezar" class="slide level2">
->>>>>>> 8641bb7af35b62bbbe56908911678e412acccabf
-<h2>Tener las cosas claras antes de empezar</h2>
+<h2>1.1. Tener las cosas claras antes de empezar</h2>
 <ol type="1">
 <li>Tener clara la pregunta</li>
-<li>Tener una idea de la complejidad de la pregunta.</li>
-<li>Tener más o menos claras las variables que interfieren en el proceso.</li>
-<li>Tener claro <strong>las técnicas y el flujo de trabajo necesarios para responder</strong></li>
+<li>Tener una idea de la complejidad de la pregunta</li>
+<li>Tener más o menos claras las variables que interfieren en el proceso</li>
+<li>Tener claros <strong>las técnicas y el flujo de trabajo necesarios para responder</strong></li>
 </ol>
 </section>
 <section id="bases-de-modelización-1" class="slide level2">
-<h2>Bases de modelización</h2>
+<h2>1.2. Bases de modelización</h2>
 
 <img data-src="Imagenes/60860fbc7d3ee.jpeg" class="r-stretch quarto-figure-center"><p class="caption">Machine learning: el sentimiento cuando te asomas por primera vez</p></section>
 <section id="flujo-completo-de-modelización" class="slide level2">
-<h2>Flujo completo de modelización</h2>
+<h2>1.3. Flujo completo de modelización</h2>
 <div class="cell" data-reveal="true" data-fig-width="6">
 <div class="cell-output-display">
 <div>
@@ -452,18 +447,13 @@ flowchart TD
 </div>
 </div>
 </section></section>
-<section id="validación-cruzada" class="title-slide slide level1 center">
-<h1>2. Validación cruzada</h1>
-
-</section>
-
 <section>
 <section id="validación-cruzada" class="title-slide slide level1 center">
 <h1>2. Validación cruzada</h1>
 
 </section>
 <section id="concepto" class="slide level2">
-<h2>Concepto</h2>
+<h2>2.1. Concepto</h2>
 <ul>
 <li><strong>Objetivo</strong>: Evaluar la capacidad de generalización de un modelo a datos no vistos.</li>
 <li><strong>Técnica</strong>: Dividir el conjunto de datos en subconjuntos para entrenamiento y validación.</li>
@@ -528,6 +518,21 @@ flowchart TD
 <h2>Bootstrap</h2>
 
 <img data-src="Imagenes/bootstraps.jpg" class="r-stretch"></section>
+<section id="shuffle-split-monte-carlo" class="slide level2">
+<h2>Shuffle-Split (Monte Carlo)</h2>
+<ul>
+<li><p><strong>Descripción</strong>: Se realizan múltiples divisiones aleatorias del conjunto de datos. En cada iteración, una fracción aleatoria de los datos se usa para entrenamiento y la fracción complementaria para validación.</p></li>
+<li><p>Ventajas:</p>
+<ul>
+<li>Más flexibilidad en la proporción de entrenamiento/validación.</li>
+<li>Menor sesgo debido a la aleatorización repetida.</li>
+</ul></li>
+<li><p>Desventajas:</p>
+<ul>
+<li>No garantiza que todas las observaciones se utilicen en las validaciones.</li>
+</ul></li>
+</ul>
+</section>
 <section id="advertencias-sobre-validación-cruzada" class="slide level2">
 <h2>Advertencias sobre Validación Cruzada</h2>
 <p><strong>1. La elección del número de divisiones no debe ser aleatoria</strong></p>
@@ -776,7 +781,7 @@ flowchart TD
 <li>Economía: sesgos en el crédito y trabajo de tipo espiral retroalimentativa.</li>
 </ul>
 </section>
-<section id="aprendizaje-supervisado-5" class="slide level2 scrollable">
+<section id="aprendizaje-supervisado-5" class="slide level2">
 <h2>Aprendizaje supervisado</h2>
 <ol type="1">
 <li>Regresión</li>
@@ -823,6 +828,14 @@ flowchart TD
 </ul></li>
 </ul>
 </section>
+<section id="regresión-según-la-funcion-de-enlace" class="slide level2">
+<h2>Regresión: según la funcion de enlace</h2>
+<p><img data-src="Imagenes/regresion-lineal.png"> <img data-src="Imagenes/regresion-multiple.png"> <img data-src="Imagenes/regresion-polinomica.png"></p>
+</section>
+<section id="regresión-según-la-restriccion" class="slide level2">
+<h2>Regresión: según la restriccion</h2>
+
+<img data-src="Imagenes/lasso-ridge.png" class="r-stretch"></section>
 <section id="regresión-2" class="slide level2">
 <h2>Regresión</h2>
 <div class="cell">
@@ -848,11 +861,6 @@ Multiple R-squared:  0.8268,    Adjusted R-squared:  0.8148
 F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 </div>
 <div class="cell-output-display">
-<<<<<<< HEAD
-<div>
-<figure>
-=======
->>>>>>> 8641bb7af35b62bbbe56908911678e412acccabf
 <p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
 </div>
 <div class="cell-output-display">
@@ -863,11 +871,6 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 </div>
 <div class="cell-output-display">
 <p><img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-3-4.png" width="960"></p>
-<<<<<<< HEAD
-</figure>
-</div>
-=======
->>>>>>> 8641bb7af35b62bbbe56908911678e412acccabf
 </div>
 </div>
 </section>
@@ -912,9 +915,13 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 </section>
 <section id="árboles-de-decisión-2" class="slide level2">
 <h2>Árboles de decisión</h2>
+<p><img data-src="Imagenes/randomforest.jpg"> <img data-src="Imagenes/random-forest.png"></p>
+</section>
+<section id="árboles-de-decisión-3" class="slide level2">
+<h2>Árboles de decisión</h2>
 
 <img data-src="Taller_modelizacion_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
-<section id="árboles-de-decisión-3" class="slide level2">
+<section id="árboles-de-decisión-4" class="slide level2">
 <h2>Árboles de decisión</h2>
 <p>Contras y Advertencias:</p>
 <ul>
@@ -933,17 +940,10 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>             MeanDecreaseGini
-<<<<<<< HEAD
-Sepal.Length        12.139974
-Sepal.Width          2.216244
-Petal.Length        45.127067
-Petal.Width         39.757449</code></pre>
-=======
-Sepal.Length         8.940697
-Sepal.Width          1.619076
-Petal.Length        44.796342
-Petal.Width         43.830714</code></pre>
->>>>>>> 8641bb7af35b62bbbe56908911678e412acccabf
+Sepal.Length        11.182360
+Sepal.Width          2.282999
+Petal.Length        44.047845
+Petal.Width         41.645130</code></pre>
 </div>
 
 </div>
@@ -959,6 +959,10 @@ Petal.Width         43.830714</code></pre>
 </section>
 <section id="naïve-bayes-1" class="slide level2">
 <h2>Naïve Bayes</h2>
+
+<img data-src="Imagenes/naive-bayes.webp" class="r-stretch"></section>
+<section id="naïve-bayes-2" class="slide level2">
+<h2>Naïve Bayes</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>            
@@ -969,7 +973,7 @@ predicciones setosa versicolor virginica
 </div>
 </div>
 </section>
-<section id="naïve-bayes-2" class="slide level2">
+<section id="naïve-bayes-3" class="slide level2">
 <h2>Naïve Bayes</h2>
 <p>Contras y Advertencias:</p>
 <ul>
@@ -1205,7 +1209,7 @@ predicciones setosa versicolor virginica
 </ul>
 <p>factoriza una matriz, A, en tres matrices de rango inferior.</p>
 </section>
-<section id="aprendizaje-no-supervisado-caso-target" class="slide level2 scrollable">
+<section id="aprendizaje-no-supervisado-caso-target" class="slide level2">
 <h2>Aprendizaje no supervisado, caso Target</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -1315,16 +1319,6 @@ predicciones setosa versicolor virginica
 <section id="aprendizaje-no-supervisado-caso-target-4" class="slide level2">
 <h2>Aprendizaje no supervisado, caso Target</h2>
 <div class="cell">
-<<<<<<< HEAD
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co"># Aplicar K-means</span></span>
-<span id="cb8-2"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reproducibilidad</span></span>
-<span id="cb8-3"><a href=""></a>kmeans_result <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">kmeans</span>(Target_ejemplo[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">centers =</span> <span class="dv">3</span>)</span>
-<span id="cb8-4"><a href=""></a></span>
-<span id="cb8-5"><a href=""></a><span class="co"># Añadir los resultados del cluster al dataframe</span></span>
-<span id="cb8-6"><a href=""></a>Target_ejemplo <span class="ot">&lt;-</span> Target_ejemplo <span class="sc">%&gt;%</span>  </span>
-<span id="cb8-7"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">Cluster =</span> <span class="fu">as_factor</span>(kmeans_result<span class="sc">$</span>cluster) ) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-8"><a href=""></a>  <span class="fu">select</span>(ClienteID, Cluster, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-=======
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Aplicar K-means</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reproducibilidad</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a>kmeans_result <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">kmeans</span>(Target_ejemplo[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">centers =</span> <span class="dv">3</span>)</span>
@@ -1333,7 +1327,6 @@ predicciones setosa versicolor virginica
 <span id="cb8-6"><a href="#cb8-6"></a>Target_ejemplo <span class="ot">&lt;-</span> Target_ejemplo <span class="sc">%&gt;%</span>  </span>
 <span id="cb8-7"><a href="#cb8-7"></a>  <span class="fu">mutate</span>(<span class="at">Cluster =</span> <span class="fu">as_factor</span>(kmeans_result<span class="sc">$</span>cluster) ) <span class="sc">%&gt;%</span> </span>
 <span id="cb8-8"><a href="#cb8-8"></a>  <span class="fu">select</span>(ClienteID, Cluster, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
->>>>>>> 8641bb7af35b62bbbe56908911678e412acccabf
 </div>
 </section>
 <section id="aprendizaje-no-supervisado-caso-target-5" class="slide level2">
@@ -1445,11 +1438,7 @@ predicciones setosa versicolor virginica
 <li><p>Ensayo y error (Supervisado y no supervisado al mismo tiempo)</p></li>
 </ul>
 </section>
-<<<<<<< HEAD
-<section id="aprendizaje-por-refuerzo-1" class="slide level2 scrollable">
-=======
 <section id="aprendizaje-por-refuerzo-1" class="slide level2">
->>>>>>> 8641bb7af35b62bbbe56908911678e412acccabf
 <h2>Aprendizaje por refuerzo</h2>
 <ol type="1">
 <li><p>Sobresale en entornos complejos</p></li>
@@ -1882,16 +1871,6 @@ AIC = 2{k} - \ln(\mathcal{L})
 </tbody>
 </table>
 </section>
-<section id="casos-de-interpretación." class="slide level2">
-<h2>Casos de interpretación.</h2>
-<p>Supongamos que hemos construido un modelo de tipo regresión para <strong>predecir los ingresos anuales de individuos basándonos en su nivel educativo (en años de educación formal)</strong>.</p>
-<p>Se evalua el modelo con el conjunto de entrenamiento. Las métricas son las siguientes:</p>
-<ul>
-<li>MAE (Mean Absolute Error): 2000</li>
-<li>RMSE (Root Mean Squared Error): 2500</li>
-<li><span class="math inline">\(R^2\)</span> : 0.85</li>
-</ul>
-</section>
 <section id="métricas-accuracy" class="slide level2">
 <h2>Métricas: Accuracy</h2>
 <ul>
@@ -2166,7 +2145,6 @@ AIC = 2{k} - \ln(\mathcal{L})
 <li>FDR cercana a 1 indica que la mayoría de las predicciones positivas son incorrectas.</li>
 <li>Es útil en contextos donde los falsos positivos son más costosos y deben ser minimizados.</li>
 </ul>
-<<<<<<< HEAD
 </section>
 <section id="casos-de-interpretación-4" class="slide level2">
 <h2>Casos de interpretación 4</h2>
@@ -2178,16 +2156,9 @@ AIC = 2{k} - \ln(\mathcal{L})
 <li>Specificity (Especificidad): 0.90 [9 de 10 identificará estudiantes que no tienen riesgo de desertar. Mr.&nbsp;evidencias]</li>
 <li>False Discovery Rate (FDR): 0.8 [4 de cada 5 intervenciones podrían ser innecesarias, administración ineficiente]</li>
 </ul>
-<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
-</div>
-=======
-<div class="footer footer-default">
-
-</div>
->>>>>>> 8641bb7af35b62bbbe56908911678e412acccabf
 </section></section>
     </div>
   </div>
@@ -2215,6 +2186,7 @@ AIC = 2{k} - \ln(\mathcal{L})
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -2400,80 +2372,42 @@ AIC = 2{k} - \ln(\mathcal{L})
       });
     </script>
     
-
     <script>
-
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
       // slide changes (different for each slide format).
-
       (function () {
-
         // dispatch for htmlwidgets
-
         function fireSlideEnter() {
-
           const event = window.document.createEvent("Event");
-
           event.initEvent("slideenter", true, true);
-
           window.document.dispatchEvent(event);
-
         }
-
-    
 
         function fireSlideChanged(previousSlide, currentSlide) {
-
           fireSlideEnter();
 
-    
-
           // dispatch for shiny
-
           if (window.jQuery) {
-
             if (previousSlide) {
-
               window.jQuery(previousSlide).trigger("hidden");
-
             }
-
             if (currentSlide) {
-
               window.jQuery(currentSlide).trigger("shown");
-
             }
-
           }
-
         }
-
-    
 
         // hookup for slidy
-
         if (window.w3c_slidy) {
-
           window.w3c_slidy.add_observer(function (slide_num) {
-
             // slide_num starts at position 1
-
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
           });
-
         }
 
-    
-
       })();
-
     </script>
-
-    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -2551,27 +2485,10 @@ AIC = 2{k} - \ln(\mathcal{L})
         // clear code selection
         e.clearSelection();
       });
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
-            }
-          }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      function tippyHover(el, contentFn) {
         const config = {
           allowHTML: true,
+          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -2581,17 +2498,8 @@ AIC = 2{k} - \ln(\mathcal{L})
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start',
+          placement: 'bottom-start'
         };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -2605,11 +2513,7 @@ AIC = 2{k} - \ln(\mathcal{L})
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
+          return note.innerHTML;
         });
       }
       const findCites = (el) => {
@@ -2651,12 +2555,12 @@ AIC = 2{k} - \ln(\mathcal{L})
       }
     });
     </script>
-    <script>videojs(video_shortcode_videojs_video1);</script>
-    <script>videojs(video_shortcode_videojs_video2);</script>
-    <script>videojs(video_shortcode_videojs_video3);</script>
-    <script>videojs(video_shortcode_videojs_video4);</script>
-    <script>videojs(video_shortcode_videojs_video5);</script>
-    <script>videojs(video_shortcode_videojs_video6);</script>
+    
+    
+    
+    
+    
+    
     
 
 </body></html>
