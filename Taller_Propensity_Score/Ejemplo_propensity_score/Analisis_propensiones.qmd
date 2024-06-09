@@ -47,11 +47,9 @@ variables_propensity <- c(
 ### Ajuste del modelo
 
 ```{r}
-mod_propensity <- glm(
+mod_propensity_1 <- glm(
   formula = Grup_IQ ~  
-    SignesIndirectes_HTP + 
     HCC_prev +
-    DIabetes +
     sexe_home +
     Charlson_Index
     ,
@@ -62,8 +60,10 @@ mod_propensity <- glm(
 ### Sacando IPTW
 
 ```{r}
+
+
 datos_imputados_propensity_1 <- datos_imputados_transformados %>% 
-  mutate(prediciones=predict(mod_propensity,datos_imputados_transformados,type="response") )
+  mutate( prediciones = predict( mod_propensity_1 , datos_imputados_transformados , type="response") )
 
 datos_imputados_propensity_1 <- datos_imputados_propensity_1 %>% 
   mutate(standarized_weights = case_when(
@@ -108,32 +108,36 @@ ggpubr::ggarrange(
 ```
 
 ```{r}
-Pacientes_incluidos_iptwdatos_propensity_1 <- svydesign(
+
+iptwdatos_propensity_survey_1 <- svydesign(
   ids = ~ 1, 
   data = datos_imputados_propensity_1,
   strata = ~Grup_IQ,
   weights = ~ datos_imputados_propensity_1$standarized_weights)
 
-Pacientes_incluidos_Propensity_table_Weighted_1 <- svyCreateTableOne(
-  vars= datos_imputados_propensity_1 %>% select(-c(Grup_IQ, identificador)) %>% names(),
+Propensity_table_Weighted_1 <- svyCreateTableOne(
+  vars= datos_imputados_propensity_1 %>% select(-c(Grup_IQ, identificador,standarized_weights,prediciones )) %>% names(),
   strata = "Grup_IQ", 
-  data = Pacientes_incluidos_iptwdatos_propensity_1, 
+  data = iptwdatos_propensity_survey_1, 
   addOverall = T,
   includeNA = T,
   smd =TRUE)
 
-print(Pacientes_incluidos_Propensity_table_Weighted_1, smd = TRUE)
+print(Propensity_table_Weighted_1, smd = TRUE)
 
 ```
 
 
-
-
-
 # Modelo propensity 2: mejor, pero todavía no cuadra
 
+Supón que ha habido unos 300 modelos entremedio, pero ya está. **No hemos conseguido afinar más la fórmula**. Esta es el mejor propensity que hemos logrado. Veamos que tal ajusta.
+
+
+### Ajuste del modelo
+
 ```{r}
-mod_propensity <- glm(
+
+mod_propensity_2 <- glm(
   formula = Grup_IQ ~  
     SignesIndirectes_HTP + 
     HCC_prev +
@@ -152,11 +156,17 @@ mod_propensity <- glm(
 
   data = datos_imputados_transformados, 
   family=binomial(link="logit") )
+```
 
-datos_imputados_propensity <- datos_imputados_transformados %>% 
-  mutate(prediciones=predict(mod_propensity,datos_imputados_transformados,type="response") )
 
-datos_imputados_propensity <- datos_imputados_propensity %>% 
+### Sacando IPTW
+
+```{r}
+
+datos_imputados_propensity_2 <- datos_imputados_transformados %>% 
+  mutate(prediciones = predict(mod_propensity_2, datos_imputados_transformados, type = "response"))
+
+datos_imputados_propensity_2 <- datos_imputados_propensity_2 %>% 
   mutate(standarized_weights = case_when(
     Grup_IQ == 'Si IQ' ~ (177/(371))/ (  prediciones),
     Grup_IQ == 'No IQ' ~ (194/(371))/ (1-prediciones) 
@@ -165,30 +175,32 @@ datos_imputados_propensity <- datos_imputados_propensity %>%
 ```
 
 ```{r}
-datos_imputados_propensity
+datos_imputados_propensity_2
 ```
+
+### Revisión
 
 ```{r}
 
 ggpubr::ggarrange(
   plotlist = list(
-    datos_imputados_propensity %>%
+    datos_imputados_propensity_2 %>%
       ggplot(aes(standarized_weights, fill = Grup_IQ)) +
       geom_density() +
       labs(x = 'probabilidad de pertenecer grup Si en propensity')
     ,
-    datos_imputados_propensity %>%
+    datos_imputados_propensity_2 %>%
       ggplot(aes(standarized_weights, fill = Grup_IQ)) +
       geom_density(alpha = 0.6) +
       labs(x = 'probabilidad de pertenecer grup Si en propensity')
     
     ,
-    datos_imputados_propensity %>%
+    datos_imputados_propensity_2 %>%
       ggplot(aes(prediciones, fill = Grup_IQ)) +
       geom_histogram(color = 'black', alpha = 1) +
       labs(x = 'probabilidad de pertenecer grup Si en propensity')
     ,
-    datos_imputados_propensity %>%
+    datos_imputados_propensity_2 %>%
       ggplot(aes(prediciones, fill = Grup_IQ)) +
       geom_histogram(color = 'black', alpha = 0.6) +
       labs(x = 'probabilidad de pertenecer grup Si en propensity')
@@ -197,47 +209,58 @@ ggpubr::ggarrange(
 ```
 
 ```{r}
-Pacientes_incluidos_iptwdatos_propensity <- svydesign(
-  ids = ~ 1, 
-  data = datos_imputados_propensity,
-  strata = ~Grup_IQ,
-  weights = ~ datos_imputados_propensity$standarized_weights)
 
-Pacientes_incluidos_Propensity_table_Weighted <- svyCreateTableOne(
-  vars= datos_imputados_propensity %>% select(-c(Grup_IQ, identificador)) %>% names(),
+iptwdatos_propensity_2 <- svydesign(
+  ids = ~ 1, 
+  data = datos_imputados_propensity_2,
+  strata = ~Grup_IQ,
+  weights = ~ datos_imputados_propensity_2$standarized_weights)
+
+Propensity_table_Weighted_2 <- svyCreateTableOne(
+  vars= datos_imputados_propensity_2 %>% select(-c(Grup_IQ, identificador,standarized_weights,prediciones )) %>% names(),
   strata = "Grup_IQ", 
-  data = Pacientes_incluidos_iptwdatos_propensity, 
+  data = iptwdatos_propensity_2, 
   addOverall = T,
   includeNA = T,
   smd =TRUE)
 
-print(Pacientes_incluidos_Propensity_table_Weighted, smd = TRUE)
+print(Propensity_table_Weighted_2, smd = TRUE)
 
 ```
+
+# Filtrado de pacientes que no interesan 
+
+Se puede utilizar el resultado de un propensity para encajar otro. en este caso. Utilizamos los resultados de un propensity previo para poder crear uno nuevo con restricción de casos outlier que no iban a encajar de ninguna forma   
+
+
 
 
 ```{r}
 # Filtrado de pacientes excluídos por no encajar en ningún propensity score ----
 
-Pacientes_excluidos_propensity <- datos_imputados_propensity %>% 
-  filter(!between(prediciones,0.1,0.9)) %>% 
+Pacientes_excluidos_propensity <- datos_imputados_propensity_2 %>% 
+  filter(!between(prediciones,0.1,0.80)) %>% # eliminamos los propensities extremos.  
   select(-c(prediciones,standarized_weights))
 
 Pacientes_excluidos_propensity$identificador
+
 # Filtrado de pacientes incluidos por  encajar en  propensity score ---- 
 
-Pacientes_incluidos_propensity <- datos_imputados_propensity %>% 
-  filter(between(prediciones,0.1,0.9)) %>% 
+Pacientes_finales <- datos_imputados_propensity_2 %>% 
+  filter(between(prediciones,0.1,0.80)) %>% 
   select(-c(prediciones,standarized_weights))
 
-Pacientes_incluidos_propensity
+Pacientes_finales
 ```
 
 
-# Propensity final: supón unos 300 modelos entremedio, pero ya está
+# Modelo Propensity final 
+
+### Ajuste del modelo
+
 
 ```{r}
-mod_propensity <- glm(
+mod_propensity_final <- glm(
   formula = Grup_IQ ~  
     SignesIndirectes_HTP + 
     HCC_prev +
@@ -253,49 +276,87 @@ mod_propensity <- glm(
     Creat_mgdL_preIQ +
     INR_preIQ
   , 
-  data = Pacientes_incluidos_propensity, 
+  data = Pacientes_finales, 
   family=binomial(link="logit") )
+```
 
-Pacientes_incluidos_propensity <- Pacientes_incluidos_propensity %>% 
-  mutate(prediciones=predict(mod_propensity,Pacientes_incluidos_propensity,type="response") ) %>% 
+
+### Sacando IPTW
+
+```{r}
+Pacientes_finales_IPTW <- Pacientes_finales %>% 
+  mutate(prediciones=predict(mod_propensity_final,Pacientes_finales,type="response") ) %>% 
   mutate(standarized_weights = case_when(
     Grup_IQ == 'Si IQ' ~ (177/(371))/ (  prediciones),
     Grup_IQ == 'No IQ' ~ (194/(371))/ (1-prediciones) 
   )) 
 ```
 
-# datos_imputados_propensity %\>% write_rds(., 'Datos/Datos_propensity.rds')
+
+### Revisión
+
+```{r}
+
+ggpubr::ggarrange(
+  plotlist = list(
+    Pacientes_finales_IPTW %>%
+      ggplot(aes(standarized_weights, fill = Grup_IQ)) +
+      geom_density() +
+      labs(x = 'probabilidad de pertenecer grup Si en propensity')
+    ,
+    Pacientes_finales_IPTW %>%
+      ggplot(aes(standarized_weights, fill = Grup_IQ)) +
+      geom_density(alpha = 0.6) +
+      labs(x = 'probabilidad de pertenecer grup Si en propensity')
+    
+    ,
+    Pacientes_finales_IPTW %>%
+      ggplot(aes(prediciones, fill = Grup_IQ)) +
+      geom_histogram(color = 'black', alpha = 1) +
+      labs(x = 'probabilidad de pertenecer grup Si en propensity')
+    ,
+    Pacientes_finales_IPTW %>%
+      ggplot(aes(prediciones, fill = Grup_IQ)) +
+      geom_histogram(color = 'black', alpha = 0.6) +
+      labs(x = 'probabilidad de pertenecer grup Si en propensity')
+  ))
+  
+```
+
 
 ```{r}
 # Datos propensity ----
 
-Pacientes_incluidos_iptwdatos_propensity <- svydesign(
+Pacientes_finales_iptw_survey <- svydesign(
   ids = ~ 1, 
-  data = Pacientes_incluidos_propensity,
+  data = Pacientes_finales_IPTW,
   strata = ~Grup_IQ,
-  weights = ~ Pacientes_incluidos_propensity$standarized_weights)
+  weights = ~ Pacientes_finales_IPTW$standarized_weights)
 
-Pacientes_incluidos_Propensity_table_Weighted <- svyCreateTableOne(
-  vars= Pacientes_incluidos_propensity %>% select(-c(Grup_IQ, identificador)) %>% names(),
+Pacientes_finales_IPTW_table_Weighted <- svyCreateTableOne(
+  vars= Pacientes_finales_IPTW %>% select(-c(Grup_IQ, identificador,standarized_weights,prediciones )) %>% names(),
   strata = "Grup_IQ", 
-  data = Pacientes_incluidos_iptwdatos_propensity, 
+  data = Pacientes_finales_iptw_survey, 
   addOverall = T,
   includeNA = T,
   smd =TRUE)
 
-print(Pacientes_incluidos_Propensity_table_Weighted, smd = TRUE)
-
-# datos_imputados_propensity %>%
-#   ggplot(aes(standarized_weights, fill= Grup_IQ  )) +
-#   geom_density()+
-#   labs(x= 'probabilidad de pertenecer grup Si en propensity')
-# 
-# 
-# datos_imputados_propensity %>%
-#   ggplot(aes(prediciones, fill= Grup_IQ )) +
-#   geom_histogram(color='black',alpha=0.8) +
-#   labs(x= 'probabilidad de pertenecer grup Si en propensity')
+print(Pacientes_finales_IPTW_table_Weighted , smd = TRUE)
 
 ```
 
-g \`\`\`
+
+# Ahora ya esta todo equilirbado
+
+Ahora teniendo los id's de los pacientes en claro y estos pesos, podemos ir a hacer cualquier análisis que permita ponderación y se harán con una confusión perfectamente controlada.
+
+regresiones lineales o modelos de supervivencia son las opciones más plausibles para este método. 
+
+```{r}
+Pacientes_finales_IPTW %>% 
+  select(identificador, standarized_weights)
+```
+
+
+
+

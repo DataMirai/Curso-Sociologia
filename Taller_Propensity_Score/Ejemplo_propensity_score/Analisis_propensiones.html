@@ -157,23 +157,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ajuste-del-modelo" class="level3">
 <h3 class="anchored" data-anchor-id="ajuste-del-modelo">Ajuste del modelo</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mod_propensity <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mod_propensity_1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> Grup_IQ <span class="sc">~</span>  </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    SignesIndirectes_HTP <span class="sc">+</span> </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    HCC_prev <span class="sc">+</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    DIabetes <span class="sc">+</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    sexe_home <span class="sc">+</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    Charlson_Index</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    ,</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos_imputados_transformados, </span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    HCC_prev <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    sexe_home <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    Charlson_Index</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    ,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos_imputados_transformados, </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="sacando-iptw" class="level3">
 <h3 class="anchored" data-anchor-id="sacando-iptw">Sacando IPTW</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>datos_imputados_propensity_1 <span class="ot">&lt;-</span> datos_imputados_transformados <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prediciones=</span><span class="fu">predict</span>(mod_propensity,datos_imputados_transformados,<span class="at">type=</span><span class="st">"response"</span>) )</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">prediciones =</span> <span class="fu">predict</span>( mod_propensity_1 , datos_imputados_transformados , <span class="at">type=</span><span class="st">"response"</span>) )</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>datos_imputados_propensity_1 <span class="ot">&lt;-</span> datos_imputados_propensity_1 <span class="sc">%&gt;%</span> </span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">standarized_weights =</span> <span class="fu">case_when</span>(</span>
@@ -241,74 +239,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Pacientes_incluidos_iptwdatos_propensity_1 <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(</span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>iptwdatos_propensity_survey_1 <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ids =</span> <span class="sc">~</span> <span class="dv">1</span>, </span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos_imputados_propensity_1,</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">strata =</span> <span class="sc">~</span>Grup_IQ,</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> <span class="sc">~</span> datos_imputados_propensity_1<span class="sc">$</span>standarized_weights)</span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>Pacientes_incluidos_Propensity_table_Weighted_1 <span class="ot">&lt;-</span> <span class="fu">svyCreateTableOne</span>(</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars=</span> datos_imputados_propensity_1 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(Grup_IQ, identificador)) <span class="sc">%&gt;%</span> <span class="fu">names</span>(),</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>Propensity_table_Weighted_1 <span class="ot">&lt;-</span> <span class="fu">svyCreateTableOne</span>(</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars=</span> datos_imputados_propensity_1 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(Grup_IQ, identificador,standarized_weights,prediciones )) <span class="sc">%&gt;%</span> <span class="fu">names</span>(),</span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">strata =</span> <span class="st">"Grup_IQ"</span>, </span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> Pacientes_incluidos_iptwdatos_propensity_1, </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> iptwdatos_propensity_survey_1, </span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">addOverall =</span> T,</span>
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">includeNA =</span> T,</span>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">smd =</span><span class="cn">TRUE</span>)</span>
 <span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Pacientes_incluidos_Propensity_table_Weighted_1, <span class="at">smd =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Propensity_table_Weighted_1, <span class="at">smd =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                                 Stratified by Grup_IQ
-                                  Overall        No IQ          Si IQ         
-  n                               365.87         169.63         196.24        
-  edat_IQ (mean (SD))              63.82 (10.95)  63.69 (10.70)  63.94 (11.19)
-  sexe_home = home (%)             231.6 (63.3)   110.8 (65.3)   120.8 (61.6) 
-  IMC (mean (SD))                  27.13 (5.11)   27.93 (4.68)   26.44 (5.38) 
-  etiol_OH = si (%)                114.8 (31.4)    58.7 (34.6)    56.1 (28.6) 
-  Enol_Actiu = si (%)               71.9 (19.7)    38.8 (22.9)    33.2 (16.9) 
-  Charlson_Index (mean (SD))        4.78 (2.04)    4.80 (1.49)    4.75 (2.42) 
-  plaquetes_preIQ (mean (SD))     118.96 (60.26)  99.87 (44.13) 135.46 (67.20)
-  DIabetes = insulina (%)          112.8 (30.8)    54.3 (32.0)    58.5 (29.8) 
-  Pughpunts_basal (mean (SD))       5.57 (1.01)    5.49 (0.82)    5.63 (1.14) 
-  colaterals_shunts = si (%)       165.3 (45.2)    79.2 (46.7)    86.1 (43.9) 
-  MELD_basal (mean (SD))            9.30 (2.92)    9.45 (2.17)    9.16 (3.43) 
-  Alb_gL_preIQ (mean (SD))         36.67 (5.55)   36.88 (4.85)   36.48 (6.10) 
-  INR_preIQ (mean (SD))             1.17 (0.20)    1.18 (0.14)    1.16 (0.25) 
-  BB_mgdL_preIQ (mean (SD))         1.23 (0.84)    1.35 (0.79)    1.13 (0.87) 
-  Creat_mgdL_preIQ (mean (SD))      0.85 (0.36)    0.82 (0.19)    0.88 (0.46) 
-  HCC_prev = si (%)                 29.3 ( 8.0)     9.9 ( 5.8)    19.4 ( 9.9) 
-  SignesIndirectes_HTP = si (%)    317.4 (86.7)   151.7 (89.4)   165.7 (84.5) 
-  prediciones (mean (SD))           0.42 (0.29)    0.40 (0.24)    0.43 (0.32) 
-  standarized_weights (mean (SD))   1.84 (1.81)    1.51 (1.83)    2.13 (1.73) 
-                                 Stratified by Grup_IQ
-                                  p      test SMD   
-  n                                                 
-  edat_IQ (mean (SD))              0.871       0.023
-  sexe_home = home (%)             0.559       0.078
-  IMC (mean (SD))                  0.070       0.296
-  etiol_OH = si (%)                0.370       0.129
-  Enol_Actiu = si (%)              0.366       0.150
-  Charlson_Index (mean (SD))       0.868       0.025
-  plaquetes_preIQ (mean (SD))     &lt;0.001       0.626
-  DIabetes = insulina (%)          0.716       0.047
-  Pughpunts_basal (mean (SD))      0.348       0.145
-  colaterals_shunts = si (%)       0.691       0.056
-  MELD_basal (mean (SD))           0.482       0.101
-  Alb_gL_preIQ (mean (SD))         0.600       0.073
-  INR_preIQ (mean (SD))            0.529       0.088
-  BB_mgdL_preIQ (mean (SD))        0.053       0.256
-  Creat_mgdL_preIQ (mean (SD))     0.070       0.188
-  HCC_prev = si (%)                0.260       0.151
-  SignesIndirectes_HTP = si (%)    0.483       0.147
-  prediciones (mean (SD))          0.556       0.099
-  standarized_weights (mean (SD))  0.143       0.352</code></pre>
+<pre><code>                               Stratified by Grup_IQ
+                                Overall        No IQ          Si IQ         
+  n                             370.23         182.89         187.34        
+  edat_IQ (mean (SD))            64.44 (11.01)  64.17 (10.66)  64.70 (11.36)
+  sexe_home = home (%)           227.1 (61.3)   112.8 (61.7)   114.3 (61.0) 
+  IMC (mean (SD))                27.21 (5.07)   27.66 (4.45)   26.77 (5.58) 
+  etiol_OH = si (%)              116.4 (31.4)    61.8 (33.8)    54.6 (29.2) 
+  Enol_Actiu = si (%)             62.0 (16.8)    29.7 (16.3)    32.3 (17.2) 
+  Charlson_Index (mean (SD))      4.96 (1.98)    4.96 (1.55)    4.95 (2.33) 
+  plaquetes_preIQ (mean (SD))   125.50 (66.52) 102.53 (45.09) 147.92 (75.91)
+  DIabetes = insulina (%)        121.7 (32.9)    70.9 (38.8)    50.9 (27.1) 
+  Pughpunts_basal (mean (SD))     5.59 (1.00)    5.55 (0.87)    5.62 (1.11) 
+  colaterals_shunts = si (%)     154.6 (41.8)    85.2 (46.6)    69.4 (37.0) 
+  MELD_basal (mean (SD))          9.31 (2.92)    9.42 (2.21)    9.21 (3.49) 
+  Alb_gL_preIQ (mean (SD))       36.72 (5.61)   36.69 (5.00)   36.74 (6.15) 
+  INR_preIQ (mean (SD))           1.17 (0.20)    1.18 (0.14)    1.16 (0.24) 
+  BB_mgdL_preIQ (mean (SD))       1.25 (0.91)    1.35 (0.83)    1.17 (0.98) 
+  Creat_mgdL_preIQ (mean (SD))    0.87 (0.39)    0.82 (0.21)    0.92 (0.50) 
+  HCC_prev = si (%)               35.5 ( 9.6)    15.7 ( 8.6)    19.8 (10.6) 
+  SignesIndirectes_HTP = si (%)  306.3 (82.7)   180.7 (98.8)   125.7 (67.1) 
+                               Stratified by Grup_IQ
+                                p      test SMD   
+  n                                               
+  edat_IQ (mean (SD))            0.696       0.048
+  sexe_home = home (%)           0.911       0.013
+  IMC (mean (SD))                0.168       0.177
+  etiol_OH = si (%)              0.411       0.099
+  Enol_Actiu = si (%)            0.823       0.026
+  Charlson_Index (mean (SD))     0.985       0.002
+  plaquetes_preIQ (mean (SD))   &lt;0.001       0.727
+  DIabetes = insulina (%)        0.029       0.249
+  Pughpunts_basal (mean (SD))    0.598       0.073
+  colaterals_shunts = si (%)     0.106       0.195
+  MELD_basal (mean (SD))         0.549       0.073
+  Alb_gL_preIQ (mean (SD))       0.935       0.010
+  INR_preIQ (mean (SD))          0.359       0.109
+  BB_mgdL_preIQ (mean (SD))      0.106       0.199
+  Creat_mgdL_preIQ (mean (SD))   0.015       0.248
+  HCC_prev = si (%)              0.633       0.069
+  SignesIndirectes_HTP = si (%) &lt;0.001       0.929</code></pre>
 </div>
 </div>
 </section>
 </section>
 <section id="modelo-propensity-2-mejor-pero-todavía-no-cuadra" class="level1">
 <h1>Modelo propensity 2: mejor, pero todavía no cuadra</h1>
+<p>Supón que ha habido unos 300 modelos entremedio, pero ya está. <strong>No hemos conseguido afinar más la fórmula</strong>. Esta es el mejor propensity que hemos logrado. Veamos que tal ajusta.</p>
+<section id="ajuste-del-modelo-1" class="level3">
+<h3 class="anchored" data-anchor-id="ajuste-del-modelo-1">Ajuste del modelo</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mod_propensity <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mod_propensity_2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> Grup_IQ <span class="sc">~</span>  </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    SignesIndirectes_HTP <span class="sc">+</span> </span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    HCC_prev <span class="sc">+</span></span>
@@ -326,19 +323,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    ,</span>
 <span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos_imputados_transformados, </span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>) )</span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>datos_imputados_propensity <span class="ot">&lt;-</span> datos_imputados_transformados <span class="sc">%&gt;%</span> </span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prediciones=</span><span class="fu">predict</span>(mod_propensity,datos_imputados_transformados,<span class="at">type=</span><span class="st">"response"</span>) )</span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>datos_imputados_propensity <span class="ot">&lt;-</span> datos_imputados_propensity <span class="sc">%&gt;%</span> </span>
-<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">standarized_weights =</span> <span class="fu">case_when</span>(</span>
-<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>    Grup_IQ <span class="sc">==</span> <span class="st">'Si IQ'</span> <span class="sc">~</span> (<span class="dv">177</span><span class="sc">/</span>(<span class="dv">371</span>))<span class="sc">/</span> (  prediciones),</span>
-<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>    Grup_IQ <span class="sc">==</span> <span class="st">'No IQ'</span> <span class="sc">~</span> (<span class="dv">194</span><span class="sc">/</span>(<span class="dv">371</span>))<span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>prediciones) </span>
-<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>  )) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="sacando-iptw-1" class="level3">
+<h3 class="anchored" data-anchor-id="sacando-iptw-1">Sacando IPTW</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>datos_imputados_propensity_2 <span class="ot">&lt;-</span> datos_imputados_transformados <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prediciones =</span> <span class="fu">predict</span>(mod_propensity_2, datos_imputados_transformados, <span class="at">type =</span> <span class="st">"response"</span>))</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>datos_imputados_propensity_2 <span class="ot">&lt;-</span> datos_imputados_propensity_2 <span class="sc">%&gt;%</span> </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">standarized_weights =</span> <span class="fu">case_when</span>(</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    Grup_IQ <span class="sc">==</span> <span class="st">'Si IQ'</span> <span class="sc">~</span> (<span class="dv">177</span><span class="sc">/</span>(<span class="dv">371</span>))<span class="sc">/</span> (  prediciones),</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    Grup_IQ <span class="sc">==</span> <span class="st">'No IQ'</span> <span class="sc">~</span> (<span class="dv">194</span><span class="sc">/</span>(<span class="dv">371</span>))<span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>prediciones) </span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  )) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>datos_imputados_propensity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>datos_imputados_propensity_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 371 × 21
    identificador Grup_IQ edat_IQ sexe_home   IMC etiol_OH Enol_Actiu
@@ -361,125 +362,130 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #   prediciones &lt;dbl&gt;, standarized_weights &lt;dbl&gt;</code></pre>
 </div>
 </div>
+</section>
+<section id="revisión-1" class="level3">
+<h3 class="anchored" data-anchor-id="revisión-1">Revisión</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ggpubr<span class="sc">::</span><span class="fu">ggarrange</span>(</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">plotlist =</span> <span class="fu">list</span>(</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    datos_imputados_propensity <span class="sc">%&gt;%</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(standarized_weights, <span class="at">fill =</span> Grup_IQ)) <span class="sc">+</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_density</span>() <span class="sc">+</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'probabilidad de pertenecer grup Si en propensity'</span>)</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    ,</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    datos_imputados_propensity <span class="sc">%&gt;%</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(standarized_weights, <span class="at">fill =</span> Grup_IQ)) <span class="sc">+</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'probabilidad de pertenecer grup Si en propensity'</span>)</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    ,</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    datos_imputados_propensity <span class="sc">%&gt;%</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(prediciones, <span class="at">fill =</span> Grup_IQ)) <span class="sc">+</span></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">'black'</span>, <span class="at">alpha =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'probabilidad de pertenecer grup Si en propensity'</span>)</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    ,</span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    datos_imputados_propensity <span class="sc">%&gt;%</span></span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(prediciones, <span class="at">fill =</span> Grup_IQ)) <span class="sc">+</span></span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">'black'</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'probabilidad de pertenecer grup Si en propensity'</span>)</span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ggpubr<span class="sc">::</span><span class="fu">ggarrange</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">plotlist =</span> <span class="fu">list</span>(</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    datos_imputados_propensity_2 <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(standarized_weights, <span class="at">fill =</span> Grup_IQ)) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'probabilidad de pertenecer grup Si en propensity'</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    ,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    datos_imputados_propensity_2 <span class="sc">%&gt;%</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(standarized_weights, <span class="at">fill =</span> Grup_IQ)) <span class="sc">+</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'probabilidad de pertenecer grup Si en propensity'</span>)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    ,</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    datos_imputados_propensity_2 <span class="sc">%&gt;%</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(prediciones, <span class="at">fill =</span> Grup_IQ)) <span class="sc">+</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">'black'</span>, <span class="at">alpha =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'probabilidad de pertenecer grup Si en propensity'</span>)</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>    ,</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>    datos_imputados_propensity_2 <span class="sc">%&gt;%</span></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(prediciones, <span class="at">fill =</span> Grup_IQ)) <span class="sc">+</span></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">'black'</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'probabilidad de pertenecer grup Si en propensity'</span>)</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="Analisis_propensiones_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<p><img src="Analisis_propensiones_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>Pacientes_incluidos_iptwdatos_propensity <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ids =</span> <span class="sc">~</span> <span class="dv">1</span>, </span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos_imputados_propensity,</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">strata =</span> <span class="sc">~</span>Grup_IQ,</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> <span class="sc">~</span> datos_imputados_propensity<span class="sc">$</span>standarized_weights)</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>Pacientes_incluidos_Propensity_table_Weighted <span class="ot">&lt;-</span> <span class="fu">svyCreateTableOne</span>(</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars=</span> datos_imputados_propensity <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(Grup_IQ, identificador)) <span class="sc">%&gt;%</span> <span class="fu">names</span>(),</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">strata =</span> <span class="st">"Grup_IQ"</span>, </span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> Pacientes_incluidos_iptwdatos_propensity, </span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">addOverall =</span> T,</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">includeNA =</span> T,</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">smd =</span><span class="cn">TRUE</span>)</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Pacientes_incluidos_Propensity_table_Weighted, <span class="at">smd =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>iptwdatos_propensity_2 <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ids =</span> <span class="sc">~</span> <span class="dv">1</span>, </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos_imputados_propensity_2,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">strata =</span> <span class="sc">~</span>Grup_IQ,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> <span class="sc">~</span> datos_imputados_propensity_2<span class="sc">$</span>standarized_weights)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>Propensity_table_Weighted_2 <span class="ot">&lt;-</span> <span class="fu">svyCreateTableOne</span>(</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars=</span> datos_imputados_propensity_2 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(Grup_IQ, identificador,standarized_weights,prediciones )) <span class="sc">%&gt;%</span> <span class="fu">names</span>(),</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">strata =</span> <span class="st">"Grup_IQ"</span>, </span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> iptwdatos_propensity_2, </span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">addOverall =</span> T,</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">includeNA =</span> T,</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">smd =</span><span class="cn">TRUE</span>)</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Propensity_table_Weighted_2, <span class="at">smd =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                                 Stratified by Grup_IQ
-                                  Overall        No IQ          Si IQ         
-  n                               353.56         166.15         187.42        
-  edat_IQ (mean (SD))              64.47 (10.77)  64.03 (10.58)  64.85 (10.95)
-  sexe_home = home (%)             221.4 (62.6)   105.6 (63.6)   115.8 (61.8) 
-  IMC (mean (SD))                  27.31 (4.84)   27.27 (4.36)   27.35 (5.24) 
-  etiol_OH = si (%)                109.6 (31.0)    54.3 (32.7)    55.4 (29.5) 
-  Enol_Actiu = si (%)               61.0 (17.3)    28.6 (17.2)    32.4 (17.3) 
-  Charlson_Index (mean (SD))        4.98 (2.08)    4.86 (1.44)    5.08 (2.51) 
-  plaquetes_preIQ (mean (SD))     115.98 (58.26) 107.56 (50.39) 123.44 (63.65)
-  DIabetes = insulina (%)          117.1 (33.1)    57.9 (34.9)    59.1 (31.5) 
-  Pughpunts_basal (mean (SD))       5.59 (0.99)    5.63 (0.91)    5.56 (1.06) 
-  colaterals_shunts = si (%)       158.5 (44.8)    75.3 (45.3)    83.2 (44.4) 
-  MELD_basal (mean (SD))            9.25 (2.70)    9.40 (2.20)    9.13 (3.08) 
-  Alb_gL_preIQ (mean (SD))         36.52 (5.51)   36.30 (5.16)   36.70 (5.81) 
-  INR_preIQ (mean (SD))             1.17 (0.19)    1.18 (0.14)    1.16 (0.23) 
-  BB_mgdL_preIQ (mean (SD))         1.23 (0.81)    1.27 (0.79)    1.19 (0.82) 
-  Creat_mgdL_preIQ (mean (SD))      0.85 (0.35)    0.83 (0.22)    0.87 (0.44) 
-  HCC_prev = si (%)                 33.0 ( 9.3)    13.3 ( 8.0)    19.6 (10.5) 
-  SignesIndirectes_HTP = si (%)    316.5 (89.5)   159.4 (95.9)   157.1 (83.8) 
-  prediciones (mean (SD))           0.42 (0.29)    0.39 (0.24)    0.45 (0.32) 
-  standarized_weights (mean (SD))   1.70 (1.73)    1.20 (1.12)    2.14 (2.04) 
-                                 Stratified by Grup_IQ
-                                  p      test SMD   
-  n                                                 
-  edat_IQ (mean (SD))              0.572       0.077
-  sexe_home = home (%)             0.781       0.037
-  IMC (mean (SD))                  0.908       0.016
-  etiol_OH = si (%)                0.619       0.068
-  Enol_Actiu = si (%)              0.988       0.002
-  Charlson_Index (mean (SD))       0.482       0.111
-  plaquetes_preIQ (mean (SD))      0.029       0.276
-  DIabetes = insulina (%)          0.591       0.071
-  Pughpunts_basal (mean (SD))      0.668       0.072
-  colaterals_shunts = si (%)       0.889       0.019
-  MELD_basal (mean (SD))           0.396       0.102
-  Alb_gL_preIQ (mean (SD))         0.612       0.073
-  INR_preIQ (mean (SD))            0.357       0.104
-  BB_mgdL_preIQ (mean (SD))        0.418       0.101
-  Creat_mgdL_preIQ (mean (SD))     0.297       0.107
-  HCC_prev = si (%)                0.607       0.084
-  SignesIndirectes_HTP = si (%)    0.010       0.409
-  prediciones (mean (SD))          0.168       0.217
-  standarized_weights (mean (SD))  0.017       0.572</code></pre>
+<pre><code>                               Stratified by Grup_IQ
+                                Overall        No IQ          Si IQ         
+  n                             353.56         166.15         187.42        
+  edat_IQ (mean (SD))            64.47 (10.77)  64.03 (10.58)  64.85 (10.95)
+  sexe_home = home (%)           221.4 (62.6)   105.6 (63.6)   115.8 (61.8) 
+  IMC (mean (SD))                27.31 (4.84)   27.27 (4.36)   27.35 (5.24) 
+  etiol_OH = si (%)              109.6 (31.0)    54.3 (32.7)    55.4 (29.5) 
+  Enol_Actiu = si (%)             61.0 (17.3)    28.6 (17.2)    32.4 (17.3) 
+  Charlson_Index (mean (SD))      4.98 (2.08)    4.86 (1.44)    5.08 (2.51) 
+  plaquetes_preIQ (mean (SD))   115.98 (58.26) 107.56 (50.39) 123.44 (63.65)
+  DIabetes = insulina (%)        117.1 (33.1)    57.9 (34.9)    59.1 (31.5) 
+  Pughpunts_basal (mean (SD))     5.59 (0.99)    5.63 (0.91)    5.56 (1.06) 
+  colaterals_shunts = si (%)     158.5 (44.8)    75.3 (45.3)    83.2 (44.4) 
+  MELD_basal (mean (SD))          9.25 (2.70)    9.40 (2.20)    9.13 (3.08) 
+  Alb_gL_preIQ (mean (SD))       36.52 (5.51)   36.30 (5.16)   36.70 (5.81) 
+  INR_preIQ (mean (SD))           1.17 (0.19)    1.18 (0.14)    1.16 (0.23) 
+  BB_mgdL_preIQ (mean (SD))       1.23 (0.81)    1.27 (0.79)    1.19 (0.82) 
+  Creat_mgdL_preIQ (mean (SD))    0.85 (0.35)    0.83 (0.22)    0.87 (0.44) 
+  HCC_prev = si (%)               33.0 ( 9.3)    13.3 ( 8.0)    19.6 (10.5) 
+  SignesIndirectes_HTP = si (%)  316.5 (89.5)   159.4 (95.9)   157.1 (83.8) 
+                               Stratified by Grup_IQ
+                                p      test SMD   
+  n                                               
+  edat_IQ (mean (SD))            0.572       0.077
+  sexe_home = home (%)           0.781       0.037
+  IMC (mean (SD))                0.908       0.016
+  etiol_OH = si (%)              0.619       0.068
+  Enol_Actiu = si (%)            0.988       0.002
+  Charlson_Index (mean (SD))     0.482       0.111
+  plaquetes_preIQ (mean (SD))    0.029       0.276
+  DIabetes = insulina (%)        0.591       0.071
+  Pughpunts_basal (mean (SD))    0.668       0.072
+  colaterals_shunts = si (%)     0.889       0.019
+  MELD_basal (mean (SD))         0.396       0.102
+  Alb_gL_preIQ (mean (SD))       0.612       0.073
+  INR_preIQ (mean (SD))          0.357       0.104
+  BB_mgdL_preIQ (mean (SD))      0.418       0.101
+  Creat_mgdL_preIQ (mean (SD))   0.297       0.107
+  HCC_prev = si (%)              0.607       0.084
+  SignesIndirectes_HTP = si (%)  0.010       0.409</code></pre>
 </div>
 </div>
+</section>
+</section>
+<section id="filtrado-de-pacientes-que-no-interesan" class="level1">
+<h1>Filtrado de pacientes que no interesan</h1>
+<p>Se puede utilizar el resultado de un propensity para encajar otro. en este caso. Utilizamos los resultados de un propensity previo para poder crear uno nuevo con restricción de casos outlier que no iban a encajar de ninguna forma</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrado de pacientes excluídos por no encajar en ningún propensity score ----</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>Pacientes_excluidos_propensity <span class="ot">&lt;-</span> datos_imputados_propensity <span class="sc">%&gt;%</span> </span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">between</span>(prediciones,<span class="fl">0.1</span>,<span class="fl">0.9</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(prediciones,standarized_weights))</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>Pacientes_excluidos_propensity<span class="sc">$</span>identificador</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrado de pacientes excluídos por no encajar en ningún propensity score ----</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>Pacientes_excluidos_propensity <span class="ot">&lt;-</span> datos_imputados_propensity_2 <span class="sc">%&gt;%</span> </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">between</span>(prediciones,<span class="fl">0.1</span>,<span class="fl">0.80</span>)) <span class="sc">%&gt;%</span> <span class="co"># eliminamos los propensities extremos.  </span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(prediciones,standarized_weights))</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>Pacientes_excluidos_propensity<span class="sc">$</span>identificador</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]   5  17  51  67  83  86 118 121 129 135 137 162 167 168 177 190 195 197 199
-[20] 205 206 207 212 213 214 215 216 217 221 222 225 229 232 233 238 246 247 250
-[39] 252 255 257 259 260 262 263 268 270 271 273 275 277 280 281 285 290 293 296
-[58] 297 298 306 308 313 319 321 322 323 324 328 332 333 334 337 338 339 340 343
-[77] 344 347 348 352 353 356 358 361 364 365 367</code></pre>
+<pre><code>  [1]   5  17  51  58  60  67  83  86 118 121 129 135 137 162 167 168 177 190
+ [19] 195 197 199 200 205 206 207 212 213 214 215 216 217 221 222 225 229 231
+ [37] 232 233 234 238 240 244 246 247 249 250 252 253 255 257 259 260 262 263
+ [55] 268 270 271 273 275 277 280 281 285 288 290 293 296 297 298 306 308 313
+ [73] 319 321 322 323 324 325 328 332 333 334 336 337 338 339 340 343 344 347
+ [91] 348 349 352 353 356 358 359 361 364 365 367</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrado de pacientes incluidos por  encajar en  propensity score ---- </span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>Pacientes_incluidos_propensity <span class="ot">&lt;-</span> datos_imputados_propensity <span class="sc">%&gt;%</span> </span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">between</span>(prediciones,<span class="fl">0.1</span>,<span class="fl">0.9</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(prediciones,standarized_weights))</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>Pacientes_incluidos_propensity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrado de pacientes incluidos por  encajar en  propensity score ---- </span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>Pacientes_finales <span class="ot">&lt;-</span> datos_imputados_propensity_2 <span class="sc">%&gt;%</span> </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">between</span>(prediciones,<span class="fl">0.1</span>,<span class="fl">0.80</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(prediciones,standarized_weights))</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>Pacientes_finales</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 284 × 19
+<pre><code># A tibble: 270 × 19
    identificador Grup_IQ edat_IQ sexe_home   IMC etiol_OH Enol_Actiu
            &lt;int&gt; &lt;fct&gt;     &lt;dbl&gt; &lt;fct&gt;     &lt;dbl&gt; &lt;fct&gt;    &lt;fct&gt;     
  1             1 No IQ        70 home       29.8 no       no        
@@ -492,7 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  8             9 No IQ        74 dona       23.8 no       no        
  9            10 No IQ        82 dona       23.7 no       no        
 10            11 No IQ        75 dona       29.3 no       no        
-# ℹ 274 more rows
+# ℹ 260 more rows
 # ℹ 12 more variables: Charlson_Index &lt;dbl&gt;, plaquetes_preIQ &lt;dbl&gt;,
 #   DIabetes &lt;fct&gt;, Pughpunts_basal &lt;dbl&gt;, colaterals_shunts &lt;fct&gt;,
 #   MELD_basal &lt;dbl&gt;, Alb_gL_preIQ &lt;dbl&gt;, INR_preIQ &lt;dbl&gt;, BB_mgdL_preIQ &lt;dbl&gt;,
@@ -500,114 +506,163 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="propensity-final-supón-unos-300-modelos-entremedio-pero-ya-está" class="level1">
-<h1>Propensity final: supón unos 300 modelos entremedio, pero ya está</h1>
+<section id="modelo-propensity-final" class="level1">
+<h1>Modelo Propensity final</h1>
+<section id="ajuste-del-modelo-2" class="level3">
+<h3 class="anchored" data-anchor-id="ajuste-del-modelo-2">Ajuste del modelo</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>mod_propensity <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> Grup_IQ <span class="sc">~</span>  </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    SignesIndirectes_HTP <span class="sc">+</span> </span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    HCC_prev <span class="sc">+</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    DIabetes <span class="sc">+</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    sexe_home <span class="sc">+</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    Enol_Actiu <span class="sc">+</span> </span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    plaquetes_preIQ <span class="sc">+</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">log</span>(<span class="fu">sqrt</span>(Charlson_Index)) <span class="sc">+</span></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    Alb_gL_preIQ <span class="sc">+</span></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">log</span>(IMC) <span class="sc">+</span></span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    Pughpunts_basal <span class="sc">+</span></span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">log</span>(BB_mgdL_preIQ) <span class="sc">+</span></span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>    Creat_mgdL_preIQ <span class="sc">+</span></span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>    INR_preIQ</span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>  , </span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> Pacientes_incluidos_propensity, </span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>) )</span>
-<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>Pacientes_incluidos_propensity <span class="ot">&lt;-</span> Pacientes_incluidos_propensity <span class="sc">%&gt;%</span> </span>
-<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prediciones=</span><span class="fu">predict</span>(mod_propensity,Pacientes_incluidos_propensity,<span class="at">type=</span><span class="st">"response"</span>) ) <span class="sc">%&gt;%</span> </span>
-<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">standarized_weights =</span> <span class="fu">case_when</span>(</span>
-<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>    Grup_IQ <span class="sc">==</span> <span class="st">'Si IQ'</span> <span class="sc">~</span> (<span class="dv">177</span><span class="sc">/</span>(<span class="dv">371</span>))<span class="sc">/</span> (  prediciones),</span>
-<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>    Grup_IQ <span class="sc">==</span> <span class="st">'No IQ'</span> <span class="sc">~</span> (<span class="dv">194</span><span class="sc">/</span>(<span class="dv">371</span>))<span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>prediciones) </span>
-<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>  )) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>mod_propensity_final <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> Grup_IQ <span class="sc">~</span>  </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    SignesIndirectes_HTP <span class="sc">+</span> </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    HCC_prev <span class="sc">+</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    DIabetes <span class="sc">+</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    sexe_home <span class="sc">+</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    Enol_Actiu <span class="sc">+</span> </span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    plaquetes_preIQ <span class="sc">+</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">log</span>(<span class="fu">sqrt</span>(Charlson_Index)) <span class="sc">+</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    Alb_gL_preIQ <span class="sc">+</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">log</span>(IMC) <span class="sc">+</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>    Pughpunts_basal <span class="sc">+</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">log</span>(BB_mgdL_preIQ) <span class="sc">+</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    Creat_mgdL_preIQ <span class="sc">+</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>    INR_preIQ</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>  , </span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> Pacientes_finales, </span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="datos_imputados_propensity-write_rds.-datosdatos_propensity.rds" class="level1">
-<h1>datos_imputados_propensity %&gt;% write_rds(., ‘Datos/Datos_propensity.rds’)</h1>
+<section id="sacando-iptw-2" class="level3">
+<h3 class="anchored" data-anchor-id="sacando-iptw-2">Sacando IPTW</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Datos propensity ----</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>Pacientes_incluidos_iptwdatos_propensity <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ids =</span> <span class="sc">~</span> <span class="dv">1</span>, </span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> Pacientes_incluidos_propensity,</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">strata =</span> <span class="sc">~</span>Grup_IQ,</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> <span class="sc">~</span> Pacientes_incluidos_propensity<span class="sc">$</span>standarized_weights)</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>Pacientes_incluidos_Propensity_table_Weighted <span class="ot">&lt;-</span> <span class="fu">svyCreateTableOne</span>(</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars=</span> Pacientes_incluidos_propensity <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(Grup_IQ, identificador)) <span class="sc">%&gt;%</span> <span class="fu">names</span>(),</span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">strata =</span> <span class="st">"Grup_IQ"</span>, </span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> Pacientes_incluidos_iptwdatos_propensity, </span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">addOverall =</span> T,</span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">includeNA =</span> T,</span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">smd =</span><span class="cn">TRUE</span>)</span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Pacientes_incluidos_Propensity_table_Weighted, <span class="at">smd =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>Pacientes_finales_IPTW <span class="ot">&lt;-</span> Pacientes_finales <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prediciones=</span><span class="fu">predict</span>(mod_propensity_final,Pacientes_finales,<span class="at">type=</span><span class="st">"response"</span>) ) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">standarized_weights =</span> <span class="fu">case_when</span>(</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    Grup_IQ <span class="sc">==</span> <span class="st">'Si IQ'</span> <span class="sc">~</span> (<span class="dv">177</span><span class="sc">/</span>(<span class="dv">371</span>))<span class="sc">/</span> (  prediciones),</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    Grup_IQ <span class="sc">==</span> <span class="st">'No IQ'</span> <span class="sc">~</span> (<span class="dv">194</span><span class="sc">/</span>(<span class="dv">371</span>))<span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>prediciones) </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  )) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="revisión-2" class="level3">
+<h3 class="anchored" data-anchor-id="revisión-2">Revisión</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>ggpubr<span class="sc">::</span><span class="fu">ggarrange</span>(</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">plotlist =</span> <span class="fu">list</span>(</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    Pacientes_finales_IPTW <span class="sc">%&gt;%</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(standarized_weights, <span class="at">fill =</span> Grup_IQ)) <span class="sc">+</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'probabilidad de pertenecer grup Si en propensity'</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    ,</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    Pacientes_finales_IPTW <span class="sc">%&gt;%</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(standarized_weights, <span class="at">fill =</span> Grup_IQ)) <span class="sc">+</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'probabilidad de pertenecer grup Si en propensity'</span>)</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    ,</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    Pacientes_finales_IPTW <span class="sc">%&gt;%</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(prediciones, <span class="at">fill =</span> Grup_IQ)) <span class="sc">+</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">'black'</span>, <span class="at">alpha =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'probabilidad de pertenecer grup Si en propensity'</span>)</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>    ,</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>    Pacientes_finales_IPTW <span class="sc">%&gt;%</span></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(prediciones, <span class="at">fill =</span> Grup_IQ)) <span class="sc">+</span></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">'black'</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'probabilidad de pertenecer grup Si en propensity'</span>)</span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Analisis_propensiones_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Datos propensity ----</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>Pacientes_finales_iptw_survey <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ids =</span> <span class="sc">~</span> <span class="dv">1</span>, </span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> Pacientes_finales_IPTW,</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">strata =</span> <span class="sc">~</span>Grup_IQ,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> <span class="sc">~</span> Pacientes_finales_IPTW<span class="sc">$</span>standarized_weights)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>Pacientes_finales_IPTW_table_Weighted <span class="ot">&lt;-</span> <span class="fu">svyCreateTableOne</span>(</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars=</span> Pacientes_finales_IPTW <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(Grup_IQ, identificador,standarized_weights,prediciones )) <span class="sc">%&gt;%</span> <span class="fu">names</span>(),</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">strata =</span> <span class="st">"Grup_IQ"</span>, </span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> Pacientes_finales_iptw_survey, </span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">addOverall =</span> T,</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">includeNA =</span> T,</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">smd =</span><span class="cn">TRUE</span>)</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Pacientes_finales_IPTW_table_Weighted , <span class="at">smd =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                                 Stratified by Grup_IQ
-                                  Overall        No IQ          Si IQ         
-  n                               288.51         146.17         142.34        
-  edat_IQ (mean (SD))              64.67 (10.80)  64.63 (10.74)  64.71 (10.90)
-  sexe_home = home (%)             176.0 (61.0)    89.4 (61.2)    86.6 (60.8) 
-  IMC (mean (SD))                  26.94 (4.73)   26.94 (3.96)   26.93 (5.42) 
-  etiol_OH = si (%)                 91.8 (31.8)    48.4 (33.1)    43.4 (30.5) 
-  Enol_Actiu = si (%)               44.7 (15.5)    23.3 (15.9)    21.4 (15.0) 
-  Charlson_Index (mean (SD))        4.91 (1.95)    4.87 (1.45)    4.94 (2.37) 
-  plaquetes_preIQ (mean (SD))     111.59 (50.62) 109.90 (50.47) 113.32 (50.91)
-  DIabetes = insulina (%)           99.3 (34.4)    52.1 (35.6)    47.3 (33.2) 
-  Pughpunts_basal (mean (SD))       5.54 (0.94)    5.57 (0.81)    5.51 (1.06) 
-  colaterals_shunts = si (%)       136.2 (47.2)    67.5 (46.2)    68.7 (48.3) 
-  MELD_basal (mean (SD))            9.15 (2.69)    9.29 (2.18)    9.00 (3.13) 
-  Alb_gL_preIQ (mean (SD))         36.65 (5.44)   36.49 (5.04)   36.80 (5.84) 
-  INR_preIQ (mean (SD))             1.17 (0.21)    1.18 (0.14)    1.17 (0.26) 
-  BB_mgdL_preIQ (mean (SD))         1.20 (0.75)    1.22 (0.68)    1.19 (0.82) 
-  Creat_mgdL_preIQ (mean (SD))      0.84 (0.26)    0.85 (0.22)    0.83 (0.29) 
-  HCC_prev = si (%)                 16.1 ( 5.6)     7.6 ( 5.2)     8.5 ( 6.0) 
-  SignesIndirectes_HTP = si (%)    281.8 (97.7)   142.7 (97.6)   139.1 (97.7) 
-  prediciones (mean (SD))           0.36 (0.22)    0.36 (0.20)    0.36 (0.23) 
-  standarized_weights (mean (SD))   1.56 (1.34)    0.97 (0.50)    2.17 (1.63) 
-                                 Stratified by Grup_IQ
-                                  p      test SMD   
-  n                                                 
-  edat_IQ (mean (SD))              0.963       0.007
-  sexe_home = home (%)             0.963       0.007
-  IMC (mean (SD))                  0.995       0.001
-  etiol_OH = si (%)                0.704       0.057
-  Enol_Actiu = si (%)              0.866       0.025
-  Charlson_Index (mean (SD))       0.818       0.037
-  plaquetes_preIQ (mean (SD))      0.649       0.067
-  DIabetes = insulina (%)          0.726       0.051
-  Pughpunts_basal (mean (SD))      0.693       0.057
-  colaterals_shunts = si (%)       0.778       0.042
-  MELD_basal (mean (SD))           0.449       0.107
-  Alb_gL_preIQ (mean (SD))         0.711       0.056
-  INR_preIQ (mean (SD))            0.848       0.027
-  BB_mgdL_preIQ (mean (SD))        0.795       0.035
-  Creat_mgdL_preIQ (mean (SD))     0.625       0.065
-  HCC_prev = si (%)                0.787       0.036
-  SignesIndirectes_HTP = si (%)    0.965       0.005
-  prediciones (mean (SD))          0.815       0.037
-  standarized_weights (mean (SD)) &lt;0.001       0.996</code></pre>
+<pre><code>                               Stratified by Grup_IQ
+                                Overall        No IQ          Si IQ         
+  n                             274.58         140.96         133.63        
+  edat_IQ (mean (SD))            64.62 (10.73)  64.42 (10.74)  64.82 (10.77)
+  sexe_home = home (%)           169.5 (61.7)    87.2 (61.9)    82.3 (61.6) 
+  IMC (mean (SD))                27.14 (4.55)   27.06 (3.81)   27.21 (5.23) 
+  etiol_OH = si (%)               89.4 (32.5)    47.4 (33.6)    42.0 (31.4) 
+  Enol_Actiu = si (%)             44.0 (16.0)    23.0 (16.3)    21.1 (15.8) 
+  Charlson_Index (mean (SD))      4.89 (1.93)    4.86 (1.46)    4.91 (2.33) 
+  plaquetes_preIQ (mean (SD))   110.76 (50.95) 109.21 (49.88) 112.38 (52.25)
+  DIabetes = insulina (%)         92.4 (33.7)    48.8 (34.6)    43.6 (32.6) 
+  Pughpunts_basal (mean (SD))     5.54 (0.96)    5.56 (0.81)    5.53 (1.10) 
+  colaterals_shunts = si (%)     129.4 (47.1)    64.2 (45.6)    65.2 (48.8) 
+  MELD_basal (mean (SD))          9.17 (2.73)    9.28 (2.20)    9.04 (3.21) 
+  Alb_gL_preIQ (mean (SD))       36.73 (5.45)   36.57 (5.06)   36.90 (5.86) 
+  INR_preIQ (mean (SD))           1.17 (0.21)    1.17 (0.14)    1.17 (0.27) 
+  BB_mgdL_preIQ (mean (SD))       1.21 (0.73)    1.22 (0.68)    1.20 (0.78) 
+  Creat_mgdL_preIQ (mean (SD))    0.84 (0.26)    0.85 (0.22)    0.83 (0.30) 
+  HCC_prev = si (%)               11.4 ( 4.1)     6.0 ( 4.3)     5.3 ( 4.0) 
+  SignesIndirectes_HTP = si (%)  271.6 (98.9)   139.4 (98.9)   132.2 (99.0) 
+                               Stratified by Grup_IQ
+                                p      test SMD   
+  n                                               
+  edat_IQ (mean (SD))            0.802       0.038
+  sexe_home = home (%)           0.971       0.006
+  IMC (mean (SD))                0.841       0.033
+  etiol_OH = si (%)              0.761       0.047
+  Enol_Actiu = si (%)            0.922       0.015
+  Charlson_Index (mean (SD))     0.887       0.024
+  plaquetes_preIQ (mean (SD))    0.686       0.062
+  DIabetes = insulina (%)        0.778       0.042
+  Pughpunts_basal (mean (SD))    0.818       0.035
+  colaterals_shunts = si (%)     0.676       0.064
+  MELD_basal (mean (SD))         0.571       0.087
+  Alb_gL_preIQ (mean (SD))       0.709       0.059
+  INR_preIQ (mean (SD))          0.995       0.001
+  BB_mgdL_preIQ (mean (SD))      0.837       0.030
+  Creat_mgdL_preIQ (mean (SD))   0.677       0.057
+  HCC_prev = si (%)              0.903       0.015
+  SignesIndirectes_HTP = si (%)  0.961       0.006</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># datos_imputados_propensity %&gt;%</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggplot(aes(standarized_weights, fill= Grup_IQ  )) +</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_density()+</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   labs(x= 'probabilidad de pertenecer grup Si en propensity')</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># datos_imputados_propensity %&gt;%</span></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggplot(aes(prediciones, fill= Grup_IQ )) +</span></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_histogram(color='black',alpha=0.8) +</span></span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co">#   labs(x= 'probabilidad de pertenecer grup Si en propensity')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>g ```</p>
+</section>
+</section>
+<section id="ahora-ya-esta-todo-equilirbado" class="level1">
+<h1>Ahora ya esta todo equilirbado</h1>
+<p>Ahora teniendo los id’s de los pacientes en claro y estos pesos, podemos ir a hacer cualquier análisis que permita ponderación y se harán con una confusión perfectamente controlada.</p>
+<p>regresiones lineales o modelos de supervivencia son las opciones más plausibles para este método.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>Pacientes_finales_IPTW <span class="sc">%&gt;%</span> </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(identificador, standarized_weights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 270 × 2
+   identificador standarized_weights
+           &lt;int&gt;               &lt;dbl&gt;
+ 1             1               0.697
+ 2             2               0.879
+ 3             3               0.707
+ 4             4               1.12 
+ 5             6               0.720
+ 6             7               0.627
+ 7             8               0.756
+ 8             9               0.761
+ 9            10               0.719
+10            11               1.51 
+# ℹ 260 more rows</code></pre>
+</div>
+</div>
 </section>
 
 </main>
