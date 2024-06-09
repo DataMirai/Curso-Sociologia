@@ -42,9 +42,8 @@ Yo apenas puedo explicar *contexto de datos*... pero si puedo ayudar en
 
     -   La **Regresión logística**, por ejemplo, es deseable cuando
         funciona porque los parámetros son muy interpretables.
-    -   [Los **Random Forest** son geniales porque pueden lidiar con
-        patrones muy difíciles, pero olvídate de su
-        interpretación]{style="color:red"}
+    -   Los **Random Forest** son geniales porque pueden lidiar con
+        patrones muy difíciles, pero olvídate de su interpretación.
 
 ## 1. Modelizar es un arte {auto-animate="true"}
 
@@ -65,7 +64,7 @@ a lo largo de este curso.**
 
 ## 1. Modelizar es un arte {auto-animate="true"}
 
-![](Imagenes/extrapolating.png)
+![](Imagenes/extrapolating.png){fig-align="center"}
 
 # 2. Todos los modelos están equivocados {auto-animate="true"}
 
@@ -111,7 +110,7 @@ a lo largo de este curso.**
 ## 2. Todos los modelos están equivocados {auto-animate="true"}
 
 ::: {style="font-size:35px;"}
--   Criterios para la elección de modelos, segñun Box:
+-   Criterios para la elección de modelos, según Box:
 :::
 
 ::: {style="margin-left:50px; font-size:35px;"}
@@ -134,7 +133,7 @@ a lo largo de este curso.**
 
 ## 3. Diseño experimental {auto-animate="true"}
 
-::: {style="margin-top:180px; text-align:center;"}
+::: {style="margin-top:160px; text-align:center;"}
 **Diseño experimental**: rama de la estadística que permite identificar
 y cuantificar el tamaño de un efecto dentro de un estudio, miniminzando
 la confusión y permitiendo causalidad.
@@ -259,22 +258,24 @@ fig-align="center"}
 
 ## 4.1. Conocimiento previo/experto {auto-animate="true"}
 
-![](Imagenes/pelea_variables.jpg)
+::: {.scroll-container style="overflow-y: scroll; height: 1300px;"}
+![](Imagenes/pelea_variables.jpg){fig-align="center"}
+::: 
 
 ## 4.1. Conocimiento previo/experto {auto-animate="true"}
 
 ::: {style="text-align:center; margin-top:130px; font-size:45px"}
-**Nada supera el conocimiento del experto.**
+**Nada supera el conocimiento del experto...**
 :::
 
-::: {style="text-align:center; margin-top:130px; font-size:45px"}
-**pero hay que ayudarle a que tome la dirección correcta**
+::: {style="text-align:center; margin-top:100px; font-size:45px"}
+**...pero hay que ayudarle a que tome la dirección correcta.**
 :::
 
 ## 4.1.1. Conocimiento previo/experto: Caso práctico {auto-animate="true"}
 
 Un economista tiene una hipótesis. Los periodos históricos con baja
-varianza en la taa del PIBxC han sido periodos democráticamnete
+varianza en la tasa del PIBxC han sido periodos democráticamnete
 estables.
 
 Para poder estimar esa variabilidad utilizo la varianza:
@@ -468,13 +469,13 @@ PIB_periodos_subperiodos
 
 ## 4.1.1. Conocimiento previo/experto: Caso práctico {auto-animate="true"}
 
-::: {style="text-align:center; margin-top:100px; font-size:45px"}
+::: {style="text-align:center; margin-top:80px; font-size:45px"}
 El conocimiento del experto tiene una buena intuición, pero por si
-acaso, reforzarlo usando un modelo bien fundamentado.
+acaso, hay que reforzarlo usando un modelo bien fundamentado.
 :::
 
 ::: {style="text-align:center; margin-top:50px; font-size:45px"}
-Debemos estar en mismas unidades para poder comparar dos fenómenos.
+Debemos estar en las mismas unidades para poder comparar dos fenómenos.
 :::
 
 ## 4.1.1. Conocimiento previo/experto: Caso práctico {auto-animate="true"}
@@ -593,10 +594,10 @@ x
 ## 4.2.2. Dependencias de los *P valores*? {auto-animate="true"}
 
 ::: {style="font-size:35px; margin-top:30px;"}
-
 ```{r}
 x<0.05
 ```
+:::
 
 ## 4.2.2. Dependencias de los *P valores*? {auto-animate="true"}
 
@@ -625,7 +626,7 @@ x
 ## 4.2.2. Dependencias de los *P valores*? {auto-animate="true"}
 
 ::: {style="font-size:35px; margin-top:30px;"}
-¿Se rechaza la hipotesis nula?
+- ¿Se rechaza la hipótesis nula?
 
 ```{r}
 x < 0.05
@@ -674,7 +675,7 @@ x
 ## 4.2.2. Dependencias de los *P valores*? {auto-animate="true"}
 
 ::: {style="font-size:35px; margin-top:30px;"}
-¿Se rechaza la hipotesis nula?
+- ¿Se rechaza la hipótesis nula?
 
 ```{r}
 x < 0.05
@@ -718,8 +719,8 @@ El test apunta tener datos perfectos sobre una normal. Eso no pasa.
 
 ## 5. Standarized mean deviation *(SMD)* {auto-animate="true"}
 
--   La **standarized mean deviation** *(SMD)* o diferencias de medias
-    estandarizadas son básicamente la diferencia entre las medias o
+-   La **standarized mean deviation** *(SMD)*, o diferencias de medias
+    estandarizadas, son básicamente la diferencia entre las medias o
     proporciones de una variable, estratificando por otra.
 
 ## 5. Standarized mean deviation *(SMD)* {auto-animate="true"}
@@ -766,21 +767,21 @@ Donde :
 ::: {.column width="50%"}
 **SMD**
 
--   proporciona una medida de la magnitud del efecto.
+-   Proporciona una medida de la magnitud del efecto.
 
--   La SMD son una medida estandarizada.
+-   Las SMD son una medida estandarizada.
 
--   Consistencia**:** menos sensible al tamaño de la muestra
+-   **Consistencia:** menos sensible al tamaño de la muestra.
 :::
 
 ::: {.column width="50%"}
-**P.valor**
+**P valor**
 
--   Significación Binaria: o son diferentes o no lo son. SImplista
+-   Significación Binaria: o son diferentes o no lo son. Simplista.
 
--   Dependencia del Tamaño de Muestra
+-   Dependencia del tamaño de muestra.
 
--   **No Indica Tamaño del Efecto**
+-   **No indica tamaño del efecto**.
 :::
 :::
 
@@ -790,88 +791,102 @@ Donde :
 
 ## 6. Inferencia causal
 
-::: {style="margin-top:50px;font-size:65px"}
+::: {style="text-align:center; margin-top:120px; font-size:55px; margin-bottom:0px; padding:0px;"}
+**"Predecir la exposición"**
+:::
 
-**Predecir la exposición**
-
-- Richard McElreath, *Statistical Rethinking* -
+::: {style="text-align:right; margin-top:70px; padding:0px; font-size:35px; color:#808080;"}
+*-  Richard McElreath, Statistical Rethinking*
 :::
 
 ## 6. Inferencia causal
 
-::: {style="margin-top:50px;font-size:65px"}
+::: {style="text-align:center; margin-top:120px; font-size:55px; margin-bottom:0px; padding:0px;"}
+**"Predecir la exposición implica que se puede simular la exposición"**
+:::
 
-**Predecir la exposición implica qeu se puede simular la exposición**
-
-- Richard McElreath, *Statistical Rethinking* -
+::: {style="text-align:right; margin-top:70px; padding:0px; font-size:35px; color:#808080;"}
+*-  Richard McElreath, Statistical Rethinking*
 :::
 
 ## 6. Inferencia causal
 
-- ¿Qué hubiera pasado si todos los individuos hubieran estado expuestos?
-- ¿Qué hubiera pasado si ningún individuo hubiera estado expuesto?
+-   ¿Qué hubiera pasado si todos los individuos hubieran estado
+    expuestos?
+-   ¿Qué hubiera pasado si ningún individuo hubiera estado expuesto?
 
 ## 6. Inferencia causal
 
-Mete en un modelo todas las variables que se te ocurren e interpreta entonces todos los coeficientes como efectos causales. a ver qué sale.
+::: {style="text-align:center; margin-top:80px; font-size:45px; margin-bottom:0px; padding:0px;"}
+**"Mete en un modelo todas las variables que se te ocurran e interpreta
+entonces todos los coeficientes como efectos causales. A ver qué sale."**
+:::
 
-Aitor Gonzalez, tu estadístico de confianza. Y cada día el de menos gente.
+::: {style="text-align:right; margin-top:70px; padding:0px; font-size:35px; color:#808080;"}
+*- Aitor Gonzalez, tu estadístico de confianza. <br> Y cada día el de menos gente.*
+:::
 
 ## 6. Inferencia causal
 
-**Ciencia antes que estadística**
+**Ciencia antes que estadística:**
 
-Supongamos que tenemos un diagrama del modelo. Y que el diagrama es correcto. Esta es la principal asunción de toda la inferencia causal. 
+- Supongamos que tenemos un diagrama del modelo. Y que el diagrama es
+correcto. Esta es la principal asunción de toda la inferencia causal.
 
-Las técnicas de inferencia causal son sólo herramientas técnicas que nos ayudarán a estimar el efecto. Pero si nuestras asunciones son incorrectas, no hay técnica que nos salve.
+- Las técnicas de inferencia causal son sólo herramientas técnicas que nos
+ayudarán a estimar el efecto. Pero si nuestras asunciones son
+incorrectas, no hay técnica que nos salve.
 
+::: {style="text-align:center; margin-top:10px;"}
 **¿Qué nos lo impide?**
+:::
 
+# 7. La confusión
 
-# 6. La confusión
+## 7. La confusión
 
-## 6. La confusión
+- Situación en la que la relación entre una variable independiente y una
+variable dependiente se distorsiona por la influencia de una tercera
+variable, conocida como **variable de confusión** o confusora.
 
-Situación en la que la relación entre una variable independiente y una variable dependiente se distorsiona por la influencia de una tercera variable, conocida como **variable de confusión** o confusora
-
-## 6.1. La paradoja de Simpson {auto-animate="true"}
+## 7.1. La paradoja de Simpson {auto-animate="true"}
 
 ![](Imagenes/paradoja_simpson.jpg){fig-align="center"}
 
-## 6.2. Efecto placebo {auto-animate="true"}
+## 7.2. Efecto placebo {auto-animate="true"}
 
 ![](Imagenes/efectos_externos.png){fig-align="center"}
 
 *"La gripe se elimina con paracetamol en 7 días. Si no, se cura sola en
 una semana."*
 
-att: La confusión
-
+::: {style="text-align:right; margin-right:70px; padding:0px; font-size:30px; color:#808080;"}
+*- Att: La confusión*
+:::
 
 # ¿Cómo lidiamos con la confusión?
 
-# 7. Propensity score
+# 8. Propensity score
 
-## 7. Propensity score {auto-animate="true"}
+## 8. Propensity score {auto-animate="true"}
 
 ::: {style="margin-top:50px;font-size:65px"}
-
-El *Emparejamiento por Puntuación de Propensión (PSM)* es una técnica estadística utilizada para estimar el efecto causal de un tratamiento o intervención **cuando no es posible realizar un experimento aleatorio.**
+El *Emparejamiento por Puntuación de Propensión (PSM)* es una técnica
+estadística utilizada para estimar el efecto causal de un tratamiento o
+intervención **cuando no es posible realizar un experimento aleatorio.**
 :::
 
-
-## 7. Propensity score: Objetivo {auto-animate="true"}
+## 8. Propensity score: Objetivo {auto-animate="true"}
 
 ::: {style="margin-top:50px;font-size:50px"}
-
-- *Reducir el sesgo de confusión*: Controla por variables observadas que podrían influir en la asignación del tratamiento y en el resultado.
-- *Simular un ensayo aleatorio*: trata de igualar el grupo de control al grupo experiemntal.
-
+-   *Reducir el sesgo de confusión*: Controla por variables observadas
+    que podrían influir en la asignación del tratamiento y en el
+    resultado.
+-   *Simular un ensayo aleatorio*: trata de igualar el grupo de control
+    al grupo experiemntal.
 :::
 
-
-
-## 7. Propensity score: técnica {auto-animate="true"}
+## 8. Propensity score: técnica {auto-animate="true"}
 
 ::: {style="margin-top:50px;font-size:55px"}
 -   Para cada sujeto, calcular la probabilidad (puntuación de
@@ -880,7 +895,7 @@ El *Emparejamiento por Puntuación de Propensión (PSM)* es una técnica estadí
 -   ~~Respuesta~~ $exposición \sim covariables$
 :::
 
-## 7.1. Criterios para seleccionar las covariables {auto-animate="true"}
+## 8.1. Criterios para seleccionar las covariables {auto-animate="true"}
 
 -   Se pueden seleccionar covariables que...
 
@@ -891,41 +906,56 @@ El *Emparejamiento por Puntuación de Propensión (PSM)* es una técnica estadí
     -   incluyan los **factores de riesgo** y los **términos de
         interacción** importantes entre los factores de confusión.
 
-## 7.1. Criterios para seleccionar las covariables {auto-animate="true"}
+## 8.1. Criterios para seleccionar las covariables {auto-animate="true"}
 
 Además se debe considerar que:
 
--   Algunas variables **no deben equilibrarse** (características innatas de los grupos)
+-   Algunas variables **no deben equilibrarse** (características innatas
+    de los grupos)
 -   Se seleccionarán únicamente aquellas que probablemente afecten al
     resultado.
--   No se deben utilizar los datos de resultados en el proceso de Propensity Score.
+-   No se deben utilizar los datos de resultados en el proceso de
+    Propensity Score.
 
-## 7.2. Análisis de *PS* paso a paso {auto-animate="true"}
+## 8.2. Análisis de *PS* paso a paso {auto-animate="true"}
 
 ![](Imagenes/Propensity_pasos.jpg){fig-align="center"}
 
-## 8. Emparejamiento por puntuación de propensión {auto-animate="true"}
+## 8.3. Emparejamiento por puntuación de propensión {auto-animate="true"}
 
-1. **Estimación de la Puntuación de Propensión**: Se calcula la probabilidad de cada sujeto de recibir el tratamiento basado en las covariables.
+1.  **Estimación de la Puntuación de Propensión**: Se calcula la
+    probabilidad de cada sujeto de recibir el tratamiento basado en las
+    covariables.
 
-2. **Emparejamiento**: Cada sujeto tratado se empareja con uno o más sujetos de control con puntuaciones de propensión similares.
+2.  **Emparejamiento**: Cada sujeto tratado se empareja con uno o más
+    sujetos de control con puntuaciones de propensión similares.
 
-3. **Análisis**: Se compara el resultado entre los grupos emparejados.
+3.  **Análisis**: Se compara el resultado entre los grupos emparejados.
+
 
 ## 9. IPWRA {auto-animate="true"}
 
-El **IPTW (Inverse Probability of Treatment Weighting)** es una técnica que utiliza las puntuaciones de propensión para asignar pesos a los sujetos, permitiendo estimar el efecto causal del tratamiento en una población equilibrada.
+- El **IPTW** *(Inverse Probability of Treatment Weighting)* es una técnica
+que utiliza las puntuaciones de propensión para asignar pesos a los
+sujetos, permitiendo estimar el efecto causal del tratamiento en una
+población equilibrada.
 
 ## 9. IPWRA {auto-animate="true"}
 
-1. **Cálculo de las Puntuaciones de Propensión**: Al igual que en el PSM, se calculan las probabilidades de la exposición para cada sujeto.
+::: {style="font-size:38px"}
+1.  **Cálculo de las Puntuaciones de Propensión**: Al igual que en el
+    PSM, se calculan las probabilidades de la exposición para cada
+    sujeto.
 
-2. **Asignación de Pesos**:
-    - Sujeto tratado: Peso = 1 / Puntuación de Propensión
-    - Sujeto no tratado: Peso = 1 / (1 - Puntuación de Propensión)
+2.  **Asignación de Pesos**:
 
-3. **Análisis Ponderado**: Se realiza el análisis del efecto del tratamiento usando los pesos asignados para ajustar las diferencias entre los grupos.
+    -   Sujeto tratado: Peso = 1 / Puntuación de Propensión
+    -   Sujeto no tratado: Peso = 1 / (1 - Puntuación de Propensión)
 
+3.  **Análisis Ponderado**: Se realiza el análisis del efecto del
+    tratamiento usando los pesos asignados para ajustar las diferencias
+    entre los grupos.
+:::
 
 # 10. Ejercicio práctico: programar un propensity score
 
