@@ -1,0 +1,301 @@
+---
+title: "Analisis_propensiones"
+format: html
+editor: visual
+---
+
+# Carga de Librerías
+
+```{r}
+if(!require('pacman')){install.packages('pacman')}
+pacman::p_load(tidyverse,survey, tableone, ggpubr)
+```
+
+```{r}
+datos_imputados <- readRDS('Datos_imputados.rds') %>% 
+  select(c(-NHC), identificador, everything())
+```
+
+```{r}
+datos_imputados
+```
+
+```{r}
+datos_imputados_transformados <- datos_imputados %>% 
+  mutate(
+    DIabetes = droplevels(DIabetes,c('Metformina', 'Altres','ADO', 'dieta', 'ADO+Insulina','metformina+altres','ADO')),
+    SignesIndirectes_HTP = droplevels(SignesIndirectes_HTP,c('dubtós')),
+    presenciaCSPH = case_when(presenciaCSPH =='indeterminat' ~ 'no CSPH', TRUE ~ presenciaCSPH)
+  ) %>%
+  select('identificador','Grup_IQ','edat_IQ','sexe_home',"IMC",'etiol_OH','Enol_Actiu',
+         "Charlson_Index","plaquetes_preIQ","DIabetes",'Pughpunts_basal',
+         'colaterals_shunts','MELD_basal','Alb_gL_preIQ','INR_preIQ','BB_mgdL_preIQ','Creat_mgdL_preIQ',
+         'HCC_prev','SignesIndirectes_HTP')
+```
+
+```{r}
+variables_propensity <- c(
+  'Grup_IQ','edat_IQ','sexe_home',"IMC",'etiol_OH','Enol_Actiu',
+  "Charlson_Index","plaquetes_preIQ","DIabetes",'Pughpunts_basal',
+  'colaterals_shunts','MELD_basal','Alb_gL_preIQ','INR_preIQ','BB_mgdL_preIQ','Creat_mgdL_preIQ',
+  'HCC_prev','SignesIndirectes_HTP')
+```
+
+
+# Modelo propensity 1: todo mal
+
+### Ajuste del modelo
+
+```{r}
+mod_propensity <- glm(
+  formula = Grup_IQ ~  
+    SignesIndirectes_HTP + 
+    HCC_prev +
+    DIabetes +
+    sexe_home +
+    Charlson_Index
+    ,
+  data = datos_imputados_transformados, 
+  family=binomial(link="logit") )
+```
+
+### Sacando IPTW
+
+```{r}
+datos_imputados_propensity_1 <- datos_imputados_transformados %>% 
+  mutate(prediciones=predict(mod_propensity,datos_imputados_transformados,type="response") )
+
+datos_imputados_propensity_1 <- datos_imputados_propensity_1 %>% 
+  mutate(standarized_weights = case_when(
+    Grup_IQ == 'Si IQ' ~ (177/(371))/ (  prediciones),
+    Grup_IQ == 'No IQ' ~ (194/(371))/ (1-prediciones) 
+  )) 
+
+```
+
+### Revisión
+
+```{r}
+datos_imputados_propensity_1
+```
+
+```{r}
+
+ggpubr::ggarrange(
+  plotlist = list(
+    datos_imputados_propensity_1 %>%
+      ggplot(aes(standarized_weights, fill = Grup_IQ)) +
+      geom_density() +
+      labs(x = 'probabilidad de pertenecer grup Si en propensity')
+    ,
+    datos_imputados_propensity_1 %>%
+      ggplot(aes(standarized_weights, fill = Grup_IQ)) +
+      geom_density(alpha = 0.6) +
+      labs(x = 'probabilidad de pertenecer grup Si en propensity')
+    
+    ,
+    datos_imputados_propensity_1 %>%
+      ggplot(aes(prediciones, fill = Grup_IQ)) +
+      geom_histogram(color = 'black', alpha = 1) +
+      labs(x = 'probabilidad de pertenecer grup Si en propensity')
+    ,
+    datos_imputados_propensity_1 %>%
+      ggplot(aes(prediciones, fill = Grup_IQ)) +
+      geom_histogram(color = 'black', alpha = 0.6) +
+      labs(x = 'probabilidad de pertenecer grup Si en propensity')
+  ))
+  
+```
+
+```{r}
+Pacientes_incluidos_iptwdatos_propensity_1 <- svydesign(
+  ids = ~ 1, 
+  data = datos_imputados_propensity_1,
+  strata = ~Grup_IQ,
+  weights = ~ datos_imputados_propensity_1$standarized_weights)
+
+Pacientes_incluidos_Propensity_table_Weighted_1 <- svyCreateTableOne(
+  vars= datos_imputados_propensity_1 %>% select(-c(Grup_IQ, identificador)) %>% names(),
+  strata = "Grup_IQ", 
+  data = Pacientes_incluidos_iptwdatos_propensity_1, 
+  addOverall = T,
+  includeNA = T,
+  smd =TRUE)
+
+print(Pacientes_incluidos_Propensity_table_Weighted_1, smd = TRUE)
+
+```
+
+
+
+
+
+# Modelo propensity 2: mejor, pero todavía no cuadra
+
+```{r}
+mod_propensity <- glm(
+  formula = Grup_IQ ~  
+    SignesIndirectes_HTP + 
+    HCC_prev +
+    DIabetes +
+    sexe_home +
+    Enol_Actiu + 
+    plaquetes_preIQ +
+    log(sqrt(Charlson_Index)) +
+    Alb_gL_preIQ +
+    log(IMC) +
+    Pughpunts_basal +
+    log(BB_mgdL_preIQ) +
+    Creat_mgdL_preIQ +
+    INR_preIQ
+    ,
+
+  data = datos_imputados_transformados, 
+  family=binomial(link="logit") )
+
+datos_imputados_propensity <- datos_imputados_transformados %>% 
+  mutate(prediciones=predict(mod_propensity,datos_imputados_transformados,type="response") )
+
+datos_imputados_propensity <- datos_imputados_propensity %>% 
+  mutate(standarized_weights = case_when(
+    Grup_IQ == 'Si IQ' ~ (177/(371))/ (  prediciones),
+    Grup_IQ == 'No IQ' ~ (194/(371))/ (1-prediciones) 
+  )) 
+
+```
+
+```{r}
+datos_imputados_propensity
+```
+
+```{r}
+
+ggpubr::ggarrange(
+  plotlist = list(
+    datos_imputados_propensity %>%
+      ggplot(aes(standarized_weights, fill = Grup_IQ)) +
+      geom_density() +
+      labs(x = 'probabilidad de pertenecer grup Si en propensity')
+    ,
+    datos_imputados_propensity %>%
+      ggplot(aes(standarized_weights, fill = Grup_IQ)) +
+      geom_density(alpha = 0.6) +
+      labs(x = 'probabilidad de pertenecer grup Si en propensity')
+    
+    ,
+    datos_imputados_propensity %>%
+      ggplot(aes(prediciones, fill = Grup_IQ)) +
+      geom_histogram(color = 'black', alpha = 1) +
+      labs(x = 'probabilidad de pertenecer grup Si en propensity')
+    ,
+    datos_imputados_propensity %>%
+      ggplot(aes(prediciones, fill = Grup_IQ)) +
+      geom_histogram(color = 'black', alpha = 0.6) +
+      labs(x = 'probabilidad de pertenecer grup Si en propensity')
+  ))
+  
+```
+
+```{r}
+Pacientes_incluidos_iptwdatos_propensity <- svydesign(
+  ids = ~ 1, 
+  data = datos_imputados_propensity,
+  strata = ~Grup_IQ,
+  weights = ~ datos_imputados_propensity$standarized_weights)
+
+Pacientes_incluidos_Propensity_table_Weighted <- svyCreateTableOne(
+  vars= datos_imputados_propensity %>% select(-c(Grup_IQ, identificador)) %>% names(),
+  strata = "Grup_IQ", 
+  data = Pacientes_incluidos_iptwdatos_propensity, 
+  addOverall = T,
+  includeNA = T,
+  smd =TRUE)
+
+print(Pacientes_incluidos_Propensity_table_Weighted, smd = TRUE)
+
+```
+
+
+```{r}
+# Filtrado de pacientes excluídos por no encajar en ningún propensity score ----
+
+Pacientes_excluidos_propensity <- datos_imputados_propensity %>% 
+  filter(!between(prediciones,0.1,0.9)) %>% 
+  select(-c(prediciones,standarized_weights))
+
+Pacientes_excluidos_propensity$identificador
+# Filtrado de pacientes incluidos por  encajar en  propensity score ---- 
+
+Pacientes_incluidos_propensity <- datos_imputados_propensity %>% 
+  filter(between(prediciones,0.1,0.9)) %>% 
+  select(-c(prediciones,standarized_weights))
+
+Pacientes_incluidos_propensity
+```
+
+
+# Propensity final: supón unos 300 modelos entremedio, pero ya está
+
+```{r}
+mod_propensity <- glm(
+  formula = Grup_IQ ~  
+    SignesIndirectes_HTP + 
+    HCC_prev +
+    DIabetes +
+    sexe_home +
+    Enol_Actiu + 
+    plaquetes_preIQ +
+    log(sqrt(Charlson_Index)) +
+    Alb_gL_preIQ +
+    log(IMC) +
+    Pughpunts_basal +
+    log(BB_mgdL_preIQ) +
+    Creat_mgdL_preIQ +
+    INR_preIQ
+  , 
+  data = Pacientes_incluidos_propensity, 
+  family=binomial(link="logit") )
+
+Pacientes_incluidos_propensity <- Pacientes_incluidos_propensity %>% 
+  mutate(prediciones=predict(mod_propensity,Pacientes_incluidos_propensity,type="response") ) %>% 
+  mutate(standarized_weights = case_when(
+    Grup_IQ == 'Si IQ' ~ (177/(371))/ (  prediciones),
+    Grup_IQ == 'No IQ' ~ (194/(371))/ (1-prediciones) 
+  )) 
+```
+
+# datos_imputados_propensity %\>% write_rds(., 'Datos/Datos_propensity.rds')
+
+```{r}
+# Datos propensity ----
+
+Pacientes_incluidos_iptwdatos_propensity <- svydesign(
+  ids = ~ 1, 
+  data = Pacientes_incluidos_propensity,
+  strata = ~Grup_IQ,
+  weights = ~ Pacientes_incluidos_propensity$standarized_weights)
+
+Pacientes_incluidos_Propensity_table_Weighted <- svyCreateTableOne(
+  vars= Pacientes_incluidos_propensity %>% select(-c(Grup_IQ, identificador)) %>% names(),
+  strata = "Grup_IQ", 
+  data = Pacientes_incluidos_iptwdatos_propensity, 
+  addOverall = T,
+  includeNA = T,
+  smd =TRUE)
+
+print(Pacientes_incluidos_Propensity_table_Weighted, smd = TRUE)
+
+# datos_imputados_propensity %>%
+#   ggplot(aes(standarized_weights, fill= Grup_IQ  )) +
+#   geom_density()+
+#   labs(x= 'probabilidad de pertenecer grup Si en propensity')
+# 
+# 
+# datos_imputados_propensity %>%
+#   ggplot(aes(prediciones, fill= Grup_IQ )) +
+#   geom_histogram(color='black',alpha=0.8) +
+#   labs(x= 'probabilidad de pertenecer grup Si en propensity')
+
+```
+
+g \`\`\`
