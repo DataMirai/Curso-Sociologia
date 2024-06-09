@@ -348,3 +348,6 @@ collect_metrics(edu_last_fit2) %>%
 
 # 2. Caso práctico 2
 
+https://juliasilge.com/blog/taylor-swift/
+https://www.senpaiacademy.com/blog/machine-learning-analizar-texto
+https://warin.ca/shiny/stm/#section-prepare
